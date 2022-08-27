@@ -1,0 +1,11 @@
+.footerDescription{
+    text-align: justify;
+}
+
+.footerLinks{
+    list-style-type: none;
+}
+
+.footerLinks a{
+    text-decoration: none;
+}
