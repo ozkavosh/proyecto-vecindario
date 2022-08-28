@@ -1,33 +1,61 @@
+import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
+import Avatar from "react-avatar-edit";
 
 const Register = () => {
   const navigate = useNavigate();
+  const [avatarSrc, setAvatarSrc] = useState("");
+  const [avatarPreview, setAvatarPreview] = useState(null);
+
+  const onCrop = (preview) => {
+    setAvatarPreview(preview);
+  };
+
+  const onClose = () => {
+    setAvatarPreview(null);
+  };
+
+  const onBeforeFileLoad = (e) => {
+    if (e.target.files[0].size > 71680) {
+      Swal.fire({
+        title: "Error!",
+        icon: "error",
+        text: "Tamaño de imagen supera el permitido.",
+      });
+      e.target.value = "";
+    }
+  };
 
   const createAccount = async (e) => {
     e.preventDefault();
     const formData = new FormData();
 
-    const { avatar } = e.target;
+    if(!avatarPreview) return Swal.fire({ title: "Error!", icon: "error", text: "Debe ingresar un avatar!"});
+
     const data = {
       firstname: e.target.firstname.value,
       lastname: e.target.lastname.value,
       email: e.target.email.value,
       password: e.target.password.value,
-      isOwner: e.target.isOwner.value === "on"
-    }
+      isOwner: e.target.isOwner.checked,
+    };
 
-    formData.append('avatar', avatar.files[0] );
-    formData.append('data', JSON.stringify(data));
+    formData.append("avatar", avatarPreview);
+    formData.append("data", JSON.stringify(data));
 
     try {
-      await axios.post("https://vecindario-backend.glitch.me/auth/new", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      await axios.post(
+        "https://vecindario-backend.glitch.me/auth/new",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       Swal.fire({
         title: "Éxito",
         text: "Cuenta creada con éxito ahora puede ingresar",
@@ -47,14 +75,24 @@ const Register = () => {
             <label htmlFor="firstname" className="form-label">
               Nombres
             </label>
-            <input type="text" name="firstname" className="form-control" required/>
+            <input
+              type="text"
+              name="firstname"
+              className="form-control"
+              required
+            />
           </Col>
 
           <Col xs={"auto"}>
             <label htmlFor="lastname" className="form-label">
               Apellidos
             </label>
-            <input type="text" name="lastname" className="form-control" required/>
+            <input
+              type="text"
+              name="lastname"
+              className="form-control"
+              required
+            />
           </Col>
         </Row>
 
@@ -63,7 +101,12 @@ const Register = () => {
             <label htmlFor="email" className="form-label">
               Correo
             </label>
-            <input type="email" name="email" className="form-control" required/>
+            <input
+              type="email"
+              name="email"
+              className="form-control"
+              required
+            />
           </Col>
         </Row>
 
@@ -72,7 +115,12 @@ const Register = () => {
             <label htmlFor="password" className="form-label">
               Contraseña
             </label>
-            <input type="password" name="password" className="form-control" required/>
+            <input
+              type="password"
+              name="password"
+              className="form-control"
+              required
+            />
           </Col>
         </Row>
 
@@ -81,12 +129,16 @@ const Register = () => {
             <label htmlFor="avatar" className="form-label">
               Avatar
             </label>
-            <input
-              type="file"
-              name="avatar"
-              className="form-control"
-              accept="image/png, image/jpeg"
-              required
+            <Avatar
+              onCrop={onCrop}
+              onClose={onClose}
+              width={390}
+              height={295}
+              minCropRadius={60}
+              exportSize={250}
+              onBeforeFileLoad={onBeforeFileLoad}
+              label={"Elegir una imagen"}
+              src={avatarSrc}
             />
           </Col>
         </Row>
