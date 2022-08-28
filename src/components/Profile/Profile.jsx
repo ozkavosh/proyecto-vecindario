@@ -14,13 +14,13 @@ const Profile = () => {
     }
   }, [navigate]);
 
-  const { firstname, lastname, email, isOwner } =
+  const { firstname, lastname, email, isOwner, avatar } =
     JSON.parse(sessionStorage.getItem("user"))?.data ?? [];
 
   const logout = () => {
     sessionStorage.clear();
   };
-  
+
   return (
     <Container fluid>
       <Container className="my-5 p-4 bg-light">
@@ -28,6 +28,12 @@ const Profile = () => {
           <h2>Perfil</h2>
         </Row>
         <Row>
+          <Row>
+            <Col xs={"2"}>
+              <img src={avatar} alt="Imágen de avatar" className="img-fluid" />
+            </Col>
+          </Row>
+
           <Row>
             <Col xs={"auto"}>
               <h4>Nombre</h4>

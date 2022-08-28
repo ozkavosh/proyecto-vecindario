@@ -11,7 +11,7 @@ const Login = () => {
     const { email, password } = e.target;
 
     try {
-      const response = await axios.post("https://vecindario-backend.herokuapp.com/auth/login", {
+      const response = await axios.post("https://vecindario-backend.glitch.me/auth/login", {
         email: email.value,
         password: password.value,
       });
