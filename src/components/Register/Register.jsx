@@ -35,6 +35,9 @@ const Register = () => {
 
     if(!avatarPreview) return Swal.fire({ title: "Error!", icon: "error", text: "Debe ingresar un avatar!"});
 
+    const fetchAvatar = await fetch(avatarPreview);
+    const avatarBlob = await fetchAvatar.blob();
+
     const data = {
       firstname: e.target.firstname.value,
       lastname: e.target.lastname.value,
@@ -43,7 +46,7 @@ const Register = () => {
       isOwner: e.target.isOwner.checked,
     };
 
-    formData.append("avatar", avatarPreview);
+    formData.append("avatar", avatarBlob);
     formData.append("data", JSON.stringify(data));
 
     try {
