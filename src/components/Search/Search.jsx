@@ -1,9 +1,10 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { entity as entityCategories } from "../../utils/categories";
+import './Search.css';
 
 const Search = () => {
   return (
-    <Container className="py-5">
+    <Container className="py-5 searchContainer">
       <Row className="justify-content-center">
         <Col xs={12} className="text-center">
             <h2>Buscar reseñas</h2>

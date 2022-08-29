@@ -2,6 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
+import './Login.css';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -27,10 +28,10 @@ const Login = () => {
   };
 
   return (
-    <Container fluid>
+    <Container fluid className="loginContainer">
       <Container as="form" className="py-5" onSubmit={(e) => login(e)}>
         <Row className="justify-content-center">
-          <Col xs={4}>
+          <Col auto xl={4}>
             <label htmlFor="email" className="form-label">
               Correo
             </label>
@@ -44,7 +45,7 @@ const Login = () => {
         </Row>
 
         <Row className="justify-content-center">
-          <Col xs={4}>
+          <Col auto xl={4}>
             <label htmlFor="password" className="form-label">
               Contraseña
             </label>

@@ -9,16 +9,14 @@ const Footer = () => {
   return (
     <Container fluid className="bg-dark text-light">
       <Container>
-        <Row className="align-items-center justify-content-between">
+        <Row className="flex-column flex-xl-row align-items-center justify-content-evenly">
           <Col xs={12} className="text-center">
             <h2>{appTitle}</h2>
           </Col>
-          <Col xs={"4"} className="footerDescription">
+          <Col xl={"4"} className="footerDescription">
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut quos
-              repudiandae sunt omnis, rem quae reiciendis non officiis? Aliquam
-              excepturi quo iure ex voluptatem blanditiis impedit corporis quis
-              expedita consequatur.
+              repudiandae sunt omnis, rem quae reiciendis non officiis?.
             </p>
           </Col>
           <Col xs={"auto"}>

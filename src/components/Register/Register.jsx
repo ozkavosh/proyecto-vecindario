@@ -19,7 +19,7 @@ const Register = () => {
   };
 
   const onBeforeFileLoad = (e) => {
-    if (e.target.files[0].size > 71680) {
+    if (e.target.files[0].size > 1024 * 1024 * 2) {
       Swal.fire({
         title: "Error!",
         icon: "error",
@@ -33,7 +33,12 @@ const Register = () => {
     e.preventDefault();
     const formData = new FormData();
 
-    if(!avatarPreview) return Swal.fire({ title: "Error!", icon: "error", text: "Debe ingresar un avatar!"});
+    if (!avatarPreview)
+      return Swal.fire({
+        title: "Error!",
+        icon: "error",
+        text: "Debe ingresar un avatar!",
+      });
 
     const fetchAvatar = await fetch(avatarPreview);
     const avatarBlob = await fetchAvatar.blob();
@@ -74,7 +79,7 @@ const Register = () => {
     <Container fluid>
       <Container as="form" className="py-5" onSubmit={(e) => createAccount(e)}>
         <Row className="justify-content-center">
-          <Col xs={"auto"}>
+          <Col auto xl={4}>
             <label htmlFor="firstname" className="form-label">
               Nombres
             </label>
@@ -85,8 +90,10 @@ const Register = () => {
               required
             />
           </Col>
+        </Row>
 
-          <Col xs={"auto"}>
+        <Row className="justify-content-center">
+          <Col auto xl={4}>
             <label htmlFor="lastname" className="form-label">
               Apellidos
             </label>
@@ -100,7 +107,7 @@ const Register = () => {
         </Row>
 
         <Row className="justify-content-center">
-          <Col xs={4}>
+          <Col auto xl={4}>
             <label htmlFor="email" className="form-label">
               Correo
             </label>
@@ -114,7 +121,7 @@ const Register = () => {
         </Row>
 
         <Row className="justify-content-center">
-          <Col xs={4}>
+          <Col auto xl={4}>
             <label htmlFor="password" className="form-label">
               Contraseña
             </label>
@@ -128,15 +135,17 @@ const Register = () => {
         </Row>
 
         <Row className="justify-content-center">
-          <Col xs={4}>
+          <Col auto xl={4}>
             <label htmlFor="avatar" className="form-label">
               Avatar
             </label>
             <Avatar
               onCrop={onCrop}
               onClose={onClose}
-              width={390}
-              height={295}
+              width={250}
+              height={250}
+              imageHeight={250}
+              imageWidth={250}
               minCropRadius={60}
               exportSize={250}
               onBeforeFileLoad={onBeforeFileLoad}
@@ -147,7 +156,7 @@ const Register = () => {
         </Row>
 
         <Row className="justify-content-center mt-2">
-          <Col xs={4}>
+          <Col auto xl={4}>
             <label htmlFor="isOwner" className="form-check-label">
               ¿Posee propiedades?
             </label>
