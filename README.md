@@ -1,5 +1,5 @@
 
-![Logo](https://i.postimg.cc/cL8QPLKQ/Logo-Vecindario-3.jpg)
+![Logo](https://i.postimg.cc/pTJWrqfJ/banner.jpg)
 
 
 # Vecindario
