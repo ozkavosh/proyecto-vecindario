@@ -8,12 +8,12 @@ import Chat from "./components/Chat/Chat";
 import Help from "./components/Help/Help";
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
+import { GlobalContextProvider } from "./context/globalContext";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { AccountContextProvider } from "./context/accountContext";
 
 function App() {
   return (
-    <AccountContextProvider>
+    <GlobalContextProvider>
       <BrowserRouter>
         <Header></Header>
         <Routes>
@@ -27,7 +27,7 @@ function App() {
         </Routes>
         <Footer></Footer>
       </BrowserRouter>
-    </AccountContextProvider>
+    </GlobalContextProvider>
   );
 }
 

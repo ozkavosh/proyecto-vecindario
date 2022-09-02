@@ -1,29 +1,43 @@
+import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import { SyncLoader } from "react-spinners";
 import axios from "axios";
 import Swal from "sweetalert2";
-import './Login.css';
+import "./Login.css";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+
   const login = async (e) => {
     e.preventDefault();
 
     const { email, password } = e.target;
 
     try {
-      const response = await axios.post("https://vecindario-backend.glitch.me/auth/login", {
-        email: email.value,
-        password: password.value,
+      setLoading(true);
+      const response = await axios.post(
+        "https://vecindario-backend.glitch.me/auth/login",
+        {
+          email: email.value,
+          password: password.value,
+        }
+      );
+      Swal.fire({
+        title: "Éxito",
+        text: `Bienvenido ${response.data.user.data.firstname}!`,
+        icon: "success",
       });
-      Swal.fire({ title: "Éxito", text: `Bienvenido ${response.data.user.data.firstname}!`, icon: "success"});
 
-      sessionStorage.setItem('token', response.data.token);
-      sessionStorage.setItem('user', JSON.stringify(response.data.user));
+      sessionStorage.setItem("token", response.data.token);
+      sessionStorage.setItem("user", JSON.stringify(response.data.user));
 
       navigate("/", { replace: true });
     } catch (err) {
-      Swal.fire({ title: "Error", text: err.message, icon: 'error' });
+      Swal.fire({ title: "Error", text: err.message, icon: "error" });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -66,7 +80,18 @@ const Login = () => {
 
         <Row className="justify-content-center mt-3">
           <Col xs={"auto"}>
-            <input type="submit" value="Ingresar" className="btn btn-dark" />
+            <button type="submit" className="btn btn-dark">
+              {loading ? (
+                <SyncLoader
+                  color="#fff"
+                  size={7}
+                  margin={2}
+                  speedMultiplier={0.6}
+                />
+              ) : (
+                "Ingresar"
+              )}
+            </button>
           </Col>
         </Row>
       </Container>

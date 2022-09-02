@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import { SyncLoader } from "react-spinners";
 import axios from "axios";
 import Swal from "sweetalert2";
 import Avatar from "react-avatar-edit";
@@ -9,6 +10,7 @@ const Register = () => {
   const navigate = useNavigate();
   const [avatarSrc, setAvatarSrc] = useState("");
   const [avatarPreview, setAvatarPreview] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const onCrop = (preview) => {
     setAvatarPreview(preview);
@@ -55,6 +57,7 @@ const Register = () => {
     formData.append("data", JSON.stringify(data));
 
     try {
+      setLoading(true);
       await axios.post(
         "https://vecindario-backend.glitch.me/auth/new",
         formData,
@@ -72,6 +75,8 @@ const Register = () => {
       navigate("/login", { replace: true });
     } catch (err) {
       Swal.fire({ title: "Error", text: err.message, icon: "error" });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -176,7 +181,18 @@ const Register = () => {
 
         <Row className="justify-content-center mt-3">
           <Col xs={"auto"}>
-            <input type="submit" value="Registrarme" className="btn btn-dark" />
+            <button type="submit" className="btn btn-dark" disabled={loading}>
+              {loading ? (
+                <SyncLoader
+                  color="#fff"
+                  size={7}
+                  margin={2}
+                  speedMultiplier={0.6}
+                />
+              ) : (
+                "Registrarme"
+              )}
+            </button>
           </Col>
         </Row>
       </Container>
