@@ -1,8 +1,10 @@
-import React from 'react'
+import "./Help.css";
 
 const Help = () => {
   return (
-    <div>Help</div>
+    <div>
+      <h2>Help</h2>
+    </div>
   )
 }
 

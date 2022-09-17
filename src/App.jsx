@@ -9,7 +9,6 @@ import Help from "./components/Help/Help";
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
 import { GlobalContextProvider } from "./context/globalContext";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (

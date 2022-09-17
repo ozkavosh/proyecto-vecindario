@@ -1,11 +1,10 @@
-import { Container } from 'react-bootstrap';
-import Search from '../Search/Search';
+import "./Footer.css";
 
 const Home = () => {
   return (
-    <Container fluid>
-      <Search/>
-    </Container>
+    <div>
+      <h2>Home</h2>
+    </div>
   )
 }
 
