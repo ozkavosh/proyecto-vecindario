@@ -1,8 +1,7 @@
-
 ![Logo](https://i.postimg.cc/pTJWrqfJ/banner.jpg)
 
-
 # Vecindario
+
 #### Sobre Vecindario / About Vecindario
 
 **[ES]**
@@ -21,20 +20,21 @@ Vecindario is an app for property reviews. Its purpose is to give you more tools
 This is achieved through different reviews of different properties by people that live there or have lived there before.
 
 Our added value for those who seek to rent a new home is the valuable feedback from other previous tenants or neighbors.
+
 ## Dependencies
 
 [![react/react-dom](https://img.shields.io/badge/react/react--dom-%5E18.2.0-9cf)](https://es.reactjs.org/docs/react-dom.html)
 [![react-router-dom](https://img.shields.io/badge/react--router--dom-%5E6.3.0-red)](https://v5.reactrouter.com/web/guides/)
 [![axios](https://img.shields.io/badge/axios-%5E0.27.2-blueviolet)](https://axios-http.com/)
+[![firebase](https://img.shields.io/badge/firebase-%5E9.10.0-orange)](https://firebase.google.com/)
 [![sweetalert2](https://img.shields.io/badge/sweetalert2-%5E11.4.29-ff69b4)](https://sweetalert.js.org/)
 [![react-avatar-edit](https://img.shields.io/badge/react--avatar--edit-%5E1.2.0-red)](https://www.npmjs.com/package/react-avatar-edit)
-[![bootstrap](https://img.shields.io/badge/bootstrap-%5E5.2.0-blueviolet)](https://getbootstrap.com/)
+
 ## Roadmap
-Vecindario currently stands as an MVP (Minimum Viable Product). 
+
+Vecindario currently stands as an MVP (Minimum Viable Product).
 
 In the future, with proper management and funding, it will become a fully developed app.
-
-
 
 ## Run Locally
 
@@ -62,18 +62,15 @@ Start the server
   npm start
 ```
 
-
 ## Deployment
 
 At the moment the project is deployed [here](https://proyecto-vecindario.vercel.app/).
 
-*Note the project is at an early stage and it could change for the final build.*
-
+_Note the project is currently at an early stage and it is constantly undergoing changes._
 
 ## Feedback
 
 If you have any feedback, suggestion or ideas for the future of this project, please reach out to any of the authors.
-
 
 ## Authors
 
@@ -90,5 +87,3 @@ If you have any feedback, suggestion or ideas for the future of this project, pl
 - [Augusto Silva](https://www.linkedin.com/in/v-augusto-silva/)
 
 - [Gastón Carriquiry](https://www.linkedin.com/in/gastoncarriquiry/)
-
-
