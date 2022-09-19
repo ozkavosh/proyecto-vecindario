@@ -12,6 +12,7 @@ header {
     align-items: flex-end;
     box-sizing: border-box;
     padding: 0.75em 1em;
+    z-index: 999;
 }
 
 .header-cont {
@@ -26,14 +27,64 @@ header {
     color: var(--dark-color);
 }
 
-.header-cont button {
-    width: 22px;
+.header-cont>button {
+    cursor: pointer;
+    width: 1.375em;
     background-color: transparent;
     border: none;
-    height: 22px;
+    height: 1.375em;
 }
 
-.header-cont button svg {
+.header-cont>button svg {
     height: 100%;
     width: 100%;
+}
+
+header .menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header .menu-links {
+    position: absolute;
+    top: 100px;
+    right: 0;
+    left: 100%;
+    width: 100vw;
+    height: calc(100vh - 100px);
+    /* TODO: fix this color */
+    background-color: rgb(206, 206, 206);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    box-sizing: border-box;
+    padding: 1em;
+    padding-top: 2.5em;
+}
+
+header .menu-links a {
+    display: inline-block;
+    padding: 0.5em 0;
+    width: 100%;
+}
+
+header .menu-links button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    column-gap: 1em;
+}
+
+header .menu-links button svg {
+    width: 1.375em;
+    height: 1.375em;
+}
+
+#sign-out {
+    position: absolute;
+    bottom: 1em;
 }
