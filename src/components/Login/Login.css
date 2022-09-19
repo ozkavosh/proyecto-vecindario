@@ -1,0 +1,98 @@
+.login{
+    margin-top: calc(100px + 35px);
+    /*calc first param comes from header height*/
+}
+
+.login .container{
+    width: 90%;
+    margin: auto;
+}
+
+.login .container form{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    gap: 12px;
+}
+
+.loginHeading{
+    font-weight: 500;
+}
+
+.recoverPasswordLink{
+    color : var(--dark-color);
+    text-decoration: none;
+}
+
+.formGroup{
+    display: flex;
+    flex-direction: column;
+}
+
+.formGroup label{
+    margin-left: 16px;
+    color : rgb(128, 128, 128);
+}
+
+.formGroup input{
+    border:none;
+    outline:none;
+    padding: 10px 25px;
+    border-radius: 17px;
+    background-color: var(--neutral-color);
+}
+
+.btn{
+    cursor: pointer;
+    font-size: 14px;
+    padding: 10px 0;
+    width: 100%;
+    outline: none;
+    border: none;
+    color: var(--neutral-color);
+    border-radius: 17px;
+    background-color: rgb(128, 128, 128);
+}
+
+.snText{
+    position: relative;
+    text-align: center;
+    color: rgb(128, 128, 128);
+}
+
+.snText::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10.5px;
+    width: 100%;
+    border-bottom: 1.5px solid rgb(128, 128, 128);
+    z-index: -1;
+}
+
+.snText::after{
+    content: 'o continuar con';
+    background-color: #fff;
+    padding: 0 9px;
+    z-index: 1;
+}
+
+.snLinks{
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 45px;
+    color: rgb(128, 128, 128);
+}
+
+.snLinks svg{
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.newUser{
+    display: flex;
+    flex-direction: column;
+    margin-top: 35px;
+    gap: 10px;
+}
