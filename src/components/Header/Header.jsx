@@ -1,6 +1,7 @@
 import "./Header.css";
-import { FaChevronLeft, FaBars } from "react-icons/fa";
+import { FaChevronLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Menu from "../Menu/Menu";
 
 const Header = () => {
   return (
@@ -13,9 +14,7 @@ const Header = () => {
           {/* TODO: add logo image */}
           <img src="" alt="Vecindario" />
         </Link>
-        <button title="Menú" className="header-item">
-          <FaBars />
-        </button>
+        <Menu />
       </div>
     </header>
   );

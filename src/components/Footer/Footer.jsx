@@ -12,7 +12,7 @@ const Footer = () => {
             <Link to="/">Buscador</Link>
           </li>
           <li>
-            <Link to="/">Reviews</Link>
+            <Link to="/">Reseñas</Link>
           </li>
           <li>
             <Link to="/">¿Cómo funciona?</Link>
@@ -55,9 +55,6 @@ const Footer = () => {
           </li>
           <li>
             <Link to="/">Mis propiedades</Link>
-          </li>
-          <li>
-            <Link to="/">Chat</Link>
           </li>
         </ul>
       </div>
