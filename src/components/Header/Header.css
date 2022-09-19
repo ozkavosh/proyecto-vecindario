@@ -1,0 +1,39 @@
+header {
+    height: 100px;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    /* TODO: fix color */
+    background-color: var(--neutral-color);
+    justify-content: center;
+    align-items: flex-end;
+    box-sizing: border-box;
+    padding: 0.75em 1em;
+}
+
+.header-cont {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.header-item {
+    /* TODO: fix color */
+    color: var(--dark-color);
+}
+
+.header-cont button {
+    width: 22px;
+    background-color: transparent;
+    border: none;
+    height: 22px;
+}
+
+.header-cont button svg {
+    height: 100%;
+    width: 100%;
+}

@@ -1,0 +1,125 @@
+.home {
+    min-height: 100vh;
+}
+
+.home>section {
+    margin: 1.5em auto;
+}
+
+.home .container {
+    width: 90%;
+    margin: auto;
+}
+
+.welcome {
+    text-align: center;
+    padding-top: 1.5em;
+}
+
+.welcome h1 {
+    font-weight: 400;
+    font-size: 1.5em;
+    margin-bottom: 0.75em;
+}
+
+.home h2 {
+    font-weight: 400;
+    font-size: 1.5em;
+}
+
+.find-your-place .mySwiper {
+    height: 245px;
+}
+
+.what-to-expect h2 {
+    margin-bottom: 0.75em;
+}
+
+.what-to-expect div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1em;
+}
+
+.what-to-expect div article {
+    width: calc(50% - 1em);
+    display: flex;
+    justify-content: flex-start;
+}
+
+.what-to-expect div article p {
+    font-weight: 300;
+    font-size: 0.563em;
+}
+
+.what-to-expect div article .img {
+    flex-shrink: 0;
+    margin-right: 0.5em;
+    background-color: black;
+    width: 2.75em;
+    height: 2.75em;
+    border-radius: 100%;
+}
+
+.join-owners {
+    background-color: var(--neutral-color);
+    padding: 0.75em 1em;
+    position: relative;
+}
+
+.join-owners h2 {
+    margin-bottom: 0.75rem;
+}
+
+.join-owners p {
+    font-weight: 300;
+    font-size: 1em;
+}
+
+.join-owners button {
+    position: absolute;
+    top: 1em;
+    right: 1.75em;
+}
+
+.testimonies {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 1em;
+}
+
+.testimony {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1em;
+}
+
+.testimony div {
+    background-color: var(--neutral-color);
+    width: 5.938em;
+    height: 5.938em;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.testimony div h3,
+.testimony div p {
+    font-weight: 400;
+    font-size: 0.625em;
+}
+
+.testimony p {
+    text-align: center;
+}
+
+.most-searched .mySwiper {
+    height: 135px;
+}
