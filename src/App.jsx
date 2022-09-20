@@ -10,7 +10,7 @@ import Login from "./components/Login/Login";
 import Profile from "./components/Profile/Profile";
 import Register from "./components/Register/Register";
 import TabBar from "./components/TabBar/TabBar";
-import { GlobalContextProvider } from "./context/globalContext";
+import { AuthContextProvider } from "./context/authContext";
 import AuthRoute from "./components/AuthRoute/AuthRoute";
 import "./App.css";
 
@@ -22,7 +22,7 @@ function App() {
   });
 
   return (
-    <GlobalContextProvider>
+    <AuthContextProvider>
       <BrowserRouter>
         {dismount.header || <Header />}
         <main>
@@ -45,7 +45,7 @@ function App() {
         {dismount.footer || <Footer />}
         {dismount.tabBar || <TabBar />}
       </BrowserRouter>
-    </GlobalContextProvider>
+    </AuthContextProvider>
   );
 }
 

@@ -1,8 +1,9 @@
 import { Navigate } from "react-router-dom";
+import { useAuthContext } from "../../context/authContext";
 
 const AuthRoute = ({ children }) => {
-  return false ? children : <Navigate to={"/login"} />;
-  //TODO: replace with actual account status
+  const { currentUser } = useAuthContext();
+  return currentUser?.uid ? children : <Navigate to={"/login"} />;
 };
 
 export default AuthRoute;

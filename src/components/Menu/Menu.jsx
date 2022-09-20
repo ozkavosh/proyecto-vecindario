@@ -1,9 +1,21 @@
 import "./Menu.css";
 import { FaRegQuestionCircle, FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useRef } from "react";
+import { useAuthContext } from "../../context/authContext";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase/config";
 
 const Menu = () => {
+  const { currentUser } = useAuthContext();
+  const navigate = useNavigate();
+
+  const handleAccount = () => {
+    if(!currentUser?.uid) return navigate("/login", { replace: true});
+
+    return signOut(auth);
+  }
+
   //close menu when any link is clicked
   const navMenu = useRef(null);
   const handleClick = () => {
@@ -49,7 +61,7 @@ const Menu = () => {
       <nav className="menu-links" ref={navMenu}>
         {/* TODO: switch to NavLinks */}
         {/* TODO: add proper icons */}
-        <Link to="">
+        <Link to="/login">
           <button onClick={handleClick}>
             <FaSignInAlt /> Regístrate / Inicia sesión
           </button>
@@ -84,11 +96,10 @@ const Menu = () => {
             <FaRegQuestionCircle /> Términos y Condiciones / Política de Privacidad
           </button>
         </Link>
-        <Link to="" id="sign-out">
-          <button onClick={handleClick}>
-            <FaSignOutAlt /> Cerrar sesión
-          </button>
-        </Link>
+
+        <button id="sign-out" onClick={() => { handleClick(); handleAccount() }}>
+            {currentUser?.uid ? <FaSignOutAlt /> : <FaSignInAlt/>} { currentUser?.uid ? "Cerrar Sesión" : "Iniciar Sesión" }
+        </button>
       </nav>
     </div>
   );
