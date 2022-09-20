@@ -1,0 +1,35 @@
+.snText{
+    position: relative;
+    text-align: center;
+    color: rgb(128, 128, 128);
+}
+
+.snText::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10.5px;
+    width: 100%;
+    border-bottom: 1.5px solid rgb(128, 128, 128);
+    z-index: -1;
+}
+
+.snText::after{
+    content: 'o continuar con';
+    background-color: #fff;
+    padding: 0 9px;
+    z-index: 1;
+}
+
+.snLinks{
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 45px;
+    color: rgb(128, 128, 128);
+}
+
+.snLinks svg{
+    font-size: 28px;
+    cursor: pointer;
+}
