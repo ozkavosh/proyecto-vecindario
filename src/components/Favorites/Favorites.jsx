@@ -5,7 +5,7 @@ import "./Favorites.css";
 
 const Favorites = ({ setDismount }) => {
   //TODO: replace with currentUser from authContext
-  const [isLogin, setisLogin] = useState(true);
+  const [isLogin, setisLogin] = useState(false);
 
   useEffect(() => {
     setDismount((prev) => ({ ...prev, footer: true, tabBar: false }));

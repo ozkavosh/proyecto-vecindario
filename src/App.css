@@ -20,3 +20,7 @@ main {
   --dark-color: #191920;
   --main-font: 'Nunito Sans', sans-serif;
 }
+
+.hide {
+  display: none;
+}

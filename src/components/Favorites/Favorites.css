@@ -17,6 +17,11 @@
 .not-logged p {
     width: 50%;
     margin: 0.750em auto;
+    font-weight: 400;
+}
+
+.not-logged p strong {
+    font-weight: 600;
 }
 
 .favorites h1 {

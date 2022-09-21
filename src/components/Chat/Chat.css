@@ -1,0 +1,140 @@
+.chat {
+    padding-top: 1.375em;
+}
+
+.chat .container {
+    width: 85%;
+    margin: auto;
+}
+
+.not-logged {
+    margin-top: 2.5em !important;
+}
+
+.chat .not-logged p {
+    width: 60%;
+}
+
+.chat .user {
+    display: flex;
+    justify-content: space-between;
+}
+
+.chat .user .user-info {
+    display: flex;
+    justify-content: flex-start;
+    flex-grow: 2;
+}
+
+.chat .user .user-info .profile-image {
+    width: 2.5em;
+    height: 2.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    position: relative;
+}
+
+.chat .user .user-info .profile-image img {
+    width: 100%;
+    height: 100%;
+}
+
+.chat .user .user-info .profile-image .unread {
+    position: absolute;
+    z-index: 1;
+    color: var(--neutral-color);
+    top: -3%;
+    right: -10%;
+    width: 1.25rem;
+    height: 1.25rem;
+    font-size: 0.8rem;
+    background-color: var(--secondary-color);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat .user .user-info .chat-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    row-gap: 0.3em;
+    margin-left: 1em;
+    flex-grow: 1;
+}
+
+.chat .user .user-info .chat-info .name {
+    font-weight: 400;
+    font-size: 0.875em;
+}
+
+.chat .user .user-info .chat-info .message,
+.chat .user .user-info .chat-info .status,
+.chat .user .time {
+    font-size: 0.563em;
+}
+
+.chat .user .end-slot {
+    flex-grow: 0;
+}
+
+.chat>.user .end-slot {
+    background: transparent;
+    border: none;
+}
+
+.chat>.user .end-slot svg {
+    /* TODO: adjust width with final prototype */
+    width: 2em;
+    height: auto;
+}
+
+.chat .user .end-slot.time {
+    padding-top: 0.6em;
+}
+
+.chat .searchbar {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--dark-color);
+    padding-right: 0.25em;
+    margin: 1.5em auto;
+}
+
+.chat .searchbar input {
+    border: none;
+    padding: 0.625em 0;
+    padding-left: 0.25em;
+    flex-grow: 1;
+    font-size: 0.625rem;
+    font-family: var(--main-font);
+}
+
+.chat .searchbar button {
+    border: none;
+    background-color: transparent;
+}
+
+.chat hr {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+}
+
+.chat h2.container {
+    font-weight: 400;
+    font-size: 1.25em;
+}
+
+.chat-list a {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    margin-bottom: 2em;
+}

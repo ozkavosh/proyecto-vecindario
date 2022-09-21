@@ -37,7 +37,7 @@ function App() {
               }
             />
             <Route path="/favoritos" element={<Favorites setDismount={setDismount} />} />
-            <Route path="/chat" element={<Chat />} />
+            <Route path="/chat" element={<Chat setDismount={setDismount} />} />
             <Route path="/buscador" element={<Search />} />
             <Route path="/registro" element={<Register setDismount={setDismount} />} />
             <Route path="/login" element={<Login setDismount={setDismount} />} />
