@@ -28,18 +28,19 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/perfil" element={<AuthRoute><Profile /></AuthRoute>} />
-            <Route path="/favoritos" element={<Favorites />} />
+            <Route
+              path="/perfil"
+              element={
+                <AuthRoute>
+                  <Profile />
+                </AuthRoute>
+              }
+            />
+            <Route path="/favoritos" element={<Favorites setDismount={setDismount} />} />
             <Route path="/chat" element={<Chat />} />
             <Route path="/buscador" element={<Search />} />
-            <Route
-              path="/registro"
-              element={<Register setDismount={setDismount} />}
-            />
-            <Route
-              path="/login"
-              element={<Login setDismount={setDismount} />}
-            />
+            <Route path="/registro" element={<Register setDismount={setDismount} />} />
+            <Route path="/login" element={<Login setDismount={setDismount} />} />
           </Routes>
         </main>
         {dismount.footer || <Footer />}

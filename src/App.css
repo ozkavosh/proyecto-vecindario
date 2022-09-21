@@ -4,12 +4,13 @@
 }
 
 body {
-  font-family: var(--main-font) !important;
+  font-family: var(--main-font), sans-serif !important;
   font-size: 16px;
 }
 
 main {
   margin-top: 100px;
+  min-height: calc(100vh - 65px - 100px);
 }
 
 :root {
