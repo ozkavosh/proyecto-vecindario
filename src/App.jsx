@@ -32,7 +32,7 @@ function App() {
               path="/perfil"
               element={
                 <AuthRoute>
-                  <Profile />
+                  <Profile setDismount={setDismount} />
                 </AuthRoute>
               }
             />
