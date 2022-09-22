@@ -3,7 +3,7 @@ import { useAuthContext } from "../../context/authContext";
 
 const AuthRoute = ({ children }) => {
   const { currentUser } = useAuthContext();
-  return currentUser?.uid ? children : <Navigate to={"/login"} />;
+  return currentUser ? children : <Navigate to={"/login"} />;
 };
 
 export default AuthRoute;

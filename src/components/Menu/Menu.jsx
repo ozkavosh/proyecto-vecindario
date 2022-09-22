@@ -11,7 +11,7 @@ const Menu = () => {
   const navigate = useNavigate();
 
   const handleAccount = () => {
-    if(!currentUser?.uid) return navigate("/login", { replace: true});
+    if(!currentUser) return navigate("/login", { replace: true});
 
     return signOut(auth);
   }
@@ -98,7 +98,7 @@ const Menu = () => {
         </Link>
 
         <button id="sign-out" onClick={() => { handleClick(); handleAccount() }}>
-            {currentUser?.uid ? <FaSignOutAlt /> : <FaSignInAlt/>} { currentUser?.uid ? "Cerrar Sesión" : "Iniciar Sesión" }
+            {currentUser ? <FaSignOutAlt /> : <FaSignInAlt/>} { currentUser ? "Cerrar Sesión" : "Iniciar Sesión" }
         </button>
       </nav>
     </div>
