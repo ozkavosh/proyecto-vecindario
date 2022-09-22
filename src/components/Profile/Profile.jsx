@@ -6,7 +6,7 @@ const Profile = ({ setDismount }) => {
   useEffect(() => {
     setDismount((prev) => ({ ...prev, footer: false, tabBar: false }));
 
-    return () => setDismount((prev) => ({ ...prev, footer: true, tabBar: true }));
+    return () => setDismount((prev) => ({ ...prev, footer: false, tabBar: false }));
   }, [setDismount]);
   return (
     <section className="profile">

@@ -10,7 +10,7 @@ const Favorites = ({ setDismount }) => {
   useEffect(() => {
     setDismount((prev) => ({ ...prev, footer: true, tabBar: false }));
 
-    return () => setDismount((prev) => ({ ...prev, footer: false, tabBar: true }));
+    return () => setDismount((prev) => ({ ...prev, footer: false, tabBar: false }));
   }, [setDismount]);
 
   return (

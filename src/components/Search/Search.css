@@ -1,0 +1,60 @@
+.search .container{
+    width: 90%;
+    margin: calc(100px + 25px) auto 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.search .container .searchHeader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 1em;
+}
+
+.search .container .searchHeader .searchBar{
+    flex-basis: 95%;
+    position: relative;
+}
+
+.search .container .searchHeader .searchNotification{
+    font-size: 22px;
+    flex-basis: 5%;
+    cursor: pointer;
+}
+
+.search .container .searchHeader .searchInput{
+    box-sizing: border-box;
+    background-color: var(--neutral-color);
+    height: 29.78px;
+    width: 100%;
+    padding-left: 2.7em;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    z-index: 0;
+    position: relative;
+}
+
+.search .container .searchHeader .searchInputIcon{
+    left: 0.5em;
+    top: 0.45em;
+    z-index: 1;
+    position: absolute;
+}
+
+.search .container .searchOptions{
+    margin-top: 1em;
+    margin-left: 0.2em;
+    display: flex;
+    gap: 0.9em;
+}
+
+.search .container .searchOptions select{
+    outline: none;
+    border: none;
+    background-color: var(--neutral-color);
+    padding: 0.1em 0.4em 0.1em 0.2em;
+    border-radius: 20px;
+}

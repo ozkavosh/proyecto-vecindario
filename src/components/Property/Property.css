@@ -1,0 +1,97 @@
+.property{
+    margin-bottom: 1.5em;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 14px 12px;
+    border-radius: 10px;
+    background-color: #ececec;
+}
+
+.propertyOwner{
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+}
+
+.propertyOwner .ownerName{
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.propertyOwner .ownerCheck{
+    font-size: 10px;
+}
+
+.propertyHeader{
+    display: flex;
+    justify-content: space-between;
+}
+
+.propertyHeader .stars{
+    font-size: 10px;
+}
+
+.propertySlider{
+    margin-top: 0.5em;
+    height: 241px;
+}
+
+.propertySlider .swiper-wrapper .swiper-slide{
+    background-color: #E0E0E0;
+    border-radius: 12px;
+}
+
+.propertySlider .swiper-button-prev, .propertySlider .swiper-button-next{
+    color: #C4C4C4;
+}
+
+.propertySlider .swiper-button-prev::after, .propertySlider .swiper-button-next::after{
+    font-size: 1.2em;
+}
+
+.propertyActions{
+    margin-top: 0.5em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.propertyOptions{
+    display: flex;
+    margin-left: 0.2em;
+    gap: 0.5em;
+    font-size: 18px;
+}
+
+.propertyActions .addReviewBtn{
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0.4em 0.5em;
+    font-size: 12px;
+    color: var(--neutral-color);
+    border-radius: 18px;
+    background-color: #C9C9C9;
+}
+
+.propertyInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    margin-top: 1em;
+    font-size: 12px;
+}
+
+.propertyInfo .propertyLocation, .propertyInfo .propertyReviewsButton{
+    display: flex;
+    align-items: center;
+    gap: 0.2em;
+    font-weight: bold;
+}
+
+.propertyInfo .propertyReviewsButton{
+    cursor: pointer;
+}
