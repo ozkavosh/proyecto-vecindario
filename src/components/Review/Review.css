@@ -1,0 +1,35 @@
+.review{
+    padding: 0 2%;
+    margin: 0.5em 0;
+}
+
+.review .reviewHeader{
+    display: flex;
+    justify-content: space-between;
+}
+
+.reviewHeader .stars{
+    font-size: 10px;
+}
+
+.review .reviewHeader .reviewer{
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+}
+
+.reviewer .reviewerName{
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.reviewer .reviewerCheck{
+    font-size: 10px;
+}
+
+.review .reviewBody{
+    box-sizing: border-box;
+    margin-top: 0.5em;
+    margin-left: 2em;
+    font-size: 10px;
+}
