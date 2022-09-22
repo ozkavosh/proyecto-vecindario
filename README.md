@@ -28,7 +28,9 @@ Our added value for those who seek to rent a new home is the valuable feedback f
 [![axios](https://img.shields.io/badge/axios-%5E0.27.2-blueviolet)](https://axios-http.com/)
 [![firebase](https://img.shields.io/badge/firebase-%5E9.10.0-orange)](https://firebase.google.com/)
 [![sweetalert2](https://img.shields.io/badge/sweetalert2-%5E11.4.29-ff69b4)](https://sweetalert.js.org/)
-[![react-avatar-edit](https://img.shields.io/badge/react--avatar--edit-%5E1.2.0-red)](https://www.npmjs.com/package/react-avatar-edit)
+[![swiper](https://img.shields.io/badge/swiperjs-%5E8.4.2-blueviolet)](https://swiperjs.com/)
+[![react-icons](https://img.shields.io/badge/react--icons-%5E4.4.0-lightgrey)](https://react-icons.github.io/react-icons)
+
 
 ## Roadmap
 
