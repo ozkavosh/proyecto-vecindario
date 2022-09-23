@@ -11,10 +11,10 @@ const Menu = () => {
   const navigate = useNavigate();
 
   const handleAccount = () => {
-    if(!currentUser) return navigate("/login", { replace: true});
+    if (!currentUser) return navigate("/login", { replace: true });
 
     return signOut(auth);
-  }
+  };
 
   //close menu when any link is clicked
   const navMenu = useRef(null);
@@ -44,6 +44,22 @@ const Menu = () => {
       }, 500);
     }
   };
+
+  //close menu when clicked outside of it
+  document.addEventListener("click", (evt) => {
+    if (navMenu.current != null) {
+      let onNav = navMenu.current.contains(evt.target);
+      let onMenuWidget = menuWidget.current.contains(evt.target);
+      if (!onNav && !onMenuWidget && menuWidget.current.classList.contains("is-active")) {
+        menuWidget.current.classList.remove("is-active");
+        navMenu.current.classList.remove("slide-in");
+        navMenu.current.classList.add("slide-out");
+        setTimeout(() => {
+          navMenu.current.style.display = "none";
+        }, 500);
+      }
+    }
+  });
 
   return (
     <div className="menu">
@@ -97,8 +113,15 @@ const Menu = () => {
           </button>
         </Link>
 
-        <button id="sign-out" onClick={() => { handleClick(); handleAccount() }}>
-            {currentUser ? <FaSignOutAlt /> : <FaSignInAlt/>} { currentUser ? "Cerrar Sesión" : "Iniciar Sesión" }
+        <button
+          id="sign-out"
+          onClick={() => {
+            handleClick();
+            handleAccount();
+          }}
+        >
+          {currentUser ? <FaSignOutAlt /> : <FaSignInAlt />}{" "}
+          {currentUser ? "Cerrar Sesión" : "Iniciar Sesión"}
         </button>
       </nav>
     </div>
