@@ -2,6 +2,7 @@ import "./Search.css";
 import { useState } from "react";
 import { FaRegBell, FaSearch } from "react-icons/fa";
 import PropertyListContainer from "../PropertyListContainer/PropertyListContainer";
+import SearchFilters from "../SearchFilters/SearchFilters";
 
 const Search = () => {
   //TODO: Fetch actual properties stored in Firebase inside useEffect
@@ -29,7 +30,7 @@ const Search = () => {
           rating: 5,
           review:
             "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus impedit, culpa aperiam quam accusantium delectus deserunt. Ipsa iste eaque saepe possimus, numquam laboriosam blanditiis! Unde culpa doloremque quos mollitia autem.",
-        }
+        },
       ],
     },
     {
@@ -41,13 +42,15 @@ const Search = () => {
       location: "Ciudad, provincia 2",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi nam doloribus architecto eum recusandae quasi quibusdam sunt necessitatibus. Eos illo eaque maxime deserunt harum temporibus perspiciatis perferendis ex sapiente veniam! Alias vero voluptas natus odio. Quae natus, tenetur, eius eligendi rerum quia quidem accusamus esse totam vero labore eaque asperiores ut deleniti accusantium provident quasi aspernatur sequi? Optio, delectus nostrum.",
-      reviews: [{
-        id: "asdas1",
-        reviewer: { displayName: "Nombre Apellido", uid: "asd454874" },
-        rating: 3,
-        review:
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus impedit, culpa aperiam quam accusantium delectus deserunt. Ipsa iste eaque saepe possimus, numquam laboriosam blanditiis! Unde culpa doloremque quos mollitia autem.",
-      }],
+      reviews: [
+        {
+          id: "asdas1",
+          reviewer: { displayName: "Nombre Apellido", uid: "asd454874" },
+          rating: 3,
+          review:
+            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus impedit, culpa aperiam quam accusantium delectus deserunt. Ipsa iste eaque saepe possimus, numquam laboriosam blanditiis! Unde culpa doloremque quos mollitia autem.",
+        },
+      ],
     },
   ]);
 
@@ -62,18 +65,7 @@ const Search = () => {
           <FaRegBell className="searchNotification" />
         </div>
 
-        <div className="searchOptions">
-          <select name="filters" className="searchFilters" defaultValue="0">
-            <option value="0" disabled>
-              Filtrar por
-            </option>
-          </select>
-          <select name="order" className="searchOrder" defaultValue="0">
-            <option value="0" disabled>
-              Ordenar por
-            </option>
-          </select>
-        </div>
+        <SearchFilters />
 
         <PropertyListContainer data={results} />
       </div>
