@@ -22,7 +22,7 @@ const ChatContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (currentUser?.uid) {
-      socket = io("http://localhost:8080/", { query: { uid: currentUser.uid } });
+      socket = io("https://proyecto-vecindario-backend-production.up.railway.app", { query: { uid: currentUser.uid } });
 
       socket.on("connectedUsers", (list) => {
         setConnectedUsers(list);
