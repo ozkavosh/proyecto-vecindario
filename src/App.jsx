@@ -1,3 +1,4 @@
+import "./App.css";
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Chat from "./components/Chat/Chat";
@@ -11,8 +12,8 @@ import Profile from "./components/Profile/Profile";
 import Register from "./components/Register/Register";
 import TabBar from "./components/TabBar/TabBar";
 import { AuthContextProvider } from "./context/authContext";
+import { ChatContextProvider } from "./context/chatContext";
 import AuthRoute from "./components/AuthRoute/AuthRoute";
-import "./App.css";
 
 function App() {
   const [dismount, setDismount] = useState({
@@ -36,11 +37,27 @@ function App() {
                 </AuthRoute>
               }
             />
-            <Route path="/favoritos" element={<Favorites setDismount={setDismount} />} />
-            <Route path="/chat" element={<Chat setDismount={setDismount} />} />
+            <Route
+              path="/favoritos"
+              element={<Favorites setDismount={setDismount} />}
+            />
+            <Route
+              path="/chat"
+              element={
+                <ChatContextProvider>
+                  <Chat setDismount={setDismount} />
+                </ChatContextProvider>
+              }
+            />
             <Route path="/buscador" element={<Search />} />
-            <Route path="/registro" element={<Register setDismount={setDismount} />} />
-            <Route path="/login" element={<Login setDismount={setDismount} />} />
+            <Route
+              path="/registro"
+              element={<Register setDismount={setDismount} />}
+            />
+            <Route
+              path="/login"
+              element={<Login setDismount={setDismount} />}
+            />
           </Routes>
         </main>
         {dismount.footer || <Footer />}

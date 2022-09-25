@@ -41,6 +41,13 @@
     height: 100%;
 }
 
+.chat .user .user-info .profile-image .not-found {
+    background-color: var(--neutral-color);
+    padding: 25% 25%;
+    border-radius: 100%;
+    user-select: none;
+}
+
 .chat .user .user-info .profile-image .unread {
     position: absolute;
     z-index: 1;
@@ -139,4 +146,120 @@
     color: inherit;
     text-decoration: none;
     margin-bottom: 2em;
+}
+
+/*Added on chat-test*/
+
+.chat .searchresults{
+    max-height: 10em;
+    overflow-y: scroll;
+}
+
+.chat .searchresults .userresult{
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 1.3em;
+    height: 3em;
+    border-bottom: 1px solid var(--neutral-color);
+    margin-bottom: 0.3rem;
+    cursor: pointer;
+}
+
+.chat .searchresults .userresult .profile-image, .chatMessages .user-info .profile-image{
+    width: 2.5em;
+    height: 2.5em;
+    background-color: var(--neutral-color);
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    border-radius: 100%;
+}
+
+.chatMessages .messagesContainer{
+    overflow-y: scroll;
+    height: 51vh;
+    margin-bottom: 1em;
+}
+
+.chatMessages .chatHeader{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1.3em;
+    border-bottom: 2px solid var(--neutral-color);
+    margin-bottom: 1.3em;
+}
+
+.chatMessages .chatHeader .closeChatBtn{
+    cursor: pointer;
+}
+
+.chatMessages .chatHeader .user-info{
+    display: flex;
+    align-items: center;
+    gap: 1.5em;
+}
+
+.chatMessages .user-info .user-display{
+    display: flex;
+    flex-direction: column;
+}
+
+.chatMessages .user-info .user-display h2{
+    font-size: 13px;
+}
+
+.chatMessages .user-info .user-display small{
+    font-size: 9px;
+}
+
+.chatMessages .messagesContainer .message{
+    position: relative;
+    background-color: var(--neutral-color);
+    padding: 0.7em;
+    border-radius: 10px;
+    width: 268px;
+    margin-bottom: 2em;
+}
+
+.chatMessages .messagesContainer .own{
+    left: 1.7em;
+    background-color: #33373E;
+}
+
+.chatMessages .messagesContainer .own .text{
+    color: #FFFFFF;
+}
+
+.chatMessages .messagesContainer .message .text{
+    font-size: 10px;
+}
+
+.chatMessages .messagesContainer .message .date{
+    position: absolute;
+    font-size: 7px;
+    left: 32em;
+    top: 110%;
+}
+
+.messageInputContainer{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.messageInputContainer input{
+    flex-basis: 95%;
+    padding: 0 1em;
+    background-color: #e6e6e6;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    height: 29px;
+}
+
+.messageInputContainer svg{
+    color: #C4C4C4;
+    font-size: 21px;
+    cursor: pointer;
 }
