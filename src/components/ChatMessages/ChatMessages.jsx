@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { FaRegTimesCircle } from "react-icons/fa";
 import { doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { useChatContext } from "../../context/chatContext";
 import { useAuthContext } from "../../context/authContext";
@@ -31,6 +30,17 @@ const ChatMessages = () => {
     };
   }, [messages, data?.chatId, currentUser?.uid]);
 
+  const formatDate = (date) => {
+    let month = String(date.getMonth() + 1).padStart(2, "0");
+    let day = String(date.getDate()).padStart(2, "0");
+    let year = date.getFullYear();
+
+    let hours = String(date.getHours()).padStart(2, "0");
+    let minutes = String(date.getMinutes()).padStart(2, "0");
+
+    return `${day}/${month}/${year} - ${hours}:${minutes}`;
+  };
+
   return (
     <div className="chatMessages container">
       <div className="chatHeader">
@@ -47,21 +57,18 @@ const ChatMessages = () => {
           </div>
           <div className="user-display">
             <h2>{data.user.displayName}</h2>
-            <small>
-              {connectedUsers.includes(data.user.uid)
-                ? "En linea"
-                : "Desconectad@"}
-            </small>
+            <small>{connectedUsers.includes(data.user.uid) ? "En linea" : "Offline"}</small>
           </div>
         </div>
-        <FaRegTimesCircle
+        {/* TODO: change this button function to the back button */}
+        {/* <FaRegTimesCircle
           className="closeChatBtn"
           onClick={() =>
             dispatch({
               type: "removeUser",
             })
           }
-        />
+        /> */}
       </div>
 
       <div className="messagesContainer">
@@ -69,14 +76,12 @@ const ChatMessages = () => {
           <div
             ref={messageRef}
             key={message.id}
-            className={
-              message.senderId === currentUser.uid ? "message own" : "message"
-            }
+            className={message.senderId === currentUser.uid ? "message own" : "message"}
           >
             <p className="text" key={message.id}>
               {message.text}
             </p>
-            <p className="date">{message.date.toDate().toLocaleString()}</p>
+            <p className="date">{formatDate(message.date.toDate())}</p>
           </div>
         ))}
       </div>

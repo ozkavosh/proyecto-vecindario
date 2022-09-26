@@ -19,8 +19,7 @@ const Chat = ({ setDismount }) => {
   useEffect(() => {
     setDismount((prev) => ({ ...prev, footer: true, tabBar: false }));
 
-    return () =>
-      setDismount((prev) => ({ ...prev, footer: false, tabBar: false }));
+    return () => setDismount((prev) => ({ ...prev, footer: false, tabBar: false }));
   }, [setDismount]);
 
   useEffect(() => {
@@ -68,11 +67,7 @@ const Chat = ({ setDismount }) => {
             <div className="user-info">
               <div className="profile-image">
                 {currentUser.photoURL ? (
-                  <img
-                    src={currentUser.photoURL}
-                    alt="img"
-                    className="profile-image"
-                  />
+                  <img src={currentUser.photoURL} alt="img" className="profile-image" />
                 ) : (
                   <div className="not-found">
                     {currentUser?.displayName
@@ -109,6 +104,8 @@ const Chat = ({ setDismount }) => {
             />
           )}
 
+          <h2 className="container">Recientes</h2>
+          <hr />
           <ChatList />
         </>
       )}

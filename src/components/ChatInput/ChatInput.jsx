@@ -1,16 +1,10 @@
-import {
-  arrayUnion,
-  doc,
-  updateDoc,
-  Timestamp,
-  serverTimestamp,
-  getDoc,
-} from "firebase/firestore";
+import { arrayUnion, doc, updateDoc, Timestamp, serverTimestamp, getDoc } from "firebase/firestore";
 import { useState } from "react";
-import { FaRegSmile } from "react-icons/fa";
+import { FaPaperPlane, FaRegSmile } from "react-icons/fa";
 import { useAuthContext } from "../../context/authContext";
 import { useChatContext } from "../../context/chatContext";
 import { db } from "../../firebase/config";
+import "./ChatInput.css";
 
 const ChatInput = () => {
   const [text, setText] = useState("");
@@ -19,6 +13,10 @@ const ChatInput = () => {
 
   const handleKeyDown = async (e) => {
     if (e.key !== "Enter") return;
+    sendMessage(e);
+  };
+
+  const sendMessage = async (e) => {
     setText("");
     try {
       await updateDoc(doc(db, "chats", data.chatId), {
@@ -51,14 +49,17 @@ const ChatInput = () => {
 
   return (
     <div className="messageInputContainer">
-      <input
-        type="text"
-        name="message"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        onKeyDown={handleKeyDown}
-      />
-      <FaRegSmile />
+      <div>
+        <input
+          type="text"
+          name="message"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          onKeyDown={handleKeyDown}
+        />
+        <FaRegSmile />
+      </div>
+      <FaPaperPlane onClick={sendMessage} />
     </div>
   );
 };

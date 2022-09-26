@@ -1,9 +1,9 @@
 import "./TabBar.css";
 import { CgHome, CgProfile } from "react-icons/cg";
 import { AiOutlineHeart } from "react-icons/ai";
-import { RiChatQuoteLine } from "react-icons/ri";
 import { BsChatDots } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
+import { FaSearch } from "react-icons/fa";
 
 //TODO: Replace with actual app icons
 
@@ -22,7 +22,7 @@ const TabBar = () => {
         </NavLink>
 
         <NavLink to="/buscador" className="tab">
-          <RiChatQuoteLine />
+          <FaSearch />
           <p>Reseñas</p>
         </NavLink>
 
