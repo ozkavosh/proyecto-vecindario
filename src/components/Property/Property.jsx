@@ -17,7 +17,16 @@ import Stars from "../Stars/Stars";
 import { useState } from "react";
 
 const Property = ({ data }) => {
-  const [showReviews, setShowReviews] = useState(false);
+  // const [showReviews, setShowReviews] = useState(false);
+
+  const handleClick = (e) => {
+    //TODO: this became useless after some workarounds
+    //kept it just in case it is useful later
+
+    // setShowReviews((prev) => !prev);
+    e.target.classList.toggle("deployed");
+    e.target.classList.toggle("retract");
+  };
 
   return (
     <div className="property">
@@ -44,7 +53,7 @@ const Property = ({ data }) => {
           <FaRegPaperPlane />
         </div>
         <button type="button" className="addReviewBtn">
-          <FaPenSquare/> Nueva reseña
+          <FaPenSquare /> Nueva reseña
         </button>
       </div>
 
@@ -59,19 +68,21 @@ const Property = ({ data }) => {
             ? data.description.slice(0, 240) + "..."
             : data.description}
         </p>
-        <div
-          className="propertyReviewsButton"
-          onClick={() => setShowReviews((prev) => !prev)}
-        >
-          <BiMessageEdit />
-          Reseñas
-          <FaChevronDown />
+        <div className="reviews">
+          <div className="propertyReviewsButton retract" onClick={handleClick}>
+            <BiMessageEdit />
+            Reseñas
+            <FaChevronDown className="dropdown" />
+          </div>
+          {
+            <div className="reviews-list">
+              {data.reviews.map((data) => (
+                <Review key={data.id} data={data} />
+              ))}
+            </div>
+          }
         </div>
       </div>
-
-      {showReviews && <div className="reviews">
-            {data.reviews.map(data => <Review key={data.id} data={data}/>)}
-        </div>}
     </div>
   );
 };
