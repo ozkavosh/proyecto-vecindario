@@ -1,7 +1,7 @@
 import "./Menu.css";
 import { FaRegQuestionCircle, FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useAuthContext } from "../../context/authContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase/config";
@@ -45,21 +45,32 @@ const Menu = () => {
     }
   };
 
-  //close menu when clicked outside of it
-  document.addEventListener("click", (evt) => {
-    if (navMenu.current != null) {
-      let onNav = navMenu.current.contains(evt.target);
-      let onMenuWidget = menuWidget.current.contains(evt.target);
-      if (!onNav && !onMenuWidget && menuWidget.current.classList.contains("is-active")) {
-        menuWidget.current.classList.remove("is-active");
-        navMenu.current.classList.remove("slide-in");
-        navMenu.current.classList.add("slide-out");
-        setTimeout(() => {
-          navMenu.current.style.display = "none";
-        }, 500);
+  useEffect(() => {
+    //close menu when clicked outside of it
+    const handleOutsideClick = (evt) => {
+      if (navMenu.current != null) {
+        let onNav = navMenu.current.contains(evt.target);
+        let onMenuWidget = menuWidget.current.contains(evt.target);
+
+        if (
+          !onNav &&
+          !onMenuWidget &&
+          menuWidget.current.classList.contains("is-active")
+        ) {
+          menuWidget.current.classList.remove("is-active");
+          navMenu.current.classList.remove("slide-in");
+          navMenu.current.classList.add("slide-out");
+          setTimeout(() => {
+            navMenu.current.style.display = "none";
+          }, 500);
+        }
       }
-    }
-  });
+    };
+
+    document.addEventListener("click", handleOutsideClick);
+
+    return () => document.removeEventListener("click", handleOutsideClick);
+  }, []);
 
   return (
     <div className="menu">
@@ -109,7 +120,8 @@ const Menu = () => {
         </Link>
         <Link to="">
           <button onClick={handleClick}>
-            <FaRegQuestionCircle /> Términos y Condiciones / Política de Privacidad
+            <FaRegQuestionCircle /> Términos y Condiciones / Política de
+            Privacidad
           </button>
         </Link>
 
