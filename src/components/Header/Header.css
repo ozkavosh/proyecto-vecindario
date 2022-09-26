@@ -1,5 +1,5 @@
 header {
-    height: 100px;
+    height: 75px;
     width: 100vw;
     position: fixed;
     top: 0;
@@ -48,11 +48,11 @@ header .menu {
 
 header .menu-links {
     position: absolute;
-    top: 100px;
+    top: 75px;
     right: 0;
     left: 100%;
     width: 100vw;
-    height: calc(100vh - 165px);
+    height: calc(100vh - 150px);
     /* TODO: fix this color */
     background-color: rgb(206, 206, 206);
     display: flex;

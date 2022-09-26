@@ -11,7 +11,7 @@ body {
 
 main {
   margin-top: 100px;
-  min-height: calc(100vh - 65px - 100px);
+  min-height: calc(100vh - 150px);
 }
 
 :root {

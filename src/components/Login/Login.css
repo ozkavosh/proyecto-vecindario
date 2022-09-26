@@ -1,48 +1,48 @@
-.login{
-    margin-top: calc(100px + 35px);
+.login {
+    margin-top: calc(75px + 35px);
     /*calc first param comes from header height*/
 }
 
-.login .container{
+.login .container {
     width: 90%;
     margin: auto;
 }
 
-.login .container form{
+.login .container form {
     display: flex;
     flex-direction: column;
     margin: 10px 0;
     gap: 12px;
 }
 
-.loginHeading{
+.loginHeading {
     font-weight: 500;
 }
 
-.recoverPasswordLink{
-    color : var(--dark-color);
+.recoverPasswordLink {
+    color: var(--dark-color);
     text-decoration: none;
 }
 
-.formGroup{
+.formGroup {
     display: flex;
     flex-direction: column;
 }
 
-.formGroup label{
+.formGroup label {
     margin-left: 16px;
-    color : rgb(128, 128, 128);
+    color: rgb(128, 128, 128);
 }
 
-.formGroup input{
-    border:none;
-    outline:none;
+.formGroup input {
+    border: none;
+    outline: none;
     padding: 10px 25px;
     border-radius: 17px;
     background-color: var(--neutral-color);
 }
 
-.btn{
+.btn {
     cursor: pointer;
     font-size: 14px;
     padding: 10px 0;
@@ -54,7 +54,7 @@
     background-color: rgb(128, 128, 128);
 }
 
-.newUser{
+.newUser {
     display: flex;
     flex-direction: column;
     margin-top: 35px;
