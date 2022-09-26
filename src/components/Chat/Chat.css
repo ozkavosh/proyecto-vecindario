@@ -145,22 +145,6 @@
 
 /*Added on chat-test*/
 
-.chat .searchresults {
-    max-height: 10em;
-    overflow-y: scroll;
-}
-
-.chat .searchresults .userresult {
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    gap: 1.3em;
-    height: 3em;
-    border-bottom: 1px solid var(--neutral-color);
-    margin-bottom: 0.3rem;
-    cursor: pointer;
-}
-
 .chat .searchresults .userresult .profile-image,
 .chatMessages .user-info .profile-image {
     width: 2.5em;
