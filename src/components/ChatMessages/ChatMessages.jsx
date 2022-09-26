@@ -22,14 +22,14 @@ const ChatMessages = () => {
   }, [data.chatId]);
 
   useEffect(() => {
-    messageRef.current?.scrollIntoView({ behavior: "smooth"});
+    messageRef.current?.scrollIntoView({ behavior: "smooth" });
 
-    return async()=>{
-      await updateDoc(doc(db, "userChats", currentUser.uid), { 
-        [data.chatId+".unreadMessages"]: 0
-       })
-    }
-  }, [messages])
+    return async () => {
+      await updateDoc(doc(db, "userChats", currentUser.uid), {
+        [data.chatId + ".unreadMessages"]: 0,
+      });
+    };
+  }, [messages, data?.chatId, currentUser?.uid]);
 
   return (
     <div className="chatMessages container">
@@ -47,7 +47,11 @@ const ChatMessages = () => {
           </div>
           <div className="user-display">
             <h2>{data.user.displayName}</h2>
-            <small>{connectedUsers.includes(data.user.uid) ? "En linea" : "Desconectad@"}</small>
+            <small>
+              {connectedUsers.includes(data.user.uid)
+                ? "En linea"
+                : "Desconectad@"}
+            </small>
           </div>
         </div>
         <FaRegTimesCircle
@@ -62,16 +66,22 @@ const ChatMessages = () => {
 
       <div className="messagesContainer">
         {messages.map((message) => (
-          <div key={message.id} ref={messageRef} className={message.senderId === currentUser.uid ? "message own": "message"}>
+          <div
+            ref={messageRef}
+            key={message.id}
+            className={
+              message.senderId === currentUser.uid ? "message own" : "message"
+            }
+          >
             <p className="text" key={message.id}>
               {message.text}
             </p>
-            <p className="date">Hace 6 segundos</p>
+            <p className="date">{message.date.toDate().toLocaleString()}</p>
           </div>
         ))}
       </div>
 
-      <ChatInput/>
+      <ChatInput />
     </div>
   );
 };
