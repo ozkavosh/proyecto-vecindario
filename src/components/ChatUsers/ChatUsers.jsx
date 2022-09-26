@@ -1,14 +1,8 @@
-import React from "react";
-import {
-  doc,
-  getDoc,
-  setDoc,
-  updateDoc,
-  serverTimestamp,
-} from "firebase/firestore";
+import { doc, getDoc, setDoc, updateDoc, serverTimestamp } from "firebase/firestore";
 import { useAuthContext } from "../../context/authContext";
 import { useChatContext } from "../../context/chatContext";
 import { db } from "../../firebase/config";
+import "./ChatUsers.css";
 
 const ChatUsers = ({ userResults, setUserResults, setUserQuery }) => {
   const { currentUser } = useAuthContext();
@@ -21,9 +15,7 @@ const ChatUsers = ({ userResults, setUserResults, setUserQuery }) => {
     dispatch({ type: "changeUser", payload: user });
 
     const combinedId =
-      currentUser.uid > user.uid
-        ? currentUser.uid + user.uid
-        : user.uid + currentUser.uid;
+      currentUser.uid > user.uid ? currentUser.uid + user.uid : user.uid + currentUser.uid;
     try {
       const response = await getDoc(doc(db, "users", combinedId));
       if (!response.exists()) {
@@ -53,11 +45,7 @@ const ChatUsers = ({ userResults, setUserResults, setUserQuery }) => {
   return (
     <div className="searchresults container">
       {userResults.map((result) => (
-        <div
-          className="userresult"
-          key={result.uid}
-          onClick={() => handleSelect(result)}
-        >
+        <div className="userresult" key={result.uid} onClick={() => handleSelect(result)}>
           <div className="profile-image">
             <div className="not-found">
               {result.displayName
