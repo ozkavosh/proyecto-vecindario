@@ -34,6 +34,7 @@ const Favorites = ({ setDismount }) => {
           </div>
         </>
       )}
+    </section>
   );
 };
 
