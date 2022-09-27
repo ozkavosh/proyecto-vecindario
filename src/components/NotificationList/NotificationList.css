@@ -1,0 +1,10 @@
+.profile-notifications .notification-list {
+    height: 60vh;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    row-gap: 0.5em;
+    margin-top: 1.625em;
+}

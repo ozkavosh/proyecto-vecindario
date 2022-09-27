@@ -1,4 +1,4 @@
-import { FaEraser, FaRegCommentAlt } from "react-icons/fa";
+import { FaRegCommentAlt, FaTrash } from "react-icons/fa";
 import "./ProfileReview.css";
 
 const ProfileReview = () => {
@@ -16,7 +16,7 @@ const ProfileReview = () => {
           Lorem labore eu do dolor. Amet consectetur quis ex occaecat sint.
         </p>
         <button className="action">
-          <FaEraser />
+          <FaTrash />
         </button>
       </div>
     </article>

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../../context/authContext";
 import "./Favorites.css";
 
 const Favorites = ({ setDismount }) => {
-  //TODO: replace with currentUser from authContext
-  const [isLogin, setisLogin] = useState(false);
+  const { currentUser } = useAuthContext();
 
   useEffect(() => {
     setDismount((prev) => ({ ...prev, footer: true, tabBar: false }));
@@ -15,7 +15,7 @@ const Favorites = ({ setDismount }) => {
 
   return (
     <section className="favorites">
-      {!isLogin ? (
+      {!currentUser ? (
         <div className="not-logged">
           <FaHeart />
           <p>

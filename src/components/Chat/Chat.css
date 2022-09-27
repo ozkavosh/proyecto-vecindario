@@ -7,10 +7,6 @@
     margin: auto;
 }
 
-.not-logged {
-    margin-top: 2.5em !important;
-}
-
 .chat .not-logged p {
     width: 60%;
 }

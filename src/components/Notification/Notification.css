@@ -1,0 +1,28 @@
+.profile-notifications .notification {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 4em;
+    width: 100%;
+    background-color: var(--neutral-color);
+    border-radius: 5px;
+    padding: 0.5em 0;
+    color: initial;
+    text-decoration: none;
+}
+
+.profile-notifications .notification .type {
+    border-right: 1px solid var(--dark-color);
+    width: 3.75em;
+    flex-shrink: 0;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0.5em;
+}
+
+.profile-notifications .notification .type svg {
+    width: 40%;
+    height: auto;
+}

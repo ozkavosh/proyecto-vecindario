@@ -6,7 +6,11 @@
 
 .not-logged {
     text-align: center;
-    margin-top: 2.5em;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
 }
 
 .not-logged svg {

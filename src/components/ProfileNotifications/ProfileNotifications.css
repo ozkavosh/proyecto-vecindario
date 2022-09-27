@@ -1,0 +1,23 @@
+.profile-notifications {
+    width: 85%;
+    min-height: var(--content-height);
+    margin: auto;
+}
+
+.profile-notifications h1 {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 1rem;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.5em;
+    column-gap: 0.875rem;
+    padding-top: 2rem;
+    margin-bottom: 0.625rem;
+}
+
+.profile-notifications hr {
+    border: none;
+    height: 0;
+    border-top: 2px solid var(--neutral-color);
+}
