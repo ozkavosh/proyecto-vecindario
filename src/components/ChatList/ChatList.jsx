@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { onSnapshot, doc } from "firebase/firestore";
 import { useAuthContext } from "../../context/authContext";
 import { useChatContext } from "../../context/chatContext";
+import { chatListFormat } from "../../utils/dateFormatters";
 import { db } from "../../firebase/config";
 import "./ChatList.css";
 
@@ -10,6 +11,7 @@ const ChatList = () => {
   const { currentUser } = useAuthContext();
   const { dispatch, connectedUsers } = useChatContext();
   const [chats, setChats] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getChats = () => {
@@ -22,45 +24,28 @@ const ChatList = () => {
 
     currentUser?.uid && getChats();
   }, [currentUser?.uid]);
+  
+  const handleClick = (user) => {
+    dispatch({
+      type: "changeUser",
+      payload: user,
+    });
 
-  const adjustTimestamp = (date) => {
-    let today = new Date();
-    if (today.getDate() !== date.getDate()) {
-      const formatDate = (date) => {
-        let day = String(date.getDate()).padStart(2, "0");
-        let month = String(date.getMonth() + 1).padStart(2, "0");
-        return `${day}/${month}`;
-      };
-      let formattedDate = formatDate(date);
-      return formattedDate;
-    } else {
-      const formatTime = (date) => {
-        let hours = String(date.getHours()).padStart(2, "0");
-        let minutes = String(date.getMinutes()).padStart(2, "0");
-        return `${hours}:${minutes}`;
-      };
-      let formattedTime = formatTime(date);
-      return formattedTime;
-    }
+    navigate("/chat/messages");
   };
 
   return (
-    <>
       <div className="chat-list container">
         {Object.entries(chats)
           ?.sort((a, b) => b[1].date - a[1].date)
           .map((chat) => (
-            <Link to="/chat" key={chat[0]}>
+            <div
+              className="chat-user-container"
+              key={chat[0]}
+              onClick={() => handleClick(chat[1].userInfo)}
+            >
               {/* TODO: maybe this could be another component? */}
-              <div
-                className="user"
-                onClick={() =>
-                  dispatch({
-                    type: "changeUser",
-                    payload: chat[1].userInfo,
-                  })
-                }
-              >
+              <div className="user">
                 <div className="user-info">
                   <div className="profile-image">
                     <div
@@ -76,7 +61,11 @@ const ChatList = () => {
                       <></>
                     )}
                     {chat[1].userInfo.photoURL ? (
-                      <img src={chat[1].userInfo.photoURL} alt="img" className="profile-image" />
+                      <img
+                        src={chat[1].userInfo.photoURL}
+                        alt="img"
+                        className="profile-image"
+                      />
                     ) : (
                       <div className="not-found">
                         {chat[1].userInfo.displayName
@@ -98,12 +87,13 @@ const ChatList = () => {
                     </small>
                   </div>
                 </div>
-                <p className="time end-slot">{adjustTimestamp(chat[1].date.toDate())}</p>
+                <p className="time end-slot">
+                  {chatListFormat(chat[1].date.toDate())}
+                </p>
               </div>
-            </Link>
+            </div>
           ))}
       </div>
-    </>
   );
 };
 

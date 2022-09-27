@@ -2,6 +2,7 @@ import "./App.css";
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Chat from "./components/Chat/Chat";
+import ChatMessages from "./components/ChatMessages/ChatMessages";
 import Favorites from "./components/Favorites/Favorites";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
@@ -24,45 +25,55 @@ function App() {
 
   return (
     <AuthContextProvider>
-      <BrowserRouter>
-        {dismount.header || <Header />}
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route
-              path="/perfil"
-              element={
-                <AuthRoute>
-                  <Profile setDismount={setDismount} />
-                </AuthRoute>
-              }
-            />
-            <Route
-              path="/favoritos"
-              element={<Favorites setDismount={setDismount} />}
-            />
-            <Route
-              path="/chat"
-              element={
-                <ChatContextProvider>
-                  <Chat setDismount={setDismount} />
-                </ChatContextProvider>
-              }
-            />
-            <Route path="/buscador" element={<Search />} />
-            <Route
-              path="/registro"
-              element={<Register setDismount={setDismount} />}
-            />
-            <Route
-              path="/login"
-              element={<Login setDismount={setDismount} />}
-            />
-          </Routes>
-        </main>
-        {dismount.footer || <Footer />}
-        {dismount.tabBar || <TabBar />}
-      </BrowserRouter>
+      <ChatContextProvider>
+        <BrowserRouter>
+          {dismount.header || <Header />}
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route
+                path="/perfil"
+                element={
+                  <AuthRoute route={"profile"} setDismount={setDismount}>
+                    <Profile />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path="/favoritos"
+                element={
+                  <AuthRoute route={"favorites"} setDismount={setDismount}>
+                    <Favorites />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path="/chat"
+                element={
+                  <AuthRoute route={"chat"} setDismount={setDismount}>
+                    <Chat />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path="/chat/messages"
+                element={<ChatMessages setDismount={setDismount} />}
+              />
+              <Route path="/buscador" element={<Search />} />
+              <Route
+                path="/registro"
+                element={<Register setDismount={setDismount} />}
+              />
+              <Route
+                path="/login"
+                element={<Login setDismount={setDismount} />}
+              />
+            </Routes>
+          </main>
+          {dismount.footer || <Footer />}
+          {dismount.tabBar || <TabBar />}
+        </BrowserRouter>
+      </ChatContextProvider>
     </AuthContextProvider>
   );
 }

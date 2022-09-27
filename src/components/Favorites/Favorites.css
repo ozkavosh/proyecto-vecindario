@@ -4,26 +4,6 @@
     padding-top: 1.375em;
 }
 
-.not-logged {
-    text-align: center;
-    margin-top: 2.5em;
-}
-
-.not-logged svg {
-    width: 1.500em;
-    height: auto;
-}
-
-.not-logged p {
-    width: 50%;
-    margin: 0.750em auto;
-    font-weight: 400;
-}
-
-.not-logged p strong {
-    font-weight: 600;
-}
-
 .favorites h1 {
     font-size: 1em;
     display: flex;

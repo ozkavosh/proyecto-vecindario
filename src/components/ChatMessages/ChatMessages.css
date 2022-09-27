@@ -1,79 +1,81 @@
 .chatMessages {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: calc(100vh - 150px);
+  display: flex;
+  width: 85%;
+  margin: auto;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100vh - 150px);
 }
 
 .chatMessages .messagesContainer {
-    height: 100%;
-    z-index: 0;
-    overflow-y: scroll;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    row-gap: 1.5rem;
-    padding: 1em 0;
+  height: 100%;
+  z-index: 0;
+  overflow-y: scroll;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  row-gap: 1.5rem;
+  padding: 1em 0;
 }
 
 .chatMessages .chatHeader {
-    padding: 1.3em 7%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid var(--neutral-color);
-    z-index: 1;
-    position: relative;
+  padding: 1.3em 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--neutral-color);
+  z-index: 1;
+  position: relative;
 }
 
 .chatMessages .chatHeader .user-info {
-    display: flex;
-    align-items: center;
-    gap: 1.5em;
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
 }
 
 .chatMessages .user-info .user-display {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .chatMessages .user-info .user-display h2 {
-    font-size: 0.75rem;
+  font-size: 0.75rem;
 }
 
 .chatMessages .user-info .user-display small {
-    font-size: 0.563rem;
+  font-size: 0.563rem;
 }
 
 .chatMessages .messagesContainer .message {
-    position: relative;
-    background-color: var(--neutral-color);
-    padding: 0.7em 1em;
-    border-radius: 10px;
-    min-width: 8rem;
-    max-width: 14rem;
-    align-self: flex-start;
+  position: relative;
+  background-color: var(--neutral-color);
+  padding: 0.7em 1em;
+  border-radius: 10px;
+  min-width: 8rem;
+  max-width: 14rem;
+  align-self: flex-start;
 }
 
 .chatMessages .messagesContainer .own {
-    align-self: flex-end;
-    background-color: #33373E;
+  align-self: flex-end;
+  background-color: #33373e;
 }
 
 .chatMessages .messagesContainer .own .text {
-    color: #FFFFFF;
+  color: #ffffff;
 }
 
 .chatMessages .messagesContainer .message .text {
-    font-size: 0.625rem;
+  font-size: 0.625rem;
 }
 
 .chatMessages .messagesContainer .message .date {
-    position: absolute;
-    font-size: 0.438rem;
-    width: max-content;
-    right: 0.3rem;
-    bottom: -0.8rem;
+  position: absolute;
+  font-size: 0.438rem;
+  width: max-content;
+  right: 0.3rem;
+  bottom: -0.8rem;
 }

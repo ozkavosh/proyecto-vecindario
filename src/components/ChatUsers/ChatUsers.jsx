@@ -1,4 +1,5 @@
 import { doc, getDoc, setDoc, updateDoc, serverTimestamp } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/authContext";
 import { useChatContext } from "../../context/chatContext";
 import { db } from "../../firebase/config";
@@ -7,17 +8,16 @@ import "./ChatUsers.css";
 const ChatUsers = ({ userResults, setUserResults, setUserQuery }) => {
   const { currentUser } = useAuthContext();
   const { dispatch } = useChatContext();
+  const navigate = useNavigate();
 
   const handleSelect = async (user) => {
     setUserResults(null);
     setUserQuery("");
 
-    dispatch({ type: "changeUser", payload: user });
-
     const combinedId =
       currentUser.uid > user.uid ? currentUser.uid + user.uid : user.uid + currentUser.uid;
     try {
-      const response = await getDoc(doc(db, "users", combinedId));
+      const response = await getDoc(doc(db, "chats", combinedId));
       if (!response.exists()) {
         await setDoc(doc(db, "chats", combinedId), { messages: [] });
 
@@ -37,6 +37,9 @@ const ChatUsers = ({ userResults, setUserResults, setUserQuery }) => {
           [combinedId + ".date"]: serverTimestamp(),
         });
       }
+      
+      dispatch({ type: "changeUser", payload: user });
+      navigate("/chat/messages");
     } catch (e) {
       console.log(e);
     }

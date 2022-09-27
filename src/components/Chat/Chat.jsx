@@ -1,26 +1,16 @@
-import ChatMessages from "../ChatMessages/ChatMessages";
 import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { FaRegCommentDots, FaSearch } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { FaSearch } from "react-icons/fa";
 import { useAuthContext } from "../../context/authContext";
-import { useChatContext } from "../../context/chatContext";
 import { db } from "../../firebase/config";
 import "./Chat.css";
 import ChatList from "../ChatList/ChatList";
 import ChatUsers from "../ChatUsers/ChatUsers";
 
-const Chat = ({ setDismount }) => {
+const Chat = () => {
   const { currentUser } = useAuthContext();
-  const { data } = useChatContext();
   const [userResults, setUserResults] = useState(null);
   const [userQuery, setUserQuery] = useState("");
-
-  useEffect(() => {
-    setDismount((prev) => ({ ...prev, footer: true, tabBar: false }));
-
-    return () => setDismount((prev) => ({ ...prev, footer: false, tabBar: false }));
-  }, [setDismount]);
 
   useEffect(() => {
     if (userQuery.length >= 4) {
@@ -48,67 +38,55 @@ const Chat = ({ setDismount }) => {
 
   return (
     <section className="chat">
-      {!currentUser ? (
-        <div className="not-logged container">
-          <FaRegCommentDots />
-          <p>
-            Para ver sus <strong>mensajes</strong> inicie sesión.
-          </p>
-          <Link to="/login">
-            <button>Iniciar sesión</button>
-          </Link>
+      <h1 className="hide">Chat</h1>
+      <div className="user container">
+        <div className="user-info">
+          <div className="profile-image">
+            {currentUser.photoURL ? (
+              <img
+                src={currentUser.photoURL}
+                alt="img"
+                className="profile-image"
+              />
+            ) : (
+              <div className="not-found">
+                {currentUser?.displayName
+                  ?.toUpperCase()
+                  .split(" ")
+                  .map((n) => n[0])
+                  .slice(0, 2)
+                  .join("")}
+              </div>
+            )}
+          </div>
+          <div className="chat-info">
+            <h2 className="name">{currentUser.displayName}</h2>
+          </div>
         </div>
-      ) : data.user ? (
-        <ChatMessages />
-      ) : (
-        <>
-          <h1 className="hide">Chat</h1>
-          <div className="user container">
-            <div className="user-info">
-              <div className="profile-image">
-                {currentUser.photoURL ? (
-                  <img src={currentUser.photoURL} alt="img" className="profile-image" />
-                ) : (
-                  <div className="not-found">
-                    {currentUser?.displayName
-                      ?.toUpperCase()
-                      .split(" ")
-                      .map((n) => n[0])
-                      .slice(0, 2)
-                      .join("")}
-                  </div>
-                )}
-              </div>
-              <div className="chat-info">
-                <h2 className="name">{currentUser.displayName}</h2>
-              </div>
-            </div>
-          </div>
-          <div className="searchbar container">
-            <input
-              type="search"
-              value={userQuery}
-              onChange={(e) => setUserQuery(e.target.value)}
-              placeholder="¿Con quién deseas hablar? ..."
-            />
-            <button>
-              <FaSearch />
-            </button>
-          </div>
+      </div>
+      <div className="searchbar container">
+        <input
+          type="search"
+          value={userQuery}
+          onChange={(e) => setUserQuery(e.target.value)}
+          placeholder="¿Con quién deseas hablar? ..."
+        />
+        <button>
+          <FaSearch />
+        </button>
+      </div>
 
-          {userResults && (
-            <ChatUsers
-              userResults={userResults}
-              setUserResults={setUserResults}
-              setUserQuery={setUserQuery}
-            />
-          )}
-
-          <h2 className="container">Recientes</h2>
-          <hr />
-          <ChatList />
-        </>
+      {userResults && (
+        <ChatUsers
+          userResults={userResults}
+          setUserResults={setUserResults}
+          setUserQuery={setUserQuery}
+        />
       )}
+
+      <h2 className="container">Recientes</h2>
+      <hr />
+      <ChatList />
     </section>
   );
 };

@@ -7,14 +7,6 @@
     margin: auto;
 }
 
-.not-logged {
-    margin-top: 2.5em !important;
-}
-
-.chat .not-logged p {
-    width: 60%;
-}
-
 .chat .user {
     display: flex;
     justify-content: space-between;
@@ -31,6 +23,7 @@
 }
 
 .chat .user .user-info .profile-image {
+    flex-shrink: 0;
     width: 2.5em;
     height: 2.5em;
     display: flex;

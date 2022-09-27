@@ -30,6 +30,7 @@ Our added value for those who seek to rent a new home is the valuable feedback f
 [![sweetalert2](https://img.shields.io/badge/sweetalert2-%5E11.4.29-ff69b4)](https://sweetalert.js.org/)
 [![swiper](https://img.shields.io/badge/swiperjs-%5E8.4.2-blueviolet)](https://swiperjs.com/)
 [![react-icons](https://img.shields.io/badge/react--icons-%5E4.4.0-lightgrey)](https://react-icons.github.io/react-icons)
+[![socket.io](https://img.shields.io/badge/socket.io--client-%5E4.5.2-black)](https://socket.io)
 
 
 ## Roadmap
