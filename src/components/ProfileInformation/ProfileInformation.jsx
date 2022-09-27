@@ -1,14 +1,7 @@
-import { useEffect } from "react";
 import { FaRegEdit, FaUserCircle } from "react-icons/fa";
 import "./ProfileInformation.css";
 
-const ProfileInformation = ({ setDismount }) => {
-  useEffect(() => {
-    setDismount((prev) => ({ ...prev, footer: true, tabBar: false }));
-
-    return () => setDismount((prev) => ({ ...prev, footer: false, tabBar: false }));
-  }, [setDismount]);
-
+const ProfileInformation = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };

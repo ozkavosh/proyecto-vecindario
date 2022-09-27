@@ -1,15 +1,8 @@
-import { useEffect } from "react";
 import { FaRegBell } from "react-icons/fa";
 import NotificationList from "../NotificationList/NotificationList";
 import "./ProfileNotifications.css";
 
-const ProfileNotifications = ({ setDismount }) => {
-  useEffect(() => {
-    setDismount((prev) => ({ ...prev, footer: true, tabBar: false }));
-
-    return () => setDismount((prev) => ({ ...prev, footer: false, tabBar: false }));
-  }, [setDismount]);
-
+const ProfileNotifications = () => {
   return (
     <section className="profile-notifications">
       <h1>

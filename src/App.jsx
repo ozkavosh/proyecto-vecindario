@@ -45,24 +45,24 @@ function App() {
               <Route
                 path="/perfil/datos"
                 element={
-                  <AuthRoute>
-                    <ProfileInformation setDismount={setDismount} />
+                  <AuthRoute route={"profile"} setDismount={setDismount}>
+                    <ProfileInformation />
                   </AuthRoute>
                 }
               />
               <Route
                 path="/perfil/r"
                 element={
-                  <AuthRoute>
-                    <ProfileReviews setDismount={setDismount} />
+                  <AuthRoute route={"profile"} setDismount={setDismount}>
+                    <ProfileReviews />
                   </AuthRoute>
                 }
               />
               <Route
                 path="/perfil/notificaciones"
                 element={
-                  <AuthRoute>
-                    <ProfileNotifications setDismount={setDismount} />
+                  <AuthRoute route={"profile"} setDismount={setDismount}>
+                    <ProfileNotifications />
                   </AuthRoute>
                 }
               />

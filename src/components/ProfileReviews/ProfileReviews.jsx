@@ -1,15 +1,8 @@
-import { useEffect } from "react";
 import { FaFilter, FaRegCommentAlt, FaSearch } from "react-icons/fa";
 import ProfileReviewsList from "../ProfileReviewsList/ProfileReviewsList";
 import "./ProfileReviews.css";
 
-const ProfileReviews = ({ setDismount }) => {
-  useEffect(() => {
-    setDismount((prev) => ({ ...prev, footer: true, tabBar: false }));
-
-    return () => setDismount((prev) => ({ ...prev, footer: false, tabBar: false }));
-  }, [setDismount]);
-
+const ProfileReviews = () => {
   return (
     <section className="profile-reviews">
       <h1>
