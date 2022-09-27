@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../context/authContext";
@@ -35,7 +34,6 @@ const Favorites = ({ setDismount }) => {
           </div>
         </>
       )}
-    </section>
   );
 };
 

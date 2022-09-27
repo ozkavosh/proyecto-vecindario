@@ -31,6 +31,10 @@ const ChatContextProvider = ({ children }) => {
       return () => {
         socket.off("connectedUsers");
       };
+    }else{
+      if(socket){
+        socket.disconnect();
+      }
     }
   }, [currentUser?.uid]);
 

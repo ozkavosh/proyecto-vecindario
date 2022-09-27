@@ -3,11 +3,12 @@
     overflow-y: scroll;
 }
 
-.chat-list a {
+.chat-list .chat-user-container {
     display: block;
     color: inherit;
     text-decoration: none;
     margin-bottom: 2em;
+    cursor: pointer;
 }
 
 .user-status-dot {

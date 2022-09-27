@@ -13,6 +13,7 @@ const Profile = ({ setDismount }) => {
 
     return () => setDismount((prev) => ({ ...prev, footer: false, tabBar: false }));
   }, [setDismount]);
+
   return (
     <section className="profile">
       {!currentUser ? (

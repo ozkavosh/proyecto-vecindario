@@ -27,6 +27,7 @@
 }
 
 .chat .user .user-info .profile-image {
+    flex-shrink: 0;
     width: 2.5em;
     height: 2.5em;
     display: flex;
