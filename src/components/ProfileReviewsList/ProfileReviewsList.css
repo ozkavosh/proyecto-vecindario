@@ -1,0 +1,7 @@
+.profile-reviews section .list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.875em;
+    height: 50vh;
+    overflow-y: scroll;
+}

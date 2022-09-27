@@ -7,6 +7,10 @@
     margin: auto;
 }
 
+.chat .not-logged p {
+    width: 60%;
+}
+
 .chat .user {
     display: flex;
     justify-content: space-between;

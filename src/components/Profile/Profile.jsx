@@ -1,34 +1,74 @@
-import {  FaRegEdit } from "react-icons/fa";
+import { useEffect } from "react";
+import { FaChevronRight, FaEraser, FaRegCommentAlt, FaRegEdit, FaUser } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { useAuthContext } from "../../context/authContext";
 import ProfileReview from "../ProfileReview/ProfileReview";
 import "./Profile.css";
 
-const Profile = () => {
+const Profile = ({ setDismount }) => {
+  const { currentUser } = useAuthContext();
+
+  useEffect(() => {
+    setDismount((prev) => ({ ...prev, footer: true, tabBar: false }));
+
+    return () => setDismount((prev) => ({ ...prev, footer: false, tabBar: false }));
+  }, [setDismount]);
+
   return (
     <section className="profile">
-      <h1>
-        <img src="" alt="img" /> Bienvenido/a Usuario
-      </h1>
-      <hr />
-      <section className="user-info">
-        <h2>Mis Datos</h2>
-        <div className="input">
-          <input className="editable" type="text" value="Pedro Gonzalez" disabled readOnly />
-          <FaRegEdit className="icon" />
+      {!currentUser ? (
+        <div className="not-logged">
+          <FaUser />
+          <p>
+            Para acceder a su <strong>perfil</strong> inicie sesión.
+          </p>
+          <Link to="/login">
+            <button>Iniciar sesión</button>
+          </Link>
         </div>
-        <div className="input">
-          <input type="email" value="ejemplo@gmail.com" disabled readOnly />
-        </div>
-        <div className="input">
-          <input type="password" value="abc12345678" disabled readOnly />
-        </div>
-      </section>
-      <section className="user-reviews">
-        <h2>Mis Reseñas</h2>
-        <div className="reviews-container">
-          <ProfileReview />
-          <ProfileReview />
-        </div>
-      </section>
+      ) : (
+        <>
+          <h1>
+            <img src="" alt="img" /> Camila Cassina
+          </h1>
+          <hr />
+          <section className="navigationList">
+            <nav>
+              <Link to="/perfil/datos">
+                <FaUser />
+                <p>Información personal</p>
+                <FaChevronRight />
+              </Link>
+              <Link to="/perfil/r">
+                <FaUser />
+                <p>Reseñas</p>
+                <FaChevronRight />
+              </Link>
+              <Link to="/perfil/notificaciones">
+                <FaUser />
+                <p>Notificaciones</p>
+                <FaChevronRight />
+              </Link>
+              <Link to="/perfil">
+                <FaUser />
+                <p>Privacidad y datos</p>
+                <FaChevronRight />
+              </Link>
+              <Link to="/perfil">
+                <FaUser />
+                <p>Ayuda</p>
+                <FaChevronRight />
+              </Link>
+              <Link to="/">
+                {/* TODO: cerrar sesión */}
+                <FaUser />
+                <p>Cerrar sesión</p>
+                <FaChevronRight />
+              </Link>
+            </nav>
+          </section>
+        </>
+      )}
     </section>
   );
 };

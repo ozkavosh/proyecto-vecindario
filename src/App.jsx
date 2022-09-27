@@ -15,6 +15,9 @@ import TabBar from "./components/TabBar/TabBar";
 import { AuthContextProvider } from "./context/authContext";
 import { ChatContextProvider } from "./context/chatContext";
 import AuthRoute from "./components/AuthRoute/AuthRoute";
+import ProfileInformation from "./components/ProfileInformation/ProfileInformation";
+import ProfileReviews from "./components/ProfileReviews/ProfileReviews";
+import ProfileNotifications from "./components/ProfileNotifications/ProfileNotifications";
 
 function App() {
   const [dismount, setDismount] = useState({
@@ -39,6 +42,15 @@ function App() {
                   </AuthRoute>
                 }
               />
+              <Route
+              path="/perfil/datos"
+              element={<ProfileInformation setDismount={setDismount} />}
+            />
+            <Route path="/perfil/r" element={<ProfileReviews setDismount={setDismount} />} />
+            <Route
+              path="/perfil/notificaciones"
+              element={<ProfileNotifications setDismount={setDismount} />}
+            />
               <Route
                 path="/favoritos"
                 element={
