@@ -52,11 +52,7 @@ const Menu = () => {
         let onNav = navMenu.current.contains(evt.target);
         let onMenuWidget = menuWidget.current.contains(evt.target);
 
-        if (
-          !onNav &&
-          !onMenuWidget &&
-          menuWidget.current.classList.contains("is-active")
-        ) {
+        if (!onNav && !onMenuWidget && menuWidget.current.classList.contains("is-active")) {
           menuWidget.current.classList.remove("is-active");
           navMenu.current.classList.remove("slide-in");
           navMenu.current.classList.add("slide-out");
@@ -86,7 +82,6 @@ const Menu = () => {
         {/* <FaBars /> */}
       </button>
       <nav className="menu-links" ref={navMenu}>
-        {/* TODO: switch to NavLinks */}
         {/* TODO: add proper icons */}
         <Link to="/login">
           <button onClick={handleClick}>
@@ -120,8 +115,7 @@ const Menu = () => {
         </Link>
         <Link to="">
           <button onClick={handleClick}>
-            <FaRegQuestionCircle /> Términos y Condiciones / Política de
-            Privacidad
+            <FaRegQuestionCircle /> Términos y Condiciones
           </button>
         </Link>
 

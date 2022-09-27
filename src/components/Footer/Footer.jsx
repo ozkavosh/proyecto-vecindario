@@ -9,10 +9,7 @@ const Footer = () => {
         <ul>
           <h4>Vecindario</h4>
           <li>
-            <Link to="/">Buscador</Link>
-          </li>
-          <li>
-            <Link to="/">Reseñas</Link>
+            <Link to="/buscador">Buscador</Link>
           </li>
           <li>
             <Link to="/">¿Cómo funciona?</Link>
@@ -27,19 +24,19 @@ const Footer = () => {
         <ul>
           <h4>Usuarios</h4>
           <li>
-            <Link to="/">Iniciar sesión</Link>
+            <Link to="/login">Iniciar sesión</Link>
           </li>
           <li>
-            <Link to="/">Registro</Link>
+            <Link to="/registro">Registro</Link>
           </li>
           <li>
-            <Link to="/">Perfil</Link>
+            <Link to="/perfil">Perfil</Link>
           </li>
           <li>
-            <Link to="/">Favoritos</Link>
+            <Link to="/favoritos">Favoritos</Link>
           </li>
           <li>
-            <Link to="/">Chat</Link>
+            <Link to="/chat">Chat</Link>
           </li>
         </ul>
         <ul>
@@ -64,13 +61,13 @@ const Footer = () => {
           <a href="https://twitter.com/">
             <FaTwitter />
           </a>
-          <a href="https://twitter.com/">
+          <a href="https://facebook.com/">
             <FaFacebookF />
           </a>
-          <a href="https://twitter.com/">
+          <a href="https://instagram.com/">
             <FaInstagram />
           </a>
-          <a href="https://twitter.com/">
+          <a href="https://youtube.com/">
             <FaYoutube />
           </a>
         </div>

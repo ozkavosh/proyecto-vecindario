@@ -66,6 +66,7 @@ header .menu-links {
 
 header .menu-links a {
     display: inline-block;
+    text-decoration: none;
     padding: 0.5em 0;
     width: 100%;
 }

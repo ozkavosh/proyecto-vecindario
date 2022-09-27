@@ -2,6 +2,17 @@
     width: 85%;
     margin: auto;
     padding-top: 1.375em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1.5em;
+}
+
+.favorites .header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .favorites h1 {
@@ -11,4 +22,27 @@
     align-items: center;
     column-gap: 0.3em;
     font-weight: 400;
+    margin-bottom: 0.75rem;
+}
+
+.favorites .searchbar {
+    height: 2em;
+    background-color: var(--neutral-color);
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    padding: 0.5em;
+    box-sizing: border-box;
+    column-gap: 0.3em;
+}
+
+.favorites .searchbar input {
+    flex-grow: 1;
+    padding: 0.3em;
+    border: none;
+    background-color: transparent;
+    font-family: var(--main-font);
+    outline: none;
 }

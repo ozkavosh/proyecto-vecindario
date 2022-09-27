@@ -10,12 +10,61 @@
 .welcome {
     text-align: center;
     padding-top: 1.5em;
+    height: var(--content-height);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .welcome h1 {
     font-weight: 400;
     font-size: 1.5em;
-    margin-bottom: 0.75em;
+    margin-top: -4em;
+}
+
+.welcome .search {
+    margin-top: 6.25rem;
+    margin-bottom: 4.3rem;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    row-gap: 0.75em;
+}
+
+.welcome .search .searchbar {
+    border: 1px solid var(--neutral-color);
+    display: flex;
+    align-items: center;
+    padding: 1em 0.75em;
+    border-radius: 25px;
+    height: 2.625em;
+    box-sizing: border-box;
+}
+
+.welcome .search button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: 1em 0.75em;
+    border-radius: 25px;
+    height: 2.625em;
+    font-family: var(--main-font);
+    font-weight: 400;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.welcome .search .searchbar input {
+    padding: 0.5em 0.8em;
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-family: var(--main-font);
+    font-weight: 400;
+    font-size: 1em;
 }
 
 .home h2 {
@@ -23,8 +72,37 @@
     font-size: 1.5em;
 }
 
+.find-your-place .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.find-your-place h2 {
+    margin-bottom: 2rem;
+}
+
+.find-your-place button {
+    margin-bottom: 1.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: 1em 0.75em;
+    border-radius: 25px;
+    height: 2.625em;
+    font-family: var(--main-font);
+    font-weight: 400;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
 .find-your-place .mySwiper {
     height: 245px;
+}
+
+.what-to-expect {
+    margin-bottom: 3rem !important;
 }
 
 .what-to-expect h2 {
@@ -62,7 +140,12 @@
 .join-owners {
     background-color: var(--neutral-color);
     padding: 0.75em 1em;
+    height: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
+    margin-bottom: 3em !important;
 }
 
 .join-owners h2 {
@@ -72,12 +155,21 @@
 .join-owners p {
     font-weight: 300;
     font-size: 1em;
+    width: 85%;
 }
 
 .join-owners button {
     position: absolute;
     top: 1em;
     right: 1.75em;
+    font-family: var(--main-font);
+    font-size: 1rem;
+    font-weight: 300;
+    background-color: lightgray;
+    padding: 0.3em 0.5em;
+    cursor: pointer;
+    border-radius: 20px;
+    border: none;
 }
 
 .testimonies {
@@ -86,6 +178,7 @@
     align-items: center;
     justify-content: center;
     row-gap: 1em;
+    margin-bottom: 3rem !important;
 }
 
 .testimony {
@@ -117,5 +210,6 @@
 }
 
 .most-searched .mySwiper {
+    margin-top: 1rem;
     height: 135px;
 }

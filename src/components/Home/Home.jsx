@@ -1,3 +1,4 @@
+import { FaSearch } from "react-icons/fa";
 import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -7,17 +8,24 @@ import "./Home.css";
 const Home = () => {
   return (
     <section className="home">
-      <section className="welcome">
+      <section className="welcome container">
         <h1>¡Bienvenidos a Vecindario!</h1>
-        <button>Registrarme / Iniciar sesión</button>
+        <div className="search">
+          <div className="searchbar">
+            <FaSearch />
+            <input type="search" placeholder="Explorar destino" />
+          </div>
+          <button>BUSCAR</button>
+        </div>
+        <p>
+          Conocé los mejores sitios donde alojarte a partir de publicaciones y de reseñas de otros
+          inquilinos
+        </p>
       </section>
       <section className="find-your-place">
         <div className="container">
           <h2>Encontrá tu lugar ideal</h2>
-          <p>
-            Conocé los mejores sitios donde alojarte a partir de publicaciones y de reseñas de otros
-            inquilinos
-          </p>
+          <button>Registrarme / Iniciar sesión</button>
         </div>
         <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
           <SwiperSlide>Slide 1</SwiperSlide>
@@ -62,12 +70,35 @@ const Home = () => {
           </article>
         </div>
       </section>
+      <section className="most-searched container">
+        <h2>Los más buscados</h2>
+        <Swiper
+          slidesPerView={3}
+          navigation={true}
+          spaceBetween={30}
+          modules={[Navigation]}
+          className="mySwiper"
+        >
+          <SwiperSlide>Slide 1</SwiperSlide>
+          <SwiperSlide>Slide 2</SwiperSlide>
+          <SwiperSlide>Slide 3</SwiperSlide>
+          <SwiperSlide>Slide 4</SwiperSlide>
+          <SwiperSlide>Slide 5</SwiperSlide>
+          <SwiperSlide>Slide 6</SwiperSlide>
+          <SwiperSlide>Slide 7</SwiperSlide>
+          <SwiperSlide>Slide 8</SwiperSlide>
+          <SwiperSlide>Slide 9</SwiperSlide>
+        </Swiper>
+      </section>
       <section className="join-owners">
-        <h2>¿Eres propietario?</h2>
-        <button>¡Empieza ahora!</button>
-        <p>
-          Te ayudamos a dar a conocer tu propiedad y obtener mayor llegada a potenciales inquilinos.
-        </p>
+        <div>
+          <h2>¿Eres propietario?</h2>
+          <button>¡Empieza ahora!</button>
+          <p>
+            Te ayudamos a dar a conocer tu propiedad y obtener mayor llegada a potenciales
+            inquilinos.
+          </p>
+        </div>
       </section>
       <section className="testimonies container">
         <div className="testimony">
@@ -90,26 +121,6 @@ const Home = () => {
             <p>52 años</p>
           </div>
         </div>
-      </section>
-      <section className="most-searched container">
-        <h2>Los más buscados</h2>
-        <Swiper
-          slidesPerView={3}
-          navigation={true}
-          spaceBetween={30}
-          modules={[Navigation]}
-          className="mySwiper"
-        >
-          <SwiperSlide>Slide 1</SwiperSlide>
-          <SwiperSlide>Slide 2</SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
-          <SwiperSlide>Slide 4</SwiperSlide>
-          <SwiperSlide>Slide 5</SwiperSlide>
-          <SwiperSlide>Slide 6</SwiperSlide>
-          <SwiperSlide>Slide 7</SwiperSlide>
-          <SwiperSlide>Slide 8</SwiperSlide>
-          <SwiperSlide>Slide 9</SwiperSlide>
-        </Swiper>
       </section>
     </section>
   );

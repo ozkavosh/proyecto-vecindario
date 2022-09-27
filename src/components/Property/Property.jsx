@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import { BiMessageEdit } from "react-icons/bi";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
 import Review from "../Review/Review";
 import Stars from "../Stars/Stars";
 import { useState } from "react";
@@ -40,7 +41,7 @@ const Property = ({ data }) => {
         <Stars amount={data.rating} />
       </div>
 
-      <Swiper slidesPerView={1} navigation className="propertySlider">
+      <Swiper slidesPerView={1} navigation={true} modules={[Navigation]} className="propertySlider">
         <SwiperSlide></SwiperSlide>
         <SwiperSlide></SwiperSlide>
         <SwiperSlide></SwiperSlide>
