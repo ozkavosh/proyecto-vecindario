@@ -4,10 +4,13 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { BsChatDots } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
+import { useChatContext } from "../../context/chatContext";
 
 //TODO: Replace with actual app icons
 
 const TabBar = () => {
+  const { unreadMessages } = useChatContext();
+
   return (
     <div className="tabBar">
       <ul className="tabBarTabContainer">
@@ -27,7 +30,14 @@ const TabBar = () => {
         </NavLink>
 
         <NavLink to="/chat" className="tab">
-          <BsChatDots />
+          <div className="chat-icon-box">
+            <BsChatDots />
+            {unreadMessages === 0 ? (
+              <></>
+            ) : (
+              <span className="unread-messages">{unreadMessages}</span>
+            )}
+          </div>
           <p>Chat</p>
         </NavLink>
 

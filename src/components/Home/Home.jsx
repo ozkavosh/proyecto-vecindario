@@ -1,11 +1,32 @@
+import { useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useChatContext } from "../../context/chatContext";
 import "./Home.css";
+import { onSnapshot, doc } from "firebase/firestore";
+import { db } from "../../firebase/config";
+import { useAuthContext } from "../../context/authContext";
 
 const Home = () => {
+  const { currentUser } = useAuthContext();
+  const { setUnreadMessages } = useChatContext();
+
+  useEffect(() => {
+    const getChats = () => {
+      const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
+        let chats = Object.entries(doc.data());
+        setUnreadMessages(chats[0][1].unreadMessages);
+      });
+
+      return () => unsub();
+    };
+
+    currentUser?.uid && getChats();
+  }, [currentUser?.uid]);
+
   return (
     <section className="home">
       <section className="welcome container">

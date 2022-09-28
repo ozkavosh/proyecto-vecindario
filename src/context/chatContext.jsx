@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useReducer,
-  useState,
-  useEffect,
-} from "react";
+import { createContext, useContext, useReducer, useState, useEffect } from "react";
 import { useAuthContext } from "./authContext";
 import io from "socket.io-client";
 
@@ -17,12 +11,15 @@ const useChatContext = () => {
 let socket;
 
 const ChatContextProvider = ({ children }) => {
+  const [unreadMessages, setUnreadMessages] = useState(0);
   const { currentUser } = useAuthContext();
   const [connectedUsers, setConnectedUsers] = useState([]);
 
   useEffect(() => {
     if (currentUser?.uid) {
-      socket = io("https://proyecto-vecindario-backend-production.up.railway.app", { query: { uid: currentUser.uid } });
+      socket = io("https://proyecto-vecindario-backend-production.up.railway.app", {
+        query: { uid: currentUser.uid },
+      });
 
       socket.on("connectedUsers", (list) => {
         setConnectedUsers(list);
@@ -31,8 +28,8 @@ const ChatContextProvider = ({ children }) => {
       return () => {
         socket.off("connectedUsers");
       };
-    }else{
-      if(socket){
+    } else {
+      if (socket) {
         socket.disconnect();
       }
     }
@@ -60,7 +57,9 @@ const ChatContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(chatReducer, initialState);
 
   return (
-    <ChatContext.Provider value={{ data: state, connectedUsers, dispatch }}>
+    <ChatContext.Provider
+      value={{ data: state, connectedUsers, dispatch, unreadMessages, setUnreadMessages }}
+    >
       {children}
     </ChatContext.Provider>
   );
