@@ -1,6 +1,7 @@
 .search .container {
     width: 90%;
-    margin: calc(100px + 25px) auto 0 auto;
+    padding-top: 1.375em;
+    margin: auto;
     display: flex;
     flex-direction: column;
 }

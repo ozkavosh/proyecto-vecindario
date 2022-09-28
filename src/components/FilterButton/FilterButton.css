@@ -1,0 +1,40 @@
+.filter-button{
+    position: relative;
+    border: none;
+    outline: none;
+    background: none;
+    color: #A0A0A0;
+    cursor: pointer;
+    margin: auto;
+    padding-top: 0.2em;
+    z-index: 2;
+}
+
+.filter-button:first-child{
+    margin-left: 0;
+}
+
+.filter-button:last-child{
+    margin-right: 0;
+}
+
+.filter-button > svg{
+    font-size: 17px;
+}
+
+.filter-button .filter-pill {
+    border: none;
+    background-color: var(--neutral-color);
+    padding: 0.1rem 0.3rem;
+    box-sizing: border-box;
+    font-family: var(--main-font);
+    font-size: 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+}
+
+.filter-button .filter-pill svg{
+    font-size: 7px;
+}

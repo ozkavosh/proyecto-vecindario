@@ -1,0 +1,40 @@
+.filter-button-wrapper{
+    position:absolute;
+    top:0;
+    left:-5%;
+    width:110%;
+    padding-top: 2.5rem;
+    z-index: -1;
+    background-color: var(--neutral-color);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.filter-button-wrapper hr{
+    width:85%;
+}
+
+.filter-button-options{
+    width:90%;
+    font-size: 10px;
+    list-style-type: none;
+    text-align: start;
+    margin: 0.5em 0;
+}
+
+.filter-button-options li:not(:last-child){
+    margin-bottom: 0.2em;
+}
+
+.filter-button-options li{
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter-button-options li.scoreFilter{
+    justify-content: center;
+}

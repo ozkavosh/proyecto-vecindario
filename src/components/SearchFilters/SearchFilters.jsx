@@ -2,14 +2,12 @@ import FilterButton from "../FilterButton/FilterButton";
 import "./SearchFilters.css";
 
 const SearchFilters = () => {
-  const handleClick = () => {
-    console.log("hola");
-  };
-
   return (
-    <div className="searchOptions">
-      <FilterButton text="Filtrar por" onClick={handleClick} />
-      <FilterButton text="Ordenar por" onClick={handleClick} />
+    <div className="search-filters-container">
+      <FilterButton type="location" />
+      <FilterButton type="propertyType"/>
+      <FilterButton type="score"/>
+      <FilterButton type="orderBy"/>
     </div>
   );
 };
