@@ -82,10 +82,23 @@ function App() {
                   </AuthRoute>
                 }
               />
-              <Route path="/chat/messages" element={<ChatMessages setDismount={setDismount} />} />
+              <Route
+                path="/chat/messages"
+                element={
+                  <AuthRoute route={"chat"} setDismount={setDismount}>
+                    <ChatMessages />
+                  </AuthRoute>
+                }
+              />
               <Route path="/buscador" element={<Search />} />
-              <Route path="/registro" element={<Register setDismount={setDismount} />} />
-              <Route path="/login" element={<Login setDismount={setDismount} />} />
+              <Route
+                path="/registro"
+                element={<Register setDismount={setDismount} />}
+              />
+              <Route
+                path="/login"
+                element={<Login setDismount={setDismount} />}
+              />
             </Routes>
           </main>
           {dismount.footer || <Footer />}

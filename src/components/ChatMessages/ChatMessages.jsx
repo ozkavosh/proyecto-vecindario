@@ -8,19 +8,12 @@ import { db } from "../../firebase/config";
 import ChatInput from "../ChatInput/ChatInput";
 import { useNavigate } from "react-router-dom";
 
-const ChatMessages = ({ setDismount }) => {
+const ChatMessages = () => {
   const { currentUser } = useAuthContext();
   const { data, connectedUsers } = useChatContext();
   const [messages, setMessages] = useState([]);
   const navigate = useNavigate();
   const messageRef = useRef();
-
-  useEffect(() => {
-    setDismount((prev) => ({ ...prev, footer: true, tabBar: false }));
-
-    return () =>
-      setDismount((prev) => ({ ...prev, footer: false, tabBar: false }));
-  }, [setDismount]);
 
   useEffect(() => {
     if (currentUser?.uid && data?.chatId) {
