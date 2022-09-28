@@ -41,12 +41,11 @@ const FilterButton = ({ type }) => {
   };
 
   return (
-    <button className="filter-button" ref={buttonRef} onClick={() => setOpen(prev => !prev)}>
+    <button className={open ? "filter-button open" : "filter-button"} ref={buttonRef} onClick={() => setOpen(prev => !prev)}>
       {types[type].icon}
       <div className="filter-pill">
         {types[type].text} {open ? <FaChevronDown/>:<FaChevronUp />}
       </div>
-
       { open && <FilterButtonWrapper type={type}/> }
     </button>
   );
