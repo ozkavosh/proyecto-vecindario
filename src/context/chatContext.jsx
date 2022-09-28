@@ -16,7 +16,7 @@ const ChatContextProvider = ({ children }) => {
   const [connectedUsers, setConnectedUsers] = useState([]);
 
   useEffect(() => {
-    if (currentUser?.uid) {
+    if (currentUser?.uid && !socket) {
       socket = io("https://proyecto-vecindario-backend-production.up.railway.app", {
         query: { uid: currentUser.uid },
       });

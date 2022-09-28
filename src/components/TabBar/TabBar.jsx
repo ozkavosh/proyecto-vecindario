@@ -1,15 +1,37 @@
 import "./TabBar.css";
+import { useEffect } from "react";
 import { CgHome, CgProfile } from "react-icons/cg";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsChatDots } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { useChatContext } from "../../context/chatContext";
+import { useAuthContext } from "../../context/authContext";
+import { db } from "../../firebase/config";
+import { onSnapshot, doc } from "firebase/firestore";
 
 //TODO: Replace with actual app icons
 
 const TabBar = () => {
-  const { unreadMessages } = useChatContext();
+  const { unreadMessages, setUnreadMessages} = useChatContext();
+  const { currentUser } = useAuthContext();
+
+  useEffect(() => {
+    const getChats = () => {
+      const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
+        const data = doc.data();
+        let um = 0;
+        for(let c in data){
+          um+=data[c].unreadMessages;
+        }
+        setUnreadMessages(um);
+      });
+
+      return () => unsub();
+    };
+
+    currentUser?.uid && getChats();
+  }, [currentUser?.uid, setUnreadMessages]);
 
   return (
     <div className="tabBar">

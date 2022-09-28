@@ -9,7 +9,7 @@ import "./ChatList.css";
 
 const ChatList = () => {
   const { currentUser } = useAuthContext();
-  const { dispatch, connectedUsers, setUnreadMessages } = useChatContext();
+  const { dispatch, connectedUsers } = useChatContext();
   const [chats, setChats] = useState([]);
   const navigate = useNavigate();
 
