@@ -3,4 +3,6 @@
     display: flex;
     box-sizing: border-box;
     gap: 0.2em;
+    position: relative;
+    z-index: 1;
 }
