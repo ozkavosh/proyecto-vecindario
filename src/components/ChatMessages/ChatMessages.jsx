@@ -16,29 +16,24 @@ const ChatMessages = () => {
   const messageRef = useRef();
 
   useEffect(() => {
-    if (currentUser?.uid && data?.chatId) {
       messageRef.current?.scrollIntoView({ behavior: "smooth" });
+  });
+
+  useEffect(() => {
+    if (!data?.chatId) navigate("/chat", { replace: true });
+    else {
+      const unsub = onSnapshot(doc(db, "chats", data?.chatId), (d) => {
+        d.exists() && setMessages(d.data().messages);
+      });
 
       return async () => {
+        unsub();
         await updateDoc(doc(db, "userChats", currentUser?.uid), {
           [data?.chatId + ".unreadMessages"]: 0,
         });
       };
     }
-  }, [messages, data?.chatId, currentUser?.uid]);
-
-  useEffect(() => {
-    if (!data?.chatId) navigate("/chat", { replace: true });
-    else {
-      const unsub = onSnapshot(doc(db, "chats", data?.chatId), (doc) => {
-        doc.exists() && setMessages(doc.data().messages);
-      });
-
-      return () => {
-        unsub();
-      };
-    }
-  }, [data?.chatId, navigate]);
+  }, [data?.chatId, navigate, currentUser?.uid]);
 
   return (
     data?.chatId && (

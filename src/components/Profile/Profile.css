@@ -27,6 +27,17 @@
     align-items: center;
 }
 
+.profile h1 .not-found {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--neutral-color);
+    border-radius: 100%;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .profile hr {
     border: none;
     height: 0;

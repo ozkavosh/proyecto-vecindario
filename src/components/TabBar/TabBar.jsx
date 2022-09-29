@@ -30,7 +30,7 @@ const TabBar = () => {
       return () => unsub();
     };
 
-    currentUser?.uid && getChats();
+    currentUser?.uid ? getChats() : setUnreadMessages(0);
   }, [currentUser?.uid, setUnreadMessages]);
 
   return (

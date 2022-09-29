@@ -83,7 +83,7 @@ const ChatList = () => {
                   </small>
                 </div>
               </div>
-              <p className="time end-slot">{chatListFormat(chat[1].date.toDate())}</p>
+              <p className="time end-slot">{chat[1].date && chatListFormat(chat[1].date.toDate())}</p>
             </div>
           </div>
         ))}

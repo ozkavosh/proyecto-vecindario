@@ -1,7 +1,10 @@
 import { FaRegEdit, FaUserCircle } from "react-icons/fa";
 import "./ProfileInformation.css";
+import { useAuthContext } from "../../context/authContext";
 
 const ProfileInformation = () => {
+  const { currentUser } = useAuthContext();
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -9,7 +12,7 @@ const ProfileInformation = () => {
   return (
     <section className="profile-info">
       <h1>
-        <FaUserCircle /> Camila Cassina
+        <FaUserCircle /> Información Personal
       </h1>
       <hr />
       <section className="form">
@@ -21,7 +24,7 @@ const ProfileInformation = () => {
                 className="editable"
                 id="name"
                 type="text"
-                value="Camila Cassina"
+                value={currentUser.displayName}
                 disabled
                 readOnly
               />
@@ -30,7 +33,7 @@ const ProfileInformation = () => {
           </div>
           <div className="input">
             <label htmlFor="email">Email</label>
-            <input id="email" type="email" value="cami.cassina@gmail.com" disabled readOnly />
+            <input id="email" type="email" value={currentUser.email} disabled readOnly />
           </div>
           <div className="input">
             <label htmlFor="pass">Contraseña</label>
