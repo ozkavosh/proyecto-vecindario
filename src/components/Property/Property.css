@@ -125,6 +125,10 @@
     overflow: hidden;
 }
 
+.swiper{
+    z-index: 0!important;
+}
+
 @keyframes deploy-dropdown {
     0% {
         transform: rotateZ(-90deg);

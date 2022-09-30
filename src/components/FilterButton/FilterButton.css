@@ -49,6 +49,10 @@
     gap: 0.3em;
 }
 
+.filter-button.open .filter-pill{
+    background: none;
+}
+
 .filter-button .filter-pill svg {
     font-size: 7px;
 }
