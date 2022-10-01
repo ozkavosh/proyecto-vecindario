@@ -13,7 +13,7 @@ import { onSnapshot, doc } from "firebase/firestore";
 //TODO: Replace with actual app icons
 
 const TabBar = () => {
-  const { unreadMessages, setUnreadMessages} = useChatContext();
+  const { unreadMessages, setUnreadMessages } = useChatContext();
   const { currentUser } = useAuthContext();
 
   useEffect(() => {
@@ -21,8 +21,8 @@ const TabBar = () => {
       const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
         const data = doc.data();
         let um = 0;
-        for(let c in data){
-          um+=data[c].unreadMessages;
+        for (let c in data) {
+          if (data[c].unreadMessages) um += data[c].unreadMessages;
         }
         setUnreadMessages(um);
       });
