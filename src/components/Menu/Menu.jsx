@@ -1,5 +1,14 @@
 import "./Menu.css";
-import { FaRegQuestionCircle, FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
+import {
+  FaFileAlt,
+  FaHouseUser,
+  FaInfoCircle,
+  FaRegListAlt,
+  FaRegQuestionCircle,
+  FaSignInAlt,
+  FaSignOutAlt,
+  FaUsers,
+} from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import { useAuthContext } from "../../context/authContext";
@@ -79,7 +88,6 @@ const Menu = () => {
         <span className="hamburger-box">
           <span className="hamburger-inner"></span>
         </span>
-        {/* <FaBars /> */}
       </button>
       <nav className="menu-links" ref={navMenu}>
         {/* TODO: add proper icons */}
@@ -90,7 +98,7 @@ const Menu = () => {
         </Link>
         <Link to="">
           <button onClick={handleClick}>
-            <FaSignInAlt /> ¿Cómo funciona?
+            <FaRegListAlt /> ¿Cómo funciona?
           </button>
         </Link>
         <Link to="">
@@ -100,22 +108,22 @@ const Menu = () => {
         </Link>
         <Link to="">
           <button onClick={handleClick}>
-            <FaRegQuestionCircle /> Soy propietario
+            <FaHouseUser /> Soy propietario
           </button>
         </Link>
         <Link to="">
           <button onClick={handleClick}>
-            <FaRegQuestionCircle /> Ayuda
+            <FaInfoCircle /> Ayuda
           </button>
         </Link>
         <Link to="">
           <button onClick={handleClick}>
-            <FaRegQuestionCircle /> Contáctanos
+            <FaUsers /> Contáctanos
           </button>
         </Link>
         <Link to="">
           <button onClick={handleClick}>
-            <FaRegQuestionCircle /> Términos y Condiciones
+            <FaFileAlt /> Términos y Condiciones
           </button>
         </Link>
 
