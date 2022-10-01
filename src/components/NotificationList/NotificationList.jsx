@@ -3,11 +3,11 @@ import Notification from "../Notification/Notification";
 import "./NotificationList.css";
 
 const NotificationList = () => {
-  const [notifications, setNotifications] = useState([0, 1]);
+  const [notifications, setNotifications] = useState([0, 1, 1, 0, 1, 1, 0, 0, 1]);
   return (
     <div className="notification-list">
-      {notifications.map((noti) => (
-        <Notification version={noti} />
+      {notifications.map((noti, i) => (
+        <Notification version={noti} key={noti[i]} />
       ))}
     </div>
   );

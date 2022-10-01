@@ -24,7 +24,7 @@ const ProfileInformation = () => {
                 className="editable"
                 id="name"
                 type="text"
-                value={currentUser.displayName}
+                defaultValue={currentUser.displayName}
                 disabled
                 readOnly
               />
@@ -33,28 +33,28 @@ const ProfileInformation = () => {
           </div>
           <div className="input">
             <label htmlFor="email">Email</label>
-            <input id="email" type="email" value={currentUser.email} disabled readOnly />
+            <input id="email" type="email" defaultValue={currentUser.email} disabled readOnly />
           </div>
           <div className="input">
             <label htmlFor="pass">Contraseña</label>
-            <input id="pass" type="password" value="abc12345678" disabled readOnly />
+            <input id="pass" type="password" defaultValue="abc12345678" disabled readOnly />
           </div>
           <div className="input-grid">
             <div className="input">
               <label htmlFor="province">Provincia</label>
-              <input id="province" className="editable" type="text" value="Barcelona" />
+              <input id="province" className="editable" type="text" defaultValue="Barcelona" />
             </div>
             <div className="input">
               <label htmlFor="location">Localidad</label>
-              <input id="location" className="editable" type="text" value="Cataluña" />
+              <input id="location" className="editable" type="text" defaultValue="Cataluña" />
             </div>
             <div className="input">
               <label htmlFor="phone">Teléfono</label>
-              <input id="phone" className="editable" type="text" value="+34-115364589" />
+              <input id="phone" className="editable" type="text" defaultValue="+34-115364589" />
             </div>
             <div className="input">
               <label htmlFor="dni">DNI</label>
-              <input id="dni" className="editable" type="text" value="33896036" />
+              <input id="dni" className="editable" type="text" defaultValue="33896036" />
             </div>
           </div>
           <input

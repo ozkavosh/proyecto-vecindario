@@ -6,8 +6,8 @@ const ProfileReviewsList = () => {
   const [reviews, setReviews] = useState([0, 1, 2, 3, 4, 5]);
   return (
     <div className="list">
-      {reviews.map((review) => (
-        <ProfileReview />
+      {reviews.map((review, i) => (
+        <ProfileReview key={review[i]} />
       ))}
     </div>
   );
