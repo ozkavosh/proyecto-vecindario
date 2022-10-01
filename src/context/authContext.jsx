@@ -1,6 +1,7 @@
 import { onAuthStateChanged } from "firebase/auth";
+import { doc, onSnapshot } from "firebase/firestore";
 import { createContext, useContext, useEffect, useState } from "react";
-import { auth } from "../firebase/config";
+import { auth, db } from "../firebase/config";
 
 const AuthContext = createContext({});
 
@@ -20,6 +21,22 @@ const AuthContextProvider = ({ children }) => {
       unsub();
     }
   }, []);
+
+  useEffect(() => {
+    if(currentUser?.uid){
+      const unsub = onSnapshot(doc(db, "users", currentUser.uid), async (document) => {
+        if(!document.data().favorites){
+          setCurrentUser(prev => ({...prev, favorites: []}))
+        }else{
+          setCurrentUser(prev => ({...prev, favorites: document.data().favorites}))
+        }
+      });
+  
+      return () => {
+        unsub();
+      }
+    }
+  }, [currentUser?.uid]);
 
   return (
     <AuthContext.Provider value={{ currentUser, setCurrentUser}}>
