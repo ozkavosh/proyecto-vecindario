@@ -4,7 +4,6 @@ import "swiper/css/navigation";
 import {
   FaRegUserCircle,
   FaRegCheckCircle,
-  FaRegHeart,
   FaRegPaperPlane,
   FaPenSquare,
   FaMapMarkerAlt,
@@ -18,10 +17,12 @@ import Stars from "../Stars/Stars";
 import { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase/config";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
 const Property = ({ data }) => {
   // const [showReviews, setShowReviews] = useState(false);
   const [propertyReviews, setPropertyReviews] = useState([]);
+  
 
   useEffect(() => {
     //Get property reviews inside propertyReviews collection search by propertyId
@@ -74,7 +75,7 @@ const Property = ({ data }) => {
 
       <div className="propertyActions">
         <div className="propertyOptions">
-          <FaRegHeart />
+          <FavoriteButton pid={data.id}/>
           <FaRegPaperPlane />
         </div>
         <button type="button" className="addReviewBtn">
