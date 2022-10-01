@@ -19,17 +19,12 @@ const ProfileInformation = () => {
         <form>
           <div className="input">
             <label htmlFor="name">Nombre</label>
-            <div>
-              <input
-                className="editable"
-                id="name"
-                type="text"
-                defaultValue={currentUser.displayName}
-                disabled
-                readOnly
-              />
-              <FaRegEdit className="icon" />
-            </div>
+            <input
+              className="editable"
+              id="name"
+              type="text"
+              defaultValue={currentUser.displayName}
+            />
           </div>
           <div className="input">
             <label htmlFor="email">Email</label>
