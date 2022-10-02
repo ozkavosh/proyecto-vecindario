@@ -1,0 +1,32 @@
+.applied-filters-container{
+    margin-top: 1em;
+    display: flex;
+    align-items: center;
+}
+
+.applied-filter{
+    position: relative;
+    display: flex;
+    background-color: #EFEFF0;
+    height: 18px;
+    font-size: 12px;
+    border-radius: 12px;
+    padding: 0 1.5em 0 .3em;
+    cursor: pointer;
+}
+
+.applied-filter span{
+    position: absolute;
+    top: 10%;
+    right: 3%;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #D1D1D1;
+    height: 10px;
+    width: 10px;
+    font-size: 10px;
+    border-radius: 100%;
+    padding: .2em;
+}

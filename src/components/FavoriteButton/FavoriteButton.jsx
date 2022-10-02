@@ -28,7 +28,7 @@ const FavoriteButton = ({ pid }) => {
     }
   };
 
-  return currentUser?.favorites.includes(pid) ? (
+  return currentUser?.favorites?.includes(pid) ? (
     <FaHeart onClick={() => handleFavorite("remove")} />
   ) : (
     <FaRegHeart onClick={() => handleFavorite("add")} />

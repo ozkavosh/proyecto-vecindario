@@ -11,7 +11,7 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 import "./FilterButton.css";
 import FilterButtonWrapper from "../FilterButtonWrapper/FilterButtonWrapper";
 
-const FilterButton = ({ type }) => {
+const FilterButton = ({ type, dispatch }) => {
   const [ open, setOpen ] = useState(false);
   const buttonRef = useRef();
 
@@ -27,8 +27,8 @@ const FilterButton = ({ type }) => {
 
   const types = {
     location: { text: "Región", icon: <HiOutlineLocationMarker /> },
-    propertyType: { text: "Inmueble", icon: <BiBuildingHouse /> },
-    score: {
+    type: { text: "Inmueble", icon: <BiBuildingHouse /> },
+    rating: {
       text: "Puntuación",
       icon: (
         <>
@@ -46,7 +46,7 @@ const FilterButton = ({ type }) => {
       <div className="filter-pill">
         {types[type].text} {open ? <FaChevronDown/>:<FaChevronUp />}
       </div>
-      { open && <FilterButtonWrapper type={type}/> }
+      { open && <FilterButtonWrapper type={type} dispatch={dispatch}/> }
     </button>
   );
 };
