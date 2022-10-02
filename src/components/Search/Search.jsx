@@ -64,17 +64,7 @@ const Search = () => {
     try {
       let q;
 
-      if(searchQuery.filter?.field !== "rating" && searchQuery.orderBy){
-          q = query(
-            collection(db, "properties"),
-            orderBy(searchQuery.orderBy.field, searchQuery.orderBy.type),
-            where(
-              searchQuery.filter.field,
-              "==",
-              searchQuery.filter.equalTo
-            )
-          )
-      }else if(searchQuery.filter){
+      if(searchQuery.filter && searchQuery.orderBy){
         if(searchQuery.filter.field === "rating" && searchQuery.orderBy?.field === "rating"){
           q = query(
             collection(db, "properties"),
@@ -95,6 +85,15 @@ const Search = () => {
             )
           )
         }
+      }else if(searchQuery.filter){
+          q = query(
+            collection(db, "properties"),
+            where(
+              searchQuery.filter.field,
+              "==",
+              searchQuery.filter.equalTo
+            )
+          )
       }else if(searchQuery.orderBy){
         q = query(
           collection(db, "properties"),
