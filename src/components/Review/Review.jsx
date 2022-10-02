@@ -1,5 +1,5 @@
 import "./Review.css";
-import { FaRegUserCircle, FaRegCheckCircle } from "react-icons/fa";
+import { FaRegUserCircle, FaRegCheckCircle, FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
 import Stars from "../Stars/Stars";
 
 const Review = ({ data }) => {
@@ -21,6 +21,18 @@ const Review = ({ data }) => {
             ? data.review.slice(0, 120) + "..."
             : data.review}
         </p>
+      </div>
+
+      <div className="reviewFooter">
+        <div className="reviewInfo">
+            <p className="reviewTag">{data.tag}</p>
+            <p className="reviewDate">{data.createdAt.toDate().toLocaleDateString()}</p>
+        </div>
+
+        <div className="reviewActions">
+          <FaRegThumbsUp/>
+          <FaRegThumbsDown/>
+        </div>
       </div>
     </div>
   );

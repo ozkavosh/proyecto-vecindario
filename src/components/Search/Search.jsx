@@ -16,7 +16,6 @@ import SearchFilters from "../SearchFilters/SearchFilters";
 import AppliedFilters from "../AppliedFilters/AppliedFilters";
 
 const Search = () => {
-  //TODO: Fetch actual properties stored in Firebase inside useEffect
   const [results, setResults] = useState([]);
   const [searchQuery, dispatch] = useReducer(
     (state, action) => {

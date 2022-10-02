@@ -1,10 +1,15 @@
+.propertyLink{
+    text-decoration: none;
+    color: black;
+}
+
 .property {
     margin-bottom: 1.5em;
     box-sizing: border-box;
     width: 100%;
     padding: 14px 12px;
     border-radius: 10px;
-    background-color: #ececec;
+    background-color: #FBFBFB;
 }
 
 .propertyOwner {
@@ -99,7 +104,6 @@
     cursor: pointer;
 }
 
-
 .dropdown {
     transform: rotateZ(-90deg);
 }
@@ -155,13 +159,13 @@
     }
 
     100% {
-        max-height: 12em;
+        max-height: 999em;
     }
 }
 
 @keyframes retract-reviews {
     0% {
-        max-height: 12em;
+        max-height: 999em;
     }
 
     100% {

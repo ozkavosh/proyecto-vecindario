@@ -9,7 +9,8 @@ const FavoriteButton = ({ pid }) => {
   const { currentUser } = useAuthContext();
   const navigate = useNavigate();
 
-  const handleFavorite = async (type) => {
+  const handleFavorite = async (e, type) => {
+    e.preventDefault();
     if (!currentUser?.uid) return navigate("/favoritos");
 
     switch (type) {
@@ -29,9 +30,9 @@ const FavoriteButton = ({ pid }) => {
   };
 
   return currentUser?.favorites?.includes(pid) ? (
-    <FaHeart onClick={() => handleFavorite("remove")} />
+    <FaHeart onClick={(e) => handleFavorite(e, "remove")} />
   ) : (
-    <FaRegHeart onClick={() => handleFavorite("add")} />
+    <FaRegHeart onClick={(e) => handleFavorite(e, "add")} />
   );
 };
 

@@ -1,6 +1,8 @@
 .review{
-    padding: 0 2%;
+    padding: .4em 1em;
     margin: 0.5em 0;
+    border: 1px solid #E9E9E9;
+    border-radius: 4px;
 }
 
 .review .reviewHeader{
@@ -30,6 +32,39 @@
 .review .reviewBody{
     box-sizing: border-box;
     margin-top: 0.5em;
-    margin-left: 2em;
     font-size: 10px;
+}
+
+.review .reviewFooter{
+    margin-top: 0.5em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.review .reviewInfo{
+    display: flex;
+    align-items: center;
+    gap: .5em;
+}
+
+.review .reviewInfo .reviewTag{
+    display: flex;
+    align-items: center;
+    font-size: 9px;
+    background-color: #9E9E9E;
+    color: #fff;
+    padding: 0 1em;
+    border-radius: 2px;
+}
+
+.review .reviewInfo .reviewDate{
+    display: flex;
+    align-items: center;
+    font-size: 8px;
+    font-weight: light;
+}
+
+.review .reviewActions{
+    display: flex;
+    gap: .4em; 
 }

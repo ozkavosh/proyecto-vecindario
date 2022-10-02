@@ -18,6 +18,7 @@ import AuthRoute from "./components/AuthRoute/AuthRoute";
 import ProfileInformation from "./components/ProfileInformation/ProfileInformation";
 import ProfileReviews from "./components/ProfileReviews/ProfileReviews";
 import ProfileNotifications from "./components/ProfileNotifications/ProfileNotifications";
+import PropertyDetail from "./components/PropertyDetail/PropertyDetail";
 
 function App() {
   const [dismount, setDismount] = useState({
@@ -91,6 +92,10 @@ function App() {
                 }
               />
               <Route path="/buscador" element={<Search />} />
+              <Route
+                path="/inmueble/:pid"
+                element={<PropertyDetail setDismount={setDismount} />}
+              />
               <Route
                 path="/registro"
                 element={<Register setDismount={setDismount} />}
