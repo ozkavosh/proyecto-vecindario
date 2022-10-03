@@ -1,0 +1,29 @@
+.addReview .reviewHeader .tagSelect{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: .3em;
+    font-size: 10px;
+}
+
+.addReview .reviewHeader .tagSelect .tagSelectOptions{
+    box-sizing: border-box;
+    width: 100%;
+    position: absolute;
+    top: 110%;
+    list-style-type: none;
+    background-color: #EFEFF0;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    padding: .5em 1em;
+    border-radius: 4px;
+}
+
+.addReview .reviewHeader .tagSelect .tagSelectOptions .tagSelectOption{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+.addReview .reviewHeader .tagSelect .tagSelectOptions .tagSelectOption:not(:last-child){
+    margin-bottom: .4em;
+}

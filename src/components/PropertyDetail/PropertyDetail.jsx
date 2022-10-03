@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./PropertyDetail.css";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -22,10 +22,13 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import { useParams } from "react-router-dom";
 import { BsChatDots } from "react-icons/bs";
+import AddReview from "../AddReview/AddReview";
 
 const PropertyDetail = () => {
   const [property, setProperty] = useState({});
   const [propertyReviews, setPropertyReviews] = useState([]);
+  const reviewsRef = useRef();
+  const addReviewInputRef = useRef();
   const { pid } = useParams();
 
   useEffect(() => {
@@ -58,10 +61,19 @@ const PropertyDetail = () => {
     }
   }, [property?.id]);
 
-  const handleClick = (e) => {
-    e.target.classList.toggle("deployed");
-    e.target.classList.toggle("retract");
+  const deployReviews = () => {
+    reviewsRef.current.classList.toggle("deployed");
+    reviewsRef.current.classList.toggle("retract");
   };
+
+  const handleAddReview = () => {
+    if(!reviewsRef.current.classList.contains("deployed")){
+      deployReviews();
+      setTimeout(() => addReviewInputRef.current.scrollIntoView({ behavior: "smooth"}), 500);
+    }else{
+      addReviewInputRef.current.scrollIntoView({ behavior: "smooth"});
+    }
+  }
 
   return (
     <div className="property detail">
@@ -97,7 +109,7 @@ const PropertyDetail = () => {
           <FavoriteButton pid={property.id} />
           <FaRegPaperPlane />
         </div>
-        <button type="button" className="addReviewBtn">
+        <button type="button" className="addReviewBtn" onClick={handleAddReview}>
           <FaPenSquare /> Nueva reseña
         </button>
       </div>
@@ -115,15 +127,23 @@ const PropertyDetail = () => {
         </p>
 
         <div className="propertySpecs">
-            <h3 className="propertySpecsTitle"> <FaListUl/> Características</h3>
+          <h3 className="propertySpecsTitle">
+            <FaListUl /> Características
+          </h3>
         </div>
 
         <div className="propertyRules">
-            <h3 className="propertyRulesTitle"> <FaTasks/> Normas de la casa <FaChevronDown/> </h3>
+          <h3 className="propertyRulesTitle">
+            <FaTasks /> Normas de la casa <FaChevronDown />
+          </h3>
         </div>
 
         <div className="reviews">
-          <div className="propertyReviewsButton retract" onClick={handleClick}>
+          <div
+            className="propertyReviewsButton retract"
+            ref={reviewsRef}
+            onClick={deployReviews}
+          >
             <BiMessageEdit />
             Reseñas
             <FaChevronDown className="dropdown" />
@@ -132,6 +152,8 @@ const PropertyDetail = () => {
             {propertyReviews.map((review, id) => (
               <Review key={id} data={review} />
             ))}
+
+            <AddReview ref={addReviewInputRef}/>
           </div>
         </div>
       </div>
