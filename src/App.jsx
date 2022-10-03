@@ -19,6 +19,7 @@ import ProfileInformation from "./components/ProfileInformation/ProfileInformati
 import ProfileReviews from "./components/ProfileReviews/ProfileReviews";
 import ProfileNotifications from "./components/ProfileNotifications/ProfileNotifications";
 import PropertyDetail from "./components/PropertyDetail/PropertyDetail";
+import AddReviewAuth from "./components/AddReviewAuth/AddReviewAuth";
 
 function App() {
   const [dismount, setDismount] = useState({
@@ -96,6 +97,7 @@ function App() {
                 path="/inmueble/:pid"
                 element={<PropertyDetail setDismount={setDismount} />}
               />
+              <Route path="/inmueble/error" element={<AddReviewAuth setDismount={setDismount} />} />
               <Route
                 path="/registro"
                 element={<Register setDismount={setDismount} />}

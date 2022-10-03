@@ -9,6 +9,7 @@ import {
   FaMapMarkerAlt,
   FaChevronDown,
 } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
 import { BiMessageEdit } from "react-icons/bi";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
@@ -18,11 +19,11 @@ import { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
-import { Link } from "react-router-dom";
+
 
 const Property = ({ data }) => {
-  // const [showReviews, setShowReviews] = useState(false);
   const [propertyReviews, setPropertyReviews] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     //Get property reviews inside propertyReviews collection search by propertyId
@@ -44,13 +45,14 @@ const Property = ({ data }) => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    //TODO: this became useless after some workarounds
-    //kept it just in case it is useful later
-
-    // setShowReviews((prev) => !prev);
     e.target.classList.toggle("deployed");
     e.target.classList.toggle("retract");
   };
+
+  const handleNewReview = (e, id) => {
+    e.preventDefault();
+    navigate(`/inmueble/${id}`, { state: { newReviewClicked: true } })
+  }
 
   return (
     <Link className="propertyLink" to={`/inmueble/${data.id}`}>
@@ -82,7 +84,7 @@ const Property = ({ data }) => {
             <FavoriteButton pid={data.id} />
             <FaRegPaperPlane />
           </div>
-          <button type="button" className="addReviewBtn">
+          <button type="button" className="addReviewBtn" onClick={(e) => handleNewReview(e, data.id)}>
             <FaPenSquare /> Nueva reseña
           </button>
         </div>

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import "./PropertyDetail.css";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -20,16 +20,42 @@ import Stars from "../Stars/Stars";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase/config";
-import { useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { BsChatDots } from "react-icons/bs";
 import AddReview from "../AddReview/AddReview";
+import { useAuthContext } from "../../context/authContext";
 
 const PropertyDetail = () => {
+  const navigate = useNavigate();
+  const { currentUser } = useAuthContext();
   const [property, setProperty] = useState({});
   const [propertyReviews, setPropertyReviews] = useState([]);
   const reviewsRef = useRef();
   const addReviewInputRef = useRef();
+  const location = useLocation();
   const { pid } = useParams();
+
+  const handleAddReview = useCallback(() => {
+    if (currentUser) {
+      if (!reviewsRef.current.classList.contains("deployed")) {
+        deployReviews();
+        setTimeout(
+          () =>
+            addReviewInputRef.current.scrollIntoView({ behavior: "smooth" }),
+          500
+        );
+      } else {
+        addReviewInputRef.current.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      navigate("/inmueble/error");
+    }
+  }, [currentUser, navigate]);
+
+  const deployReviews = () => {
+    reviewsRef.current.classList.toggle("deployed");
+    reviewsRef.current.classList.toggle("retract");
+  };
 
   useEffect(() => {
     if (pid) {
@@ -61,19 +87,18 @@ const PropertyDetail = () => {
     }
   }, [property?.id]);
 
-  const deployReviews = () => {
-    reviewsRef.current.classList.toggle("deployed");
-    reviewsRef.current.classList.toggle("retract");
-  };
-
-  const handleAddReview = () => {
-    if(!reviewsRef.current.classList.contains("deployed")){
-      deployReviews();
-      setTimeout(() => addReviewInputRef.current.scrollIntoView({ behavior: "smooth"}), 500);
-    }else{
-      addReviewInputRef.current.scrollIntoView({ behavior: "smooth"});
+  useEffect(() => {
+    if (currentUser && location.state?.newReviewClicked) {
+      handleAddReview();
+    } else if (!currentUser && location.state?.newReviewClicked) {
+      navigate("/inmueble/error");
     }
-  }
+  }, [
+    location.state?.newReviewClicked,
+    handleAddReview,
+    currentUser,
+    navigate,
+  ]);
 
   return (
     <div className="property detail">
@@ -109,7 +134,11 @@ const PropertyDetail = () => {
           <FavoriteButton pid={property.id} />
           <FaRegPaperPlane />
         </div>
-        <button type="button" className="addReviewBtn" onClick={handleAddReview}>
+        <button
+          type="button"
+          className="addReviewBtn"
+          onClick={handleAddReview}
+        >
           <FaPenSquare /> Nueva reseña
         </button>
       </div>
@@ -153,7 +182,7 @@ const PropertyDetail = () => {
               <Review key={id} data={review} />
             ))}
 
-            <AddReview ref={addReviewInputRef}/>
+            {currentUser && <AddReview ref={addReviewInputRef} />}
           </div>
         </div>
       </div>
