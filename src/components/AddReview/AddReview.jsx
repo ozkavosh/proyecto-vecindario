@@ -6,6 +6,7 @@ import "./AddReview.css";
 import ReviewTagSelect from "../ReviewTagSelect/ReviewTagSelect";
 import { addDoc, arrayUnion, collection, doc, serverTimestamp, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase/config";
+import { updatePropertyRating } from "../../utils/updatePropertyRating";
 
 const AddReview = forwardRef(({pid}, ref) => {
   const { currentUser } = useAuthContext();
@@ -50,7 +51,8 @@ const AddReview = forwardRef(({pid}, ref) => {
 
       await updateDoc(doc(db, "properties", pid), { reviews: arrayUnion(newId) });
       await updateDoc(doc(db, "users", currentUser.uid), { reviews: arrayUnion(newId) });
-
+      await updatePropertyRating(pid);
+    
       dispatchNewReview({ type: "clear" });
     } catch (e) {
       console.log(e);
