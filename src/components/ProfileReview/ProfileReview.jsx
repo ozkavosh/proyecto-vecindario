@@ -1,7 +1,8 @@
-import { FaRegCommentAlt, FaTrash } from "react-icons/fa";
+import { FaRegCommentAlt } from "react-icons/fa";
+import RemoveReviewButton from "../RemoveReviewButton/RemoveReviewButton";
 import "./ProfileReview.css";
 
-const ProfileReview = () => {
+const ProfileReview = ({ data }) => {
   return (
     <article className="review">
       <h3>
@@ -9,14 +10,10 @@ const ProfileReview = () => {
       </h3>
       <div className="preview">
         <p>
-          Ipsum dolor dolore tempor exercitation do non quis tempor excepteur ex culpa minim est do.
-          Laboris nostrud ea occaecat enim aliqua nulla sunt ut. Aliqua id eu quis cupidatat non.
-          Reprehenderit pariatur dolore reprehenderit aliqua adipisicing deserunt cillum. Labore
-          mollit aute tempor duis ut est aliquip reprehenderit. Amet veniam et ex duis ea ea sint
-          Lorem labore eu do dolor. Amet consectetur quis ex occaecat sint.
+          {data.review}
         </p>
         <button className="action">
-          <FaTrash />
+          <RemoveReviewButton pid={data.property} rid={data.id} />
         </button>
       </div>
     </article>

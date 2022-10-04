@@ -18,7 +18,14 @@ import { Navigation } from "swiper";
 import Review from "../Review/Review";
 import Stars from "../Stars/Stars";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
-import { doc, getDoc } from "firebase/firestore";
+import {
+  doc,
+  onSnapshot,
+  getDocs,
+  collection,
+  query,
+  where,
+} from "firebase/firestore";
 import { db } from "../../firebase/config";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { BsChatDots } from "react-icons/bs";
@@ -59,33 +66,34 @@ const PropertyDetail = () => {
 
   useEffect(() => {
     if (pid) {
-      (async () => {
-        try {
-          const request = await getDoc(doc(db, "properties", pid));
-          setProperty({ ...request.data(), id: request.id });
-        } catch (e) {
-          console.log(e);
+      const unsub = onSnapshot(doc(db, "properties", pid), async (document) => {
+        setProperty(document.data());
+
+        if (document.data().reviews.length) {
+          try {
+            const request = await getDocs(
+              query(
+                collection(db, "reviews"),
+                where("__name__", "in", document.data().reviews)
+              )
+            );
+
+            setPropertyReviews(
+              request.docs
+                .map((doc) => ({ ...doc.data(), id: doc.id }))
+                .sort((a, b) => b.rating - a.rating)
+            );
+          } catch (e) {
+            console.log(e);
+          }
+        } else {
+          setPropertyReviews([]);
         }
-      })();
+      });
+
+      return () => unsub();
     }
   }, [pid]);
-
-  useEffect(() => {
-    //Get property reviews inside propertyReviews collection search by propertyId
-    if (property?.id) {
-      (async () => {
-        try {
-          //Getting ALL reviews is pretty expensive memory wise, probably different approach / db structure ?
-          const request = await getDoc(doc(db, "propertyReviews", property.id));
-          if (request.exists()) {
-            setPropertyReviews(Object.values(request.data()));
-          }
-        } catch (e) {
-          console.log(e);
-        }
-      })();
-    }
-  }, [property?.id]);
 
   useEffect(() => {
     if (currentUser && location.state?.newReviewClicked) {
@@ -182,7 +190,9 @@ const PropertyDetail = () => {
               <Review key={id} data={review} />
             ))}
 
-            {currentUser && <AddReview ref={addReviewInputRef} />}
+            {currentUser && pid && (
+              <AddReview pid={pid} ref={addReviewInputRef} />
+            )}
           </div>
         </div>
       </div>

@@ -1,3 +1,8 @@
+.profile-reviews .review{
+    padding: 0;
+    border: none;
+}
+
 .profile-reviews .review h3 {
     font-weight: 600;
     font-size: 0.75rem;

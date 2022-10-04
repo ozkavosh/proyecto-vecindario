@@ -16,32 +16,36 @@ import { Navigation } from "swiper";
 import Review from "../Review/Review";
 import Stars from "../Stars/Stars";
 import { useEffect, useState } from "react";
-import { doc, getDoc } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
-
 
 const Property = ({ data }) => {
   const [propertyReviews, setPropertyReviews] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    //Get property reviews inside propertyReviews collection search by propertyId
-    (async () => {
-      try {
-        //Getting ALL reviews is pretty expensive memory wise, probably different approach / db structure ?
-        const request = await getDoc(doc(db, "propertyReviews", data.id));
-        if (request.exists()) {
+    if(data.reviews?.length){
+      (async () => {
+        try {
+          const request = await getDocs(
+            query(
+              collection(db, "reviews"),
+              where("__name__", "in", data.reviews)
+            )
+          );
           //Sort reviews higher to lower by rating
           setPropertyReviews(
-            Object.values(request.data()).sort((a, b) => b.rating - a.rating)
+            request.docs
+              .map((doc) => doc.data())
+              .sort((a, b) => b.rating - a.rating)
           );
+        } catch (e) {
+          console.log(e);
         }
-      } catch (e) {
-        console.log(e);
-      }
-    })();
-  }, [data.id]);
+      })();
+    }
+  }, [data.reviews]);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -51,8 +55,8 @@ const Property = ({ data }) => {
 
   const handleNewReview = (e, id) => {
     e.preventDefault();
-    navigate(`/inmueble/${id}`, { state: { newReviewClicked: true } })
-  }
+    navigate(`/inmueble/${id}`, { state: { newReviewClicked: true } });
+  };
 
   return (
     <Link className="propertyLink" to={`/inmueble/${data.id}`}>
@@ -84,7 +88,11 @@ const Property = ({ data }) => {
             <FavoriteButton pid={data.id} />
             <FaRegPaperPlane />
           </div>
-          <button type="button" className="addReviewBtn" onClick={(e) => handleNewReview(e, data.id)}>
+          <button
+            type="button"
+            className="addReviewBtn"
+            onClick={(e) => handleNewReview(e, data.id)}
+          >
             <FaPenSquare /> Nueva reseña
           </button>
         </div>

@@ -25,10 +25,10 @@ const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     if(currentUser?.uid){
       const unsub = onSnapshot(doc(db, "users", currentUser.uid), async (document) => {
-        if(!document.data().favorites){
-          setCurrentUser(prev => ({...prev, favorites: []}))
+        if(!document.data().favorites && !document.data().reviews){
+          setCurrentUser(prev => ({...prev, favorites: [], reviews: []}))
         }else{
-          setCurrentUser(prev => ({...prev, favorites: document.data().favorites}))
+          setCurrentUser(prev => ({...prev, favorites: document.data().favorites, reviews: document.data().reviews}))
         }
       });
   
