@@ -4,11 +4,18 @@ import Stars from "../Stars/Stars";
 import { FaRegUserCircle, FaRegCheckCircle } from "react-icons/fa";
 import "./AddReview.css";
 import ReviewTagSelect from "../ReviewTagSelect/ReviewTagSelect";
-import { addDoc, arrayUnion, collection, doc, serverTimestamp, updateDoc } from "firebase/firestore";
+import {
+  addDoc,
+  arrayUnion,
+  collection,
+  doc,
+  serverTimestamp,
+  updateDoc,
+} from "firebase/firestore";
 import { db } from "../../firebase/config";
 import { updatePropertyRating } from "../../utils/updatePropertyRating";
 
-const AddReview = forwardRef(({pid}, ref) => {
+const AddReview = forwardRef(({ pid }, ref) => {
   const { currentUser } = useAuthContext();
   const [newReview, dispatchNewReview] = useReducer(
     (state, action) => {
@@ -20,7 +27,7 @@ const AddReview = forwardRef(({pid}, ref) => {
         case "setReview":
           return { ...state, review: action.payload };
         case "clear":
-          return { review: "", tag: null, rating: 1};
+          return { review: "", tag: null, rating: 1 };
         default:
           return state;
       }
@@ -44,7 +51,7 @@ const AddReview = forwardRef(({pid}, ref) => {
           uid: currentUser.uid,
           photoURL: currentUser.photoURL || "",
         },
-        property: pid
+        property: pid,
       });
 
       const newId = request.id;
@@ -52,7 +59,7 @@ const AddReview = forwardRef(({pid}, ref) => {
       await updateDoc(doc(db, "properties", pid), { reviews: arrayUnion(newId) });
       await updateDoc(doc(db, "users", currentUser.uid), { reviews: arrayUnion(newId) });
       await updatePropertyRating(pid);
-    
+
       dispatchNewReview({ type: "clear" });
     } catch (e) {
       console.log(e);
@@ -70,16 +77,14 @@ const AddReview = forwardRef(({pid}, ref) => {
 
         <ReviewTagSelect dispatch={dispatchNewReview} />
 
-        <Stars onClick={handleStarClick} amount={newReview.rating} />
+        <Stars onClick={handleStarClick} ammount={newReview.rating} />
       </div>
 
       <textarea
         name="reviewContent"
         className="reviewContent"
         placeholder="Describe tu experiencia"
-        onChange={(e) =>
-          dispatchNewReview({ type: "setReview", payload: e.target.value })
-        }
+        onChange={(e) => dispatchNewReview({ type: "setReview", payload: e.target.value })}
         value={newReview.review}
       ></textarea>
 

@@ -18,14 +18,7 @@ import { Navigation } from "swiper";
 import Review from "../Review/Review";
 import Stars from "../Stars/Stars";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
-import {
-  doc,
-  onSnapshot,
-  getDocs,
-  collection,
-  query,
-  where,
-} from "firebase/firestore";
+import { doc, onSnapshot, getDocs, collection, query, where } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { BsChatDots } from "react-icons/bs";
@@ -46,11 +39,7 @@ const PropertyDetail = () => {
     if (currentUser) {
       if (!reviewsRef.current.classList.contains("deployed")) {
         deployReviews();
-        setTimeout(
-          () =>
-            addReviewInputRef.current.scrollIntoView({ behavior: "smooth" }),
-          500
-        );
+        setTimeout(() => addReviewInputRef.current.scrollIntoView({ behavior: "smooth" }), 500);
       } else {
         addReviewInputRef.current.scrollIntoView({ behavior: "smooth" });
       }
@@ -72,10 +61,7 @@ const PropertyDetail = () => {
         if (document.data().reviews.length) {
           try {
             const request = await getDocs(
-              query(
-                collection(db, "reviews"),
-                where("__name__", "in", document.data().reviews)
-              )
+              query(collection(db, "reviews"), where("__name__", "in", document.data().reviews))
             );
 
             setPropertyReviews(
@@ -101,12 +87,7 @@ const PropertyDetail = () => {
     } else if (!currentUser && location.state?.newReviewClicked) {
       navigate("/inmueble/error");
     }
-  }, [
-    location.state?.newReviewClicked,
-    handleAddReview,
-    currentUser,
-    navigate,
-  ]);
+  }, [location.state?.newReviewClicked, handleAddReview, currentUser, navigate]);
 
   return (
     <div className="property detail">
@@ -117,7 +98,7 @@ const PropertyDetail = () => {
           <FaRegCheckCircle className="ownerCheck" />
         </div>
 
-        <Stars amount={property.rating} />
+        <Stars ammount={property.rating} />
       </div>
 
       <div className="propertyImgContainer">
@@ -142,11 +123,7 @@ const PropertyDetail = () => {
           <FavoriteButton pid={pid} />
           <FaRegPaperPlane />
         </div>
-        <button
-          type="button"
-          className="addReviewBtn"
-          onClick={handleAddReview}
-        >
+        <button type="button" className="addReviewBtn" onClick={handleAddReview}>
           <FaPenSquare /> Nueva reseña
         </button>
       </div>
@@ -176,11 +153,7 @@ const PropertyDetail = () => {
         </div>
 
         <div className="reviews">
-          <div
-            className="propertyReviewsButton retract"
-            ref={reviewsRef}
-            onClick={deployReviews}
-          >
+          <div className="propertyReviewsButton retract" ref={reviewsRef} onClick={deployReviews}>
             <BiMessageEdit />
             Reseñas
             <FaChevronDown className="dropdown" />
@@ -190,9 +163,7 @@ const PropertyDetail = () => {
               <Review key={id} data={review} />
             ))}
 
-            {currentUser && pid && (
-              <AddReview pid={pid} ref={addReviewInputRef} />
-            )}
+            {currentUser && pid && <AddReview pid={pid} ref={addReviewInputRef} />}
           </div>
         </div>
       </div>
