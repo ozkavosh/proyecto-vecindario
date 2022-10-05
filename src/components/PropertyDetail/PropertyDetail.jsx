@@ -139,7 +139,7 @@ const PropertyDetail = () => {
 
       <div className="propertyActions">
         <div className="propertyOptions">
-          <FavoriteButton pid={property.id} />
+          <FavoriteButton pid={pid} />
           <FaRegPaperPlane />
         </div>
         <button
