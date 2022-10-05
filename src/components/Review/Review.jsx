@@ -7,6 +7,7 @@ import ReviewLikes from "../ReviewLikes/ReviewLikes";
 
 const Review = ({ data }) => {
   const { currentUser } = useAuthContext();
+
   return (
     <div className="review">
       <div className="reviewHeader">
@@ -33,7 +34,7 @@ const Review = ({ data }) => {
           {data.id && data.reviewer?.uid === currentUser?.uid ? (
             <RemoveReviewButton rid={data.id} pid={data.property} />
           ) : (
-            data.reviewer?.uid !== currentUser?.uid && <ReviewLikes rid={data.id} />
+            data.reviewer?.uid !== currentUser?.uid && <ReviewLikes rid={data.id}/>
           )}
         </div>
       </div>
