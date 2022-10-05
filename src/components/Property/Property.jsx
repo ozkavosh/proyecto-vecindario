@@ -105,7 +105,6 @@ const Property = ({ data }) => {
           </p>
           <div className="reviews">
             <div className="propertyReviewsButton retract" onClick={handleClick}>
-              <BiMessageEdit />
               Reseñas
               <FaChevronDown className="dropdown" />
             </div>

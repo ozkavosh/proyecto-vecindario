@@ -1,3 +1,7 @@
+.search {
+    background-color: #f8f8f8;
+}
+
 .search .container {
     width: 90%;
     padding-top: 1.375em;
@@ -27,10 +31,14 @@
 
 .search .container .searchHeader .searchInput {
     box-sizing: border-box;
-    background-color: var(--neutral-color);
+    background-color: var(--light-color);
+    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
+    font-family: var(--main-font);
+    font-size: 0.75rem;
+    color: var(--dark-color);
     height: 29.78px;
     width: 100%;
-    padding-left: 2.7em;
+    padding-left: 2.25rem;
     border-radius: 20px;
     outline: none;
     border: none;

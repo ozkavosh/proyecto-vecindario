@@ -1,5 +1,6 @@
-.stars{
+.stars {
     display: flex;
     align-items: center;
     gap: 0.2em;
+    color: var(--primary-color);
 }

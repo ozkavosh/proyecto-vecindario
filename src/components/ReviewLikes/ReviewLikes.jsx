@@ -6,17 +6,17 @@ import "./ReviewLikes.css";
 
 const ReviewLikes = ({ rid }) => {
   const reviewRating = useRef(null);
-  const [ likeCount, setLikeCount ] = useState(0); 
+  const [likeCount, setLikeCount] = useState(0);
 
   useEffect(() => {
-    if(rid){
+    if (rid) {
       const unsub = onSnapshot(doc(db, "reviews", rid), (document) => {
         setLikeCount(document.data().likeCount);
-      })
+      });
 
-      return () => unsub()
+      return () => unsub();
     }
-  }, [rid])
+  }, [rid]);
 
   const rateReview = (type) => {
     if (type === "like") {
@@ -48,7 +48,7 @@ const ReviewLikes = ({ rid }) => {
   const updateDB = async (type) => {
     const reviewRef = doc(db, "reviews", rid);
     await updateDoc(reviewRef, {
-      likeCount: increment( type === "like" ? 1 : -1 ),
+      likeCount: increment(type === "like" ? 1 : -1),
     });
   };
 

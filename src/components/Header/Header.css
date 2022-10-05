@@ -6,8 +6,7 @@ header {
     left: 0;
     right: 0;
     display: flex;
-    /* TODO: fix color */
-    background-color: var(--neutral-color);
+    background-color: var(--secondary-color);
     justify-content: center;
     align-items: flex-end;
     box-sizing: border-box;
@@ -23,8 +22,7 @@ header {
 }
 
 .header-item {
-    /* TODO: fix color */
-    color: var(--dark-color);
+    color: var(--light-color);
 }
 
 .header-cont>button {

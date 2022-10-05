@@ -1,10 +1,6 @@
 import { FaGoogle, FaFacebook, FaApple } from "react-icons/fa";
 import createUserDocs from "../../utils/createUserDocs";
-import {
-  FacebookAuthProvider,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
+import { FacebookAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase/config";
 import "./SocialNetworkLogin.css";
@@ -51,7 +47,6 @@ const SocialNetworkLogin = () => {
       <div className="snLinks">
         <FaGoogle onClick={() => handleSocialNetwork("google")} />
         <FaFacebook onClick={() => handleSocialNetwork("facebook")} />
-        <FaApple onClick={() => handleSocialNetwork("apple")} />
       </div>
     </>
   );

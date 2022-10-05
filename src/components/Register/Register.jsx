@@ -1,8 +1,5 @@
 import { useEffect } from "react";
-import {
-  createUserWithEmailAndPassword,
-  updateProfile
-} from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../firebase/config";
 import { useNavigate } from "react-router-dom";
 import SocialNetworkLogin from "../SocialNetworkLogin/SocialNetworkLogin";
@@ -15,8 +12,7 @@ const Register = ({ setDismount }) => {
   useEffect(() => {
     setDismount((prev) => ({ ...prev, footer: true, tabBar: true }));
 
-    return () =>
-      setDismount((prev) => ({ ...prev, footer: false, tabBar: false }));
+    return () => setDismount((prev) => ({ ...prev, footer: false, tabBar: false }));
   }, [setDismount]);
 
   const handleSubmit = async (e) => {
@@ -25,11 +21,7 @@ const Register = ({ setDismount }) => {
     const { fullname, email, password } = e.target;
 
     try {
-      const response = await createUserWithEmailAndPassword(
-        auth,
-        email.value,
-        password.value
-      );
+      const response = await createUserWithEmailAndPassword(auth, email.value, password.value);
 
       await updateProfile(response.user, { displayName: fullname.value });
 
@@ -49,25 +41,25 @@ const Register = ({ setDismount }) => {
         <form onSubmit={handleSubmit}>
           <div className="formGroup">
             <label htmlFor="fullname">Nombre y apellido</label>
-            <input type="text" name="fullname" />
+            <input type="text" name="fullname" placeholder="Pedro González" />
           </div>
 
           <div className="formGroup">
             <label htmlFor="email">Email</label>
-            <input type="email" name="email" />
+            <input type="email" name="email" placeholder="ejemplo@gmail.com" />
           </div>
 
           <div className="formGroup">
             <label htmlFor="password">Contraseña</label>
-            <input type="password" name="password" />
+            <input type="password" name="password" placeholder="*********" />
           </div>
 
-          <button className="btn" type="submit">
+          <button className="btn register" type="submit">
             Continuar
           </button>
         </form>
 
-        <SocialNetworkLogin/>
+        <SocialNetworkLogin />
       </div>
     </section>
   );

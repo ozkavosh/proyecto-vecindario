@@ -2,14 +2,7 @@ import "./Search.css";
 import { useEffect, useState, useReducer, useCallback } from "react";
 import { debounce } from "lodash";
 import { FaRegBell, FaSearch } from "react-icons/fa";
-import {
-  getDocs,
-  collection,
-  query,
-  limit,
-  orderBy,
-  where,
-} from "firebase/firestore";
+import { getDocs, collection, query, limit, orderBy, where } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import PropertyListContainer from "../PropertyListContainer/PropertyListContainer";
 import SearchFilters from "../SearchFilters/SearchFilters";
@@ -63,45 +56,31 @@ const Search = () => {
     try {
       let q;
 
-      if(searchQuery.filter && searchQuery.orderBy){
-        if(searchQuery.filter.field === "rating" && searchQuery.orderBy?.field === "rating"){
+      if (searchQuery.filter && searchQuery.orderBy) {
+        if (searchQuery.filter.field === "rating" && searchQuery.orderBy?.field === "rating") {
           q = query(
             collection(db, "properties"),
-            where(
-              searchQuery.filter.field,
-              "==",
-              searchQuery.filter.equalTo
-            )
-          )
-        }else{
+            where(searchQuery.filter.field, "==", searchQuery.filter.equalTo)
+          );
+        } else {
           q = query(
             collection(db, "properties"),
             orderBy(searchQuery.orderBy.field, searchQuery.orderBy.type),
-            where(
-              searchQuery.filter.field,
-              "==",
-              searchQuery.filter.equalTo
-            )
-          )
+            where(searchQuery.filter.field, "==", searchQuery.filter.equalTo)
+          );
         }
-      }else if(searchQuery.filter){
-          q = query(
-            collection(db, "properties"),
-            where(
-              searchQuery.filter.field,
-              "==",
-              searchQuery.filter.equalTo
-            )
-          )
-      }else if(searchQuery.orderBy){
+      } else if (searchQuery.filter) {
+        q = query(
+          collection(db, "properties"),
+          where(searchQuery.filter.field, "==", searchQuery.filter.equalTo)
+        );
+      } else if (searchQuery.orderBy) {
         q = query(
           collection(db, "properties"),
           orderBy(searchQuery.orderBy.field, searchQuery.orderBy.type)
-        )
-      }else{
-        q = query(
-          collection(db, "properties")
-        )
+        );
+      } else {
+        q = query(collection(db, "properties"));
       }
 
       const request = await getDocs(q);
@@ -138,6 +117,7 @@ const Search = () => {
             <FaSearch className="searchInputIcon" />
             <input
               type="text"
+              placeholder="Buscá tu lugar ideal"
               onChange={handleChange}
               name="search"
               className="searchInput"
@@ -148,7 +128,9 @@ const Search = () => {
 
         <SearchFilters dispatch={dispatch} />
 
-        { searchQuery.filter && <AppliedFilters appliedFilter={searchQuery.filter} dispatch={dispatch} />}
+        {searchQuery.filter && (
+          <AppliedFilters appliedFilter={searchQuery.filter} dispatch={dispatch} />
+        )}
 
         <PropertyListContainer data={results} />
       </div>

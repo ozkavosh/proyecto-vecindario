@@ -1,35 +1,36 @@
-.snText{
+.snText {
     position: relative;
     text-align: center;
-    color: rgb(128, 128, 128);
+    color: var(--dark-color);
+    margin-top: 1.625rem;
 }
 
-.snText::before{
+.snText::before {
     content: '';
     position: absolute;
     left: 0;
     top: 10.5px;
     width: 100%;
-    border-bottom: 1.5px solid rgb(128, 128, 128);
+    border-bottom: 1.5px solid var(--dark-color);
     z-index: -1;
 }
 
-.snText::after{
+.snText::after {
     content: 'o continuar con';
-    background-color: #fff;
     padding: 0 9px;
+    background-color: var(--background-color);
     z-index: 1;
 }
 
-.snLinks{
+.snLinks {
     margin-top: 35px;
     display: flex;
     justify-content: center;
     gap: 45px;
-    color: rgb(128, 128, 128);
+    color: var(--secondary-color);
 }
 
-.snLinks svg{
+.snLinks svg {
     font-size: 28px;
     cursor: pointer;
 }

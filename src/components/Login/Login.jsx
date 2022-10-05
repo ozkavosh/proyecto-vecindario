@@ -12,8 +12,7 @@ const Login = ({ setDismount }) => {
   useEffect(() => {
     setDismount((prev) => ({ ...prev, footer: true, tabBar: true }));
 
-    return () =>
-      setDismount((prev) => ({ ...prev, footer: false, tabBar: false }));
+    return () => setDismount((prev) => ({ ...prev, footer: false, tabBar: false }));
   }, [setDismount]);
 
   const handleSubmit = async (e) => {
@@ -21,13 +20,13 @@ const Login = ({ setDismount }) => {
 
     const { email, password } = e.target;
 
-    try{
+    try {
       await signInWithEmailAndPassword(auth, email.value, password.value);
       navigate("/", { replace: true });
-    }catch(e){
+    } catch (e) {
       console.log(e);
     }
-  }
+  };
 
   return (
     <section className="login">
@@ -37,12 +36,12 @@ const Login = ({ setDismount }) => {
         <form onSubmit={handleSubmit}>
           <div className="formGroup">
             <label htmlFor="email">Email</label>
-            <input type="email" name="email" />
+            <input type="email" name="email" placeholder="ejemplo@gmail.com" />
           </div>
 
           <div className="formGroup">
             <label htmlFor="password">Contraseña</label>
-            <input type="password" name="password" />
+            <input type="password" name="password" placeholder="***********" />
           </div>
 
           <Link to="/" className="recoverPasswordLink">
@@ -54,7 +53,7 @@ const Login = ({ setDismount }) => {
           </button>
         </form>
 
-        <SocialNetworkLogin/>
+        <SocialNetworkLogin />
 
         <div className="newUser">
           <p className="newText">¿Aún no tienes cuenta?</p>
