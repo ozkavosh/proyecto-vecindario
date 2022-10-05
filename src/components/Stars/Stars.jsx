@@ -1,15 +1,19 @@
 import { FaStar, FaRegStar } from "react-icons/fa";
 import "./Stars.css";
 
-const Stars = ({ amount, onClick }) => {
+const Stars = ({ ammount, onClick }) => {
   return (
     <div className="stars">
-      {[...Array(5)].map((_, i) =>
-        i < amount ? (
-          <FaStar key={i} onClick={onClick ? () => onClick(i+1) : null} />
-        ) : (
-          <FaRegStar key={i} onClick={onClick ? () => onClick(i+1) : null} />
+      {ammount ? (
+        [...Array(5)].map((_, i) =>
+          i < ammount ? (
+            <FaStar key={i} onClick={onClick ? () => onClick(i + 1) : null} />
+          ) : (
+            <FaRegStar key={i} onClick={onClick ? () => onClick(i + 1) : null} />
+          )
         )
+      ) : (
+        <p>S/D</p>
       )}
     </div>
   );

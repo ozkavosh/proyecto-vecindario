@@ -25,20 +25,15 @@ const Property = ({ data }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(data.reviews?.length){
+    if (data.reviews?.length) {
       (async () => {
         try {
           const request = await getDocs(
-            query(
-              collection(db, "reviews"),
-              where("__name__", "in", data.reviews)
-            )
+            query(collection(db, "reviews"), where("__name__", "in", data.reviews))
           );
           //Sort reviews higher to lower by rating
           setPropertyReviews(
-            request.docs
-              .map((doc) => doc.data())
-              .sort((a, b) => b.rating - a.rating)
+            request.docs.map((doc) => doc.data()).sort((a, b) => b.rating - a.rating)
           );
         } catch (e) {
           console.log(e);
@@ -68,7 +63,7 @@ const Property = ({ data }) => {
             <FaRegCheckCircle className="ownerCheck" />
           </div>
 
-          <Stars amount={data.rating} />
+          <Stars ammount={data.rating} />
         </div>
 
         <Swiper
@@ -109,10 +104,7 @@ const Property = ({ data }) => {
               : data.description}
           </p>
           <div className="reviews">
-            <div
-              className="propertyReviewsButton retract"
-              onClick={handleClick}
-            >
+            <div className="propertyReviewsButton retract" onClick={handleClick}>
               <BiMessageEdit />
               Reseñas
               <FaChevronDown className="dropdown" />
