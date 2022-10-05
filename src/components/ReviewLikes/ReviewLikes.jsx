@@ -1,59 +1,54 @@
-import { doc, onSnapshot, updateDoc } from "firebase/firestore";
+import { doc, increment, onSnapshot, updateDoc } from "firebase/firestore";
 import { useEffect, useRef, useState } from "react";
 import { FaRegThumbsDown, FaRegThumbsUp, FaThumbsDown, FaThumbsUp } from "react-icons/fa";
 import { db } from "../../firebase/config";
 import "./ReviewLikes.css";
 
 const ReviewLikes = ({ rid }) => {
-  const [likeCount, setLikeCount] = useState(null);
   const reviewRating = useRef(null);
+  const [ likeCount, setLikeCount ] = useState(0); 
 
   useEffect(() => {
-    const unsub = onSnapshot(doc(db, "reviews", rid), async (doc) => {
-      setLikeCount(Number(doc.data().likeCount));
-    });
+    if(rid){
+      const unsub = onSnapshot(doc(db, "reviews", rid), (document) => {
+        setLikeCount(document.data().likeCount);
+      })
 
-    return () => unsub();
-  }, [rid]);
+      return () => unsub()
+    }
+  }, [rid])
 
   const rateReview = (type) => {
     if (type === "like") {
       if (reviewRating.current.classList.contains("neutral")) {
         reviewRating.current.classList.remove("neutral");
         reviewRating.current.classList.add("liked");
-        setLikeCount(likeCount + 1);
       } else if (reviewRating.current.classList.contains("liked")) {
         reviewRating.current.classList.add("neutral");
         reviewRating.current.classList.remove("liked");
-        setLikeCount(likeCount - 1);
       } else if (reviewRating.current.classList.contains("disliked")) {
         reviewRating.current.classList.remove("disliked");
         reviewRating.current.classList.add("liked");
-        setLikeCount(likeCount + 1);
       }
     } else if (type === "dislike") {
       if (reviewRating.current.classList.contains("neutral")) {
         reviewRating.current.classList.remove("neutral");
         reviewRating.current.classList.add("disliked");
-        setLikeCount(likeCount - 1);
       } else if (reviewRating.current.classList.contains("disliked")) {
         reviewRating.current.classList.add("neutral");
         reviewRating.current.classList.remove("disliked");
-        setLikeCount(likeCount + 1);
       } else if (reviewRating.current.classList.contains("liked")) {
         reviewRating.current.classList.add("disliked");
         reviewRating.current.classList.remove("liked");
-        setLikeCount(likeCount - 1);
       }
     }
-    updateDB();
+    updateDB(type);
   };
 
-  const updateDB = async () => {
-    //TODO: like count doesnt add correctly
+  const updateDB = async (type) => {
     const reviewRef = doc(db, "reviews", rid);
     await updateDoc(reviewRef, {
-      likeCount: likeCount,
+      likeCount: increment( type === "like" ? 1 : -1 ),
     });
   };
 
