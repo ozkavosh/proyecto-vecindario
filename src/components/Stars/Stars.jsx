@@ -2,7 +2,6 @@ import { FaStar, FaRegStar } from "react-icons/fa";
 import "./Stars.css";
 
 const Stars = ({ ammount, onClick }) => {
-  console.log(ammount);
   return (
     <div className="stars">
       {ammount ? (

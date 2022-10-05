@@ -66,6 +66,8 @@ const AddReview = forwardRef(({ pid }, ref) => {
     }
   };
 
+  //TODO: disable send button while promise isnt fullfilled
+
   return (
     <form ref={ref} className="addReview" onSubmit={handleSubmit}>
       <div className="reviewHeader">

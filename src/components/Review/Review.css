@@ -1,53 +1,53 @@
-.review{
+.review {
     padding: .4em 1em;
     margin: 0.5em 0;
     border: 1px solid #E9E9E9;
     border-radius: 4px;
 }
 
-.review .reviewHeader{
+.review .reviewHeader {
     display: flex;
     justify-content: space-between;
 }
 
-.reviewHeader .stars{
+.reviewHeader .stars {
     font-size: 10px;
 }
 
-.review .reviewHeader .reviewer{
+.review .reviewHeader .reviewer {
     display: flex;
     align-items: center;
     gap: 0.3em;
 }
 
-.reviewer .reviewerName{
+.reviewer .reviewerName {
     font-size: 10px;
     font-weight: 400;
 }
 
-.reviewer .reviewerCheck{
+.reviewer .reviewerCheck {
     font-size: 10px;
 }
 
-.review .reviewBody{
+.review .reviewBody {
     box-sizing: border-box;
     margin-top: 0.5em;
     font-size: 10px;
 }
 
-.review .reviewFooter{
+.review .reviewFooter {
     margin-top: 0.5em;
     display: flex;
     justify-content: space-between;
 }
 
-.review .reviewInfo{
+.review .reviewInfo {
     display: flex;
     align-items: center;
     gap: .5em;
 }
 
-.review .reviewInfo .reviewTag{
+.review .reviewInfo .reviewTag {
     display: flex;
     align-items: center;
     font-size: 9px;
@@ -57,14 +57,18 @@
     border-radius: 2px;
 }
 
-.review .reviewInfo .reviewDate{
+.review .reviewInfo .reviewDate {
     display: flex;
     align-items: center;
     font-size: 8px;
     font-weight: light;
 }
 
-.review .reviewActions{
+.review .reviewActions {
     display: flex;
-    gap: .4em; 
+    gap: .4em;
+}
+
+.review .reviewActions .review-rating {
+    font-size: 0.6rem;
 }
