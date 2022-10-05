@@ -4,3 +4,56 @@
     align-items: center;
     column-gap: 0.3rem;
 }
+
+.review-likes .review-rating {
+    font-size: 0.6rem;
+    user-select: none;
+}
+
+.review-likes>button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+}
+
+.review-likes.neutral .outlined {
+    display: block;
+}
+
+.review-likes.neutral .filled {
+    display: none;
+}
+
+.review-likes.liked .dislike .outlined {
+    display: block;
+}
+
+.review-likes.liked .dislike .filled {
+    display: none;
+}
+
+.review-likes.liked .like .outlined {
+    display: none;
+}
+
+.review-likes.liked .like .filled {
+    display: block;
+}
+
+.review-likes.disliked .dislike .outlined {
+    display: none;
+}
+
+.review-likes.disliked .dislike .filled {
+    display: block;
+}
+
+.review-likes.disliked .like .outlined {
+    display: block;
+}
+
+.review-likes.disliked .like .filled {
+    display: none;
+}

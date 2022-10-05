@@ -33,7 +33,7 @@ const Review = ({ data }) => {
           {data.id && data.reviewer?.uid === currentUser?.uid ? (
             <RemoveReviewButton rid={data.id} pid={data.property} />
           ) : (
-            data.reviewer?.uid !== currentUser?.uid && <ReviewLikes />
+            data.reviewer?.uid !== currentUser?.uid && <ReviewLikes rid={data.id} />
           )}
         </div>
       </div>

@@ -68,7 +68,3 @@
     display: flex;
     gap: .4em;
 }
-
-.review .reviewActions .review-rating {
-    font-size: 0.6rem;
-}
