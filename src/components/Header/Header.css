@@ -11,7 +11,7 @@ header {
     align-items: flex-end;
     box-sizing: border-box;
     padding: 0.75em 1em;
-    z-index: 999;
+    z-index: 10000;
 }
 
 .header-cont {
@@ -46,17 +46,21 @@ header .menu {
 
 header .menu-links {
     position: absolute;
-    top: 75px;
-    right: 0;
+    top: 0;
     left: 100%;
     width: 100vw;
-    height: calc(100vh - 150px);
-    /* TODO: fix this color */
-    background-color: rgb(206, 206, 206);
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.35);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+}
+
+header .menu-links>div {
+    background-color: var(--dark-color);
+    width: 75vw;
+    height: 100%;
     box-sizing: border-box;
     padding: 1em;
     padding-top: 2.5em;
@@ -70,6 +74,9 @@ header .menu-links a {
 }
 
 header .menu-links button {
+    color: var(--light-color);
+    font-family: var(--main-font);
+    font-size: 1em;
     display: flex;
     align-items: center;
     cursor: pointer;
