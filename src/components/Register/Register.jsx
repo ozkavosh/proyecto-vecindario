@@ -1,10 +1,10 @@
+import "./Register.css";
 import { useEffect } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../firebase/config";
 import { useNavigate } from "react-router-dom";
 import SocialNetworkLogin from "../SocialNetworkLogin/SocialNetworkLogin";
 import createUserDocs from "../../utils/createUserDocs";
-import "./Register.css";
 
 const Register = ({ setDismount }) => {
   const navigate = useNavigate();

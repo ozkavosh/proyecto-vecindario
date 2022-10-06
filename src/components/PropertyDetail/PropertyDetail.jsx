@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef, useCallback } from "react";
 import "./PropertyDetail.css";
+import { useState, useEffect, useRef, useCallback } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import {

@@ -1,9 +1,9 @@
+import "./Home.css";
 import { FaSearch } from "react-icons/fa";
 import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "./Home.css";
 
 const Home = () => {
   return (

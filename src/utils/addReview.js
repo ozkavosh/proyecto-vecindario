@@ -19,6 +19,8 @@ export const addReview = async (
     const request = await addDoc(collection(db, "reviews"), {
       ...newReview,
       createdAt: serverTimestamp(),
+      likedBy: [],
+      dislikedBy: [],
       reviewer: {
         displayName: currentUser.displayName,
         uid: currentUser.uid,

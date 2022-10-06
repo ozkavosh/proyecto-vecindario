@@ -10,7 +10,6 @@ import {
   FaChevronDown,
 } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import { BiMessageEdit } from "react-icons/bi";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import Review from "../Review/Review";
@@ -33,7 +32,7 @@ const Property = ({ data }) => {
           );
           //Sort reviews higher to lower by rating
           setPropertyReviews(
-            request.docs.map((doc) => doc.data()).sort((a, b) => b.rating - a.rating)
+            request.docs.map((doc) => ({...doc.data(), id: doc.id})).sort((a, b) => b.rating - a.rating)
           );
         } catch (e) {
           console.log(e);

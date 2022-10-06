@@ -1,5 +1,5 @@
-import Property from "../Property/Property";
 import "./FavoriteList.css";
+import Property from "../Property/Property";
 
 const FavoriteList = ({ data }) => {
   return (

@@ -1,7 +1,7 @@
+import "./ProfileReviewsList.css";
 import { useState, useEffect } from "react";
 import ProfileReview from "../ProfileReview/ProfileReview";
 import { useAuthContext } from "../../context/authContext";
-import "./ProfileReviewsList.css";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../firebase/config";
 

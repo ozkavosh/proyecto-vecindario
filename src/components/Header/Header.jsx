@@ -14,7 +14,6 @@ const Header = () => {
           <FaChevronLeft />
         </button>
         <Link to="/" className="header-item">
-          {/* TODO: add logo image */}
           <Logo/>
         </Link>
         <Menu />

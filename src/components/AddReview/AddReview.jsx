@@ -1,8 +1,8 @@
+import "./AddReview.css";
 import { forwardRef, useReducer, useState } from "react";
 import { useAuthContext } from "../../context/authContext";
 import Stars from "../Stars/Stars";
 import { FaRegUserCircle, FaRegCheckCircle } from "react-icons/fa";
-import "./AddReview.css";
 import ReviewTagSelect from "../ReviewTagSelect/ReviewTagSelect";
 import newReviewReducer from "../../reducers/newReview";
 import { addReview } from "../../utils/addReview";

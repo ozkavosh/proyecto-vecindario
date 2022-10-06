@@ -1,6 +1,6 @@
-export const initialState = { rating: 1, tag: null, review: "" };
+const initialState = { rating: 1, tag: null, review: "" };
 
-export const reducer = (state, action) => {
+const reducer = (state, action) => {
   switch (action.type) {
     case "setRating":
       return { ...state, rating: action.payload };

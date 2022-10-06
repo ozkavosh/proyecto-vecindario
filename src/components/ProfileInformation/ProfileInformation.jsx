@@ -1,5 +1,5 @@
-import { FaRegEdit, FaUserCircle } from "react-icons/fa";
 import "./ProfileInformation.css";
+import { FaUserCircle } from "react-icons/fa";
 import { useAuthContext } from "../../context/authContext";
 
 const ProfileInformation = () => {

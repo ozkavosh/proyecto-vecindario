@@ -1,9 +1,9 @@
+import "./SocialNetworkLogin.css";
 import { FaGoogle, FaFacebook, FaApple } from "react-icons/fa";
 import createUserDocs from "../../utils/createUserDocs";
 import { FacebookAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase/config";
-import "./SocialNetworkLogin.css";
 
 const SocialNetworkLogin = () => {
   const navigate = useNavigate();
