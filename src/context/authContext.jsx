@@ -10,36 +10,45 @@ const useAuthContext = () => {
 };
 
 const AuthContextProvider = ({ children }) => {
-  const [ currentUser, setCurrentUser ] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
 
+  //Get user real time status
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
-    })
+    });
 
     return () => {
       unsub();
-    }
+    };
   }, []);
 
+  //Get user favorites and reviews, update currentUser on success
   useEffect(() => {
-    if(currentUser?.uid){
-      const unsub = onSnapshot(doc(db, "users", currentUser.uid), async (document) => {
-        if(!document.data().favorites && !document.data().reviews){
-          setCurrentUser(prev => ({...prev, favorites: [], reviews: []}))
-        }else{
-          setCurrentUser(prev => ({...prev, favorites: document.data().favorites, reviews: document.data().reviews}))
+    if (currentUser?.uid) {
+      const unsub = onSnapshot(
+        doc(db, "users", currentUser.uid),
+        async (document) => {
+          if (!document.data().favorites && !document.data().reviews) {
+            setCurrentUser((prev) => ({ ...prev, favorites: [], reviews: [] }));
+          } else {
+            setCurrentUser((prev) => ({
+              ...prev,
+              favorites: document.data().favorites,
+              reviews: document.data().reviews,
+            }));
+          }
         }
-      });
-  
+      );
+
       return () => {
         unsub();
-      }
+      };
     }
   }, [currentUser?.uid]);
 
   return (
-    <AuthContext.Provider value={{ currentUser, setCurrentUser}}>
+    <AuthContext.Provider value={{ currentUser, setCurrentUser }}>
       {children}
     </AuthContext.Provider>
   );

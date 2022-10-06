@@ -1,72 +1,30 @@
-import { forwardRef, useReducer } from "react";
+import { forwardRef, useReducer, useState } from "react";
 import { useAuthContext } from "../../context/authContext";
 import Stars from "../Stars/Stars";
 import { FaRegUserCircle, FaRegCheckCircle } from "react-icons/fa";
 import "./AddReview.css";
 import ReviewTagSelect from "../ReviewTagSelect/ReviewTagSelect";
-import {
-  addDoc,
-  arrayUnion,
-  collection,
-  doc,
-  serverTimestamp,
-  updateDoc,
-} from "firebase/firestore";
-import { db } from "../../firebase/config";
-import { updatePropertyRating } from "../../utils/updatePropertyRating";
+import newReviewReducer from "../../reducers/newReview";
+import { addReview } from "../../utils/addReview";
 
 const AddReview = forwardRef(({ pid }, ref) => {
   const { currentUser } = useAuthContext();
+  const [loading, setLoading] = useState(false);
   const [newReview, dispatchNewReview] = useReducer(
-    (state, action) => {
-      switch (action.type) {
-        case "setRating":
-          return { ...state, rating: action.payload };
-        case "setTag":
-          return { ...state, tag: action.payload };
-        case "setReview":
-          return { ...state, review: action.payload };
-        case "clear":
-          return { review: "", tag: null, rating: 1 };
-        default:
-          return state;
-      }
-    },
-    { rating: 1, tag: null, review: "" }
+    newReviewReducer.reducer,
+    newReviewReducer.initialState
   );
 
   const handleStarClick = (clickedStar) => {
     dispatchNewReview({ type: "setRating", payload: clickedStar });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const request = await addDoc(collection(db, "reviews"), {
-        ...newReview,
-        createdAt: serverTimestamp(),
-        reviewer: {
-          displayName: currentUser.displayName,
-          uid: currentUser.uid,
-          photoURL: currentUser.photoURL || "",
-        },
-        property: pid,
-      });
-
-      const newId = request.id;
-
-      await updateDoc(doc(db, "properties", pid), { reviews: arrayUnion(newId) });
-      await updateDoc(doc(db, "users", currentUser.uid), { reviews: arrayUnion(newId) });
-      await updatePropertyRating(pid);
-
-      dispatchNewReview({ type: "clear" });
-    } catch (e) {
-      console.log(e);
-    }
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+    await addReview(newReview, dispatchNewReview, currentUser, pid);
+    setLoading(false);
   };
-
-  //TODO: disable send button while promise isnt fullfilled
 
   return (
     <form ref={ref} className="addReview" onSubmit={handleSubmit}>
@@ -86,7 +44,9 @@ const AddReview = forwardRef(({ pid }, ref) => {
         name="reviewContent"
         className="reviewContent"
         placeholder="Describe tu experiencia"
-        onChange={(e) => dispatchNewReview({ type: "setReview", payload: e.target.value })}
+        onChange={(e) =>
+          dispatchNewReview({ type: "setReview", payload: e.target.value })
+        }
         value={newReview.review}
       ></textarea>
 
@@ -99,7 +59,7 @@ const AddReview = forwardRef(({ pid }, ref) => {
         <button
           type="submit"
           className="addReviewBtn"
-          disabled={!newReview.tag || !newReview.rating || !newReview.review}
+          disabled={!newReview.tag || !newReview.rating || !newReview.review || loading}
         >
           Enviar
         </button>

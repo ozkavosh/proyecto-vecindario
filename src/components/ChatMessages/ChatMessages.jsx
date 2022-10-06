@@ -1,12 +1,12 @@
+import "./ChatMessages.css";
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { useChatContext } from "../../context/chatContext";
 import { useAuthContext } from "../../context/authContext";
-import { chatMessageFormat } from "../../utils/dateFormatters";
-import "./ChatMessages.css";
 import { db } from "../../firebase/config";
 import ChatInput from "../ChatInput/ChatInput";
-import { useNavigate } from "react-router-dom";
+import ChatMessage from "../ChatMessage/ChatMessage";
 
 const ChatMessages = () => {
   const { currentUser } = useAuthContext();
@@ -16,7 +16,7 @@ const ChatMessages = () => {
   const messageRef = useRef();
 
   useEffect(() => {
-      messageRef.current?.scrollIntoView({ behavior: "smooth" });
+    messageRef.current?.scrollIntoView({ behavior: "smooth" });
   });
 
   useEffect(() => {
@@ -63,18 +63,7 @@ const ChatMessages = () => {
 
         <div className="messagesContainer">
           {messages.map((message) => (
-            <div
-              ref={messageRef}
-              key={message.id}
-              className={
-                message.senderId === currentUser.uid ? "message own" : "message"
-              }
-            >
-              <p className="text" key={message.id}>
-                {message.text}
-              </p>
-              <p className="date">{chatMessageFormat(message.date.toDate())}</p>
-            </div>
+            <ChatMessage key={message.id} message={message} ref={messageRef}/>
           ))}
         </div>
 
