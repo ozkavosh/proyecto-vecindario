@@ -8,9 +8,10 @@ import {
   FaPenSquare,
   FaMapMarkerAlt,
   FaChevronDown,
+  FaCommentDots,
+  FaRegCommentDots,
 } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import { BiMessageEdit } from "react-icons/bi";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import Review from "../Review/Review";
@@ -83,13 +84,18 @@ const Property = ({ data }) => {
             <FavoriteButton pid={data.id} />
             <FaRegPaperPlane />
           </div>
-          <button
-            type="button"
-            className="addReviewBtn"
-            onClick={(e) => handleNewReview(e, data.id)}
-          >
-            <FaPenSquare /> Nueva reseña
-          </button>
+          <div className="actionButtons">
+            <button type="button" className="addReviewBtn">
+              <FaRegCommentDots /> Chat
+            </button>
+            <button
+              type="button"
+              className="addReviewBtn"
+              onClick={(e) => handleNewReview(e, data.id)}
+            >
+              <FaPenSquare /> Nueva reseña
+            </button>
+          </div>
         </div>
 
         <div className="propertyInfo">

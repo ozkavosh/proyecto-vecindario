@@ -19,6 +19,8 @@ const Menu = () => {
   const { currentUser } = useAuthContext();
   const navigate = useNavigate();
 
+  let logo = "https://i.postimg.cc/fytWH5zH/logo-menu.png";
+
   const handleAccount = () => {
     if (!currentUser) return navigate("/login", { replace: true });
 
@@ -92,7 +94,8 @@ const Menu = () => {
       <nav className="menu-links" ref={navMenu}>
         {/* TODO: add proper icons */}
         <div>
-          <Link to="/login">
+          <img src={logo} alt="" />
+          <Link to="/login" id="login">
             <button onClick={handleClick}>
               <FaSignInAlt /> Regístrate / Inicia sesión
             </button>

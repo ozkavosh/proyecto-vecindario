@@ -61,7 +61,16 @@ const ChatList = () => {
                     <></>
                   )}
                   {chat[1].userInfo.photoURL ? (
-                    <img src={chat[1].userInfo.photoURL} alt="img" className="profile-image" />
+                    <img
+                      src={chat[1].userInfo.photoURL}
+                      alt={currentUser?.displayName
+                        ?.toUpperCase()
+                        .split(" ")
+                        .map((n) => n[0])
+                        .slice(0, 2)
+                        .join("")}
+                      className="profile-image"
+                    />
                   ) : (
                     <div className="not-found">
                       {chat[1].userInfo.displayName
@@ -83,7 +92,9 @@ const ChatList = () => {
                   </small>
                 </div>
               </div>
-              <p className="time end-slot">{chat[1].date && chatListFormat(chat[1].date.toDate())}</p>
+              <p className="time end-slot">
+                {chat[1].date && chatListFormat(chat[1].date.toDate())}
+              </p>
             </div>
           </div>
         ))}

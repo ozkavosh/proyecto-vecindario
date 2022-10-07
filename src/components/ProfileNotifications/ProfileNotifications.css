@@ -14,10 +14,11 @@
     column-gap: 0.875rem;
     padding-top: 2rem;
     margin-bottom: 0.625rem;
+    color: var(--primary-color);
 }
 
 .profile-notifications hr {
     border: none;
     height: 0;
-    border-top: 2px solid var(--neutral-color);
+    border-top: 3px solid var(--primary-color);
 }

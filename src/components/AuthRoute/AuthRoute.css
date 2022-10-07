@@ -1,4 +1,4 @@
-.auth-route{
+.auth-route {
     height: var(--content-height);
     width: 85%;
     display: flex;
@@ -7,18 +7,19 @@
     margin: auto;
 }
 
-.auth-route > .message{
+.auth-route>.message {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.auth-route > .message svg {
+.auth-route>.message svg {
     width: 1.500em;
     height: auto;
+    color: var(--secondary-color);
 }
 
-.auth-route > .message p {
+.auth-route>.message p {
     text-align: center;
     width: 70%;
     font-weight: 400;
@@ -26,14 +27,16 @@
     margin-bottom: .6em;
 }
 
-.auth-route > .message p strong {
+.auth-route>.message p strong {
     font-weight: 600;
 }
 
-.auth-route > .message a button{
-    background-color: #C9C9C9;
+.auth-route>.message a button {
+    background-color: var(--primary-color);
     padding: .5em 1em;
     border: none;
     outline: none;
-    border-radius: 10px;
+    border-radius: 20px;
+    font-family: var(--main-font);
+    color: var(--light-color);
 }

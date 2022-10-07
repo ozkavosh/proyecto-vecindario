@@ -1,11 +1,12 @@
-.profile-reviews .review{
+.profile-reviews .review {
     padding: 0;
     border: none;
 }
 
 .profile-reviews .review h3 {
-    font-weight: 600;
-    font-size: 0.75rem;
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--secondary-color);
     display: flex;
     column-gap: 0.625rem;
     align-items: center;
@@ -14,8 +15,9 @@
 }
 
 .profile-reviews .review .preview {
-    background-color: var(--neutral-color);
+    background-color: var(--primary-color);
     border-radius: 20px;
+    color: var(--light-color);
     display: flex;
     justify-content: space-between;
     align-items: stretch;
@@ -49,5 +51,6 @@
 
 .profile-reviews .review .action svg {
     width: 80%;
+    color: var(--light-color);
     height: auto;
 }

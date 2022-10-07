@@ -39,13 +39,18 @@ const Chat = () => {
   return (
     <section className="chat">
       <h1 className="hide">Chat</h1>
-      <div className="user container">
+      <div className="user own container">
         <div className="user-info">
           <div className="profile-image">
             {currentUser.photoURL ? (
               <img
-                src={currentUser.photoURL}
-                alt="img"
+                src={currentUser?.photoURL}
+                alt={currentUser?.displayName
+                  ?.toUpperCase()
+                  .split(" ")
+                  .map((n) => n[0])
+                  .slice(0, 2)
+                  .join("")}
                 className="profile-image"
               />
             ) : (
@@ -65,15 +70,15 @@ const Chat = () => {
         </div>
       </div>
       <div className="searchbar container">
+        <button>
+          <FaSearch />
+        </button>
         <input
           type="search"
           value={userQuery}
           onChange={(e) => setUserQuery(e.target.value)}
           placeholder="¿Con quién deseas hablar? ..."
         />
-        <button>
-          <FaSearch />
-        </button>
       </div>
 
       {userResults && (
@@ -84,8 +89,6 @@ const Chat = () => {
         />
       )}
 
-      <h2 className="container">Recientes</h2>
-      <hr />
       <ChatList />
     </section>
   );
