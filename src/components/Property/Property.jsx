@@ -10,6 +10,8 @@ import {
   FaChevronDown,
 } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import Review from "../Review/Review";
@@ -28,11 +30,16 @@ const Property = ({ data }) => {
       (async () => {
         try {
           const request = await getDocs(
-            query(collection(db, "reviews"), where("__name__", "in", data.reviews))
+            query(
+              collection(db, "reviews"),
+              where("__name__", "in", data.reviews)
+            )
           );
           //Sort reviews higher to lower by rating
           setPropertyReviews(
-            request.docs.map((doc) => ({...doc.data(), id: doc.id})).sort((a, b) => b.rating - a.rating)
+            request.docs
+              .map((doc) => ({ ...doc.data(), id: doc.id }))
+              .sort((a, b) => b.rating - a.rating)
           );
         } catch (e) {
           console.log(e);
@@ -56,13 +63,21 @@ const Property = ({ data }) => {
     <Link className="propertyLink" to={`/inmueble/${data.id}`}>
       <div className="property">
         <div className="propertyHeader">
-          <div className="propertyOwner">
-            <FaRegUserCircle className="ownerImg" />
-            <h4 className="ownerName">{data.owner.displayName}</h4>
-            <FaRegCheckCircle className="ownerCheck" />
-          </div>
+          {data.owner ? (
+            <div className="propertyOwner">
+              <FaRegUserCircle className="ownerImg" />
+              <h4 className="ownerName">{data.owner.displayName}</h4>
+              <FaRegCheckCircle className="ownerCheck" />
+            </div>
+          ) : (
+            <div className="propertyOwner">
+              <Skeleton circle height={12} width={12} />
+              <Skeleton height={12} width={65} />
+              <Skeleton circle height={12} width={12} />
+            </div>
+          )}
 
-          <Stars ammount={data.rating} />
+          <Stars ammount={data.rating || 0} />
         </div>
 
         <Swiper
@@ -78,32 +93,52 @@ const Property = ({ data }) => {
         </Swiper>
 
         <div className="propertyActions">
-          <div className="propertyOptions">
-            <FavoriteButton pid={data.id} />
-            <FaRegPaperPlane />
-          </div>
-          <button
-            type="button"
-            className="addReviewBtn"
-            onClick={(e) => handleNewReview(e, data.id)}
-          >
-            <FaPenSquare /> Nueva reseña
-          </button>
+          {data.id ? (
+            <div className="propertyOptions">
+              <FavoriteButton pid={data.id} />
+              <FaRegPaperPlane />
+            </div>
+          ) : (
+            <div className="propertyOptions">
+              <Skeleton circle height={24} width={24} />
+              <Skeleton circle height={24} width={24} />
+            </div>
+          )}
+          {data.id ? (
+            <button
+              type="button"
+              className="addReviewBtn"
+              onClick={(e) => handleNewReview(e, data.id)}
+            >
+              <FaPenSquare /> Nueva reseña
+            </button>
+          ) : (
+            <Skeleton width={45} />
+          )}
         </div>
 
         <div className="propertyInfo">
-          <h3 className="propertyType">{data.type.toUpperCase()}</h3>
+          <h3 className="propertyType">
+            {data.type?.toUpperCase() || <Skeleton width={165} />}
+          </h3>
           <div className="propertyLocation">
             <FaMapMarkerAlt />
-            <p>{data.location.toString()}</p>
+            <p>{data.location?.toString() || <Skeleton width={165} />}</p>
           </div>
-          <p className="propertyDescription">
-            {data.description.length > 240
-              ? data.description.slice(0, 240) + "..."
-              : data.description}
-          </p>
+          {data.description ? (
+            <p className="propertyDescription">
+              {data.description.length > 240
+                ? data.description.slice(0, 240) + "..."
+                : data.description}
+            </p>
+          ) : (
+            <Skeleton count={5} />
+          )}
           <div className="reviews">
-            <div className="propertyReviewsButton retract" onClick={handleClick}>
+            <div
+              className="propertyReviewsButton retract"
+              onClick={handleClick}
+            >
               Reseñas
               <FaChevronDown className="dropdown" />
             </div>

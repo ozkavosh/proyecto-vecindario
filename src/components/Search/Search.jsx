@@ -9,7 +9,7 @@ import SearchFilters from "../SearchFilters/SearchFilters";
 import AppliedFilters from "../AppliedFilters/AppliedFilters";
 
 const Search = () => {
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState([{}, {}]);
   const [searchQuery, dispatch] = useReducer(
     (state, action) => {
       switch (action.type) {

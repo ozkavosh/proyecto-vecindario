@@ -5,8 +5,8 @@ import Property from "../Property/Property";
 const PropertyListContainer = ({ data }) => {
   return (
     <div className="propertyListContainer">
-      {data.map((property) => (
-        <Property key={property.id} data={property} />
+      {data.map((property, id) => (
+        <Property key={property.id || id} data={property} />
       ))}
     </div>
   );
