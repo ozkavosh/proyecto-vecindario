@@ -4,15 +4,17 @@
     align-items: center;
     height: 4em;
     width: 100%;
-    background-color: var(--neutral-color);
+    background-color: var(--light-color);
     border-radius: 5px;
     padding: 0.5em 0;
     color: initial;
     text-decoration: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
 }
 
 .profile-notifications .notification .type {
-    border-right: 1px solid var(--dark-color);
+    border-right: 1px solid var(--primary-color);
     width: 3.75em;
     flex-shrink: 0;
     aspect-ratio: 1/1;
@@ -24,5 +26,10 @@
 
 .profile-notifications .notification .type svg {
     width: 40%;
+    color: var(--primary-color);
     height: auto;
+}
+
+.profile-notifications .notification strong {
+    font-weight: 700;
 }

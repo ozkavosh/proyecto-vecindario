@@ -19,6 +19,8 @@ const Menu = () => {
   const { currentUser } = useAuthContext();
   const navigate = useNavigate();
 
+  let logo = "https://i.postimg.cc/fytWH5zH/logo-menu.png";
+
   const handleAccount = () => {
     if (!currentUser) return navigate("/login", { replace: true });
 
@@ -91,52 +93,55 @@ const Menu = () => {
       </button>
       <nav className="menu-links" ref={navMenu}>
         {/* TODO: add proper icons */}
-        <Link to="/login">
-          <button onClick={handleClick}>
-            <FaSignInAlt /> Regístrate / Inicia sesión
-          </button>
-        </Link>
-        <Link to="">
-          <button onClick={handleClick}>
-            <FaRegListAlt /> ¿Cómo funciona?
-          </button>
-        </Link>
-        <Link to="">
-          <button onClick={handleClick}>
-            <FaRegQuestionCircle /> Preguntas frecuentes
-          </button>
-        </Link>
-        <Link to="">
-          <button onClick={handleClick}>
-            <FaHouseUser /> Soy propietario
-          </button>
-        </Link>
-        <Link to="">
-          <button onClick={handleClick}>
-            <FaInfoCircle /> Ayuda
-          </button>
-        </Link>
-        <Link to="">
-          <button onClick={handleClick}>
-            <FaUsers /> Contáctanos
-          </button>
-        </Link>
-        <Link to="">
-          <button onClick={handleClick}>
-            <FaFileAlt /> Términos y Condiciones
-          </button>
-        </Link>
+        <div>
+          <img src={logo} alt="" />
+          <Link to="/login" id="login">
+            <button onClick={handleClick}>
+              <FaSignInAlt /> Regístrate / Inicia sesión
+            </button>
+          </Link>
+          <Link to="">
+            <button onClick={handleClick}>
+              <FaRegListAlt /> ¿Cómo funciona?
+            </button>
+          </Link>
+          <Link to="">
+            <button onClick={handleClick}>
+              <FaRegQuestionCircle /> Preguntas frecuentes
+            </button>
+          </Link>
+          <Link to="">
+            <button onClick={handleClick}>
+              <FaHouseUser /> Soy propietario
+            </button>
+          </Link>
+          <Link to="">
+            <button onClick={handleClick}>
+              <FaInfoCircle /> Ayuda
+            </button>
+          </Link>
+          <Link to="">
+            <button onClick={handleClick}>
+              <FaUsers /> Contáctanos
+            </button>
+          </Link>
+          <Link to="">
+            <button onClick={handleClick}>
+              <FaFileAlt /> Términos y Condiciones
+            </button>
+          </Link>
 
-        <button
-          id="sign-out"
-          onClick={() => {
-            handleClick();
-            handleAccount();
-          }}
-        >
-          {currentUser ? <FaSignOutAlt /> : <FaSignInAlt />}{" "}
-          {currentUser ? "Cerrar Sesión" : "Iniciar Sesión"}
-        </button>
+          <button
+            id="sign-out"
+            onClick={() => {
+              handleClick();
+              handleAccount();
+            }}
+          >
+            {currentUser ? <FaSignOutAlt /> : <FaSignInAlt />}{" "}
+            {currentUser ? "Cerrar Sesión" : "Iniciar Sesión"}
+          </button>
+        </div>
       </nav>
     </div>
   );

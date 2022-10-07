@@ -8,6 +8,8 @@ import {
   FaPenSquare,
   FaMapMarkerAlt,
   FaChevronDown,
+  FaCommentDots,
+  FaRegCommentDots,
 } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
@@ -105,6 +107,15 @@ const Property = ({ data }) => {
             </div>
           )}
           {data.id ? (
+            <>
+          <div className="propertyOptions">
+            <FavoriteButton pid={data.id} />
+            <FaRegPaperPlane />
+          </div>
+          <div className="actionButtons">
+            <button type="button" className="addReviewBtn">
+              <FaRegCommentDots /> Chat
+            </button>
             <button
               type="button"
               className="addReviewBtn"
@@ -112,6 +123,8 @@ const Property = ({ data }) => {
             >
               <FaPenSquare /> Nueva reseña
             </button>
+            </div>
+            </>
           ) : (
             <Skeleton width={45} />
           )}

@@ -34,7 +34,8 @@
     justify-content: center;
     align-items: center;
     border-radius: 100%;
-    background-color: var(--neutral-color);
+    background-color: var(--light-color);
+    border: 1px solid var(--secondary-color);
     position: relative;
 }
 
@@ -50,13 +51,13 @@
 .chat .user .user-info .profile-image .unread {
     position: absolute;
     z-index: 1;
-    color: var(--neutral-color);
+    color: var(--light-color);
     top: -3%;
     right: -10%;
     width: 1.25rem;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     border-radius: 100%;
     display: flex;
     justify-content: center;
@@ -71,6 +72,10 @@
     row-gap: 0.3em;
     margin-left: 1em;
     flex-grow: 1;
+}
+
+.chat .user.own .user-info .chat-info .name {
+    font-weight: 700;
 }
 
 .chat .user .user-info .chat-info .name {
@@ -94,7 +99,6 @@
 }
 
 .chat>.user .end-slot svg {
-    /* TODO: adjust width with final prototype */
     width: 2em;
     height: auto;
 }
@@ -106,9 +110,10 @@
 .chat .searchbar {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid var(--dark-color);
-    padding-right: 0.25em;
-    padding-bottom: 0.2em;
+    padding: 0.5em;
+    background-color: var(--light-color);
+    border-radius: 40px;
+    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
     margin: 1.5em auto;
 }
 
@@ -119,6 +124,7 @@
     flex-grow: 1;
     font-size: 0.625rem;
     font-family: var(--main-font);
+    outline: none;
 }
 
 .chat .searchbar button {
@@ -146,9 +152,10 @@
 .chatMessages .user-info .profile-image {
     width: 2.5em;
     height: 2.5em;
-    background-color: var(--neutral-color);
+    background-color: var(--light-color);
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid var(--secondary-color);
     border-radius: 100%;
 }

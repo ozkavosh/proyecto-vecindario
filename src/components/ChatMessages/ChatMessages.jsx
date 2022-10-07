@@ -38,36 +38,51 @@ const ChatMessages = () => {
   return (
     data?.chatId && (
       <div className="chatMessages">
-        <div className="chatHeader">
-          <div className="user-info">
-            <div className="profile-image">
-              <div className="not-found">
-                {data.user.displayName
-                  ?.toUpperCase()
-                  .split(" ")
-                  .map((n) => n[0])
-                  .slice(0, 2)
-                  .join("")}
+        <div className="container">
+          <div className="chatHeader">
+            <div className="user-info">
+              <div className="profile-image">
+                <div className="not-found">
+                  {data.user.displayName
+                    ?.toUpperCase()
+                    .split(" ")
+                    .map((n) => n[0])
+                    .slice(0, 2)
+                    .join("")}
+                </div>
+              </div>
+              <div className="user-display">
+                <h2>{data.user.displayName}</h2>
+                <small>{connectedUsers.includes(data.user.uid) ? "En linea" : "Offline"}</small>
               </div>
             </div>
-            <div className="user-display">
-              <h2>{data.user.displayName}</h2>
-              <small>
-                {connectedUsers.includes(data.user.uid)
-                  ? "En linea"
-                  : "Offline"}
-              </small>
-            </div>
           </div>
-        </div>
 
+<<<<<<< HEAD
         <div className="messagesContainer">
           {messages.map((message) => (
             <ChatMessage key={message.id} message={message} ref={messageRef}/>
           ))}
         </div>
+=======
+          <div className="messagesContainer">
+            {messages.map((message) => (
+              <div
+                ref={messageRef}
+                key={message.id}
+                className={message.senderId === currentUser.uid ? "message own" : "message"}
+              >
+                <p className="text" key={message.id}>
+                  {message.text}
+                </p>
+                <p className="date">{chatMessageFormat(message.date.toDate())}</p>
+              </div>
+            ))}
+          </div>
+>>>>>>> master
 
-        <ChatInput />
+          <ChatInput />
+        </div>
       </div>
     )
   );

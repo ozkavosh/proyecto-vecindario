@@ -1,6 +1,10 @@
 import "./Favorites.css";
 import { useState, useEffect } from "react";
+<<<<<<< HEAD
 import { FaHeart, FaSearch } from "react-icons/fa";
+=======
+import { FaHeart, FaList, FaSearch } from "react-icons/fa";
+>>>>>>> master
 import { getDocs, query, collection, where } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import { useAuthContext } from "../../context/authContext";
@@ -15,6 +19,7 @@ const Favorites = () => {
     if (currentUser?.favorites?.length) {
       (async () => {
         const request = await getDocs(
+<<<<<<< HEAD
           query(
             collection(db, "properties"),
             where("__name__", "in", currentUser.favorites)
@@ -24,6 +29,11 @@ const Favorites = () => {
           ...doc.data(),
           id: doc.id,
         }));
+=======
+          query(collection(db, "properties"), where("__name__", "in", currentUser.favorites))
+        );
+        const response = request.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+>>>>>>> master
         setResults(response);
       })();
     } else {
@@ -37,9 +47,12 @@ const Favorites = () => {
         <h1>
           <FaHeart /> Tus favoritos
         </h1>
-        <div className="searchbar">
-          <FaSearch />
-          <input type="text" />
+        <div>
+          <div className="searchbar">
+            <FaSearch />
+            <input type="text" />
+          </div>
+          <FaList />
         </div>
       </div>
       <FavoriteList data={results} />

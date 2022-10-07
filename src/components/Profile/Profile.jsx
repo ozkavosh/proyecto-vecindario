@@ -1,6 +1,6 @@
 import "./Profile.css";
 import { FaChevronRight, FaRegUserCircle, FaRegBell } from "react-icons/fa";
-import { BiMessageEdit, BiLock, BiInfoCircle, BiLogOut } from "react-icons/bi"
+import { BiMessageEdit, BiLock, BiInfoCircle, BiLogOut } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../context/authContext";
 import { signOut } from "firebase/auth";
@@ -15,7 +15,15 @@ const Profile = () => {
     <section className="profile">
       <h1>
         {currentUser.photoURL ? (
-          <img src={currentUser.photoURL} alt="img" />
+          <img
+            src={currentUser.photoURL}
+            alt={currentUser?.displayName
+              ?.toUpperCase()
+              .split(" ")
+              .map((n) => n[0])
+              .slice(0, 2)
+              .join("")}
+          />
         ) : (
           <div className="not-found">
             {currentUser.displayName
@@ -28,7 +36,6 @@ const Profile = () => {
         )}{" "}
         {currentUser.displayName}
       </h1>
-      <hr />
       <section className="navigationList">
         <nav>
           <Link to="/perfil/datos">

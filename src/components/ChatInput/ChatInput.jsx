@@ -1,6 +1,6 @@
 import "./ChatInput.css";
 import { useState } from "react";
-import { FaPaperPlane, FaRegSmile } from "react-icons/fa";
+import { FaArrowAltCircleRight, FaRegSmile } from "react-icons/fa";
 import { useAuthContext } from "../../context/authContext";
 import { useChatContext } from "../../context/chatContext";
 import { sendChatMessage } from "../../utils/sendChatMessage";
@@ -27,7 +27,13 @@ const ChatInput = () => {
         />
         <FaRegSmile />
       </div>
+<<<<<<< HEAD
       <FaPaperPlane onClick={() => sendChatMessage(currentUser, data, text, setText)} />
+=======
+      <button onClick={sendMessage}>
+        <FaArrowAltCircleRight />
+      </button>
+>>>>>>> master
     </div>
   );
 };
