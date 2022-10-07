@@ -11,6 +11,7 @@ import {
   FaChevronDown,
   FaListUl,
   FaTasks,
+  FaRegCommentDots,
 } from "react-icons/fa";
 import { BiMessageEdit } from "react-icons/bi";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -113,9 +114,6 @@ const PropertyDetail = () => {
           <SwiperSlide></SwiperSlide>
           <SwiperSlide></SwiperSlide>
         </Swiper>
-        <div className="chatBtn">
-          <BsChatDots /> Chat
-        </div>
       </div>
 
       <div className="propertyActions">
@@ -123,9 +121,14 @@ const PropertyDetail = () => {
           <FavoriteButton pid={pid} />
           <FaRegPaperPlane />
         </div>
-        <button type="button" className="addReviewBtn" onClick={handleAddReview}>
-          <FaPenSquare /> Nueva reseña
-        </button>
+        <div className="actionButtons">
+          <button type="button" className="addReviewBtn">
+            <FaRegCommentDots /> Chat
+          </button>
+          <button type="button" className="addReviewBtn" onClick={handleAddReview}>
+            <FaPenSquare /> Nueva reseña
+          </button>
+        </div>
       </div>
 
       <div className="propertyInfo">

@@ -1,6 +1,6 @@
 import { arrayUnion, doc, updateDoc, Timestamp, serverTimestamp, getDoc } from "firebase/firestore";
 import { useState } from "react";
-import { FaPaperPlane, FaRegSmile } from "react-icons/fa";
+import { FaArrowAltCircleRight, FaRegSmile } from "react-icons/fa";
 import { useAuthContext } from "../../context/authContext";
 import { useChatContext } from "../../context/chatContext";
 import { db } from "../../firebase/config";
@@ -59,7 +59,9 @@ const ChatInput = () => {
         />
         <FaRegSmile />
       </div>
-      <FaPaperPlane onClick={sendMessage} />
+      <button onClick={sendMessage}>
+        <FaArrowAltCircleRight />
+      </button>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-.addReview .reviewHeader .tagSelect{
+.addReview .reviewHeader .tagSelect {
     position: relative;
     display: flex;
     align-items: center;
@@ -6,7 +6,7 @@
     font-size: 10px;
 }
 
-.addReview .reviewHeader .tagSelect .tagSelectOptions{
+.addReview .reviewHeader .tagSelect .tagSelectOptions {
     box-sizing: border-box;
     width: 100%;
     position: absolute;
@@ -18,12 +18,16 @@
     border-radius: 4px;
 }
 
-.addReview .reviewHeader .tagSelect .tagSelectOptions .tagSelectOption{
+.addReview .reviewHeader .tagSelect .tagSelectOptions .tagSelectOption {
     display: flex;
     justify-content: space-between;
-    align-items:center;
+    align-items: center;
 }
 
-.addReview .reviewHeader .tagSelect .tagSelectOptions .tagSelectOption:not(:last-child){
+.addReview .reviewHeader .tagSelect svg {
+    color: var(--primary-color);
+}
+
+.addReview .reviewHeader .tagSelect .tagSelectOptions .tagSelectOption:not(:last-child) {
     margin-bottom: .4em;
 }

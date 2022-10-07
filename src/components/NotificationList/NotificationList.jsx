@@ -3,11 +3,20 @@ import Notification from "../Notification/Notification";
 import "./NotificationList.css";
 
 const NotificationList = () => {
-  const [notifications, setNotifications] = useState([0, 1, 1, 0, 1, 1, 0, 0, 1]);
+  const [notifications, setNotifications] = useState([
+    { type: "msg", sender: "Darío Peretti" },
+    { type: "like", sender: "María Amenta" },
+    { type: "msg", sender: "Facundo Ruiz" },
+    { type: "like", sender: "Leandro Díaz" },
+    { type: "msg", sender: "Juana Silvera" },
+    { type: "like", sender: "Germán Lizz" },
+    { type: "msg", sender: "María Spositto" },
+  ]);
+
   return (
     <div className="notification-list">
       {notifications.map((noti, i) => (
-        <Notification version={noti} key={noti[i]} />
+        <Notification type={noti.type} sender={noti.sender} key={noti[i]} />
       ))}
     </div>
   );

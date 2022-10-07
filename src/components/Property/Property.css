@@ -72,6 +72,12 @@
     font-size: 18px;
 }
 
+.propertyActions .actionButtons {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5em;
+}
+
 .propertyActions .addReviewBtn {
     display: flex;
     align-items: center;
