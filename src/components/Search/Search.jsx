@@ -52,7 +52,6 @@ const Search = () => {
   }, [searchQuery.orderBy]);
 
   const searchWithQuery = useCallback(async () => {
-    console.log(searchQuery.orderBy, searchQuery.filter);
     try {
       let q;
 

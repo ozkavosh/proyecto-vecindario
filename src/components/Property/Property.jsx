@@ -19,7 +19,7 @@ import { Navigation } from "swiper";
 import Review from "../Review/Review";
 import Stars from "../Stars/Stars";
 import { useEffect, useState } from "react";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, limit, query, where } from "firebase/firestore";
 import { createChatWithUser } from "../../utils/createChatWithUser";
 import { db } from "../../firebase/config";
 import { useChatContext } from "../../context/chatContext";
@@ -40,7 +40,8 @@ const Property = ({ data }) => {
           const request = await getDocs(
             query(
               collection(db, "reviews"),
-              where("__name__", "in", data.reviews)
+              where("__name__", "in", data.reviews),
+              limit(3)
             )
           );
           //Sort reviews higher to lower by rating
@@ -106,7 +107,11 @@ const Property = ({ data }) => {
           className="propertySlider"
         >
           {data?.images ? (
-            data.images.map((image,id) => <SwiperSlide> <img src={image} alt={`property${id}`} /> </SwiperSlide>)
+            data.images.map((image, id) => (
+              <SwiperSlide key={id}>
+                <img src={image} alt={`property${id}`} />
+              </SwiperSlide>
+            ))
           ) : (
             <>
               <SwiperSlide></SwiperSlide>
@@ -193,13 +198,9 @@ const Property = ({ data }) => {
             <div className="reviews-list">
               {/*Show up to 3 reviews only*/}
               {Boolean(propertyReviews.length) &&
-                [...Array(3)].map((_, index) =>
-                  propertyReviews[index] ? (
-                    <Review key={index} data={propertyReviews[index]} />
-                  ) : (
-                    <></>
-                  )
-                )}
+                propertyReviews.map((review, index) => (
+                  <Review key={index} data={review} />
+                ))}
             </div>
           </div>
         </div>
