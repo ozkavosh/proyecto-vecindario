@@ -58,28 +58,11 @@ const ChatMessages = () => {
             </div>
           </div>
 
-<<<<<<< HEAD
         <div className="messagesContainer">
           {messages.map((message) => (
             <ChatMessage key={message.id} message={message} ref={messageRef}/>
           ))}
         </div>
-=======
-          <div className="messagesContainer">
-            {messages.map((message) => (
-              <div
-                ref={messageRef}
-                key={message.id}
-                className={message.senderId === currentUser.uid ? "message own" : "message"}
-              >
-                <p className="text" key={message.id}>
-                  {message.text}
-                </p>
-                <p className="date">{chatMessageFormat(message.date.toDate())}</p>
-              </div>
-            ))}
-          </div>
->>>>>>> master
 
           <ChatInput />
         </div>

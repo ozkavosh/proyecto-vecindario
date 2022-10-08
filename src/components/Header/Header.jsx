@@ -14,12 +14,7 @@ const Header = () => {
           <FaChevronLeft />
         </button>
         <Link to="/" className="header-item">
-<<<<<<< HEAD
           <Logo/>
-=======
-          {/* TODO: add logo image */}
-          <Logo />
->>>>>>> master
         </Link>
         <Menu />
       </div>

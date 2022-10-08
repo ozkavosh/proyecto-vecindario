@@ -107,24 +107,18 @@ const Property = ({ data }) => {
             </div>
           )}
           {data.id ? (
-            <>
-          <div className="propertyOptions">
-            <FavoriteButton pid={data.id} />
-            <FaRegPaperPlane />
-          </div>
-          <div className="actionButtons">
-            <button type="button" className="addReviewBtn">
-              <FaRegCommentDots /> Chat
-            </button>
-            <button
-              type="button"
-              className="addReviewBtn"
-              onClick={(e) => handleNewReview(e, data.id)}
-            >
-              <FaPenSquare /> Nueva reseña
-            </button>
+            <div className="actionButtons">
+              <button type="button" className="addReviewBtn">
+                <FaRegCommentDots /> Chat
+              </button>
+              <button
+                type="button"
+                className="addReviewBtn"
+                onClick={(e) => handleNewReview(e, data.id)}
+              >
+                <FaPenSquare /> Nueva reseña
+              </button>
             </div>
-            </>
           ) : (
             <Skeleton width={45} />
           )}

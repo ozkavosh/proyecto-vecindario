@@ -27,13 +27,9 @@ const ChatInput = () => {
         />
         <FaRegSmile />
       </div>
-<<<<<<< HEAD
-      <FaPaperPlane onClick={() => sendChatMessage(currentUser, data, text, setText)} />
-=======
-      <button onClick={sendMessage}>
+      <button onClick={() => sendChatMessage(currentUser, data, text, setText)}>
         <FaArrowAltCircleRight />
       </button>
->>>>>>> master
     </div>
   );
 };
