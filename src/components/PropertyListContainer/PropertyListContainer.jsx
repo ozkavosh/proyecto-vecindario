@@ -6,7 +6,7 @@ const PropertyListContainer = ({ data }) => {
   return (
     <div className="propertyListContainer">
       {data.map((property, id) => (
-        <Property key={property.id || id} data={property} />
+        <Property key={id} data={property} />
       ))}
     </div>
   );

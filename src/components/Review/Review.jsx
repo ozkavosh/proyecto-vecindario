@@ -27,15 +27,14 @@ const Review = ({ data }) => {
 
         <div className="reviewFooter">
           <div className="reviewInfo">
+            {data.reviewer?.uid && currentUser?.uid && <ReviewLikes reviewer={data.reviewer.uid} rid={data.id} />}
             <p className="reviewTag">{data.tag}</p>
             <p className="reviewDate">{data.createdAt.toDate().toLocaleDateString()}</p>
           </div>
 
           <div className="reviewActions">
-            {data.id && data.reviewer?.uid === currentUser?.uid ? (
+            {data.id && data.reviewer?.uid === currentUser?.uid && (
               <RemoveReviewButton rid={data.id} pid={data.property} />
-            ) : (
-              data.reviewer?.uid !== currentUser?.uid && <ReviewLikes rid={data.id} />
             )}
           </div>
         </div>

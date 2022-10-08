@@ -1,186 +1,218 @@
 .propertyLink {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
 .property {
-    margin-bottom: 1.5em;
-    box-sizing: border-box;
-    width: 100%;
-    padding: 14px 12px;
-    border-radius: 10px;
-    background-color: var(--light-color);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-bottom: 1.5em;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 14px 12px;
+  border-radius: 10px;
+  background-color: var(--light-color);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .propertyOwner {
-    display: flex;
-    align-items: center;
-    gap: 0.3em;
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
 }
 
 .propertyOwner .ownerName {
-    font-size: 12px;
-    font-weight: 400;
+  font-size: 12px;
+  font-weight: 400;
 }
 
 .propertyOwner .ownerCheck {
-    font-size: 10px;
-    color: var(--success-color);
+  font-size: 10px;
+  color: var(--success-color);
 }
 
 .propertyHeader {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .propertyHeader .stars {
-    font-size: 10px;
+  font-size: 10px;
 }
 
 .propertySlider {
-    margin-top: 0.5em;
-    height: 241px;
+  margin-top: 0.5em;
+  height: 241px;
 }
 
 .propertySlider .swiper-wrapper .swiper-slide {
-    background-color: #E0E0E0;
-    border-radius: 12px;
+  background-color: #e0e0e0;
+  border-radius: 12px;
 }
 
 .propertySlider .swiper-button-prev,
 .propertySlider .swiper-button-next {
-    color: var(--light-color);
+  color: var(--light-color);
 }
 
 .propertySlider .swiper-button-prev::after,
 .propertySlider .swiper-button-next::after {
-    font-size: 1.2em;
+  font-size: 1.2em;
 }
 
 .propertyActions {
-    margin-top: 0.5em;
-    display: flex;
-    justify-content: space-between;
-    color: var(--primary-color);
+  margin-top: 0.5em;
+  display: flex;
+  justify-content: space-between;
+  color: var(--primary-color);
 }
 
 .propertyOptions {
-    display: flex;
-    margin-left: 0.2em;
-    gap: 0.5em;
-    font-size: 18px;
+  display: flex;
+  margin-left: 0.2em;
+  gap: 0.5em;
+  font-size: 18px;
 }
 
 .propertyActions .actionButtons {
-    display: flex;
-    align-items: center;
-    column-gap: 0.5em;
+  display: flex;
+  align-items: center;
+  column-gap: 0.5em;
 }
 
 .propertyActions .addReviewBtn {
-    display: flex;
-    align-items: center;
-    gap: 0.3em;
-    cursor: pointer;
-    background: none;
-    border: none;
-    outline: none;
-    padding: 0.4em 0.5em;
-    font-size: 12px;
-    border-radius: 18px;
-    background-color: var(--primary-color);
-    font-family: var(--main-font);
-    color: var(--light-color);
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0.4em 0.5em;
+  font-size: 12px;
+  border-radius: 18px;
+  background-color: var(--primary-color);
+  font-family: var(--main-font);
+  color: var(--light-color);
 }
 
 .propertyInfo {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 1rem;
-    font-size: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-size: 0.75rem;
+}
+
+.propertyInfo .propertyName {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.24px;
+  line-height: 16px;
+}
+
+.propertyInfo .propertyType {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 14px;
+  letter-spacing: -0.24px;
 }
 
 .propertyInfo .propertyLocation,
 .propertyInfo .propertyReviewsButton {
-    display: flex;
-    align-items: center;
-    gap: 0.2em;
-    font-size: 0.75rem;
-    font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.propertyLocation > svg{
+  color: var(--primary-color);
+  font-size: 10px;
+}
+
+.propertyDescription{
+  font-size: 12px;
 }
 
 .propertyInfo .propertyReviewsButton {
-    color: var(--primary-color);
-    cursor: pointer;
+  color: var(--primary-color);
+  cursor: pointer;
 }
 
 .dropdown {
-    transform: rotateZ(-90deg);
+  transform: rotateZ(-90deg);
 }
 
 .retract .dropdown {
-    animation: retract-dropdown 0.3s ease-in-out normal forwards;
+  animation: retract-dropdown 0.3s ease-in-out normal forwards;
 }
 
 .deployed .dropdown {
-    animation: deploy-dropdown 0.3s ease-in-out normal forwards;
+  animation: deploy-dropdown 0.3s ease-in-out normal forwards;
 }
 
-.retract~.reviews-list {
-    animation: retract-reviews 0.8s ease-in-out normal forwards;
+.retract ~ .reviews-list {
+  animation: retract-reviews 0.8s ease-in-out normal forwards;
 }
 
-.deployed~.reviews-list {
-    animation: deploy-reviews 0.8s ease-in-out normal forwards;
+.deployed ~ .reviews-list {
+  animation: deploy-reviews 0.8s ease-in-out normal forwards;
 }
 
 .reviews-list {
-    max-height: 0;
-    overflow: hidden;
+  max-height: 0;
+  overflow: hidden;
 }
 
 .swiper {
-    z-index: 0 !important;
+  z-index: 0 !important;
+}
+
+.swiper-slide{
+  overflow: hidden;
+}
+
+.swiper-slide img{
+  width: 100%;
+  height: 100%;
 }
 
 @keyframes deploy-dropdown {
-    0% {
-        transform: rotateZ(-90deg);
-    }
+  0% {
+    transform: rotateZ(-90deg);
+  }
 
-    100% {
-        transform: rotateZ(0);
-    }
+  100% {
+    transform: rotateZ(0);
+  }
 }
 
 @keyframes retract-dropdown {
-    0% {
-        transform: rotateZ(0);
-    }
+  0% {
+    transform: rotateZ(0);
+  }
 
-    100% {
-        transform: rotateZ(-90deg);
-    }
+  100% {
+    transform: rotateZ(-90deg);
+  }
 }
 
 @keyframes deploy-reviews {
-    0% {
-        max-height: 0;
-    }
+  0% {
+    max-height: 0;
+  }
 
-    100% {
-        max-height: 20em;
-    }
+  100% {
+    max-height: 20em;
+  }
 }
 
 @keyframes retract-reviews {
-    0% {
-        max-height: 20em;
-    }
+  0% {
+    max-height: 20em;
+  }
 
-    100% {
-        max-height: 0;
-    }
+  100% {
+    max-height: 0;
+  }
 }

@@ -32,11 +32,15 @@ import {
 import { db } from "../../firebase/config";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { BsChatDots } from "react-icons/bs";
+import { createChatWithUser } from "../../utils/createChatWithUser";
 import AddReview from "../AddReview/AddReview";
 import { useAuthContext } from "../../context/authContext";
+import { useChatContext } from "../../context/chatContext";
+import { capitalizeString } from "../../utils/capitalizeString";
 
 const PropertyDetail = () => {
   const navigate = useNavigate();
+  const { dispatch } = useChatContext();
   const { currentUser } = useAuthContext();
   const [property, setProperty] = useState({});
   const [propertyReviews, setPropertyReviews] = useState([]);
@@ -61,6 +65,16 @@ const PropertyDetail = () => {
       navigate("/inmueble/error");
     }
   }, [currentUser, navigate]);
+
+  const handleChat = async (owner) => {
+    if (currentUser?.uid) {
+      await createChatWithUser(currentUser, owner);
+      dispatch({ type: "changeUser", payload: owner });
+      navigate("/chat/messages");
+    } else {
+      navigate("/chat");
+    }
+  };
 
   const deployReviews = () => {
     reviewsRef.current.classList.toggle("deployed");
@@ -146,24 +160,51 @@ const PropertyDetail = () => {
       </div>
 
       <div className="propertyActions">
-        <div className="propertyOptions">
-          <FavoriteButton pid={pid} />
-          <FaRegPaperPlane />
-        </div>
-        <div className="actionButtons">
-          <button type="button" className="addReviewBtn">
-            <FaRegCommentDots /> Chat
-          </button>
-          <button type="button" className="addReviewBtn" onClick={handleAddReview}>
-            <FaPenSquare /> Nueva reseña
-          </button>
-        </div>
+        {pid ? (
+          <div className="propertyOptions">
+            <FavoriteButton pid={pid} />
+            <FaRegPaperPlane />
+          </div>
+        ) : (
+          <div className="propertyOptions">
+            <Skeleton circle height={24} width={24} />
+            <Skeleton circle height={24} width={24} />
+          </div>
+        )}
+        {property?.owner ? (
+          property?.owner?.uid !== currentUser?.uid && (
+            <div className="actionButtons">
+              <button
+                type="button"
+                className="addReviewBtn"
+                onClick={() => handleChat(property.owner)}
+              >
+                <FaRegCommentDots /> Chat
+              </button>
+              <button
+                type="button"
+                className="addReviewBtn"
+                onClick={handleAddReview}
+              >
+                <FaPenSquare /> Nueva reseña
+              </button>
+            </div>
+          )
+        ) : (
+          <div className="actionButtons">
+            <Skeleton width={45} />
+            <Skeleton width={45} />
+          </div>
+        )}
       </div>
 
       <div className="propertyInfo">
-        <h3 className="propertyType">
-          {property.type?.toUpperCase() || <Skeleton width={165} />}
+        <h3 className="propertyName">
+          {( property.name && capitalizeString(property.name)) || <Skeleton width={165} />}
         </h3>
+        <h4 className="propertyType">
+          {( property.type && capitalizeString(property.type)) || <Skeleton width={165} />}
+        </h4>
         <div className="propertyLocation">
           <FaMapMarkerAlt />
           <p>{property?.location?.toString() || <Skeleton width={165} />}</p>
@@ -205,9 +246,11 @@ const PropertyDetail = () => {
               <Review key={id} data={review} />
             ))}
 
-            {currentUser && pid && (
-              <AddReview pid={pid} ref={addReviewInputRef} />
-            )}
+            {currentUser &&
+              pid &&
+              currentUser?.uid !== property?.owner?.uid && (
+                <AddReview pid={pid} ref={addReviewInputRef} />
+              )}
           </div>
         </div>
       </div>

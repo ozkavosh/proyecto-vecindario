@@ -20,11 +20,17 @@ import Review from "../Review/Review";
 import Stars from "../Stars/Stars";
 import { useEffect, useState } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
+import { createChatWithUser } from "../../utils/createChatWithUser";
 import { db } from "../../firebase/config";
+import { useChatContext } from "../../context/chatContext";
+import { useAuthContext } from "../../context/authContext";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
+import { capitalizeString } from "../../utils/capitalizeString";
 
 const Property = ({ data }) => {
   const [propertyReviews, setPropertyReviews] = useState([]);
+  const { currentUser } = useAuthContext();
+  const { dispatch } = useChatContext();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -61,6 +67,17 @@ const Property = ({ data }) => {
     navigate(`/inmueble/${id}`, { state: { newReviewClicked: true } });
   };
 
+  const handleChat = async (e, owner) => {
+    e.preventDefault();
+    if (currentUser?.uid) {
+      await createChatWithUser(currentUser, owner);
+      dispatch({ type: "changeUser", payload: owner });
+      navigate("/chat/messages");
+    } else {
+      navigate("/chat");
+    }
+  };
+
   return (
     <Link className="propertyLink" to={`/inmueble/${data.id}`}>
       <div className="property">
@@ -88,10 +105,16 @@ const Property = ({ data }) => {
           modules={[Navigation]}
           className="propertySlider"
         >
-          <SwiperSlide></SwiperSlide>
-          <SwiperSlide></SwiperSlide>
-          <SwiperSlide></SwiperSlide>
-          <SwiperSlide></SwiperSlide>
+          {data?.images ? (
+            data.images.map((image,id) => <SwiperSlide> <img src={image} alt={`property${id}`} /> </SwiperSlide>)
+          ) : (
+            <>
+              <SwiperSlide></SwiperSlide>
+              <SwiperSlide></SwiperSlide>
+              <SwiperSlide></SwiperSlide>
+              <SwiperSlide></SwiperSlide>
+            </>
+          )}
         </Swiper>
 
         <div className="propertyActions">
@@ -107,27 +130,45 @@ const Property = ({ data }) => {
             </div>
           )}
           {data.id ? (
-            <div className="actionButtons">
-              <button type="button" className="addReviewBtn">
-                <FaRegCommentDots /> Chat
-              </button>
-              <button
-                type="button"
-                className="addReviewBtn"
-                onClick={(e) => handleNewReview(e, data.id)}
-              >
-                <FaPenSquare /> Nueva reseña
-              </button>
-            </div>
+            currentUser?.uid !== data.owner.uid && (
+              <div className="actionButtons">
+                <button
+                  type="button"
+                  className="addReviewBtn"
+                  onClick={(e) => handleChat(e, data.owner)}
+                >
+                  <FaRegCommentDots /> Chat
+                </button>
+                <button
+                  type="button"
+                  className="addReviewBtn"
+                  onClick={(e) => handleNewReview(e, data.id)}
+                >
+                  <FaPenSquare /> Nueva reseña
+                </button>
+              </div>
+            )
           ) : (
-            <Skeleton width={45} />
+            <div className="actionButtons">
+              <Skeleton width={35} />
+              <Skeleton width={35} />
+            </div>
           )}
         </div>
 
         <div className="propertyInfo">
-          <h3 className="propertyType">
-            {data.type?.toUpperCase() || <Skeleton width={165} />}
-          </h3>
+          <div>
+            <h3 className="propertyName">
+              {(data.name && capitalizeString(data.name)) || (
+                <Skeleton width={165} />
+              )}
+            </h3>
+            <h4 className="propertyType">
+              {(data.type && capitalizeString(data.type)) || (
+                <Skeleton width={165} />
+              )}
+            </h4>
+          </div>
           <div className="propertyLocation">
             <FaMapMarkerAlt />
             <p>{data.location?.toString() || <Skeleton width={165} />}</p>

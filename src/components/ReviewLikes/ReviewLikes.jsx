@@ -12,7 +12,7 @@ import { db } from "../../firebase/config";
 import reviewLikes from "../../reducers/reviewLikes";
 import { rateReview } from "../../utils/rateReview";
 
-const ReviewLikes = ({ rid }) => {
+const ReviewLikes = ({ reviewer, rid }) => {
   const { currentUser } = useAuthContext();
   const [state, dispatch] = useReducer(
     reviewLikes.reducer,
@@ -20,12 +20,12 @@ const ReviewLikes = ({ rid }) => {
   );
 
   useEffect(() => {
-    if (rid && currentUser.uid) {
+    if (rid && currentUser?.uid) {
       const unsub = onSnapshot(doc(db, "reviews", rid), (document) => {
         const { likeCount, likedBy, dislikedBy } = document.data();
 
-        const hasLiked = likedBy.includes(currentUser.uid);
-        const hasDisliked = dislikedBy.includes(currentUser.uid);
+        const hasLiked = likedBy.includes(currentUser?.uid);
+        const hasDisliked = dislikedBy.includes(currentUser?.uid);
 
         dispatch({
           type: "updateLikes",
@@ -34,25 +34,36 @@ const ReviewLikes = ({ rid }) => {
       });
 
       return () => unsub();
+    } else if ( rid && !currentUser?.uid ){
+      const unsub = onSnapshot(doc(db, "reviews", rid), (document) => {
+        const { likeCount } = document.data();
+
+        dispatch({
+          type: "updateLikes",
+          payload: { likeCount },
+        });
+      });
+
+      return () => unsub();
     }
-  }, [rid, currentUser.uid]);
+  }, [rid, currentUser?.uid]);
 
   const handleClick = (type) => {
-    rateReview(currentUser, type, rid, state);
+    if(currentUser?.uid && currentUser?.uid !== reviewer){
+      rateReview(currentUser, type, rid, state);
+    }
   };
 
   return (
-    currentUser.uid && (
-      <div className="review-likes neutral">
-        <button onClick={() => handleClick("like")}>
-          {state.hasLiked ? <FaThumbsUp /> : <FaRegThumbsUp />}
-        </button>
-        <button onClick={() => handleClick("dislike")}>
-          {state.hasDisliked ? <FaThumbsDown /> : <FaRegThumbsDown />}
-        </button>
-        <p className="review-rating">{state?.likeCount}</p>
-      </div>
-    )
+    <div className="review-likes neutral">
+      <button onClick={() => handleClick("like")}>
+        {state.hasLiked ? <FaThumbsUp /> : <FaRegThumbsUp />}
+      </button>
+      <button onClick={() => handleClick("dislike")}>
+        {state.hasDisliked ? <FaThumbsDown /> : <FaRegThumbsDown />}
+      </button>
+      <p className="review-rating">{state?.likeCount}</p>
+    </div>
   );
 };
 
