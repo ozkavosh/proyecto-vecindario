@@ -152,10 +152,21 @@ const PropertyDetail = () => {
           modules={[Navigation]}
           className="propertySlider"
         >
-          <SwiperSlide></SwiperSlide>
-          <SwiperSlide></SwiperSlide>
-          <SwiperSlide></SwiperSlide>
-          <SwiperSlide></SwiperSlide>
+          {property?.images ? (
+            property.images.map((image, id) => (
+              <SwiperSlide key={id}>
+                {" "}
+                <img src={image} alt={`property${id}`} />{" "}
+              </SwiperSlide>
+            ))
+          ) : (
+            <>
+              <SwiperSlide></SwiperSlide>
+              <SwiperSlide></SwiperSlide>
+              <SwiperSlide></SwiperSlide>
+              <SwiperSlide></SwiperSlide>
+            </>
+          )}
         </Swiper>
       </div>
 
@@ -199,12 +210,18 @@ const PropertyDetail = () => {
       </div>
 
       <div className="propertyInfo">
-        <h3 className="propertyName">
-          {( property.name && capitalizeString(property.name)) || <Skeleton width={165} />}
-        </h3>
-        <h4 className="propertyType">
-          {( property.type && capitalizeString(property.type)) || <Skeleton width={165} />}
-        </h4>
+        <div>
+          <h3 className="propertyName">
+            {(property.name && capitalizeString(property.name)) || (
+              <Skeleton width={165} />
+            )}
+          </h3>
+          <h4 className="propertyType">
+            {(property.type && capitalizeString(property.type)) || (
+              <Skeleton width={165} />
+            )}
+          </h4>
+        </div>
         <div className="propertyLocation">
           <FaMapMarkerAlt />
           <p>{property?.location?.toString() || <Skeleton width={165} />}</p>

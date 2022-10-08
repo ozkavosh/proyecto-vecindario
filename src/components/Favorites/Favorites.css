@@ -44,12 +44,6 @@
     align-items: center;
 }
 
-.favorites .header>div>svg {
-    fill: var(--primary-color);
-    font-size: 1.2rem;
-    cursor: pointer;
-}
-
 .favorites .searchbar {
     height: 2em;
     background-color: var(--light-color);
