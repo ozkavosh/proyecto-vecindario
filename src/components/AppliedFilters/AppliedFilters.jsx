@@ -1,6 +1,6 @@
+import "./AppliedFilters.css";
 import React from "react";
 import Stars from "../Stars/Stars";
-import "./AppliedFilters.css";
 
 const AppliedFilters = ({ appliedFilter, dispatch }) => {
   const formatFilter = (filter) => {
@@ -16,7 +16,7 @@ const AppliedFilters = ({ appliedFilter, dispatch }) => {
     <div className="applied-filters-container">
       <div className="applied-filter" onClick={handleClick}>
         {appliedFilter.field === "rating" ? (
-          <Stars amount={appliedFilter.equalTo} />
+          <Stars ammount={appliedFilter.equalTo} />
         ) : (
           <p>{formatFilter(appliedFilter.equalTo)}</p>
         )}

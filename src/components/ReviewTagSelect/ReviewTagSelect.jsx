@@ -1,7 +1,8 @@
+import "./ReviewTagSelect.css";
 import { useRef, useState, useEffect } from "react";
 import { BiCheckbox } from "react-icons/bi";
 import { FaChevronDown } from "react-icons/fa";
-import "./ReviewTagSelect.css";
+import { options } from "../../types/reviewTagSelect";
 
 const ReviewTagSelect = ({ dispatch }) => {
   const [open, setOpen] = useState(false);
@@ -18,8 +19,6 @@ const ReviewTagSelect = ({ dispatch }) => {
     return () => document.removeEventListener("click", clickEvent);
   }, [open]);
 
-  const options = ["Vecinos", "Barrio", "Inmueble", "Propietario", "Otros"];
-
   return (
     <div
       className="tagSelect"
@@ -30,7 +29,11 @@ const ReviewTagSelect = ({ dispatch }) => {
       {open && (
         <ul className="tagSelectOptions">
           {options.map((option, id) => (
-            <li key={id} className="tagSelectOption" onClick={() => dispatch({ type: "setTag", payload: option })}>
+            <li
+              key={id}
+              className="tagSelectOption"
+              onClick={() => dispatch({ type: "setTag", payload: option })}
+            >
               {option} <BiCheckbox />
             </li>
           ))}

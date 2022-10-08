@@ -1,10 +1,10 @@
+import "./Favorites.css";
 import { useState, useEffect } from "react";
 import { FaHeart, FaList, FaSearch } from "react-icons/fa";
 import { getDocs, query, collection, where } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import { useAuthContext } from "../../context/authContext";
 import FavoriteList from "../FavoriteList/FavoriteList";
-import "./Favorites.css";
 
 const Favorites = () => {
   //TODO: Fetch actual properties stored in Firebase inside useEffect
@@ -15,9 +15,15 @@ const Favorites = () => {
     if (currentUser?.favorites?.length) {
       (async () => {
         const request = await getDocs(
-          query(collection(db, "properties"), where("__name__", "in", currentUser.favorites))
+          query(
+            collection(db, "properties"),
+            where("__name__", "in", currentUser.favorites)
+          )
         );
-        const response = request.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+        const response = request.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
         setResults(response);
       })();
     } else {

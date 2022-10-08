@@ -1,0 +1,1 @@
+export const options = ["Vecinos", "Barrio", "Inmueble", "Propietario", "Otros"];

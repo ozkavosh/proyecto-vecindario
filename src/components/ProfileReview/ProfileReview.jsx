@@ -1,6 +1,6 @@
+import "./ProfileReview.css";
 import { FaRegCommentAlt } from "react-icons/fa";
 import RemoveReviewButton from "../RemoveReviewButton/RemoveReviewButton";
-import "./ProfileReview.css";
 
 const ProfileReview = ({ data }) => {
   return (

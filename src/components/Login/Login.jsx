@@ -1,10 +1,10 @@
+import "./Login.css";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase/config";
 import SocialNetworkLogin from "../SocialNetworkLogin/SocialNetworkLogin";
-import "./Login.css";
 
 const Login = ({ setDismount }) => {
   const navigate = useNavigate();

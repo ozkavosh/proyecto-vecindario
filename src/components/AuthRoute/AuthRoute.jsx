@@ -1,8 +1,8 @@
+import './AuthRoute.css';
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaRegCommentDots, FaHeart, FaRegUserCircle } from "react-icons/fa";
 import { useAuthContext } from "../../context/authContext";
-import './AuthRoute.css';
-import { useEffect } from "react";
 
 const AuthRoute = ({ children, route, setDismount }) => {
   const { currentUser } = useAuthContext();

@@ -1,6 +1,6 @@
+import "./ProfileNotifications.css";
 import { FaRegBell } from "react-icons/fa";
 import NotificationList from "../NotificationList/NotificationList";
-import "./ProfileNotifications.css";
 
 const ProfileNotifications = () => {
   return (

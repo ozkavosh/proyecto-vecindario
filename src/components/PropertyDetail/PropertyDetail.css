@@ -32,6 +32,11 @@
     gap: .3em;
 }
 
+.propertyRules svg, .propertySpecs svg{
+    color: var(--primary-color);
+    font-size: 10px;
+}
+
 .propertyRules .propertyRulesTitle{
     cursor: pointer;
 }

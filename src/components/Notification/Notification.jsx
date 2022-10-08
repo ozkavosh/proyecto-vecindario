@@ -1,6 +1,6 @@
+import "./Notification.css";
 import { FaRegCommentDots, FaRegThumbsUp } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import "./Notification.css";
 
 const Notification = ({ type, sender }) => {
   return (

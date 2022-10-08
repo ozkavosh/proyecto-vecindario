@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef, useCallback } from "react";
 import "./PropertyDetail.css";
+import { useState, useEffect, useRef, useCallback } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import {
@@ -16,18 +16,31 @@ import {
 import { BiMessageEdit } from "react-icons/bi";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import Review from "../Review/Review";
 import Stars from "../Stars/Stars";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
-import { doc, onSnapshot, getDocs, collection, query, where } from "firebase/firestore";
+import {
+  doc,
+  onSnapshot,
+  getDocs,
+  collection,
+  query,
+  where,
+} from "firebase/firestore";
 import { db } from "../../firebase/config";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { BsChatDots } from "react-icons/bs";
+import { createChatWithUser } from "../../utils/createChatWithUser";
 import AddReview from "../AddReview/AddReview";
 import { useAuthContext } from "../../context/authContext";
+import { useChatContext } from "../../context/chatContext";
+import { capitalizeString } from "../../utils/capitalizeString";
 
 const PropertyDetail = () => {
   const navigate = useNavigate();
+  const { dispatch } = useChatContext();
   const { currentUser } = useAuthContext();
   const [property, setProperty] = useState({});
   const [propertyReviews, setPropertyReviews] = useState([]);
@@ -40,7 +53,11 @@ const PropertyDetail = () => {
     if (currentUser) {
       if (!reviewsRef.current.classList.contains("deployed")) {
         deployReviews();
-        setTimeout(() => addReviewInputRef.current.scrollIntoView({ behavior: "smooth" }), 500);
+        setTimeout(
+          () =>
+            addReviewInputRef.current.scrollIntoView({ behavior: "smooth" }),
+          500
+        );
       } else {
         addReviewInputRef.current.scrollIntoView({ behavior: "smooth" });
       }
@@ -48,6 +65,16 @@ const PropertyDetail = () => {
       navigate("/inmueble/error");
     }
   }, [currentUser, navigate]);
+
+  const handleChat = async (owner) => {
+    if (currentUser?.uid) {
+      await createChatWithUser(currentUser, owner);
+      dispatch({ type: "changeUser", payload: owner });
+      navigate("/chat/messages");
+    } else {
+      navigate("/chat");
+    }
+  };
 
   const deployReviews = () => {
     reviewsRef.current.classList.toggle("deployed");
@@ -62,7 +89,10 @@ const PropertyDetail = () => {
         if (document.data().reviews.length) {
           try {
             const request = await getDocs(
-              query(collection(db, "reviews"), where("__name__", "in", document.data().reviews))
+              query(
+                collection(db, "reviews"),
+                where("__name__", "in", document.data().reviews)
+              )
             );
 
             setPropertyReviews(
@@ -88,18 +118,31 @@ const PropertyDetail = () => {
     } else if (!currentUser && location.state?.newReviewClicked) {
       navigate("/inmueble/error");
     }
-  }, [location.state?.newReviewClicked, handleAddReview, currentUser, navigate]);
+  }, [
+    location.state?.newReviewClicked,
+    handleAddReview,
+    currentUser,
+    navigate,
+  ]);
 
   return (
     <div className="property detail">
       <div className="propertyHeader">
-        <div className="propertyOwner">
-          <FaRegUserCircle className="ownerImg" />
-          <h4 className="ownerName">{property.owner?.displayName}</h4>
-          <FaRegCheckCircle className="ownerCheck" />
-        </div>
+        {property.owner ? (
+          <div className="propertyOwner">
+            <FaRegUserCircle className="ownerImg" />
+            <h4 className="ownerName">{property.owner.displayName}</h4>
+            <FaRegCheckCircle className="ownerCheck" />
+          </div>
+        ) : (
+          <div className="propertyOwner">
+            <Skeleton circle height={12} width={12} />
+            <Skeleton height={12} width={65} />
+            <Skeleton circle height={12} width={12} />
+          </div>
+        )}
 
-        <Stars ammount={property.rating} />
+        <Stars ammount={property.rating || 0} />
       </div>
 
       <div className="propertyImgContainer">
@@ -117,31 +160,64 @@ const PropertyDetail = () => {
       </div>
 
       <div className="propertyActions">
-        <div className="propertyOptions">
-          <FavoriteButton pid={pid} />
-          <FaRegPaperPlane />
-        </div>
-        <div className="actionButtons">
-          <button type="button" className="addReviewBtn">
-            <FaRegCommentDots /> Chat
-          </button>
-          <button type="button" className="addReviewBtn" onClick={handleAddReview}>
-            <FaPenSquare /> Nueva reseña
-          </button>
-        </div>
+        {pid ? (
+          <div className="propertyOptions">
+            <FavoriteButton pid={pid} />
+            <FaRegPaperPlane />
+          </div>
+        ) : (
+          <div className="propertyOptions">
+            <Skeleton circle height={24} width={24} />
+            <Skeleton circle height={24} width={24} />
+          </div>
+        )}
+        {property?.owner ? (
+          property?.owner?.uid !== currentUser?.uid && (
+            <div className="actionButtons">
+              <button
+                type="button"
+                className="addReviewBtn"
+                onClick={() => handleChat(property.owner)}
+              >
+                <FaRegCommentDots /> Chat
+              </button>
+              <button
+                type="button"
+                className="addReviewBtn"
+                onClick={handleAddReview}
+              >
+                <FaPenSquare /> Nueva reseña
+              </button>
+            </div>
+          )
+        ) : (
+          <div className="actionButtons">
+            <Skeleton width={45} />
+            <Skeleton width={45} />
+          </div>
+        )}
       </div>
 
       <div className="propertyInfo">
-        <h3 className="propertyType">{property.type?.toUpperCase()}</h3>
+        <h3 className="propertyName">
+          {( property.name && capitalizeString(property.name)) || <Skeleton width={165} />}
+        </h3>
+        <h4 className="propertyType">
+          {( property.type && capitalizeString(property.type)) || <Skeleton width={165} />}
+        </h4>
         <div className="propertyLocation">
           <FaMapMarkerAlt />
-          <p>{property?.location?.toString()}</p>
+          <p>{property?.location?.toString() || <Skeleton width={165} />}</p>
         </div>
-        <p className="propertyDescription">
-          {property?.description?.length > 240
-            ? property?.description?.slice(0, 240) + "..."
-            : property?.description}
-        </p>
+        {property.description ? (
+          <p className="propertyDescription">
+            {property?.description?.length > 240
+              ? property?.description?.slice(0, 240) + "..."
+              : property?.description}
+          </p>
+        ) : (
+          <Skeleton count={5} />
+        )}
 
         <div className="propertySpecs">
           <h3 className="propertySpecsTitle">
@@ -156,7 +232,11 @@ const PropertyDetail = () => {
         </div>
 
         <div className="reviews">
-          <div className="propertyReviewsButton retract" ref={reviewsRef} onClick={deployReviews}>
+          <div
+            className="propertyReviewsButton retract"
+            ref={reviewsRef}
+            onClick={deployReviews}
+          >
             <BiMessageEdit />
             Reseñas
             <FaChevronDown className="dropdown" />
@@ -166,7 +246,11 @@ const PropertyDetail = () => {
               <Review key={id} data={review} />
             ))}
 
-            {currentUser && pid && <AddReview pid={pid} ref={addReviewInputRef} />}
+            {currentUser &&
+              pid &&
+              currentUser?.uid !== property?.owner?.uid && (
+                <AddReview pid={pid} ref={addReviewInputRef} />
+              )}
           </div>
         </div>
       </div>

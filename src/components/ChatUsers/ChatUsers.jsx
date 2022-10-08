@@ -1,9 +1,8 @@
-import { doc, getDoc, setDoc, updateDoc, serverTimestamp } from "firebase/firestore";
+import "./ChatUsers.css";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/authContext";
 import { useChatContext } from "../../context/chatContext";
-import { db } from "../../firebase/config";
-import "./ChatUsers.css";
+import { createChatWithUser } from "../../utils/createChatWithUser";
 
 const ChatUsers = ({ userResults, setUserResults, setUserQuery }) => {
   const { currentUser } = useAuthContext();
@@ -14,35 +13,9 @@ const ChatUsers = ({ userResults, setUserResults, setUserQuery }) => {
     setUserResults(null);
     setUserQuery("");
 
-    const combinedId =
-      currentUser.uid > user.uid ? currentUser.uid + user.uid : user.uid + currentUser.uid;
-    try {
-      const response = await getDoc(doc(db, "chats", combinedId));
-      if (!response.exists()) {
-        await setDoc(doc(db, "chats", combinedId), { messages: [] });
-
-        await updateDoc(doc(db, "userChats", currentUser.uid), {
-          [combinedId + ".userInfo"]: {
-            uid: user.uid,
-            displayName: user.displayName,
-          },
-          [combinedId + ".date"]: serverTimestamp(),
-        });
-
-        await updateDoc(doc(db, "userChats", user.uid), {
-          [combinedId + ".userInfo"]: {
-            uid: currentUser.uid,
-            displayName: currentUser.displayName,
-          },
-          [combinedId + ".date"]: serverTimestamp(),
-        });
-      }
-
-      dispatch({ type: "changeUser", payload: user });
-      navigate("/chat/messages");
-    } catch (e) {
-      console.log(e);
-    }
+    await createChatWithUser(currentUser, user);
+    dispatch({ type: "changeUser", payload: user });
+    navigate("/chat/messages");
   };
 
   return (
