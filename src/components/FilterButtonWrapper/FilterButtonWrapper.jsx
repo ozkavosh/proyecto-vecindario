@@ -25,23 +25,16 @@ const FilterButtonWrapper = ({ type, dispatch }) => {
 
   return (
     <div className={`filter-button-wrapper ${type}`}>
-      <hr />
       <ul className="filter-button-options">
         {type === "rating" ? (
           <li className="score-filter">
             {types[type].map((_, id) => (
-              <FaRegStar
-                key={id}
-                onClick={() => handleFilterClick({ type, option: id })}
-              />
+              <FaRegStar key={id} onClick={() => handleFilterClick({ type, option: id })} />
             ))}
           </li>
         ) : (
           types[type].map((option, id) => (
-            <li
-              key={option}
-              onClick={() => handleFilterClick({ type, option: id })}
-            >
+            <li key={option} onClick={() => handleFilterClick({ type, option: id })}>
               <span>{option}</span>
               <BiCheckbox />
             </li>

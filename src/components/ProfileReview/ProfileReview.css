@@ -1,6 +1,9 @@
 .profile-reviews .review {
     padding: 0;
     border: none;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
 }
 
 .profile-reviews .review h3 {
@@ -18,28 +21,27 @@
     background-color: var(--primary-color);
     border-radius: 20px;
     color: var(--light-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
+    text-align: center;
     padding: 1rem;
+    position: relative;
     box-sizing: border-box;
-    height: 6.25rem;
+    min-height: 4rem;
     column-gap: 1rem;
 }
 
 .profile-reviews .review .preview p {
     line-height: 1.1rem;
     font-size: 0.75rem;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: -webkit-box !important;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    white-space: normal;
+    margin: auto;
+    padding: 0 2.5rem;
+    text-align: left;
 }
 
 .profile-reviews .review .action {
     width: 1.75em;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
     flex-shrink: 0;
     cursor: pointer;
     border: none;

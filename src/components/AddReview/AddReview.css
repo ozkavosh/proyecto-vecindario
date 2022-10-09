@@ -15,6 +15,10 @@
     gap: 0.3em;
 }
 
+.addReview .stars {
+    cursor: pointer;
+}
+
 .addReview .reviewHeader .reviewerCheck {
     color: var(--primary-color);
 }

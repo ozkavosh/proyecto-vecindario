@@ -34,7 +34,7 @@
 }
 
 .messageInputContainer input {
-    width: 100%;
+    width: 90%;
     font-family: var(--main-font);
     color: var(--dark-color);
     border: none;
