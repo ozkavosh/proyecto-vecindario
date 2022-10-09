@@ -49,7 +49,7 @@ const TabBar = () => {
 
         <NavLink to="/buscador" className="tab">
           <FaSearch />
-          <p>Reseñas</p>
+          <p>Buscar</p>
         </NavLink>
 
         <NavLink to="/chat" className="tab">

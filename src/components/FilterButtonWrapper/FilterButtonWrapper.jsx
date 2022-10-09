@@ -25,7 +25,6 @@ const FilterButtonWrapper = ({ type, dispatch }) => {
 
   return (
     <div className={`filter-button-wrapper ${type}`}>
-      <hr />
       <ul className="filter-button-options">
         {type === "rating" ? (
           <li className="score-filter">

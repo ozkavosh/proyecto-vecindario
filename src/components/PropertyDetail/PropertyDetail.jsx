@@ -31,14 +31,13 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { BsChatDots } from "react-icons/bs";
 import { createChatWithUser } from "../../utils/createChatWithUser";
 import AddReview from "../AddReview/AddReview";
 import { useAuthContext } from "../../context/authContext";
 import { useChatContext } from "../../context/chatContext";
 import { capitalizeString } from "../../utils/capitalizeString";
 
-const PropertyDetail = () => {
+const PropertyDetail = ({ setDismount }) => {
   const navigate = useNavigate();
   const { dispatch } = useChatContext();
   const { currentUser } = useAuthContext();
@@ -48,6 +47,12 @@ const PropertyDetail = () => {
   const addReviewInputRef = useRef();
   const location = useLocation();
   const { pid } = useParams();
+
+  useEffect(() => {
+    setDismount((prev) => ({...prev, footer: true, header: false }));
+
+    return () => setDismount((prev) => ({...prev, footer: false, header: false }));
+  }, [setDismount])
 
   const handleAddReview = useCallback(() => {
     if (currentUser) {
@@ -155,8 +160,7 @@ const PropertyDetail = () => {
           {property?.images ? (
             property.images.map((image, id) => (
               <SwiperSlide key={id}>
-                {" "}
-                <img src={image} alt={`property${id}`} />{" "}
+                <img src={image} alt={`property${id}`} />
               </SwiperSlide>
             ))
           ) : (

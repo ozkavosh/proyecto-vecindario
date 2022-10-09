@@ -20,7 +20,7 @@
     bottom: 0;
     left: 70%;
     border-radius: 100%;
-    border: 2px solid #fff;
+    border: 2px solid var(--light-color);
 }
 
 .online {

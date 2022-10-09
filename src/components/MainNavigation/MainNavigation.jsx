@@ -75,7 +75,10 @@ const MainNavigation = ({ setDismount }) => {
             </AuthRoute>
           }
         />
-        <Route path="/buscador" element={<Search />} />
+        <Route
+          path="/buscador"
+          element={<Search setDismount={setDismount} />}
+        />
         <Route
           path="/inmueble/:pid"
           element={<PropertyDetail setDismount={setDismount} />}

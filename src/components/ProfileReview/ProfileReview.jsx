@@ -4,7 +4,7 @@ import RemoveReviewButton from "../RemoveReviewButton/RemoveReviewButton";
 
 const ProfileReview = ({ data }) => {
   return (
-    <article className="review">
+    <article className="profile-review">
       <h3>
         <FaRegCommentAlt /> Reseña de sitio
       </h3>

@@ -29,7 +29,7 @@ const AuthRoute = ({ children, route, setDismount }) => {
         Para ver sus <strong>{types[route].message}</strong> inicie sesión.
       </p>
       <Link to="/login">
-        <button>iniciar sesión</button>
+        <button>Iniciar sesión</button>
       </Link>
       </div>
     </div>

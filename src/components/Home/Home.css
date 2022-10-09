@@ -1,239 +1,297 @@
-.home>section {
-    margin: 1.5em auto;
+.home > section {
+  margin: 1.5em auto;
 }
 
 .home {
-    padding-top: 1em;
-    background-color: var(--background-color);
+  padding-top: 1em;
+  background-color: var(--background-color);
 }
 
 .home .container {
-    width: 90%;
-    margin: auto;
+  width: 90%;
+  margin: auto;
 }
 
 .welcome.container {
-    width: 80%;
+  width: 80%;
 }
 
 .welcome {
-    text-align: center;
-    background-color: var(--light-color);
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-    display: flex;
-    padding: 3.375rem 0.5rem;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 40px;
+  text-align: center;
+  background-color: var(--light-color);
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  padding: 3.375rem 0.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
 }
 
 .welcome h1 {
-    font-weight: 400;
-    font-size: 1.5rem;
+  font-weight: 400;
+  font-size: 1.5rem;
 }
 
 .welcome .search {
-    margin: 4rem auto;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    row-gap: 0.75em;
-    background-color: transparent;
+  margin: 4rem auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  row-gap: 0.75em;
+  background-color: transparent;
 }
 
 .welcome .search .searchbar {
-    border: 1px solid #D9D9D9;
-    display: flex;
-    align-items: center;
-    padding: 1em 0.75em;
-    border-radius: 25px;
-    height: 2.625em;
-    box-sizing: border-box;
+  border: 1px solid #d9d9d9;
+  display: flex;
+  align-items: center;
+  padding: 1em 0.75em;
+  border-radius: 25px;
+  height: 2.625em;
+  box-sizing: border-box;
 }
 
 .welcome .search button {
-    display: flex;
-    justify-content: center;
-    background-color: var(--primary-color);
-    color: var(--light-color);
-    align-items: center;
-    border: none;
-    padding: 1em 0.75em;
-    border-radius: 25px;
-    height: 2.625em;
-    font-family: var(--main-font);
-    font-weight: 400;
-    font-size: 1em;
-    box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  align-items: center;
+  border: none;
+  padding: 1em 0.75em;
+  border-radius: 25px;
+  height: 2.625em;
+  font-family: var(--main-font);
+  font-weight: 400;
+  font-size: 1em;
+  box-sizing: border-box;
 }
 
 .welcome .search .searchbar svg {
-    fill: rgba(60, 60, 67, 0.6);
+  fill: rgba(60, 60, 67, 0.6);
 }
 
 .welcome .search .searchbar input {
-    padding: 0.5em 0.8em;
-    flex-grow: 1;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    font-family: var(--main-font);
-    font-weight: 400;
-    font-size: 1em;
+  padding: 0.5em 0.8em;
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-family: var(--main-font);
+  font-weight: 400;
+  font-size: 1em;
 }
 
 .welcome p {
-    width: 90%;
-    margin: auto;
-    text-align: left;
-    font-weight: 300;
-    font-size: 1em;
+  width: 90%;
+  margin: auto;
+  text-align: left;
+  font-weight: 300;
+  font-size: 1em;
 }
 
 .home h2 {
-    font-weight: 400;
-    font-size: 1.5em;
+  font-weight: 400;
+  font-size: 1.5em;
 }
 
 .find-your-place .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .find-your-place h2 {
-    margin-bottom: 2rem;
+  margin-bottom: 21px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
+  letter-spacing: -0.24px;
 }
 
 .find-your-place button {
-    margin-bottom: 1.75rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    padding: 1em 0.75em;
-    border-radius: 25px;
-    height: 2.625em;
-    font-family: var(--main-font);
-    font-weight: 400;
-    font-size: 1em;
-    box-sizing: border-box;
+  margin-bottom: 1.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  padding: 1em 0.75em;
+  border-radius: 25px;
+  height: 2.625em;
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  font-family: var(--main-font);
+  font-weight: 400;
+  font-size: 1em;
+  box-sizing: border-box;
 }
 
+.find-your-place p {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -0.24px;
+    margin-bottom: 1em;
+  }
+
 .find-your-place .mySwiper {
-    height: 245px;
+  height: 245px;
 }
 
 .what-to-expect {
-    margin-bottom: 3rem !important;
+  width: 90%;
+  box-sizing: border-box;
+  padding: 1em 0.4em;
+  margin-bottom: 2.5rem !important;
+  background-color: var(--primary-color);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  color: var(--light-color);
 }
 
 .what-to-expect h2 {
-    margin-bottom: 0.75em;
+  margin-bottom: 0.75em;
+  text-align: center;
 }
 
 .what-to-expect div {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 1em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 1em;
 }
 
 .what-to-expect div article {
-    width: calc(50% - 1em);
-    display: flex;
-    justify-content: flex-start;
+  flex-basis: 50%;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .what-to-expect div article p {
-    font-weight: 300;
-    font-size: 0.563em;
+  font-weight: 300;
+  font-size: 0.563em;
 }
 
 .what-to-expect div article .img {
-    flex-shrink: 0;
-    margin-right: 0.5em;
-    background-color: black;
-    width: 2.75em;
-    height: 2.75em;
-    border-radius: 100%;
+  flex-shrink: 0;
+  margin-right: 0.5em;
+  background-color: var(--light-color);
+  width: 2.75em;
+  height: 2.75em;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .join-owners {
-    background-color: var(--neutral-color);
-    padding: 0.75em 1em;
-    height: 8rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    margin-bottom: 3em !important;
+  background-color: var(--primary-color);
+  box-sizing: border-box;
+  width: 95%;
+  padding: 4.5em 1em;
+  height: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 5em !important;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  color: var(--light-color);
 }
 
 .join-owners h2 {
-    margin-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  position: relative;
+  left: -2.3%;
 }
 
 .join-owners p {
-    font-weight: 300;
-    font-size: 1em;
-    width: 85%;
+  font-weight: 300;
+  font-size: 1em;
+  position: relative;
+  left: 1%;
 }
 
 .join-owners button {
-    position: absolute;
-    top: 1em;
-    right: 1.75em;
-    font-family: var(--main-font);
-    font-size: 1rem;
-    font-weight: 300;
-    background-color: lightgray;
-    padding: 0.3em 0.5em;
-    cursor: pointer;
-    border-radius: 20px;
-    border: none;
+  position: absolute;
+  top: 13%;
+  right: 3%;
+  font-family: var(--main-font);
+  font-size: 16px;
+  font-weight: 300;
+  background-color: var(--secondary-color);
+  color: var(--light-color);
+  padding: 0.3em 0.5em;
+  cursor: pointer;
+  border-radius: 20px;
+  border: none;
 }
 
 .testimonies {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    row-gap: 1em;
-    margin-bottom: 3rem !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 1.7em;
+  margin-bottom: 3rem !important;
 }
 
 .testimony {
-    display: flex;
-    flex-direction: row;
-    column-gap: 1em;
+  display: flex;
+  flex-direction: row;
+  column-gap: 1em;
 }
 
-.testimony div {
-    background-color: var(--neutral-color);
-    width: 5.938em;
-    height: 5.938em;
-    border-radius: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    flex-shrink: 0;
+.testimony .testimony-profile {
+  background-color: var(--neutral-color);
+  width: 5.938em;
+  height: 5.938em;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-shrink: 0;
 }
 
-.testimony div h3,
-.testimony div p {
-    font-weight: 400;
-    font-size: 0.625em;
+.testimony h3,
+.testimony p {
+  font-style: italic;
+  font-weight: 700;
+  font-size: 0.625em;
+}
+
+.testimony .testimony-profile h3,
+.testimony .testimony-profile p {
+  color: var(--primary-color);
+  font-size: 10px;
+}
+
+.testimony .testimony-profile img {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  margin-bottom: 0.1em;
 }
 
 .testimony p {
-    text-align: center;
+  text-align: center;
+  font-size: 16px;
+}
+
+.most-searched{
+    width: 95%;
+    margin-bottom: 2em !important;
+}
+
+.most-searched h2{
+    margin-left: 0.5em;
 }
 
 .most-searched .mySwiper {
-    margin-top: 1rem;
-    height: 135px;
+  margin-top: 2.3rem;
+  height: 112px;
 }

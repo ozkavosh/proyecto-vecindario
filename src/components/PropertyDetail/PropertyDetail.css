@@ -13,7 +13,7 @@
     align-items: center;
     position: absolute;
     z-index: 3;
-    background-color: #fff;
+    background-color: var(--light-color);
     padding: .4em 1em .4em .5em;
     right: 3%;
     bottom: 5%;
@@ -23,6 +23,11 @@
 
 .chatBtn svg{
     font-size: 16px;
+}
+
+.detail .propertyLocation > svg{
+    color: var(--primary-color);
+    font-size: 10px;
 }
 
 .propertyRules .propertyRulesTitle, .propertySpecs .propertySpecsTitle{

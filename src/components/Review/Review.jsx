@@ -27,7 +27,7 @@ const Review = ({ data }) => {
 
         <div className="reviewFooter">
           <div className="reviewInfo">
-            {data.reviewer?.uid && currentUser?.uid && <ReviewLikes reviewer={data.reviewer.uid} rid={data.id} />}
+            {data.reviewer?.uid && <ReviewLikes reviewer={data.reviewer.uid} rid={data.id} />}
             <p className="reviewTag">{data.tag}</p>
             <p className="reviewDate">{data.createdAt.toDate().toLocaleDateString()}</p>
           </div>

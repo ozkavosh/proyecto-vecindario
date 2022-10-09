@@ -16,5 +16,5 @@
     align-items: center;
     border: none;
     background-color: transparent;
-    color: #fff;
+    color: var(--light-color);
 }
