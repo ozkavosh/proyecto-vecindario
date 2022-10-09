@@ -12,23 +12,32 @@ const FilterButtonWrapper = ({ type, dispatch }) => {
   };
 
   const handleFilterClick = (filter) => {
-    if(filter.type === "orderBy"){
+    if (filter.type === "orderBy") {
       const orderType = filter.option === 1 ? "desc" : "asc";
-      dispatch({ type: "setOrder", payload: { field: filter.option < 2 ? "rating" : "createdAt", type: orderType } })
-    }else{
-      const equalTo = filter.type === "type" ? typeOptions[filter.type][filter.option].toLowerCase() : typeOptions[filter.type][filter.option]; 
-      dispatch({ type: "setFilter", payload: { field: filter.type, equalTo } })
+      dispatch({
+        type: "setOrder",
+        payload: { field: filter.option < 2 ? "rating" : "createdAt", type: orderType },
+      });
+    } else {
+      const equalTo =
+        filter.type === "type"
+          ? typeOptions[filter.type][filter.option].toLowerCase()
+          : typeOptions[filter.type][filter.option];
+      dispatch({ type: "setFilter", payload: { field: filter.type, equalTo } });
     }
-    console.log(`Option ${typeOptions[filter.type][filter.option]} of filter ${filter.type} has ben checked!`);
-  }
+    console.log(
+      `Option ${typeOptions[filter.type][filter.option]} of filter ${filter.type} has ben checked!`
+    );
+  };
 
   return (
     <div className={`filter-button-wrapper ${type}`}>
-      <hr />
       <ul className="filter-button-options">
         {type === "rating" ? (
           <li className="score-filter">
-            { typeOptions[type].map((_, id) => <FaRegStar key={id} onClick={() => handleFilterClick({ type, option: id })}/>) }
+            {typeOptions[type].map((_, id) => (
+              <FaRegStar key={id} onClick={() => handleFilterClick({ type, option: id })} />
+            ))}
           </li>
         ) : (
           <>
