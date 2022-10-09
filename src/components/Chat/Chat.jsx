@@ -1,9 +1,8 @@
-import { collection, getDocs } from "firebase/firestore";
+import "./Chat.css";
 import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useAuthContext } from "../../context/authContext";
-import { db } from "../../firebase/config";
-import "./Chat.css";
+import { getChatUsers } from "../../utils/getChatUsers";
 import ChatList from "../ChatList/ChatList";
 import ChatUsers from "../ChatUsers/ChatUsers";
 
@@ -14,23 +13,7 @@ const Chat = () => {
 
   useEffect(() => {
     if (userQuery.length >= 4) {
-      (async () => {
-        try {
-          const response = await getDocs(collection(db, "users"));
-          //Resource expensive way, for both Firebase daily quote and user's bandwith. Not a big problem for demo but should consider a different approach.
-          const results = response.docs
-            .map((d) => d.data())
-            .filter(
-              (d) =>
-                d.displayName.toLowerCase().includes(userQuery.toLowerCase()) &&
-                d.uid !== currentUser.uid
-            );
-          setUserResults(results);
-        } catch (e) {
-          console.log(e);
-          setUserResults([]);
-        }
-      })();
+      getChatUsers(userQuery, currentUser, setUserResults)
     } else {
       setUserResults([]);
     }

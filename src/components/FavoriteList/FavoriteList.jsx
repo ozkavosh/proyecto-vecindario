@@ -1,8 +1,7 @@
-import Property from "../Property/Property";
 import "./FavoriteList.css";
+import Property from "../Property/Property";
 
 const FavoriteList = ({ data }) => {
-  console.log(data);
   return (
     <div className="favorite-list">
       {data.length !== 0 ? (

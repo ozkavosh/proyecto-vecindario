@@ -1,10 +1,9 @@
-import { arrayUnion, doc, updateDoc, Timestamp, serverTimestamp, getDoc } from "firebase/firestore";
+import "./ChatInput.css";
 import { useState } from "react";
 import { FaArrowAltCircleRight, FaRegSmile } from "react-icons/fa";
 import { useAuthContext } from "../../context/authContext";
 import { useChatContext } from "../../context/chatContext";
-import { db } from "../../firebase/config";
-import "./ChatInput.css";
+import { sendChatMessage } from "../../utils/sendChatMessage";
 
 const ChatInput = () => {
   const [text, setText] = useState("");
@@ -13,38 +12,7 @@ const ChatInput = () => {
 
   const handleKeyDown = async (e) => {
     if (e.key !== "Enter") return;
-    sendMessage(e);
-  };
-
-  const sendMessage = async (e) => {
-    setText("");
-    try {
-      await updateDoc(doc(db, "chats", data.chatId), {
-        messages: arrayUnion({
-          text,
-          id: Math.ceil(Math.random() * 10000),
-          senderId: currentUser.uid,
-          date: Timestamp.now(),
-        }),
-      });
-
-      await updateDoc(doc(db, "userChats", currentUser.uid), {
-        [data.chatId + ".lastMessage"]: { text },
-        [data.chatId + ".date"]: serverTimestamp(),
-      });
-
-      const response = await getDoc(doc(db, "userChats", data.user.uid));
-
-      const unreadMessages = response.data()[data.chatId].unreadMessages || 0;
-
-      await updateDoc(doc(db, "userChats", data.user.uid), {
-        [data.chatId + ".lastMessage"]: { text },
-        [data.chatId + ".date"]: serverTimestamp(),
-        [data.chatId + ".unreadMessages"]: unreadMessages + 1,
-      });
-    } catch (e) {
-      console.log(e);
-    }
+    sendChatMessage(currentUser, data, text, setText);
   };
 
   return (
@@ -59,7 +27,7 @@ const ChatInput = () => {
         />
         <FaRegSmile />
       </div>
-      <button onClick={sendMessage}>
+      <button onClick={() => sendChatMessage(currentUser, data, text, setText)}>
         <FaArrowAltCircleRight />
       </button>
     </div>

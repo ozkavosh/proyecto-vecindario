@@ -1,0 +1,20 @@
+.favoritesOrderButton{
+    box-sizing: border-box;
+    display: flex;
+    position: relative;
+}
+
+.favoritesOrderButton button{
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.favoritesOrderButton svg{
+    fill: var(--primary-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
