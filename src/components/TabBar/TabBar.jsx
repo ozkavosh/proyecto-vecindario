@@ -33,7 +33,6 @@ const TabBar = () => {
     currentUser?.uid ? getChats() : setUnreadMessages(0);
   }, [currentUser?.uid, setUnreadMessages]);
 
-  //TODO: add correct icons
   return (
     <div className="tabBar">
       <ul className="tabBarTabContainer">

@@ -4,8 +4,6 @@
     margin: auto;
 }
 
-/* TODO: fix heights, margins */
-
 .profile-info h1 {
     display: flex;
     justify-content: center;
