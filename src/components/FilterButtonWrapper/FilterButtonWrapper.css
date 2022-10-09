@@ -4,8 +4,9 @@
     width: 100%;
     left: 0;
     z-index: -1;
-    background-color: var(--neutral-color);
+    background-color: var(--primary-color);
     border-bottom-left-radius: 4px;
+    color: var(--light-color);
     border-bottom-right-radius: 4px;
     display: flex;
     flex-direction: column;
@@ -42,13 +43,13 @@
     align-items: center;
 }
 
-.filter-button-options li span{
+.filter-button-options li span {
     width: 70%;
     word-wrap: break-word;
     white-space: pre-line;
 }
 
-.filter-button-options li svg{
+.filter-button-options li svg {
     flex-shrink: 0;
 }
 
@@ -56,7 +57,7 @@
     justify-content: space-around;
 }
 
- @keyframes fade-in {
+@keyframes fade-in {
     0% {
         opacity: 0;
         top: 0;
