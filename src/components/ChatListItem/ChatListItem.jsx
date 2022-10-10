@@ -1,7 +1,7 @@
-import "./ChatListItem.css";
 import { useNavigate } from "react-router-dom";
 import { useChatContext } from "../../context/chatContext";
 import { chatListFormat } from "../../utils/dateFormatters";
+import "./ChatListItem.css";
 
 const ChatListItem = ({ chat }) => {
   const { dispatch, connectedUsers } = useChatContext();
@@ -38,11 +38,7 @@ const ChatListItem = ({ chat }) => {
               <></>
             )}
             {chat[1].userInfo.photoURL ? (
-              <img
-                src={chat[1].userInfo.photoURL}
-                alt="img"
-                className="profile-image"
-              />
+              <img src={chat[1].userInfo.photoURL} alt="img" className="profile-image" />
             ) : (
               <div className="not-found">
                 {chat[1].userInfo.displayName
@@ -64,9 +60,7 @@ const ChatListItem = ({ chat }) => {
             </small>
           </div>
         </div>
-        <p className="time end-slot">
-          {chat[1].date && chatListFormat(chat[1].date.toDate())}
-        </p>
+        <p className="time end-slot">{chat[1].date && chatListFormat(chat[1].date.toDate())}</p>
       </div>
     </div>
   );

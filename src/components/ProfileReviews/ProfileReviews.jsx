@@ -1,6 +1,6 @@
-import "./ProfileReviews.css";
 import { FaFilter, FaRegCommentAlt, FaSearch } from "react-icons/fa";
 import ProfileReviewsList from "../ProfileReviewsList/ProfileReviewsList";
+import "./ProfileReviews.css";
 
 const ProfileReviews = () => {
   return (

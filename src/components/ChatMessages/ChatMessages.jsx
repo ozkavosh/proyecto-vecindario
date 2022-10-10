@@ -1,12 +1,12 @@
-import "./ChatMessages.css";
+import { doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { doc, onSnapshot, updateDoc } from "firebase/firestore";
-import { useChatContext } from "../../context/chatContext";
 import { useAuthContext } from "../../context/authContext";
+import { useChatContext } from "../../context/chatContext";
 import { db } from "../../firebase/config";
 import ChatInput from "../ChatInput/ChatInput";
 import ChatMessage from "../ChatMessage/ChatMessage";
+import "./ChatMessages.css";
 
 const ChatMessages = () => {
   const { currentUser } = useAuthContext();
@@ -58,11 +58,11 @@ const ChatMessages = () => {
             </div>
           </div>
 
-        <div className="messagesContainer">
-          {messages.map((message) => (
-            <ChatMessage key={message.id} message={message} ref={messageRef}/>
-          ))}
-        </div>
+          <div className="messagesContainer">
+            {messages.map((message) => (
+              <ChatMessage key={message.id} message={message} ref={messageRef} />
+            ))}
+          </div>
 
           <ChatInput />
         </div>

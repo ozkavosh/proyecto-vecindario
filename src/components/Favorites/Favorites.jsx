@@ -1,15 +1,14 @@
-import "./Favorites.css";
-import { useState, useEffect, useReducer, useCallback } from "react";
-import { FaHeart, FaSearch } from "react-icons/fa";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { debounce } from "lodash";
-import { getDocs, query, collection, where } from "firebase/firestore";
-import { db } from "../../firebase/config";
+import { useCallback, useEffect, useReducer, useState } from "react";
+import { FaHeart, FaSearch } from "react-icons/fa";
 import { useAuthContext } from "../../context/authContext";
+import { db } from "../../firebase/config";
 import FavoriteList from "../FavoriteList/FavoriteList";
 import FavoritesOrderButton from "../FavoritesOrderButton/FavoritesOrderButton";
+import "./Favorites.css";
 
 const Favorites = () => {
-  //TODO: Fetch actual properties stored in Firebase inside useEffect
   const [results, setResults] = useState([]);
   const { currentUser } = useAuthContext();
   const [searchQuery, dispatch] = useReducer(
@@ -28,10 +27,7 @@ const Favorites = () => {
 
   const searchFavorites = useCallback(async () => {
     const request = await getDocs(
-      query(
-        collection(db, "properties"),
-        where("__name__", "in", currentUser.favorites)
-      )
+      query(collection(db, "properties"), where("__name__", "in", currentUser.favorites))
     );
     const response = request.docs.map((doc) => ({
       ...doc.data(),
@@ -42,10 +38,7 @@ const Favorites = () => {
 
   const searchFavoritesByQuery = useCallback(async () => {
     const request = await getDocs(
-      query(
-        collection(db, "properties"),
-        where("__name__", "in", currentUser.favorites)
-      )
+      query(collection(db, "properties"), where("__name__", "in", currentUser.favorites))
     );
     const response = request.docs.map((doc) => ({
       ...doc.data(),

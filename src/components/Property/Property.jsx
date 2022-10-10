@@ -1,30 +1,30 @@
-import "./Property.css";
-import "swiper/css";
-import "swiper/css/navigation";
+import { collection, getDocs, limit, query, where } from "firebase/firestore";
+import { useEffect, useState } from "react";
 import {
-  FaRegUserCircle,
-  FaRegCheckCircle,
-  FaRegPaperPlane,
-  FaPenSquare,
-  FaMapMarkerAlt,
   FaChevronDown,
+  FaMapMarkerAlt,
+  FaPenSquare,
+  FaRegCheckCircle,
   FaRegCommentDots,
+  FaRegPaperPlane,
+  FaRegUserCircle,
 } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Link, useNavigate } from "react-router-dom";
 import { Navigation } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { useAuthContext } from "../../context/authContext";
+import { useChatContext } from "../../context/chatContext";
+import { db } from "../../firebase/config";
+import { capitalizeString } from "../../utils/capitalizeString";
+import { createChatWithUser } from "../../utils/createChatWithUser";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import Review from "../Review/Review";
 import Stars from "../Stars/Stars";
-import { useEffect, useState } from "react";
-import { collection, getDocs, limit, query, where } from "firebase/firestore";
-import { createChatWithUser } from "../../utils/createChatWithUser";
-import { db } from "../../firebase/config";
-import { useChatContext } from "../../context/chatContext";
-import { useAuthContext } from "../../context/authContext";
-import FavoriteButton from "../FavoriteButton/FavoriteButton";
-import { capitalizeString } from "../../utils/capitalizeString";
+import "./Property.css";
 
 const Property = ({ data }) => {
   const [propertyReviews, setPropertyReviews] = useState([]);
@@ -37,13 +37,8 @@ const Property = ({ data }) => {
       (async () => {
         try {
           const request = await getDocs(
-            query(
-              collection(db, "reviews"),
-              where("__name__", "in", data.reviews),
-              limit(3)
-            )
+            query(collection(db, "reviews"), where("__name__", "in", data.reviews), limit(3))
           );
-          //Sort reviews higher to lower by rating
           setPropertyReviews(
             request.docs
               .map((doc) => ({ ...doc.data(), id: doc.id }))
@@ -165,14 +160,10 @@ const Property = ({ data }) => {
         <div className="propertyInfo">
           <div>
             <h3 className="propertyName">
-              {(data.name && capitalizeString(data.name)) || (
-                <Skeleton width={165} />
-              )}
+              {(data.name && capitalizeString(data.name)) || <Skeleton width={165} />}
             </h3>
             <h4 className="propertyType">
-              {(data.type && capitalizeString(data.type)) || (
-                <Skeleton width={165} />
-              )}
+              {(data.type && capitalizeString(data.type)) || <Skeleton width={165} />}
             </h4>
           </div>
           <div className="propertyLocation">
@@ -189,19 +180,13 @@ const Property = ({ data }) => {
             <Skeleton count={5} />
           )}
           <div className="reviews">
-            <div
-              className="propertyReviewsButton retract"
-              onClick={handleClick}
-            >
+            <div className="propertyReviewsButton retract" onClick={handleClick}>
               Reseñas
               <FaChevronDown className="dropdown" />
             </div>
             <div className="reviews-list">
-              {/*Show up to 3 reviews only*/}
               {Boolean(propertyReviews.length) &&
-                propertyReviews.map((review, index) => (
-                  <Review key={index} data={review} />
-                ))}
+                propertyReviews.map((review, index) => <Review key={index} data={review} />)}
             </div>
           </div>
         </div>

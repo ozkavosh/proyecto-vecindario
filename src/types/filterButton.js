@@ -1,6 +1,6 @@
 import { BiBuildingHouse } from "react-icons/bi";
+import { FaList, FaRegStar, FaStar } from "react-icons/fa";
 import { HiOutlineLocationMarker } from "react-icons/hi";
-import { FaRegStar, FaStar, FaList } from "react-icons/fa";
 
 export const types = {
   location: { text: "Región", icon: <HiOutlineLocationMarker /> },

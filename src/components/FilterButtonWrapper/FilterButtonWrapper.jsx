@@ -1,6 +1,6 @@
-import "./FilterButtonWrapper.css";
 import { FaRegStar } from "react-icons/fa";
 import { types } from "../../types/filterButtonWrapper";
+import "./FilterButtonWrapper.css";
 
 const FilterButtonWrapper = ({ type, dispatch, open }) => {
   const handleFilterChange = (filter) => {

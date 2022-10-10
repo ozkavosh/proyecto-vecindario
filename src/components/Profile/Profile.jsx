@@ -1,12 +1,10 @@
-import "./Profile.css";
-import { FaChevronRight, FaRegUserCircle, FaRegBell } from "react-icons/fa";
-import { BiMessageEdit, BiLock, BiInfoCircle, BiLogOut } from "react-icons/bi";
+import { signOut } from "firebase/auth";
+import { BiInfoCircle, BiLock, BiLogOut, BiMessageEdit } from "react-icons/bi";
+import { FaChevronRight, FaRegBell, FaRegUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../context/authContext";
-import { signOut } from "firebase/auth";
 import { auth } from "../../firebase/config";
-
-//TODO: Change with actual/same family icons
+import "./Profile.css";
 
 const Profile = () => {
   const { currentUser } = useAuthContext();
@@ -33,7 +31,7 @@ const Profile = () => {
               .slice(0, 2)
               .join("")}
           </div>
-        )}{" "}
+        )}
         {currentUser.displayName}
       </h1>
       <section className="navigationList">

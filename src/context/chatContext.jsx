@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useReducer,
-  useState,
-  useEffect,
-} from "react";
+import { createContext, useContext, useEffect, useReducer, useState } from "react";
 import io from "socket.io-client";
 import { useAuthContext } from "./authContext";
 
@@ -44,12 +38,9 @@ const ChatContextProvider = ({ children }) => {
   useEffect(() => {
     //Create socket instance if it doesn't exist
     if (currentUser?.uid && !socket) {
-      socket = io(
-        "https://proyecto-vecindario-backend-production.up.railway.app",
-        {
-          query: { uid: currentUser.uid },
-        }
-      );
+      socket = io("https://proyecto-vecindario-backend-production.up.railway.app", {
+        query: { uid: currentUser.uid },
+      });
 
       //Get connectedUsers array on each connection
       socket.on("connectedUsers", (list) => {

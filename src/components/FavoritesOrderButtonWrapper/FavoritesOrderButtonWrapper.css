@@ -1,4 +1,5 @@
-.favoritesOrderButton .favoritesOrderButtonWrapper{
+/* TODO: update styles to match filters in Search */
+.favoritesOrderButton .favoritesOrderButtonWrapper {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -16,43 +17,43 @@
     z-index: 1;
 }
 
-.favoritesOrderButton .favoritesOrderButtonWrapper p{
+.favoritesOrderButton .favoritesOrderButtonWrapper p {
     font-size: 12px;
 }
 
-.favoritesOrderButton .favoritesOrderButtonWrapper p svg{
+.favoritesOrderButton .favoritesOrderButtonWrapper p svg {
     font-size: 9px;
     margin-left: .3em;
 }
 
-.favoritesOrderButton .favoritesOrderButtonWrapper svg{
+.favoritesOrderButton .favoritesOrderButtonWrapper svg {
     fill: var(--light-color);
 }
 
-.favoritesOrderButton .favoritesOrderButtonWrapper hr{
+.favoritesOrderButton .favoritesOrderButtonWrapper hr {
     margin-top: 0.2em;
     border: none;
     border-top: solid 0.3px var(--light-color);
     width: 85%;
 }
 
-.favoritesOrderButton .favoritesOrderButtonWrapper ul{
+.favoritesOrderButton .favoritesOrderButtonWrapper ul {
     margin-top: 0.9em;
     list-style-type: none;
     width: 95%;
 }
 
-.favoritesOrderButton .favoritesOrderButtonWrapper ul li{
+.favoritesOrderButton .favoritesOrderButtonWrapper ul li {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 0.2em;
 }
 
-.favoritesOrderButton .favoritesOrderButtonWrapper ul li:not(:last-child){
+.favoritesOrderButton .favoritesOrderButtonWrapper ul li:not(:last-child) {
     margin-bottom: 0.4em;
 }
 
-.favoritesOrderButton .favoritesOrderButtonWrapper ul li svg{
+.favoritesOrderButton .favoritesOrderButtonWrapper ul li svg {
     font-size: 10px;
 }

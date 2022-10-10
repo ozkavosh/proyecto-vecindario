@@ -1,8 +1,8 @@
-import "./ChatUsers.css";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/authContext";
 import { useChatContext } from "../../context/chatContext";
 import { createChatWithUser } from "../../utils/createChatWithUser";
+import "./ChatUsers.css";
 
 const ChatUsers = ({ userResults, setUserResults, setUserQuery }) => {
   const { currentUser } = useAuthContext();

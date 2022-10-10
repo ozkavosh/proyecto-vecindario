@@ -1,12 +1,12 @@
-import "./Search.css";
-import { useEffect, useState, useReducer, useCallback } from "react";
+import { collection, getDocs, limit, orderBy, query, where } from "firebase/firestore";
 import { debounce } from "lodash";
+import { useCallback, useEffect, useReducer, useState } from "react";
 import { FaRegBell, FaSearch } from "react-icons/fa";
-import { getDocs, collection, query, limit, orderBy, where } from "firebase/firestore";
 import { db } from "../../firebase/config";
+import AppliedFilters from "../AppliedFilters/AppliedFilters";
 import PropertyListContainer from "../PropertyListContainer/PropertyListContainer";
 import SearchFilters from "../SearchFilters/SearchFilters";
-import AppliedFilters from "../AppliedFilters/AppliedFilters";
+import "./Search.css";
 
 const Search = ({ setDismount }) => {
   const [results, setResults] = useState([{}, {}]);
@@ -26,13 +26,11 @@ const Search = ({ setDismount }) => {
     { filter: null, orderBy: null, input: "" }
   );
 
-  console.log(searchQuery);
-
   useEffect(() => {
-    setDismount((prev) => ({...prev, footer: true, header: false }));
+    setDismount((prev) => ({ ...prev, footer: true, header: false }));
 
-    return () => setDismount((prev) => ({...prev, footer: false, header: false }));
-  }, [setDismount])
+    return () => setDismount((prev) => ({ ...prev, footer: false, header: false }));
+  }, [setDismount]);
 
   const handleChange = debounce((e) => {
     dispatch({ type: "setInput", payload: e?.target?.value?.toLowerCase() });

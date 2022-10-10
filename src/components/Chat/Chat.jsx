@@ -1,10 +1,10 @@
-import "./Chat.css";
 import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useAuthContext } from "../../context/authContext";
 import { getChatUsers } from "../../utils/getChatUsers";
 import ChatList from "../ChatList/ChatList";
 import ChatUsers from "../ChatUsers/ChatUsers";
+import "./Chat.css";
 
 const Chat = () => {
   const { currentUser } = useAuthContext();
@@ -13,7 +13,7 @@ const Chat = () => {
 
   useEffect(() => {
     if (userQuery.length >= 4) {
-      getChatUsers(userQuery, currentUser, setUserResults)
+      getChatUsers(userQuery, currentUser, setUserResults);
     } else {
       setUserResults([]);
     }

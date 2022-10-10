@@ -1,7 +1,7 @@
-import "./ReviewTagSelect.css";
-import { useRef, useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { options } from "../../types/reviewTagSelect";
+import "./ReviewTagSelect.css";
 
 const ReviewTagSelect = ({ dispatch }) => {
   const [open, setOpen] = useState(false);

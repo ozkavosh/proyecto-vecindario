@@ -1,8 +1,7 @@
-import "./FavoritesOrderButton.css";
-import { useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaList } from "react-icons/fa";
-import { useState } from "react";
 import FavoritesOrderButtonWrapper from "../FavoritesOrderButtonWrapper/FavoritesOrderButtonWrapper";
+import "./FavoritesOrderButton.css";
 
 const FavoritesOrderButton = ({ dispatch }) => {
   const [open, setOpen] = useState(false);
@@ -11,8 +10,7 @@ const FavoritesOrderButton = ({ dispatch }) => {
 
   useEffect(() => {
     const clickEvent = (e) => {
-      if (open && buttonRef.current && !buttonRef.current.contains(e.target))
-        setOpen(false);
+      if (open && buttonRef.current && !buttonRef.current.contains(e.target)) setOpen(false);
     };
 
     document.addEventListener("click", clickEvent);
@@ -21,12 +19,12 @@ const FavoritesOrderButton = ({ dispatch }) => {
   }, [open]);
 
   return (
-    <div className="favoritesOrderButton" ref={buttonRef} onClick={() => setOpen(prev => !prev)}>
+    <div className="favoritesOrderButton" ref={buttonRef} onClick={() => setOpen((prev) => !prev)}>
       <button>
         <FaList />
       </button>
 
-      { open && <FavoritesOrderButtonWrapper dispatch={dispatch}/>}
+      {open && <FavoritesOrderButtonWrapper dispatch={dispatch} />}
     </div>
   );
 };

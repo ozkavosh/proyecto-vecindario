@@ -1,23 +1,15 @@
-import "./ReviewLikes.css";
 import { doc, onSnapshot } from "firebase/firestore";
 import { useEffect, useReducer } from "react";
-import {
-  FaRegThumbsDown,
-  FaRegThumbsUp,
-  FaThumbsDown,
-  FaThumbsUp,
-} from "react-icons/fa";
+import { FaRegThumbsDown, FaRegThumbsUp, FaThumbsDown, FaThumbsUp } from "react-icons/fa";
 import { useAuthContext } from "../../context/authContext";
 import { db } from "../../firebase/config";
 import reviewLikes from "../../reducers/reviewLikes";
 import { rateReview } from "../../utils/rateReview";
+import "./ReviewLikes.css";
 
 const ReviewLikes = ({ reviewer, rid }) => {
   const { currentUser } = useAuthContext();
-  const [state, dispatch] = useReducer(
-    reviewLikes.reducer,
-    reviewLikes.initialState
-  );
+  const [state, dispatch] = useReducer(reviewLikes.reducer, reviewLikes.initialState);
 
   useEffect(() => {
     if (rid && currentUser?.uid) {
@@ -34,7 +26,7 @@ const ReviewLikes = ({ reviewer, rid }) => {
       });
 
       return () => unsub();
-    } else if ( rid && !currentUser?.uid ){
+    } else if (rid && !currentUser?.uid) {
       const unsub = onSnapshot(doc(db, "reviews", rid), (document) => {
         const { likeCount } = document.data();
 
@@ -49,7 +41,7 @@ const ReviewLikes = ({ reviewer, rid }) => {
   }, [rid, currentUser?.uid]);
 
   const handleClick = (type) => {
-    if(currentUser?.uid && currentUser?.uid !== reviewer){
+    if (currentUser?.uid && currentUser?.uid !== reviewer) {
       rateReview(currentUser, type, rid, state);
     }
   };
