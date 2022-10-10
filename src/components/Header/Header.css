@@ -1,10 +1,9 @@
 header {
     height: 75px;
-    width: 100vw;
-    position: fixed;
+    width: 100%;
+    position: sticky;
     top: 0;
     left: 0;
-    right: 0;
     display: flex;
     background-color: var(--secondary-color);
     justify-content: center;
@@ -47,8 +46,8 @@ header .menu {
 header .menu-links {
     position: absolute;
     top: 0;
-    left: 100%;
-    width: 75vw;
+    left: -1000%;
+    width: 75%;
     height: 100vh;
     background-color: black;
 }
