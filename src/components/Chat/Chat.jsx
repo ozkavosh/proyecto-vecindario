@@ -17,7 +17,7 @@ const Chat = () => {
     } else {
       setUserResults([]);
     }
-  }, [userQuery, currentUser?.uid]);
+  }, [userQuery, currentUser]);
 
   return (
     <section className="chat">
