@@ -7,15 +7,24 @@
     cursor: pointer;
 }
 
+.addReview .reviewHeader .tagSelect .tagSelectOptions.open {
+    display: block;
+}
+
+.addReview .reviewHeader .tagSelect .tagSelectOptions.closed {
+    display: none;
+}
+
 .addReview .reviewHeader .tagSelect .tagSelectOptions {
     box-sizing: border-box;
     width: 100%;
     position: absolute;
     top: 110%;
     list-style-type: none;
-    background-color: #EFEFF0;
+    background-color: var(--primary-color);
+    color: var(--light-color);
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-    padding: .5em 1em;
+    padding: .5em .75em;
     border-radius: 4px;
 }
 
@@ -25,10 +34,50 @@
     align-items: center;
 }
 
+.addReview .reviewHeader .reviewTopic {
+    fill: var(--primary-color);
+}
+
 .addReview .reviewHeader .tagSelect svg {
-    color: var(--primary-color);
+    color: var(--light-color);
 }
 
 .addReview .reviewHeader .tagSelect .tagSelectOptions .tagSelectOption:not(:last-child) {
     margin-bottom: .4em;
+}
+
+.addReview .reviewHeader .tagSelect fieldset {
+    border: none;
+}
+
+.addReview .reviewHeader .tagSelect .tagSelectOption .radiobutton {
+    appearance: none;
+    background-color: transparent;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+}
+
+.addReview .reviewHeader .tagSelect .tagSelectOption .radiobutton::before {
+    content: "";
+    width: 0.3em;
+    border-radius: 1px;
+    height: 0.5em;
+    border: 2px solid var(--light-color);
+    border-top: none;
+    border-left: none;
+    opacity: 0;
+    transform: rotateZ(35deg) translateX(0.05em) translateY(-0.1em);
+    transition: opacity 0.2s ease-in-out;
+}
+
+.addReview .reviewHeader .tagSelect .tagSelectOption .radiobutton:checked::before {
+    opacity: 1;
 }

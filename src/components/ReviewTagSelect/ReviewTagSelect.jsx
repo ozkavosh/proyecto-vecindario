@@ -1,6 +1,5 @@
 import "./ReviewTagSelect.css";
 import { useRef, useState, useEffect } from "react";
-import { BiCheckbox } from "react-icons/bi";
 import { FaChevronDown } from "react-icons/fa";
 import { options } from "../../types/reviewTagSelect";
 
@@ -10,8 +9,7 @@ const ReviewTagSelect = ({ dispatch }) => {
 
   useEffect(() => {
     const clickEvent = (e) => {
-      if (open && buttonRef.current && !buttonRef.current.contains(e.target))
-        setOpen(false);
+      if (open && buttonRef.current && !buttonRef.current.contains(e.target)) setOpen(false);
     };
 
     document.addEventListener("click", clickEvent);
@@ -20,25 +18,23 @@ const ReviewTagSelect = ({ dispatch }) => {
   }, [open]);
 
   return (
-    <div
-      className="tagSelect"
-      ref={buttonRef}
-      onClick={() => setOpen((prev) => !prev)}
-    >
-      Tema de reseña <FaChevronDown />
-      {open && (
-        <ul className="tagSelectOptions">
+    <div className="tagSelect" ref={buttonRef} onClick={() => setOpen((prev) => !prev)}>
+      Tema de reseña <FaChevronDown className="reviewTopic" />
+      {
+        <fieldset className={`tagSelectOptions ${open ? "open" : "closed"}`}>
           {options.map((option, id) => (
-            <li
-              key={id}
-              className="tagSelectOption"
-              onClick={() => dispatch({ type: "setTag", payload: option })}
-            >
-              {option} <BiCheckbox />
-            </li>
+            <label key={id} className="tagSelectOption">
+              <span>{option}</span>
+              <input
+                type="radio"
+                className="radiobutton"
+                name="tag-option"
+                onChange={() => dispatch({ type: "setTag", payload: option })}
+              />
+            </label>
           ))}
-        </ul>
-      )}
+        </fieldset>
+      }
     </div>
   );
 };

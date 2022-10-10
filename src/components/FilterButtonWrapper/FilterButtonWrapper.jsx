@@ -1,10 +1,9 @@
 import "./FilterButtonWrapper.css";
-import { BiCheckbox } from "react-icons/bi";
 import { FaRegStar } from "react-icons/fa";
 import { types } from "../../types/filterButtonWrapper";
 
-const FilterButtonWrapper = ({ type, dispatch }) => {
-  const handleFilterClick = (filter) => {
+const FilterButtonWrapper = ({ type, dispatch, open }) => {
+  const handleFilterChange = (filter) => {
     if (filter.type === "orderBy") {
       const orderType = filter.option === 1 ? "desc" : "asc";
       dispatch({
@@ -24,23 +23,30 @@ const FilterButtonWrapper = ({ type, dispatch }) => {
   };
 
   return (
-    <div className={`filter-button-wrapper ${type}`}>
-      <ul className="filter-button-options">
-        {type === "rating" ? (
+    <div className={`filter-button-wrapper ${type} ${open ? "open" : "closed"}`}>
+      {type === "rating" ? (
+        <ul className="filter-button-options">
           <li className="score-filter">
             {types[type].map((_, id) => (
-              <FaRegStar key={id} onClick={() => handleFilterClick({ type, option: id })} />
+              <FaRegStar key={id} onClick={() => handleFilterChange({ type, option: id })} />
             ))}
           </li>
-        ) : (
-          types[type].map((option, id) => (
-            <li key={option} onClick={() => handleFilterClick({ type, option: id })}>
+        </ul>
+      ) : (
+        <fieldset className="filter-button-options">
+          {types[type].map((option, id) => (
+            <label key={option}>
               <span>{option}</span>
-              <BiCheckbox />
-            </li>
-          ))
-        )}
-      </ul>
+              <input
+                type="radio"
+                className="radiobutton"
+                name="filter-option"
+                onChange={() => handleFilterChange({ type, option: id })}
+              />
+            </label>
+          ))}
+        </fieldset>
+      )}
     </div>
   );
 };

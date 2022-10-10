@@ -10,8 +10,7 @@ const FilterButton = ({ type, dispatch }) => {
 
   useEffect(() => {
     const clickEvent = (e) => {
-      if (open && buttonRef.current && !buttonRef.current.contains(e.target))
-        setOpen(false);
+      if (open && buttonRef.current && !buttonRef.current.contains(e.target)) setOpen(false);
     };
 
     document.addEventListener("click", clickEvent);
@@ -29,7 +28,7 @@ const FilterButton = ({ type, dispatch }) => {
       <div className="filter-pill">
         {types[type].text} {open ? <FaChevronDown /> : <FaChevronUp />}
       </div>
-      {open && <FilterButtonWrapper type={type} dispatch={dispatch} />}
+      <FilterButtonWrapper type={type} dispatch={dispatch} open={open} />
     </button>
   );
 };
