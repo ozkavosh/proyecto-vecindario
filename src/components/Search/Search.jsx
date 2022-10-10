@@ -26,6 +26,8 @@ const Search = ({ setDismount }) => {
     { filter: null, orderBy: null, input: "" }
   );
 
+  console.log(searchQuery);
+
   useEffect(() => {
     setDismount((prev) => ({...prev, footer: true, header: false }));
 

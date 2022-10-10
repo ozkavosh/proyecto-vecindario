@@ -8,7 +8,6 @@ import {
   FaPenSquare,
   FaMapMarkerAlt,
   FaChevronDown,
-  FaCommentDots,
   FaRegCommentDots,
 } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
@@ -54,6 +53,8 @@ const Property = ({ data }) => {
           console.log(e);
         }
       })();
+    } else {
+      setPropertyReviews([]);
     }
   }, [data.reviews]);
 

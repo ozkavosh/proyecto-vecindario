@@ -5,7 +5,7 @@ import { types } from "../../types/filterButtonWrapper";
 const FilterButtonWrapper = ({ type, dispatch, open }) => {
   const handleFilterChange = (filter) => {
     if (filter.type === "orderBy") {
-      const orderType = filter.option === 1 ? "desc" : "asc";
+      const orderType = filter.option === 1 ? "asc" : "desc";
       dispatch({
         type: "setOrder",
         payload: {
