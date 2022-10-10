@@ -214,15 +214,15 @@
   position: relative;
 }
 
-@media only screen and (max-width: 713px) {
+@media only screen and (max-width: 320px) {
   .join-owners h2 {
-    font-size: 1.2rem !important;
+    font-size: 1.2rem;
   }
 
   .join-owners button {
-    top: 8% !important;
+    top: 8%;
     right: 3%;
-    font-size: 12px !important;
+    font-size: 12px;
   }
 }
 
