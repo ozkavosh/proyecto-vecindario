@@ -1,8 +1,8 @@
-import "./FilterButton.css";
-import { useEffect, useState, useRef } from "react";
-import { FaChevronUp, FaChevronDown } from "react-icons/fa";
+import { useEffect, useRef, useState } from "react";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { types } from "../../types/filterButton";
 import FilterButtonWrapper from "../FilterButtonWrapper/FilterButtonWrapper";
+import "./FilterButton.css";
 
 const FilterButton = ({ type, dispatch }) => {
   const [open, setOpen] = useState(false);

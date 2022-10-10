@@ -1,4 +1,5 @@
-import "./Menu.css";
+import { signOut } from "firebase/auth";
+import { useEffect, useRef } from "react";
 import {
   FaFileAlt,
   FaHouseUser,
@@ -10,10 +11,9 @@ import {
   FaUsers,
 } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useRef } from "react";
 import { useAuthContext } from "../../context/authContext";
-import { signOut } from "firebase/auth";
 import { auth } from "../../firebase/config";
+import "./Menu.css";
 
 const Menu = () => {
   const { currentUser } = useAuthContext();
@@ -27,7 +27,6 @@ const Menu = () => {
     return signOut(auth);
   };
 
-  //close menu when any link is clicked
   const navMenu = useRef(null);
   const handleClick = () => {
     menuWidget.current.classList.remove("is-active");
@@ -57,7 +56,6 @@ const Menu = () => {
   };
 
   useEffect(() => {
-    //close menu when clicked outside of it
     const handleOutsideClick = (evt) => {
       if (navMenu.current != null) {
         let onNav = navMenu.current.contains(evt.target);
@@ -92,7 +90,6 @@ const Menu = () => {
         </span>
       </button>
       <nav className="menu-links" ref={navMenu}>
-        {/* TODO: add proper icons */}
         <div>
           <img src={logo} alt="" />
           <Link to="/login" id="login">

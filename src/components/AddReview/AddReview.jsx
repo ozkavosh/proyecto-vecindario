@@ -1,11 +1,11 @@
-import "./AddReview.css";
 import { forwardRef, useReducer, useState } from "react";
+import { FaRegCheckCircle, FaRegUserCircle } from "react-icons/fa";
 import { useAuthContext } from "../../context/authContext";
-import Stars from "../Stars/Stars";
-import { FaRegUserCircle, FaRegCheckCircle } from "react-icons/fa";
-import ReviewTagSelect from "../ReviewTagSelect/ReviewTagSelect";
 import newReviewReducer from "../../reducers/newReview";
 import { addReview } from "../../utils/addReview";
+import ReviewTagSelect from "../ReviewTagSelect/ReviewTagSelect";
+import Stars from "../Stars/Stars";
+import "./AddReview.css";
 
 const AddReview = forwardRef(({ pid }, ref) => {
   const { currentUser } = useAuthContext();
@@ -44,9 +44,7 @@ const AddReview = forwardRef(({ pid }, ref) => {
         name="reviewContent"
         className="reviewContent"
         placeholder="Describe tu experiencia"
-        onChange={(e) =>
-          dispatchNewReview({ type: "setReview", payload: e.target.value })
-        }
+        onChange={(e) => dispatchNewReview({ type: "setReview", payload: e.target.value })}
         value={newReview.review}
       ></textarea>
 

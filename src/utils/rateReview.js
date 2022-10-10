@@ -1,10 +1,4 @@
-import {
-  arrayRemove,
-  arrayUnion,
-  doc,
-  increment,
-  updateDoc,
-} from "firebase/firestore";
+import { arrayRemove, arrayUnion, doc, increment, updateDoc } from "firebase/firestore";
 import { db } from "../firebase/config";
 
 export const rateReview = async (currentUser, type, rid, state) => {

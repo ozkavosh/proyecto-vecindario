@@ -1,6 +1,6 @@
-import "./PropertyListContainer.css";
 import React from "react";
 import Property from "../Property/Property";
+import "./PropertyListContainer.css";
 
 const PropertyListContainer = ({ data }) => {
   return (

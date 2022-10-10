@@ -1,34 +1,34 @@
-import "./PropertyDetail.css";
-import { useState, useEffect, useRef, useCallback } from "react";
-import "swiper/css";
-import "swiper/css/navigation";
+import { collection, doc, getDocs, onSnapshot, query, where } from "firebase/firestore";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { BiMessageEdit } from "react-icons/bi";
 import {
-  FaRegUserCircle,
-  FaRegCheckCircle,
-  FaRegPaperPlane,
-  FaPenSquare,
-  FaMapMarkerAlt,
   FaChevronDown,
   FaListUl,
-  FaTasks,
+  FaMapMarkerAlt,
+  FaPenSquare,
+  FaRegCheckCircle,
   FaRegCommentDots,
+  FaRegPaperPlane,
+  FaRegUserCircle,
+  FaTasks,
 } from "react-icons/fa";
-import { BiMessageEdit } from "react-icons/bi";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import Review from "../Review/Review";
-import Stars from "../Stars/Stars";
-import FavoriteButton from "../FavoriteButton/FavoriteButton";
-import { doc, onSnapshot, getDocs, collection, query, where } from "firebase/firestore";
-import { db } from "../../firebase/config";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { createChatWithUser } from "../../utils/createChatWithUser";
-import AddReview from "../AddReview/AddReview";
+import { Navigation } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { useAuthContext } from "../../context/authContext";
 import { useChatContext } from "../../context/chatContext";
+import { db } from "../../firebase/config";
 import { capitalizeString } from "../../utils/capitalizeString";
+import { createChatWithUser } from "../../utils/createChatWithUser";
+import AddReview from "../AddReview/AddReview";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
+import Review from "../Review/Review";
+import Stars from "../Stars/Stars";
+import "./PropertyDetail.css";
 
 const PropertyDetail = ({ setDismount }) => {
   const navigate = useNavigate();

@@ -9,9 +9,7 @@ const ChatMessage = forwardRef(({ message }, ref) => {
     <div
       ref={ref}
       key={message.id}
-      className={
-        message.senderId === currentUser.uid ? "message own" : "message"
-      }
+      className={message.senderId === currentUser.uid ? "message own" : "message"}
     >
       <p className="text" key={message.id}>
         {message.text}

@@ -1,6 +1,5 @@
-import "./AppliedFilters.css";
-import React from "react";
 import Stars from "../Stars/Stars";
+import "./AppliedFilters.css";
 
 const AppliedFilters = ({ appliedFilter, dispatch }) => {
   const formatFilter = (filter) => {

@@ -1,8 +1,8 @@
-import "./Header.css";
 import { FaChevronLeft } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/svg/logo_header.svg";
 import Menu from "../Menu/Menu";
+import "./Header.css";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const Header = () => {
           <FaChevronLeft />
         </button>
         <Link to="/" className="header-item">
-          <Logo/>
+          <Logo />
         </Link>
         <Menu />
       </div>

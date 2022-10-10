@@ -1,8 +1,7 @@
-import { arrayUnion, arrayRemove, doc, updateDoc } from "firebase/firestore";
-import React from "react";
-import { FaRegHeart, FaHeart } from "react-icons/fa";
-import { useAuthContext } from "../../context/authContext";
+import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../context/authContext";
 import { db } from "../../firebase/config";
 
 const FavoriteButton = ({ pid }) => {

@@ -9,12 +9,7 @@ import {
 import { db } from "../firebase/config";
 import { updatePropertyRating } from "../utils/updatePropertyRating";
 
-export const addReview = async (
-  newReview,
-  dispatchNewReview,
-  currentUser,
-  pid
-) => {
+export const addReview = async (newReview, dispatchNewReview, currentUser, pid) => {
   try {
     const request = await addDoc(collection(db, "reviews"), {
       ...newReview,

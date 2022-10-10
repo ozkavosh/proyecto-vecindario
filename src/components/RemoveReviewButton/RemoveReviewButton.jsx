@@ -1,27 +1,25 @@
-import { arrayRemove, deleteDoc, doc, updateDoc } from 'firebase/firestore';
-import React from 'react'
+import { arrayRemove, deleteDoc, doc, updateDoc } from "firebase/firestore";
+import React from "react";
 import { FaTrash } from "react-icons/fa";
-import { useAuthContext } from '../../context/authContext';
-import { db } from '../../firebase/config';
-import { updatePropertyRating } from '../../utils/updatePropertyRating';
+import { useAuthContext } from "../../context/authContext";
+import { db } from "../../firebase/config";
+import { updatePropertyRating } from "../../utils/updatePropertyRating";
 
 const RemoveReviewButton = ({ pid, rid }) => {
-    const { currentUser } = useAuthContext();
+  const { currentUser } = useAuthContext();
 
-    const handleRemoveReview = async () => {
-        try{
-            await deleteDoc(doc(db, "reviews", rid));
-            await updateDoc(doc(db, "users", currentUser.uid), { reviews: arrayRemove(rid) });
-            await updateDoc(doc(db, "properties", pid), { reviews: arrayRemove(rid) })
-            await updatePropertyRating(pid);
-        }catch(e){
-            console.log(e);
-        }
+  const handleRemoveReview = async () => {
+    try {
+      await deleteDoc(doc(db, "reviews", rid));
+      await updateDoc(doc(db, "users", currentUser.uid), { reviews: arrayRemove(rid) });
+      await updateDoc(doc(db, "properties", pid), { reviews: arrayRemove(rid) });
+      await updatePropertyRating(pid);
+    } catch (e) {
+      console.log(e);
     }
+  };
 
-  return (
-    <FaTrash onClick={handleRemoveReview}/>
-  )
-}
+  return <FaTrash onClick={handleRemoveReview} />;
+};
 
-export default RemoveReviewButton
+export default RemoveReviewButton;

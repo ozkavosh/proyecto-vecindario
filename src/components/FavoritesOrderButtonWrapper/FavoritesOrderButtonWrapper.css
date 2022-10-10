@@ -1,4 +1,4 @@
-.favoritesOrderButton .favoritesOrderButtonWrapper{
+.favoritesOrderButton .favoritesOrderButtonWrapper {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -16,43 +16,77 @@
     z-index: 1;
 }
 
-.favoritesOrderButton .favoritesOrderButtonWrapper p{
+.favoritesOrderButton .favoritesOrderButtonWrapper.open {
+    display: flex;
+}
+
+.favoritesOrderButton .favoritesOrderButtonWrapper.open {
+    display: none;
+}
+
+.favoritesOrderButton .favoritesOrderButtonWrapper p {
     font-size: 12px;
 }
 
-.favoritesOrderButton .favoritesOrderButtonWrapper p svg{
+.favoritesOrderButton .favoritesOrderButtonWrapper p svg {
     font-size: 9px;
     margin-left: .3em;
 }
 
-.favoritesOrderButton .favoritesOrderButtonWrapper svg{
+.favoritesOrderButton .favoritesOrderButtonWrapper svg {
     fill: var(--light-color);
 }
 
-.favoritesOrderButton .favoritesOrderButtonWrapper hr{
-    margin-top: 0.2em;
-    border: none;
-    border-top: solid 0.3px var(--light-color);
-    width: 85%;
-}
-
-.favoritesOrderButton .favoritesOrderButtonWrapper ul{
+.favoritesOrderButton .favoritesOrderButtonWrapper fieldset {
     margin-top: 0.9em;
+    border: none;
     list-style-type: none;
     width: 95%;
 }
 
-.favoritesOrderButton .favoritesOrderButtonWrapper ul li{
+.favoritesOrderButton .favoritesOrderButtonWrapper fieldset label {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 0.2em;
 }
 
-.favoritesOrderButton .favoritesOrderButtonWrapper ul li:not(:last-child){
+.favoritesOrderButton .favoritesOrderButtonWrapper fieldset label:not(:last-child) {
     margin-bottom: 0.4em;
 }
 
-.favoritesOrderButton .favoritesOrderButtonWrapper ul li svg{
+.favoritesOrderButton .favoritesOrderButtonWrapper fieldset label svg {
     font-size: 10px;
+}
+
+.favoritesOrderButton .favoritesOrderButtonWrapper fieldset label .radiobutton {
+    appearance: none;
+    background-color: transparent;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+}
+
+.favoritesOrderButton .favoritesOrderButtonWrapper fieldset label .radiobutton::before {
+    content: "";
+    width: 0.3em;
+    border-radius: 1px;
+    height: 0.5em;
+    border: 2px solid var(--light-color);
+    border-top: none;
+    border-left: none;
+    opacity: 0;
+    transform: rotateZ(35deg) translateX(0.05em) translateY(-0.1em);
+    transition: opacity 0.2s ease-in-out;
+}
+
+.favoritesOrderButton .favoritesOrderButtonWrapper fieldset label .radiobutton:checked::before {
+    opacity: 1;
 }

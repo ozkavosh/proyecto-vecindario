@@ -1,5 +1,5 @@
+import { FaRegStar, FaStar } from "react-icons/fa";
 import "./Stars.css";
-import { FaStar, FaRegStar } from "react-icons/fa";
 
 const Stars = ({ ammount, onClick }) => {
   return (

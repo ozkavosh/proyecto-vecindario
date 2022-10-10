@@ -26,20 +26,17 @@ const AuthContextProvider = ({ children }) => {
   //Get user favorites and reviews, update currentUser on success
   useEffect(() => {
     if (currentUser?.uid) {
-      const unsub = onSnapshot(
-        doc(db, "users", currentUser.uid),
-        async (document) => {
-          if (!document.data().favorites && !document.data().reviews) {
-            setCurrentUser((prev) => ({ ...prev, favorites: [], reviews: [] }));
-          } else {
-            setCurrentUser((prev) => ({
-              ...prev,
-              favorites: document.data().favorites,
-              reviews: document.data().reviews,
-            }));
-          }
+      const unsub = onSnapshot(doc(db, "users", currentUser.uid), async (document) => {
+        if (!document.data().favorites && !document.data().reviews) {
+          setCurrentUser((prev) => ({ ...prev, favorites: [], reviews: [] }));
+        } else {
+          setCurrentUser((prev) => ({
+            ...prev,
+            favorites: document.data().favorites,
+            reviews: document.data().reviews,
+          }));
         }
-      );
+      });
 
       return () => {
         unsub();
@@ -48,9 +45,7 @@ const AuthContextProvider = ({ children }) => {
   }, [currentUser?.uid]);
 
   return (
-    <AuthContext.Provider value={{ currentUser, setCurrentUser }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={{ currentUser, setCurrentUser }}>{children}</AuthContext.Provider>
   );
 };
 

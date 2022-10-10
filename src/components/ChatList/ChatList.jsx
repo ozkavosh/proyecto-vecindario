@@ -1,9 +1,9 @@
-import "./ChatList.css";
-import { useState, useEffect } from "react";
-import { onSnapshot, doc } from "firebase/firestore";
-import { db } from "../../firebase/config";
+import { doc, onSnapshot } from "firebase/firestore";
+import { useEffect, useState } from "react";
 import { useAuthContext } from "../../context/authContext";
+import { db } from "../../firebase/config";
 import ChatListItem from "../ChatListItem/ChatListItem";
+import "./ChatList.css";
 
 const ChatList = () => {
   const { currentUser } = useAuthContext();

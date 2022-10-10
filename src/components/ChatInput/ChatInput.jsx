@@ -1,9 +1,9 @@
-import "./ChatInput.css";
 import { useState } from "react";
 import { FaArrowAltCircleRight, FaRegSmile } from "react-icons/fa";
 import { useAuthContext } from "../../context/authContext";
 import { useChatContext } from "../../context/chatContext";
 import { sendChatMessage } from "../../utils/sendChatMessage";
+import "./ChatInput.css";
 
 const ChatInput = () => {
   const [text, setText] = useState("");

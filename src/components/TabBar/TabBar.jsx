@@ -1,16 +1,14 @@
-import "./TabBar.css";
+import { doc, onSnapshot } from "firebase/firestore";
 import { useEffect } from "react";
-import { CgHome, CgProfile } from "react-icons/cg";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsChatDots } from "react-icons/bs";
-import { NavLink } from "react-router-dom";
+import { CgHome, CgProfile } from "react-icons/cg";
 import { FaSearch } from "react-icons/fa";
-import { useChatContext } from "../../context/chatContext";
+import { NavLink } from "react-router-dom";
 import { useAuthContext } from "../../context/authContext";
+import { useChatContext } from "../../context/chatContext";
 import { db } from "../../firebase/config";
-import { onSnapshot, doc } from "firebase/firestore";
-
-//TODO: Replace with actual app icons
+import "./TabBar.css";
 
 const TabBar = () => {
   const { unreadMessages, setUnreadMessages } = useChatContext();

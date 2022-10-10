@@ -1,9 +1,9 @@
-import "./ProfileReview.css";
-import { FaRegCommentAlt } from "react-icons/fa";
-import RemoveReviewButton from "../RemoveReviewButton/RemoveReviewButton";
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import { FaRegCommentAlt } from "react-icons/fa";
 import { db } from "../../firebase/config";
+import RemoveReviewButton from "../RemoveReviewButton/RemoveReviewButton";
+import "./ProfileReview.css";
 
 const ProfileReview = ({ data }) => {
   const [propertyName, setPropertyName] = useState("Reseña de inmueble");

@@ -1,12 +1,14 @@
-import "./App.css";
 import { useState } from "react";
 import { BrowserRouter } from "react-router-dom";
-import { AuthContextProvider } from "./context/authContext";
-import { ChatContextProvider } from "./context/chatContext";
+import "./App.css";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
-import TabBar from "./components/TabBar/TabBar";
 import MainNavigation from "./components/MainNavigation/MainNavigation";
+import TabBar from "./components/TabBar/TabBar";
+import { AuthContextProvider } from "./context/authContext";
+import { ChatContextProvider } from "./context/chatContext";
+
+//TODO: add proper icons in every component
 
 function App() {
   const [dismount, setDismount] = useState({

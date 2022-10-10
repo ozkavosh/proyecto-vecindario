@@ -1,6 +1,6 @@
-import "./ProfileInformation.css";
 import { FaUserCircle } from "react-icons/fa";
 import { useAuthContext } from "../../context/authContext";
+import "./ProfileInformation.css";
 
 const ProfileInformation = () => {
   const { currentUser } = useAuthContext();

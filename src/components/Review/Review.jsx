@@ -1,9 +1,9 @@
-import "./Review.css";
-import { FaRegUserCircle, FaRegCheckCircle } from "react-icons/fa";
+import { FaRegCheckCircle, FaRegUserCircle } from "react-icons/fa";
 import { useAuthContext } from "../../context/authContext";
-import Stars from "../Stars/Stars";
 import RemoveReviewButton from "../RemoveReviewButton/RemoveReviewButton";
 import ReviewLikes from "../ReviewLikes/ReviewLikes";
+import Stars from "../Stars/Stars";
+import "./Review.css";
 
 const Review = ({ data }) => {
   const { currentUser } = useAuthContext();
