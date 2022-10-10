@@ -10,27 +10,28 @@ const ChatInput = () => {
   const { currentUser } = useAuthContext();
   const { data } = useChatContext();
 
-  const handleKeyDown = async (e) => {
-    if (e.key !== "Enter") return;
-    if (text !== "") sendChatMessage(currentUser, data, text, setText);
-  };
+  const handleSendMessage = (e) => {
+    e.preventDefault();
+    sendChatMessage(currentUser, data, text.trim(), setText)
+  }
 
   return (
-    <div className="messageInputContainer">
+    <form className="messageInputContainer" onSubmit={handleSendMessage}>
       <div>
         <input
           type="text"
           name="message"
+          pattern=".+"
+          required
           value={text}
           onChange={(e) => setText(e.target.value)}
-          onKeyDown={handleKeyDown}
         />
         <FaRegSmile />
       </div>
-      <button onClick={() => sendChatMessage(currentUser, data, text, setText)}>
+      <button type="submit">
         <FaArrowAltCircleRight />
       </button>
-    </div>
+    </form>
   );
 };
 

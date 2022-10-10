@@ -3,13 +3,10 @@
     display: flex;
     box-sizing: border-box;
     align-items: center;
-    position: fixed;
-    bottom: calc(75px);
-    left: 0;
-    right: 0;
+    position: sticky;
+    left: -25%;
     width: 100%;
     padding: 0 7.5%;
-    margin: auto;
     padding-top: 0.3em;
     padding-bottom: 0.75em;
     gap: 1em;

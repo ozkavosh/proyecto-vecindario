@@ -5,16 +5,17 @@
 
 .chatMessages .container {
   display: flex;
-  width: 85%;
   height: 100%;
   margin: auto;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 }
 
 .chatMessages .messagesContainer {
-  height: 80%;
-  margin-top: 5rem;
+  width: 85%;
+  margin: auto;
+  height: 100%;
   z-index: 0;
   overflow-y: scroll;
   position: relative;
@@ -25,10 +26,11 @@
   align-items: center;
   row-gap: 1.5rem;
   padding: 1em 0;
-  margin-bottom: 3.5em;
 }
 
 .chatMessages .chatHeader {
+  width: 85%;
+  margin: auto;
   padding: 1.3em 7%;
   height: 5rem;
   box-sizing: border-box;
@@ -37,10 +39,8 @@
   align-items: center;
   border-bottom: 2px solid var(--dark-color);
   z-index: 1;
-  position: fixed;
-  width: 85%;
+  position: sticky;
   background-color: #f8f8f8;
-  margin: auto;
 }
 
 .chatMessages .chatHeader .user-info {
