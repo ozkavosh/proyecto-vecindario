@@ -8,7 +8,7 @@ import PropertyListContainer from "../PropertyListContainer/PropertyListContaine
 import SearchFilters from "../SearchFilters/SearchFilters";
 import AppliedFilters from "../AppliedFilters/AppliedFilters";
 
-const Search = () => {
+const Search = ({ setDismount }) => {
   const [results, setResults] = useState([{}, {}]);
   const [searchQuery, dispatch] = useReducer(
     (state, action) => {
@@ -25,6 +25,12 @@ const Search = () => {
     },
     { filter: null, orderBy: null, input: "" }
   );
+
+  useEffect(() => {
+    setDismount((prev) => ({...prev, footer: true, header: false }));
+
+    return () => setDismount((prev) => ({...prev, footer: false, header: false }));
+  }, [setDismount])
 
   const handleChange = debounce((e) => {
     dispatch({ type: "setInput", payload: e?.target?.value?.toLowerCase() });

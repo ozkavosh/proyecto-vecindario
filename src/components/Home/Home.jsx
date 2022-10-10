@@ -24,8 +24,8 @@ const Home = () => {
           <button>BUSCAR</button>
         </div>
         <p>
-          Conocé los mejores sitios donde alojarte a partir de publicaciones y de reseñas de otros
-          inquilinos
+          Conocé los mejores sitios donde alojarte a partir de publicaciones y
+          de reseñas de otros inquilinos
         </p>
       </section>
       <section className="find-your-place">
@@ -33,8 +33,8 @@ const Home = () => {
           <h2>Encontrá tu lugar ideal</h2>
           {/* <button>Registrarme / Iniciar sesión</button> */}
           <p>
-            Conocé los mejores sitios donde alojarte a partir de publicaciones y de reseñas de otros
-            inquilinos
+            Conocé los mejores sitios donde alojarte a partir de publicaciones y
+            de reseñas de otros inquilinos
           </p>
         </div>
         <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
@@ -65,8 +65,8 @@ const Home = () => {
               <PencilIcon />
             </div>
             <p>
-              Muchas <strong>reseñas</strong> para conocer a tus vecinos, el barrio, condiciones del
-              inmueble y mucho más.
+              Muchas <strong>reseñas</strong> para conocer a tus vecinos, el
+              barrio, condiciones del inmueble y mucho más.
             </p>
           </article>
           <article>
@@ -74,8 +74,8 @@ const Home = () => {
               <KeyIcon />
             </div>
             <p>
-              <strong>100% seguro</strong>. Perfiles verificados, dueños e inquilinos reales para tu
-              confianza.
+              <strong>100% seguro</strong>. Perfiles verificados, dueños e
+              inquilinos reales para tu confianza.
             </p>
           </article>
           <article>
@@ -95,7 +95,7 @@ const Home = () => {
           slidesPerView={3}
           navigation={false}
           spaceBetween={5}
-          modules={[Navigation]}
+          modules={[Navigation]}  
           className="mySwiper"
         >
           <SwiperSlide>
@@ -135,8 +135,8 @@ const Home = () => {
           <h2>¿Eres propietario?</h2>
           <button>¡Empieza ahora!</button>
           <p>
-            Nosotros te ayudamos a darte a conocer publicando tu propiedad y obteniendo gran llegada
-            a potenciales inquilinos.
+            Nosotros te ayudamos a darte a conocer publicando tu propiedad y
+            obteniendo gran llegada a potenciales inquilinos.
           </p>
         </div>
       </section>
@@ -151,14 +151,14 @@ const Home = () => {
             <p>33 años</p>
           </div>
           <p>
-            “Soy músico y gracias a Vecindario pude encontrar un sitio donde no moleste con mis
-            ruidos.”
+            “Soy músico y gracias a Vecindario pude encontrar un sitio donde no
+            moleste con mis ruidos.”
           </p>
         </div>
         <div className="testimony">
           <p>
-            “Como propietaria intento siempre mejorar a partir de las reseñas que me dejan otros
-            inquilinos.”
+            “Como propietaria intento siempre mejorar a partir de las reseñas
+            que me dejan otros inquilinos.”
           </p>
           <div className="testimony-profile">
             <img

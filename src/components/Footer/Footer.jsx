@@ -18,7 +18,7 @@ const Footer = () => {
             <Link to="/">Ayuda</Link>
           </li>
           <li>
-            <Link to="/">FAQ</Link>
+            <Link to="/">Preguntas frecuentes</Link>
           </li>
         </ul>
         <ul>
@@ -48,10 +48,7 @@ const Footer = () => {
             <Link to="/">Contáctenos</Link>
           </li>
           <li>
-            <Link to="/">Publicar</Link>
-          </li>
-          <li>
-            <Link to="/">Mis propiedades</Link>
+            <Link to="/">Publique sus propiedades</Link>
           </li>
         </ul>
       </div>
