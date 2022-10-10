@@ -4,6 +4,7 @@
     align-items: center;
     gap: .3em;
     font-size: 10px;
+    cursor: pointer;
 }
 
 .addReview .reviewHeader .tagSelect .tagSelectOptions {

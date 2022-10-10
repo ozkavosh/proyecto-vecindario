@@ -9,7 +9,7 @@
     margin: auto;
     padding-top: 0.2em;
     z-index: 2;
-    transition: background-color 0.3s, box-shadow 0.3s;
+    transition: box-shadow 0.3s;
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;
     box-shadow: none;
@@ -51,8 +51,8 @@
     gap: 0.3em;
 }
 
-.filter-button.open .filter-pill {
-    background: none;
+.filter-button.open>svg {
+    color: var(--light-color);
 }
 
 .filter-button.open .filter-pill svg {
