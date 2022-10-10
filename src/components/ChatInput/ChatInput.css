@@ -3,8 +3,12 @@
     display: flex;
     box-sizing: border-box;
     align-items: center;
-    position: relative;
-    width: 100%;
+    position: fixed;
+    bottom: calc(75px);
+    left: 0;
+    right: 0;
+    width: 85%;
+    margin: auto;
     margin-top: 0.3em;
     margin-bottom: 0.75em;
     gap: 1em;
