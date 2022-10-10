@@ -12,7 +12,7 @@ const ChatInput = () => {
 
   const handleKeyDown = async (e) => {
     if (e.key !== "Enter") return;
-    sendChatMessage(currentUser, data, text, setText);
+    if (text !== "") sendChatMessage(currentUser, data, text, setText);
   };
 
   return (
