@@ -1,38 +1,39 @@
-.applied-filters-container{
+.applied-filters-container {
     margin-top: 1em;
     display: flex;
     align-items: center;
 }
 
-.applied-filter{
+.applied-filter {
     position: relative;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 0.2rem;
     background-color: var(--primary-color);
     color: var(--light-color);
-    height: 18px;
-    font-size: 12px;
-    border-radius: 12px;
-    padding: .2em 1.5em .2em .5em;
+    height: 1rem;
+    font-size: 0.75rem;
+    border-radius: 0.75rem;
+    padding: 0.15rem 0.4rem;
     cursor: pointer;
 }
 
-.applied-filter span{
-    position: absolute;
-    top: 15%;
-    right: 3%;
+.applied-filter span {
     font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: var(--light-color);
-    color: black;
-    height: 10px;
-    width: 10px;
-    font-size: 10px;
+    color: var(--dark-color);
+    height: 0.75rem;
+    width: 0.75rem;
+    padding: .1rem;
+    font-size: 1rem;
+    line-height: 1rem;
     border-radius: 100%;
-    padding: .2em;
 }
 
-.applied-filter .stars{
+.applied-filter .stars {
     color: var(--light-color);
 }

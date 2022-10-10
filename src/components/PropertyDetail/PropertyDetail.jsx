@@ -21,14 +21,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import Review from "../Review/Review";
 import Stars from "../Stars/Stars";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
-import {
-  doc,
-  onSnapshot,
-  getDocs,
-  collection,
-  query,
-  where,
-} from "firebase/firestore";
+import { doc, onSnapshot, getDocs, collection, query, where } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { createChatWithUser } from "../../utils/createChatWithUser";
@@ -49,20 +42,16 @@ const PropertyDetail = ({ setDismount }) => {
   const { pid } = useParams();
 
   useEffect(() => {
-    setDismount((prev) => ({...prev, footer: true, header: false }));
+    setDismount((prev) => ({ ...prev, footer: true, header: false }));
 
-    return () => setDismount((prev) => ({...prev, footer: false, header: false }));
-  }, [setDismount])
+    return () => setDismount((prev) => ({ ...prev, footer: false, header: false }));
+  }, [setDismount]);
 
   const handleAddReview = useCallback(() => {
     if (currentUser) {
       if (!reviewsRef.current.classList.contains("deployed")) {
         deployReviews();
-        setTimeout(
-          () =>
-            addReviewInputRef.current.scrollIntoView({ behavior: "smooth" }),
-          500
-        );
+        setTimeout(() => addReviewInputRef.current.scrollIntoView({ behavior: "smooth" }), 500);
       } else {
         addReviewInputRef.current.scrollIntoView({ behavior: "smooth" });
       }
@@ -94,10 +83,7 @@ const PropertyDetail = ({ setDismount }) => {
         if (document.data().reviews.length) {
           try {
             const request = await getDocs(
-              query(
-                collection(db, "reviews"),
-                where("__name__", "in", document.data().reviews)
-              )
+              query(collection(db, "reviews"), where("__name__", "in", document.data().reviews))
             );
 
             setPropertyReviews(
@@ -123,12 +109,7 @@ const PropertyDetail = ({ setDismount }) => {
     } else if (!currentUser && location.state?.newReviewClicked) {
       navigate("/inmueble/error");
     }
-  }, [
-    location.state?.newReviewClicked,
-    handleAddReview,
-    currentUser,
-    navigate,
-  ]);
+  }, [location.state?.newReviewClicked, handleAddReview, currentUser, navigate]);
 
   return (
     <div className="property detail">
@@ -196,11 +177,7 @@ const PropertyDetail = ({ setDismount }) => {
               >
                 <FaRegCommentDots /> Chat
               </button>
-              <button
-                type="button"
-                className="addReviewBtn"
-                onClick={handleAddReview}
-              >
+              <button type="button" className="addReviewBtn" onClick={handleAddReview}>
                 <FaPenSquare /> Nueva reseña
               </button>
             </div>
@@ -216,14 +193,10 @@ const PropertyDetail = ({ setDismount }) => {
       <div className="propertyInfo">
         <div>
           <h3 className="propertyName">
-            {(property.name && capitalizeString(property.name)) || (
-              <Skeleton width={165} />
-            )}
+            {(property.name && capitalizeString(property.name)) || <Skeleton width={165} />}
           </h3>
           <h4 className="propertyType">
-            {(property.type && capitalizeString(property.type)) || (
-              <Skeleton width={165} />
-            )}
+            {(property.type && capitalizeString(property.type)) || <Skeleton width={165} />}
           </h4>
         </div>
         <div className="propertyLocation">
@@ -253,11 +226,7 @@ const PropertyDetail = ({ setDismount }) => {
         </div>
 
         <div className="reviews">
-          <div
-            className="propertyReviewsButton retract"
-            ref={reviewsRef}
-            onClick={deployReviews}
-          >
+          <div className="propertyReviewsButton retract" ref={reviewsRef} onClick={deployReviews}>
             <BiMessageEdit />
             Reseñas
             <FaChevronDown className="dropdown" />
@@ -267,11 +236,9 @@ const PropertyDetail = ({ setDismount }) => {
               <Review key={id} data={review} />
             ))}
 
-            {currentUser &&
-              pid &&
-              currentUser?.uid !== property?.owner?.uid && (
-                <AddReview pid={pid} ref={addReviewInputRef} />
-              )}
+            {currentUser && pid && currentUser?.uid !== property?.owner?.uid && (
+              <AddReview pid={pid} ref={addReviewInputRef} />
+            )}
           </div>
         </div>
       </div>

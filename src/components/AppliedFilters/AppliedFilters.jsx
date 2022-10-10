@@ -9,8 +9,8 @@ const AppliedFilters = ({ appliedFilter, dispatch }) => {
   };
 
   const handleClick = () => {
-    dispatch({ type: 'setFilter', payload: null });
-  }
+    dispatch({ type: "setFilter", payload: null });
+  };
 
   return (
     <div className="applied-filters-container">
@@ -20,7 +20,7 @@ const AppliedFilters = ({ appliedFilter, dispatch }) => {
         ) : (
           <p>{formatFilter(appliedFilter.equalTo)}</p>
         )}
-        <span>x</span>
+        <span>⨯</span>
       </div>
     </div>
   );

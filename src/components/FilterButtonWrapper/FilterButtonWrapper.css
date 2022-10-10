@@ -16,6 +16,18 @@
     animation: fade-in 0.3s normal forwards;
 }
 
+.filter-button-wrapper fieldset {
+    border: none;
+}
+
+.filter-button-wrapper.open {
+    display: flex;
+}
+
+.filter-button-wrapper.closed {
+    display: none;
+}
+
 .filter-button-wrapper.score {
     animation: fade-in 0.3s normal forwards;
 }
@@ -29,17 +41,18 @@
     margin: 0.5em 0;
 }
 
-.filter-button-options li:not(:last-child) {
+.filter-button-options label:not(:last-child) {
     margin-bottom: 1em;
 }
 
+.filter-button-options label,
 .filter-button-options li {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.filter-button-options li span {
+.filter-button-options label span {
     width: 70%;
     word-wrap: break-word;
     white-space: pre-line;
@@ -47,10 +60,43 @@
 
 .filter-button-options li svg {
     flex-shrink: 0;
+    font-size: 0.9rem;
 }
 
 .filter-button-options li.score-filter {
     justify-content: space-around;
+}
+
+.filter-button-options .radiobutton {
+    appearance: none;
+    background-color: transparent;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+}
+
+.filter-button-options .radiobutton::before {
+    content: "";
+    width: 0.3em;
+    border-radius: 1px;
+    height: 0.5em;
+    border: 2px solid var(--light-color);
+    border-top: none;
+    border-left: none;
+    opacity: 0;
+    transform: rotateZ(35deg) translateX(0.05em) translateY(-0.1em);
+    transition: opacity 0.2s ease-in-out;
+}
+
+.filter-button-options .radiobutton:checked::before {
+    opacity: 1;
 }
 
 @keyframes fade-in {
