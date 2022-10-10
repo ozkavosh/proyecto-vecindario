@@ -9,10 +9,29 @@
     justify-content: space-between;
 }
 
+.addReview .reviewHeader h4{
+    display: flex;
+    align-items: center;
+    gap: .2em;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .addReview .reviewHeader .reviewer {
     display: flex;
     align-items: center;
     gap: 0.3em;
+}
+
+.addReview .reviewHeader .reviewerImg {
+    width: 22px;
+    height: 22px;
+}
+
+.newReviewInputs{
+    display: flex;
+    align-items: center;
+    gap: .3em;
 }
 
 .addReview .stars {
@@ -20,7 +39,8 @@
 }
 
 .addReview .reviewHeader .reviewerCheck {
-    color: var(--primary-color);
+    fill: var(--primary-color);
+    font-size: 10px;
 }
 
 .addReview .reviewContent {

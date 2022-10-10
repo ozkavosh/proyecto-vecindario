@@ -25,7 +25,7 @@ const ReviewTagSelect = ({ dispatch }) => {
       ref={buttonRef}
       onClick={() => setOpen((prev) => !prev)}
     >
-      Tema de reseña <FaChevronDown />
+      <h4>Tipo de reseña <FaChevronDown /></h4>
       {open && (
         <ul className="tagSelectOptions">
           {options.map((option, id) => (

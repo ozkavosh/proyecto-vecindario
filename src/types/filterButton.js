@@ -1,18 +1,14 @@
-import { BiBuildingHouse } from "react-icons/bi";
-import { HiOutlineLocationMarker } from "react-icons/hi";
-import { FaRegStar, FaStar, FaList } from "react-icons/fa";
+import { ReactComponent as LocationIcon } from "../assets/icon/LocationFilter.svg";
+import { ReactComponent as OrderIcon } from "../assets/icon/OrderFilter.svg";
+import { ReactComponent as PropertyIcon } from "../assets/icon/PropertyFilter.svg";
+import { ReactComponent as RatingIcon } from "../assets/icon/StarsFilter.svg";
 
 export const types = {
-  location: { text: "Región", icon: <HiOutlineLocationMarker /> },
-  type: { text: "Inmueble", icon: <BiBuildingHouse /> },
+  location: { text: "Región", icon: <LocationIcon /> },
+  type: { text: "Inmueble", icon: <PropertyIcon /> },
   rating: {
     text: "Puntuación",
-    icon: (
-      <>
-        <FaStar />
-        <FaRegStar />
-      </>
-    ),
+    icon: <RatingIcon/>,
   },
-  orderBy: { text: "Ordenar por", icon: <FaList /> },
+  orderBy: { text: "Ordenar por", icon: <OrderIcon /> },
 };

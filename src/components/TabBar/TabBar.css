@@ -29,12 +29,17 @@
     position: relative;
 }
 
-.active {
-    color: var(--light-color);
+.tab.active svg:first-child{
+    display: none;
 }
 
-.tab svg {
-    font-size: 1.5em;
+.tab:not(.active) svg:nth-child(2){
+    display: none;
+}
+
+.tab svg path{
+    stroke-width: 1.5px;
+    stroke: var(--light-color);
 }
 
 .tab p {

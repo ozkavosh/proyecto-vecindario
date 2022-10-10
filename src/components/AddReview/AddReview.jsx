@@ -2,7 +2,8 @@ import "./AddReview.css";
 import { forwardRef, useReducer, useState } from "react";
 import { useAuthContext } from "../../context/authContext";
 import Stars from "../Stars/Stars";
-import { FaRegUserCircle, FaRegCheckCircle } from "react-icons/fa";
+import { ReactComponent as UserIcon} from '../../assets/icon/UserOutline.svg';
+import { FaRegCheckCircle } from "react-icons/fa";
 import ReviewTagSelect from "../ReviewTagSelect/ReviewTagSelect";
 import newReviewReducer from "../../reducers/newReview";
 import { addReview } from "../../utils/addReview";
@@ -30,14 +31,14 @@ const AddReview = forwardRef(({ pid }, ref) => {
     <form ref={ref} className="addReview" onSubmit={handleSubmit}>
       <div className="reviewHeader">
         <div className="reviewer">
-          <FaRegUserCircle className="reviewerImg" />
-          <h4 className="reviewerName">{currentUser?.displayName}</h4>
-          <FaRegCheckCircle className="reviewerCheck" />
+          <UserIcon className="reviewerImg" />
+          <h4 className="reviewerName">{currentUser?.displayName} <FaRegCheckCircle className="reviewerCheck" /></h4>
         </div>
 
-        <ReviewTagSelect dispatch={dispatchNewReview} />
-
-        <Stars onClick={handleStarClick} ammount={newReview.rating} />
+        <div className="newReviewInputs">
+          <ReviewTagSelect dispatch={dispatchNewReview} />
+          <Stars onClick={handleStarClick} ammount={newReview.rating} />
+        </div>
       </div>
 
       <textarea

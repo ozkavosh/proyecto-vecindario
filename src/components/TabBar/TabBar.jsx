@@ -1,16 +1,20 @@
 import "./TabBar.css";
 import { useEffect } from "react";
-import { CgHome, CgProfile } from "react-icons/cg";
-import { AiOutlineHeart } from "react-icons/ai";
-import { BsChatDots } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
-import { FaSearch } from "react-icons/fa";
+import { ReactComponent as HomeFullIcon } from "../../assets/icon/TabBarHomeFilled.svg";
+import { ReactComponent as HomeIcon } from "../../assets/icon/TabBarHomeOutline.svg";
+import { ReactComponent as FavoritesFullIcon } from "../../assets/icon/TabBarHeartOutline.svg";
+import { ReactComponent as FavoritesIcon } from "../../assets/icon/TabBarHeartOutline.svg";
+import { ReactComponent as SearchFullIcon } from "../../assets/icon/TabBarSearchFilled.svg";
+import { ReactComponent as SearchIcon } from "../../assets/icon/TabBarSearchOutline.svg";
+import { ReactComponent as ChatFullIcon } from "../../assets/icon/TabBarChatFilled.svg";
+import { ReactComponent as ChatIcon } from "../../assets/icon/TabBarChatOutline.svg";
+import { ReactComponent as ProfileFullIcon } from "../../assets/icon/TabBarProfileFilled.svg";
+import { ReactComponent as ProfileIcon } from "../../assets/icon/TabBarProfileOutline.svg";
 import { useChatContext } from "../../context/chatContext";
 import { useAuthContext } from "../../context/authContext";
 import { db } from "../../firebase/config";
 import { onSnapshot, doc } from "firebase/firestore";
-
-//TODO: Replace with actual app icons
 
 const TabBar = () => {
   const { unreadMessages, setUnreadMessages } = useChatContext();
@@ -37,23 +41,27 @@ const TabBar = () => {
     <div className="tabBar">
       <ul className="tabBarTabContainer">
         <NavLink to="/" className="tab">
-          <CgHome />
+          <HomeIcon />
+          <HomeFullIcon />
           <p>Home</p>
         </NavLink>
 
         <NavLink to="/favoritos" className="tab">
-          <AiOutlineHeart />
+          <FavoritesIcon />
+          <FavoritesFullIcon />
           <p>Favoritos</p>
         </NavLink>
 
         <NavLink to="/buscador" className="tab">
-          <FaSearch />
+          <SearchIcon />
+          <SearchFullIcon />
           <p>Buscar</p>
         </NavLink>
 
         <NavLink to="/chat" className="tab">
           <div className="chat-icon-box">
-            <BsChatDots />
+            <ChatIcon />
+            <ChatFullIcon />
             {unreadMessages === 0 ? (
               <></>
             ) : (
@@ -64,7 +72,8 @@ const TabBar = () => {
         </NavLink>
 
         <NavLink to="/perfil" className="tab">
-          <CgProfile />
+          <ProfileIcon />
+          <ProfileFullIcon />
           <p>Perfil</p>
         </NavLink>
       </ul>
