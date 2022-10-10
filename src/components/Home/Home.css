@@ -1,4 +1,4 @@
-.home > section {
+.home>section {
   margin: 1.5em auto;
 }
 
@@ -128,12 +128,12 @@
 }
 
 .find-your-place p {
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 22px;
-    letter-spacing: -0.24px;
-    margin-bottom: 1em;
-  }
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: -0.24px;
+  margin-bottom: 1em;
+}
 
 .find-your-place .mySwiper {
   height: 245px;
@@ -212,7 +212,18 @@
   font-weight: 300;
   font-size: 1em;
   position: relative;
-  left: 1%;
+}
+
+@media only screen and (max-width: 713px) {
+  .join-owners h2 {
+    font-size: 1.2rem !important;
+  }
+
+  .join-owners button {
+    top: 8% !important;
+    right: 3%;
+    font-size: 12px !important;
+  }
 }
 
 .join-owners button {
@@ -279,15 +290,15 @@
 
 .testimony .testimony-profile h3,
 .testimony .testimony-profile p {
-    color: var(--primary-color);
-    font-size: 10px;
+  color: var(--primary-color);
+  font-size: 10px;
 }
 
 .testimony .testimony-profile img {
-    width: 95px;
-    height: 95px;
-    border-radius: 50%;
-    margin-bottom: 0.1em;
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  margin-bottom: 0.1em;
 }
 
 .testimony p {
@@ -295,17 +306,17 @@
   font-size: 16px;
 }
 
-.most-searched{
-    width: 95%;
-    margin-bottom: 2em !important;
+.most-searched {
+  width: 95%;
+  margin-bottom: 2em !important;
 }
 
 .most-searched h2 {
-    margin-left: 0.5em;
+  margin-left: 0.5em;
 }
 
 .most-searched .mySwiper {
 
-    margin-top: 2.3rem;
-    height: 112px;
+  margin-top: 2.3rem;
+  height: 112px;
 }
