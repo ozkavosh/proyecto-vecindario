@@ -4,7 +4,7 @@ import FavoritesOrderButtonWrapper from "../FavoritesOrderButtonWrapper/Favorite
 import "./FavoritesOrderButton.css";
 
 const FavoritesOrderButton = ({ dispatch }) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   const buttonRef = useRef();
 
@@ -24,7 +24,7 @@ const FavoritesOrderButton = ({ dispatch }) => {
         <FaList />
       </button>
 
-      {open && <FavoritesOrderButtonWrapper dispatch={dispatch} />}
+      <FavoritesOrderButtonWrapper dispatch={dispatch} open={open} />
     </div>
   );
 };
