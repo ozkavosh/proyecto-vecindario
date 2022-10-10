@@ -19,7 +19,7 @@ const Home = () => {
         <div className="search">
           <div className="searchbar">
             <FaSearch />
-            <input type="search" placeholder="Explorar destino" />
+            <input type="text" placeholder="Explorar destino" />
           </div>
           <button>BUSCAR</button>
         </div>
