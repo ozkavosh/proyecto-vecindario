@@ -197,7 +197,6 @@ const Property = ({ data }) => {
               <FaChevronDown className="dropdown" />
             </div>
             <div className="reviews-list">
-              {/*Show up to 3 reviews only*/}
               {Boolean(propertyReviews.length) &&
                 propertyReviews.map((review, index) => (
                   <Review key={index} data={review} />
