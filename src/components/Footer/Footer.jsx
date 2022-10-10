@@ -55,16 +55,16 @@ const Footer = () => {
       <div className="links">
         <h4>Seguinos</h4>
         <div>
-          <a href="https://twitter.com/">
+          <a href="https://twitter.com/" target="_blank" rel="noreferrer">
             <FaTwitter />
           </a>
-          <a href="https://facebook.com/">
+          <a href="https://facebook.com/" target="_blank" rel="noreferrer">
             <FaFacebookF />
           </a>
-          <a href="https://instagram.com/">
+          <a href="https://instagram.com/" target="_blank" rel="noreferrer">
             <FaInstagram />
           </a>
-          <a href="https://youtube.com/">
+          <a href="https://youtube.com/" target="_blank" rel="noreferrer">
             <FaYoutube />
           </a>
         </div>
