@@ -27,17 +27,17 @@ Our added value for those who seek to rent a new home is the valuable feedback f
 [![react-router-dom](https://img.shields.io/badge/react--router--dom-%5E6.3.0-red)](https://v5.reactrouter.com/web/guides/)
 [![axios](https://img.shields.io/badge/axios-%5E0.27.2-blueviolet)](https://axios-http.com/)
 [![firebase](https://img.shields.io/badge/firebase-%5E9.10.0-orange)](https://firebase.google.com/)
-[![sweetalert2](https://img.shields.io/badge/sweetalert2-%5E11.4.29-ff69b4)](https://sweetalert.js.org/)
+[![luxon](https://img.shields.io/badge/luxon-%5E11.4.29-ff69b4)](https://moment.github.io/luxon/#/)
 [![swiper](https://img.shields.io/badge/swiperjs-%5E8.4.2-blueviolet)](https://swiperjs.com/)
 [![react-icons](https://img.shields.io/badge/react--icons-%5E4.4.0-lightgrey)](https://react-icons.github.io/react-icons)
+[![react-icons](https://img.shields.io/badge/react--loading--skeleton-%5E3.1.0-blue)](https://www.npmjs.com/package/react-loading-skeleton)
 [![socket.io](https://img.shields.io/badge/socket.io--client-%5E4.5.2-black)](https://socket.io)
-
 
 ## Roadmap
 
 Vecindario currently stands as an MVP (Minimum Viable Product).
 
-In the future, with proper management and funding, it will become a fully developed app.
+In the future, hopefully, it will become a fully developed app.
 
 ## Run Locally
 
@@ -59,7 +59,7 @@ Install dependencies
   npm install
 ```
 
-Start the server
+Start a local server
 
 ```bash
   npm start
@@ -69,17 +69,17 @@ Start the server
 
 At the moment the project is deployed [here](https://proyecto-vecindario.vercel.app/).
 
-_Note the project is currently at an early stage and it is constantly undergoing changes._
+_Be aware that the project is currently at an early stage and it may change abruptly._
 
 ## Feedback
 
-If you have any feedback, suggestion or ideas for the future of this project, please reach out to any of the authors.
+If you have any feedback, suggestion or ideas for the future of this project, please reach out to any of the team members.
 
-## Authors
+## Project Team
 
 **Originial Idea:** [Nicolás Nores](https://www.linkedin.com/in/nicolasnores/)
 
-**UI/UX & Research**
+**UX/UI & Research**
 
 - [Gabriela Aimetta](https://www.linkedin.com/in/gaimetta/)
 
