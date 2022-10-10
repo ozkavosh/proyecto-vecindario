@@ -43,7 +43,7 @@
 }
 
 .welcome .search .searchbar {
-    border: 1px solid #D9D9D9;
+    border: 1px solid #d9d9d9;
     display: flex;
     align-items: center;
     padding: 1em 0.75em;
@@ -103,7 +103,11 @@
 }
 
 .find-your-place h2 {
-    margin-bottom: 2rem;
+    margin-bottom: 21px;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 33px;
+    letter-spacing: -0.24px;
 }
 
 .find-your-place button {
@@ -115,10 +119,20 @@
     padding: 1em 0.75em;
     border-radius: 25px;
     height: 2.625em;
+    background-color: var(--primary-color);
+    color: var(--light-color);
     font-family: var(--main-font);
     font-weight: 400;
     font-size: 1em;
     box-sizing: border-box;
+}
+
+.find-your-place p {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -0.24px;
+    margin-bottom: 1em;
 }
 
 .find-your-place .mySwiper {
@@ -126,11 +140,19 @@
 }
 
 .what-to-expect {
-    margin-bottom: 3rem !important;
+    width: 90%;
+    box-sizing: border-box;
+    padding: 1em 0.4em;
+    margin-bottom: 2.5rem !important;
+    background-color: var(--primary-color);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    color: var(--light-color);
 }
 
 .what-to-expect h2 {
     margin-bottom: 0.75em;
+    text-align: center;
 }
 
 .what-to-expect div {
@@ -138,11 +160,11 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 1em;
+    row-gap: 1em;
 }
 
 .what-to-expect div article {
-    width: calc(50% - 1em);
+    flex-basis: 50%;
     display: flex;
     justify-content: flex-start;
 }
@@ -155,41 +177,53 @@
 .what-to-expect div article .img {
     flex-shrink: 0;
     margin-right: 0.5em;
-    background-color: black;
+    background-color: var(--light-color);
     width: 2.75em;
     height: 2.75em;
     border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .join-owners {
-    background-color: var(--neutral-color);
-    padding: 0.75em 1em;
+    background-color: var(--primary-color);
+    box-sizing: border-box;
+    width: 95%;
+    padding: 4.5em 1em;
     height: 8rem;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    margin-bottom: 3em !important;
+    margin-bottom: 5em !important;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    color: var(--light-color);
 }
 
 .join-owners h2 {
     margin-bottom: 0.75rem;
+    position: relative;
+    left: -2.3%;
 }
 
 .join-owners p {
     font-weight: 300;
     font-size: 1em;
-    width: 85%;
+    position: relative;
+    left: 1%;
 }
 
 .join-owners button {
     position: absolute;
-    top: 1em;
-    right: 1.75em;
+    top: 13%;
+    right: 3%;
     font-family: var(--main-font);
-    font-size: 1rem;
+    font-size: 16px;
     font-weight: 300;
-    background-color: lightgray;
+    background-color: var(--secondary-color);
+    color: var(--light-color);
     padding: 0.3em 0.5em;
     cursor: pointer;
     border-radius: 20px;
@@ -201,7 +235,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    row-gap: 1em;
+    row-gap: 1.7em;
     margin-bottom: 3rem !important;
 }
 
@@ -211,7 +245,7 @@
     column-gap: 1em;
 }
 
-.testimony div {
+.testimony .testimony-profile {
     background-color: var(--neutral-color);
     width: 5.938em;
     height: 5.938em;
@@ -223,17 +257,41 @@
     flex-shrink: 0;
 }
 
-.testimony div h3,
-.testimony div p {
-    font-weight: 400;
+.testimony h3,
+.testimony p {
+    font-style: italic;
+    font-weight: 700;
     font-size: 0.625em;
+}
+
+.testimony .testimony-profile h3,
+.testimony .testimony-profile p {
+    color: var(--primary-color);
+    font-size: 10px;
+}
+
+.testimony .testimony-profile img {
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    margin-bottom: 0.1em;
 }
 
 .testimony p {
     text-align: center;
+    font-size: 16px;
+}
+
+.most-searched {
+    width: 95%;
+    margin-bottom: 2em !important;
+}
+
+.most-searched h2 {
+    margin-left: 0.5em;
 }
 
 .most-searched .mySwiper {
-    margin-top: 1rem;
-    height: 135px;
+    margin-top: 2.3rem;
+    height: 112px;
 }
