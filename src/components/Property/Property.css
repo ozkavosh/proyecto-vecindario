@@ -46,7 +46,7 @@
   margin-top: 1em;
   height: 241px;
   position: relative;
-  z-index: 0;
+  z-index: -1;
 }
 
 .propertySlider .swiper-wrapper .swiper-slide {
