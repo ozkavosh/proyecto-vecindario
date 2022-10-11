@@ -57,7 +57,7 @@ const Chat = () => {
           <FaSearch />
         </button>
         <input
-          type="search"
+          type="text"
           value={userQuery}
           onChange={(e) => setUserQuery(e.target.value)}
           placeholder="¿Con quién deseas hablar? ..."
