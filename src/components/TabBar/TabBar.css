@@ -37,9 +37,27 @@
     display: none;
 }
 
-.tab svg path{
+.tab svg{
+    width: 32px;
+    height: 32px;
+}
+
+.tab:not(.active) svg path{
     stroke-width: 1.5px;
     stroke: var(--light-color);
+}
+
+.searchIcon{
+    --full-stroke-width: 3px;
+}
+
+.tab svg.full path{
+    stroke-width: var(--full-stroke-width, 1.5px);
+    stroke: var(--light-color);
+}
+
+.tab svg:not(.searchIcon).full path{
+    fill: var(--light-color);
 }
 
 .tab p {

@@ -1,10 +1,7 @@
 import { doc, onSnapshot } from "firebase/firestore";
 import { useEffect } from "react";
-import { ReactComponent as HomeFullIcon } from "../../assets/icon/TabBarHomeFilled.svg";
 import { ReactComponent as HomeIcon } from "../../assets/icon/TabBarHomeOutline.svg";
-import { ReactComponent as FavoritesFullIcon } from "../../assets/icon/TabBarHeartOutline.svg";
 import { ReactComponent as FavoritesIcon } from "../../assets/icon/TabBarHeartOutline.svg";
-import { ReactComponent as SearchFullIcon } from "../../assets/icon/TabBarSearchFilled.svg";
 import { ReactComponent as SearchIcon } from "../../assets/icon/TabBarSearchOutline.svg";
 import { ReactComponent as ChatFullIcon } from "../../assets/icon/TabBarChatFilled.svg";
 import { ReactComponent as ChatIcon } from "../../assets/icon/TabBarChatOutline.svg";
@@ -42,19 +39,19 @@ const TabBar = () => {
       <ul className="tabBarTabContainer">
       <NavLink to="/" className="tab">
           <HomeIcon />
-          <HomeFullIcon />
+          <HomeIcon className="full" />
           <p>Home</p>
         </NavLink>
 
         <NavLink to="/favoritos" className="tab">
           <FavoritesIcon />
-          <FavoritesFullIcon />
+          <FavoritesIcon className="full"/>
           <p>Favoritos</p>
         </NavLink>
 
         <NavLink to="/buscador" className="tab">
           <SearchIcon />
-          <SearchFullIcon />
+          <SearchIcon className="searchIcon full"/>
           <p>Buscar</p>
         </NavLink>
 
