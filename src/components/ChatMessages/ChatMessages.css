@@ -43,6 +43,25 @@
   background-color: #f8f8f8;
 }
 
+@media (max-width: 475px) {
+  .chatMessages .container {
+    width: 85%;
+  }
+
+  .chatMessages .messagesContainer{
+    height: 80%;
+    width: 100%;
+    margin-top: 5rem;
+    margin-bottom: 3.5em;
+  }
+
+  .chatMessages .chatHeader {
+    position: fixed;
+    margin: auto;
+    width: 85%;
+  }
+}
+
 .chatMessages .chatHeader .user-info {
   display: flex;
   align-items: center;

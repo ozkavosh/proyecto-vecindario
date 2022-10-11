@@ -3,14 +3,22 @@
     display: flex;
     box-sizing: border-box;
     align-items: center;
-    position: sticky;
-    left: -25%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: calc(75px);
     width: 100%;
     padding: 0 7.5%;
     padding-top: 0.3em;
     padding-bottom: 0.75em;
     gap: 1em;
     justify-content: space-between;
+}
+
+@media (min-width: 475px) {
+    .messageInputContainer{
+        position: sticky;
+    }
 }
 
 .messageInputContainer>div {

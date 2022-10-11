@@ -8,15 +8,16 @@ body {
   font-size: 16px;
   max-width: 475px;
   margin: 0 auto;
+  margin-bottom: 75px;
   background-color: var(--background-color);
 }
 
 #root{
   max-width: 475px;
-  contain: paint;
 }
 
 main {
+  margin-top: 75px;
   min-height: calc(100vh - 150px);
 }
 
@@ -33,4 +34,18 @@ main {
 
 .hide {
   display: none;
+}
+
+@media (min-width: 475px) {
+  body{
+    margin-bottom: 0;
+  }
+
+  #root{
+    contain: paint;
+  }
+
+  main{
+    margin-top:0;
+  }
 }
