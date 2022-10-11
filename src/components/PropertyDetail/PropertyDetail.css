@@ -3,6 +3,12 @@
     margin: 1.375em auto 0 auto;
 }
 
+@media (max-width: 476px) {
+    .property.detail{
+        margin-top: 6em;
+    }
+}
+
 .propertyImgContainer {
     position: relative;
 }
