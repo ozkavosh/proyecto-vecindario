@@ -11,6 +11,11 @@ body {
   background-color: var(--background-color);
 }
 
+#root{
+  max-width: 475px;
+  contain: paint;
+}
+
 main {
   min-height: calc(100vh - 150px);
 }
