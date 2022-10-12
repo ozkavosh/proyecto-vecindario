@@ -63,7 +63,7 @@ const Review = ({ data }) => {
 
           <div className="reviewFooter">
             <div className="reviewInfo">
-              {data.reviewer?.uid && (
+              {reviewer.uid && (
                 <ReviewLikes reviewer={reviewer.uid} rid={data.id} />
               )}
               <p className="reviewTag">{data.tag}</p>
