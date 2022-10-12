@@ -54,7 +54,7 @@ const ReviewLikes = ({ reviewer, rid }) => {
       <button onClick={() => handleClick("dislike")}>
         {state.hasDisliked ? <FaThumbsDown /> : <FaRegThumbsDown />}
       </button>
-      <p className="review-rating">{state?.likeCount}</p>
+      <p className="review-rating">{state.likeCount || 0}</p>
     </div>
   );
 };
