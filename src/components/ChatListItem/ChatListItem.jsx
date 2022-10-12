@@ -1,16 +1,28 @@
+import { doc, getDoc } from "firebase/firestore";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useChatContext } from "../../context/chatContext";
+import { db } from "../../firebase/config";
 import { chatListFormat } from "../../utils/dateFormatters";
 import "./ChatListItem.css";
 
 const ChatListItem = ({ chat }) => {
   const { dispatch, connectedUsers } = useChatContext();
+  const [ userInfo, setUserInfo ] = useState({});
   const navigate = useNavigate();
 
-  const handleClick = (user) => {
+  useEffect(() => {
+    if(chat[1]?.userInfo)(async ()=>{
+      const request = await getDoc(doc(db, "users", chat[1].userInfo.uid));
+      const { uid, photoUrl, displayName } = request.data();
+      setUserInfo({ uid, photoUrl, displayName});
+    })()
+  },[chat])
+
+  const handleClick = () => {
     dispatch({
       type: "changeUser",
-      payload: user,
+      payload: userInfo,
     });
 
     navigate("/chat/messages");
@@ -20,7 +32,7 @@ const ChatListItem = ({ chat }) => {
     <div
       className="chat-user-container"
       key={chat[0]}
-      onClick={() => handleClick(chat[1].userInfo)}
+      onClick={handleClick}
     >
       <div className="user">
         <div className="user-info">
@@ -37,11 +49,11 @@ const ChatListItem = ({ chat }) => {
             ) : (
               <></>
             )}
-            {chat[1].userInfo.photoURL ? (
-              <img src={chat[1].userInfo.photoURL} alt="img" className="profile-image" />
+            {userInfo.photoUrl ? (
+              <img src={userInfo.photoUrl} alt="img" className="profile-image" />
             ) : (
               <div className="not-found">
-                {chat[1].userInfo.displayName
+                {userInfo.displayName
                   ?.toUpperCase()
                   .split(" ")
                   .map((n) => n[0])
@@ -52,7 +64,7 @@ const ChatListItem = ({ chat }) => {
           </div>
 
           <div className="chat-info">
-            <h2 className="name">{chat[1].userInfo.displayName}</h2>
+            <h2 className="name">{userInfo.displayName}</h2>
             <small className="message">
               {chat[1].lastMessage?.text.length > 55
                 ? chat[1].lastMessage?.text.slice(0, 54) + "..."

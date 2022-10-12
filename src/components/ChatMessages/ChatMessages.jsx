@@ -42,25 +42,41 @@ const ChatMessages = () => {
           <div className="chatHeader">
             <div className="user-info">
               <div className="profile-image">
-                <div className="not-found">
-                  {data.user.displayName
-                    ?.toUpperCase()
-                    .split(" ")
-                    .map((n) => n[0])
-                    .slice(0, 2)
-                    .join("")}
-                </div>
+                {data.user.photoUrl ? (
+                  <img
+                    src={data.user.photoUrl}
+                    alt="img"
+                    className="profile-image"
+                  />
+                ) : (
+                  <div className="not-found">
+                    {data.user.displayName
+                      ?.toUpperCase()
+                      .split(" ")
+                      .map((n) => n[0])
+                      .slice(0, 2)
+                      .join("")}
+                  </div>
+                )}
               </div>
               <div className="user-display">
                 <h2>{data.user.displayName}</h2>
-                <small>{connectedUsers.includes(data.user.uid) ? "En linea" : "Offline"}</small>
+                <small>
+                  {connectedUsers.includes(data.user.uid)
+                    ? "En linea"
+                    : "Offline"}
+                </small>
               </div>
             </div>
           </div>
 
           <div className="messagesContainer">
             {messages.map((message) => (
-              <ChatMessage key={message.id} message={message} ref={messageRef} />
+              <ChatMessage
+                key={message.id}
+                message={message}
+                ref={messageRef}
+              />
             ))}
           </div>
 
