@@ -36,16 +36,14 @@ const Review = ({ data }) => {
             className="reviewerImg"
           />
         ) : (
-          <img
-            src=""
-            alt={reviewer.displayName
+          <div className="reviewerImg">
+            <p>{reviewer.displayName
               ?.toUpperCase()
               .split(" ")
               .map((n) => n[0])
               .slice(0, 2)
-              .join("")}
-            className="reviewerImg"
-          />
+              .join("")}</p>
+          </div>
         )}
         <div className="reviewContainer">
           <div className="reviewHeader">

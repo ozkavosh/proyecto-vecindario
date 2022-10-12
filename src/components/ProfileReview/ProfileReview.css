@@ -6,6 +6,10 @@
     flex-direction: column;
 }
 
+.profile-reviews .profile-review a{
+    text-decoration: none;
+}
+
 .profile-reviews .profile-review h3 {
     font-weight: 700;
     font-size: 0.8rem;

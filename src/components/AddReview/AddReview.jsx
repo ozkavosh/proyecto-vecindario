@@ -42,16 +42,14 @@ const AddReview = forwardRef(({ pid }, ref) => {
               className="reviewerImg"
             />
           ) : (
-            <img
-              src=""
-              alt={currentUser?.displayName
+            <div className="reviewerImg">
+              <p>{currentUser?.displayName
                 ?.toUpperCase()
                 .split(" ")
                 .map((n) => n[0])
                 .slice(0, 2)
-                .join("")}
-              className="reviewerImg"
-            />
+                .join("")}</p>
+            </div>
           )}
           <h4 className="reviewerName">{currentUser?.displayName}</h4>
           <FaRegCheckCircle className="reviewerCheck" />
