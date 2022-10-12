@@ -1,12 +1,13 @@
+import { updateProfile } from "firebase/auth";
 import { doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { useEffect, useReducer } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { useAuthContext } from "../../context/authContext";
-import { db } from "../../firebase/config";
+import { auth, db } from "../../firebase/config";
 import "./ProfileInformation.css";
 
 const ProfileInformation = () => {
-  const { currentUser } = useAuthContext();
+  const { currentUser, setCurrentUser } = useAuthContext();
   const [inputData, dispatch] = useReducer(
     (state, action) => {
       switch (action.type) {
@@ -42,7 +43,13 @@ const ProfileInformation = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await updateDoc(doc(db, "users", currentUser.uid), { ...inputData })
+    try{
+      await updateDoc(doc(db, "users", currentUser.uid), { ...inputData });
+      await updateProfile(auth.currentUser , { displayName: inputData.displayName });
+      setCurrentUser(prev => ({ ...prev, displayName: inputData.displayName}));
+    }catch (e){
+      console.log(e);
+    }
   };
 
   const handleChange = (e) => {
