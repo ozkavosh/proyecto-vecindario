@@ -40,7 +40,8 @@ const ReviewLikes = ({ reviewer, rid }) => {
     }
   }, [rid, currentUser?.uid]);
 
-  const handleClick = (type) => {
+  const handleClick = (e, type) => {
+    e.preventDefault();
     if (currentUser?.uid && currentUser?.uid !== reviewer) {
       rateReview(currentUser, type, rid, state);
     }
@@ -48,10 +49,10 @@ const ReviewLikes = ({ reviewer, rid }) => {
 
   return (
     <div className="review-likes neutral">
-      <button onClick={() => handleClick("like")}>
+      <button onClick={(e) => handleClick(e, "like")}>
         {state.hasLiked ? <FaThumbsUp /> : <FaRegThumbsUp />}
       </button>
-      <button onClick={() => handleClick("dislike")}>
+      <button onClick={(e) => handleClick(e, "dislike")}>
         {state.hasDisliked ? <FaThumbsDown /> : <FaRegThumbsDown />}
       </button>
       <p className="review-rating">{state.likeCount || 0}</p>
