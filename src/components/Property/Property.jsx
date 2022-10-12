@@ -1,4 +1,4 @@
-import { collection, getDocs, limit, query, where } from "firebase/firestore";
+import { collection, getDoc, doc, getDocs, limit, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import {
   FaChevronDown,
@@ -27,9 +27,20 @@ import "./Property.css";
 
 const Property = ({ data }) => {
   const [propertyReviews, setPropertyReviews] = useState([]);
+  const [owner, setOwner] = useState({});
   const { currentUser } = useAuthContext();
   const { dispatch } = useChatContext();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if(data.owner){
+      (async () => {
+        const request = await getDoc(doc(db, "users", data.owner));
+        const { uid, photoUrl, displayName } = request.data();
+        setOwner({ uid, photoUrl, displayName });
+      })();
+    }
+  }, [data.owner])
 
   useEffect(() => {
     if (data.reviews?.length) {
@@ -78,12 +89,12 @@ const Property = ({ data }) => {
     <Link className="propertyLink" to={`/inmueble/${data.id}`}>
       <div className="property">
         <div className="propertyHeader">
-          {data.owner ? (
+          {owner.uid ? (
             <div className="propertyOwner">
-              {data.owner.photoUrl ? (
+              {owner.photoUrl ? (
                 <img
-                  src={data.owner.photoUrl}
-                  alt={data.owner.displayName
+                  src={owner.photoUrl}
+                  alt={owner.displayName
                     ?.toUpperCase()
                     .split(" ")
                     .map((n) => n[0])
@@ -94,7 +105,7 @@ const Property = ({ data }) => {
               ) : (
                 <img
                   src=""
-                  alt={data.owner.displayName
+                  alt={owner.displayName
                     ?.toUpperCase()
                     .split(" ")
                     .map((n) => n[0])
@@ -103,7 +114,7 @@ const Property = ({ data }) => {
                   className="propertyOwnerImg"
                 />
               )}
-              <h4 className="ownerName">{data.owner.displayName}</h4>
+              <h4 className="ownerName">{owner.displayName}</h4>
               <FaRegCheckCircle className="ownerCheck" />
             </div>
           ) : (
@@ -152,12 +163,12 @@ const Property = ({ data }) => {
             </div>
           )}
           {data.id ? (
-            currentUser?.uid !== data.owner.uid && (
+            currentUser?.uid !== owner.uid && (
               <div className="actionButtons">
                 <button
                   type="button"
                   className="addReviewBtn"
-                  onClick={(e) => handleChat(e, data.owner)}
+                  onClick={(e) => handleChat(e, owner)}
                 >
                   <FaRegCommentDots /> Chat
                 </button>

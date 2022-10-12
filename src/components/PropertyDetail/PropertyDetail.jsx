@@ -1,4 +1,4 @@
-import { collection, doc, getDocs, onSnapshot, query, where } from "firebase/firestore";
+import { collection, doc, getDocs, getDoc, onSnapshot, query, where } from "firebase/firestore";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { BiMessageEdit } from "react-icons/bi";
 import {
@@ -33,6 +33,7 @@ const PropertyDetail = ({ setDismount }) => {
   const navigate = useNavigate();
   const { dispatch } = useChatContext();
   const { currentUser } = useAuthContext();
+  const [ owner, setOwner ] = useState({});
   const [property, setProperty] = useState({});
   const [propertyReviews, setPropertyReviews] = useState([]);
   const reviewsRef = useRef();
@@ -79,6 +80,12 @@ const PropertyDetail = ({ setDismount }) => {
       const unsub = onSnapshot(doc(db, "properties", pid), async (document) => {
         setProperty(document.data());
 
+        if(!owner.displayName){
+          const requestProfile = await getDoc(doc(db, "users", document.data().owner));
+          const { uid, photoUrl, displayName } = requestProfile.data();
+          setOwner({ uid, photoUrl, displayName });
+        }
+
         if (document.data().reviews.length) {
           try {
             const request = await getDocs(
@@ -100,7 +107,7 @@ const PropertyDetail = ({ setDismount }) => {
 
       return () => unsub();
     }
-  }, [pid]);
+  }, [pid, owner.displayName]);
 
   useEffect(() => {
     if (currentUser && location.state?.newReviewClicked) {
@@ -110,16 +117,15 @@ const PropertyDetail = ({ setDismount }) => {
     }
   }, [location.state?.newReviewClicked, handleAddReview, currentUser, navigate]);
 
-  console.log(property);
   return (
     <div className="property detail">
       <div className="propertyHeader">
-        {property.owner ? (
+        {owner.uid ? (
           <div className="propertyOwner">
-            {property.owner.photoUrl ? (
+            {owner.photoUrl ? (
               <img
-                src={property.owner.photoUrl}
-                alt={property.owner.displayName
+                src={owner.photoUrl}
+                alt={owner.displayName
                   ?.toUpperCase()
                   .split(" ")
                   .map((n) => n[0])
@@ -130,7 +136,7 @@ const PropertyDetail = ({ setDismount }) => {
             ) : (
               <img
                 src=""
-                alt={property.owner.displayName
+                alt={owner.displayName
                   ?.toUpperCase()
                   .split(" ")
                   .map((n) => n[0])
@@ -139,7 +145,7 @@ const PropertyDetail = ({ setDismount }) => {
                 className="propertyOwnerImg"
               />
             )}
-            <h4 className="ownerName">{property.owner.displayName}</h4>
+            <h4 className="ownerName">{owner.displayName}</h4>
             <FaRegCheckCircle className="ownerCheck" />
           </div>
         ) : (
@@ -189,13 +195,13 @@ const PropertyDetail = ({ setDismount }) => {
             <Skeleton circle height={24} width={24} />
           </div>
         )}
-        {property?.owner ? (
-          property?.owner?.uid !== currentUser?.uid && (
+        {owner.uid ? (
+          owner.uid !== currentUser?.uid && (
             <div className="actionButtons">
               <button
                 type="button"
                 className="addReviewBtn"
-                onClick={() => handleChat(property.owner)}
+                onClick={() => handleChat(owner)}
               >
                 <FaRegCommentDots /> Chat
               </button>
@@ -258,7 +264,7 @@ const PropertyDetail = ({ setDismount }) => {
               <Review key={id} data={review} />
             ))}
 
-            {currentUser && pid && currentUser?.uid !== property?.owner?.uid && (
+            {currentUser && pid && currentUser?.uid !== owner.uid && (
               <AddReview pid={pid} ref={addReviewInputRef} />
             )}
           </div>
