@@ -19,7 +19,7 @@ export const addReview = async (newReview, dispatchNewReview, currentUser, pid) 
       reviewer: {
         displayName: currentUser.displayName,
         uid: currentUser.uid,
-        photoURL: currentUser.photoURL || "",
+        photoUrl: currentUser.photoURL || "",
       },
       property: pid,
     });
