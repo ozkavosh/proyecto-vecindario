@@ -1,12 +1,55 @@
+import { doc, onSnapshot, updateDoc } from "firebase/firestore";
+import { useEffect, useReducer } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { useAuthContext } from "../../context/authContext";
+import { db } from "../../firebase/config";
 import "./ProfileInformation.css";
 
 const ProfileInformation = () => {
   const { currentUser } = useAuthContext();
+  const [inputData, dispatch] = useReducer(
+    (state, action) => {
+      switch (action.type) {
+        case "setInput":
+          return {
+            ...state,
+            ...action.payload,
+          };
+        default:
+          return state;
+      }
+    },
+    { displayName: "", province: "", location: "", phone: "", dni: "" }
+  );
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    const unsub = onSnapshot(doc(db, "users", currentUser.uid), (document) => {
+      const { displayName, province, location, phone, dni } = document.data();
+      dispatch({
+        type: "setInput",
+        payload: {
+          displayName,
+          province: province || "",
+          location: location || "",
+          phone: phone || "",
+          dni: dni || "",
+        },
+      });
+    });
+
+    return () => unsub();
+  }, [currentUser?.uid]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    await updateDoc(doc(db, "users", currentUser.uid), { ...inputData })
+  };
+
+  const handleChange = (e) => {
+    dispatch({
+      type: "setInput",
+      payload: { [e.target.getAttribute("name")]: e.target.value },
+    });
   };
 
   return (
@@ -21,38 +64,76 @@ const ProfileInformation = () => {
             <label htmlFor="name">Nombre</label>
             <input
               className="editable"
-              id="name"
+              name="displayName"
+              onChange={handleChange}
               type="text"
-              defaultValue={currentUser.displayName}
+              defaultValue={inputData.displayName}
             />
           </div>
           <div className="input">
             <label htmlFor="email">Email</label>
-            <input id="email" type="email" defaultValue={currentUser.email} disabled readOnly />
+            <input
+              name="email"
+              type="email"
+              defaultValue={currentUser.email}
+              disabled
+              readOnly
+            />
           </div>
           <div className="input">
             <label htmlFor="pass">Contraseña</label>
-            <input id="pass" type="password" defaultValue="abc12345678" disabled readOnly />
+            <input
+              name="pass"
+              type="password"
+              defaultValue="abc12345678"
+              disabled
+              readOnly
+            />
           </div>
           <div className="input-grid">
             <div className="input">
               <label htmlFor="province">Provincia</label>
-              <input id="province" className="editable" type="text" defaultValue="Barcelona" />
+              <input
+                name="province"
+                onChange={handleChange}
+                className="editable"
+                type="text"
+                defaultValue={inputData.province}
+              />
             </div>
             <div className="input">
               <label htmlFor="location">Localidad</label>
-              <input id="location" className="editable" type="text" defaultValue="Cataluña" />
+              <input
+                name="location"
+                onChange={handleChange}
+                className="editable"
+                type="text"
+                defaultValue={inputData.location}
+              />
             </div>
             <div className="input">
               <label htmlFor="phone">Teléfono</label>
-              <input id="phone" className="editable" type="text" defaultValue="+34-115364589" />
+              <input
+                name="phone"
+                onChange={handleChange}
+                className="editable"
+                type="text"
+                defaultValue={inputData.phone}
+              />
             </div>
             <div className="input">
               <label htmlFor="dni">DNI</label>
-              <input id="dni" className="editable" type="text" defaultValue="33896036" />
+              <input
+                name="dni"
+                onChange={handleChange}
+                className="editable"
+                type="text"
+                defaultValue={inputData.dni}
+              />
             </div>
           </div>
           <input
+            disabled={!inputData.displayName}
             className="submitButton"
             type="submit"
             onClick={handleSubmit}
