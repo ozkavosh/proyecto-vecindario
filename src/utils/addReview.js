@@ -16,11 +16,7 @@ export const addReview = async (newReview, dispatchNewReview, currentUser, pid) 
       createdAt: serverTimestamp(),
       likedBy: [],
       dislikedBy: [],
-      reviewer: {
-        displayName: currentUser.displayName,
-        uid: currentUser.uid,
-        photoUrl: currentUser.photoUrl || "",
-      },
+      reviewer: currentUser.uid,
       property: pid,
     });
 

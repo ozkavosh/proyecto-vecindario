@@ -6,6 +6,7 @@
 @media (max-width: 476px) {
     .property.detail{
         margin-top: 6em;
+        margin-bottom: 1em;
     }
 }
 
