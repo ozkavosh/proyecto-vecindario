@@ -1,5 +1,5 @@
 import { forwardRef, useReducer, useState } from "react";
-import { FaRegCheckCircle, FaRegUserCircle } from "react-icons/fa";
+import { FaRegCheckCircle } from "react-icons/fa";
 import { useAuthContext } from "../../context/authContext";
 import newReviewReducer from "../../reducers/newReview";
 import { addReview } from "../../utils/addReview";
@@ -30,7 +30,29 @@ const AddReview = forwardRef(({ pid }, ref) => {
     <form ref={ref} className="addReview" onSubmit={handleSubmit}>
       <div className="reviewHeader">
         <div className="reviewer">
-          <FaRegUserCircle className="reviewerImg" />
+          {currentUser?.photoUrl ? (
+            <img
+              src={currentUser?.photoUrl}
+              alt={currentUser?.displayName
+                ?.toUpperCase()
+                .split(" ")
+                .map((n) => n[0])
+                .slice(0, 2)
+                .join("")}
+              className="reviewerImg"
+            />
+          ) : (
+            <img
+              src=""
+              alt={currentUser?.displayName
+                ?.toUpperCase()
+                .split(" ")
+                .map((n) => n[0])
+                .slice(0, 2)
+                .join("")}
+              className="reviewerImg"
+            />
+          )}
           <h4 className="reviewerName">{currentUser?.displayName}</h4>
           <FaRegCheckCircle className="reviewerCheck" />
         </div>

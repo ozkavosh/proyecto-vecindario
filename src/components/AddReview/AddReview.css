@@ -15,6 +15,20 @@
     gap: 0.3em;
 }
 
+.addReview .reviewHeader .reviewer .reviewerImg {
+    width: 1.2rem;
+    height: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: var(--light-color);
+    border: 1px solid var(--primary-color);
+    color: var(--dark-color);
+    border-radius: 100%;
+    font-size: 0.6rem;
+    line-height: 1.2rem;
+}
+
 .addReview .stars {
     cursor: pointer;
 }

@@ -21,6 +21,17 @@
 
 .review .reviewerImg {
     flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: var(--light-color);
+    border: 1px solid var(--light-color);
+    color: var(--dark-color);
+    border-radius: 100%;
+    font-size: 0.75rem;
+    line-height: 1.5rem;
 }
 
 .review .reviewHeader .stars {

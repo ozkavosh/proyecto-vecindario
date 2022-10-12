@@ -1,4 +1,4 @@
-import { FaRegCheckCircle, FaRegUserCircle } from "react-icons/fa";
+import { FaRegCheckCircle } from "react-icons/fa";
 import { useAuthContext } from "../../context/authContext";
 import RemoveReviewButton from "../RemoveReviewButton/RemoveReviewButton";
 import ReviewLikes from "../ReviewLikes/ReviewLikes";
@@ -10,7 +10,29 @@ const Review = ({ data }) => {
 
   return (
     <div className="review">
-      <FaRegUserCircle className="reviewerImg" />
+      {data.reviewer.photoUrl ? (
+        <img
+          src={data.reviewer.photoUrl}
+          alt={data.reviewer.displayName
+            ?.toUpperCase()
+            .split(" ")
+            .map((n) => n[0])
+            .slice(0, 2)
+            .join("")}
+          className="reviewerImg"
+        />
+      ) : (
+        <img
+          src=""
+          alt={data.reviewer.displayName
+            ?.toUpperCase()
+            .split(" ")
+            .map((n) => n[0])
+            .slice(0, 2)
+            .join("")}
+          className="reviewerImg"
+        />
+      )}
       <div className="reviewContainer">
         <div className="reviewHeader">
           <div className="reviewer">

@@ -32,6 +32,20 @@
   color: var(--success-color);
 }
 
+.propertyOwner .propertyOwnerImg {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: var(--light-color);
+  border: 1px solid var(--primary-color);
+  color: var(--dark-color);
+  border-radius: 100%;
+  font-size: 0.8rem;
+  line-height: 1.6rem;
+}
+
 .propertyHeader {
   display: flex;
   justify-content: space-between;

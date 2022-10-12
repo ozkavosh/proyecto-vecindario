@@ -9,7 +9,6 @@ import {
   FaRegCheckCircle,
   FaRegCommentDots,
   FaRegPaperPlane,
-  FaRegUserCircle,
   FaTasks,
 } from "react-icons/fa";
 import Skeleton from "react-loading-skeleton";
@@ -111,12 +110,35 @@ const PropertyDetail = ({ setDismount }) => {
     }
   }, [location.state?.newReviewClicked, handleAddReview, currentUser, navigate]);
 
+  console.log(property);
   return (
     <div className="property detail">
       <div className="propertyHeader">
         {property.owner ? (
           <div className="propertyOwner">
-            <FaRegUserCircle className="ownerImg" />
+            {property.owner.photoUrl ? (
+              <img
+                src={property.owner.photoUrl}
+                alt={property.owner.displayName
+                  ?.toUpperCase()
+                  .split(" ")
+                  .map((n) => n[0])
+                  .slice(0, 2)
+                  .join("")}
+                className="propertyOwnerImg"
+              />
+            ) : (
+              <img
+                src=""
+                alt={property.owner.displayName
+                  ?.toUpperCase()
+                  .split(" ")
+                  .map((n) => n[0])
+                  .slice(0, 2)
+                  .join("")}
+                className="propertyOwnerImg"
+              />
+            )}
             <h4 className="ownerName">{property.owner.displayName}</h4>
             <FaRegCheckCircle className="ownerCheck" />
           </div>

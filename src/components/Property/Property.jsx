@@ -7,7 +7,6 @@ import {
   FaRegCheckCircle,
   FaRegCommentDots,
   FaRegPaperPlane,
-  FaRegUserCircle,
 } from "react-icons/fa";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -81,7 +80,29 @@ const Property = ({ data }) => {
         <div className="propertyHeader">
           {data.owner ? (
             <div className="propertyOwner">
-              <FaRegUserCircle className="ownerImg" />
+              {data.owner.photoUrl ? (
+                <img
+                  src={data.owner.photoUrl}
+                  alt={data.owner.displayName
+                    ?.toUpperCase()
+                    .split(" ")
+                    .map((n) => n[0])
+                    .slice(0, 2)
+                    .join("")}
+                  className="propertyOwnerImg"
+                />
+              ) : (
+                <img
+                  src=""
+                  alt={data.owner.displayName
+                    ?.toUpperCase()
+                    .split(" ")
+                    .map((n) => n[0])
+                    .slice(0, 2)
+                    .join("")}
+                  className="propertyOwnerImg"
+                />
+              )}
               <h4 className="ownerName">{data.owner.displayName}</h4>
               <FaRegCheckCircle className="ownerCheck" />
             </div>
