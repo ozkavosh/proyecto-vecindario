@@ -44,7 +44,7 @@ const Review = ({ data }) => {
         </div>
 
         <div className="reviewBody">
-          <p>{data.review.length > 120 ? data.review.slice(0, 120) + "..." : data.review}</p>
+          <p>{data.review}</p>
         </div>
 
         <div className="reviewFooter">
