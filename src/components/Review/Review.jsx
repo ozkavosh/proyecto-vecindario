@@ -71,7 +71,7 @@ const Review = ({ data }) => {
             </div>
 
             <div className="reviewActions">
-              {data.id && data.reviewer?.uid === currentUser?.uid && (
+              {data.id && currentUser && data.reviewer?.uid === currentUser?.uid && (
                 <RemoveReviewButton rid={data.id} pid={data.property} />
               )}
             </div>
