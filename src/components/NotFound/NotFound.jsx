@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { RiChatQuoteLine } from "react-icons/ri";
+import { TbFaceIdError } from "react-icons/tb";
 import { Link } from "react-router-dom";
 
-const AddReviewAuth = ({ setDismount }) => {
+const NotFound = ({ setDismount }) => {
   useEffect(() => {
     setDismount((prev) => ({ ...prev, footer: true }));
 
@@ -12,16 +12,16 @@ const AddReviewAuth = ({ setDismount }) => {
   return (
     <div className="auth-route">
       <div className="message">
-        <RiChatQuoteLine />
+        <TbFaceIdError />
         <p>
-          Para realizar una <strong>reseña</strong> debe iniciar sesión.
+          Lo sentimos, esta sección <strong>todavía</strong> no existe.
         </p>
-        <Link to="/login">
-          <button>Iniciar sesión</button>
+        <Link to="/" replace>
+          <button>Ir al inicio</button>
         </Link>
       </div>
     </div>
   );
 };
 
-export default AddReviewAuth;
+export default NotFound;
