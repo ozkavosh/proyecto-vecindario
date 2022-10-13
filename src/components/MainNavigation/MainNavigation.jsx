@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import AddReviewAuth from "../AddReviewAuth/AddReviewAuth";
 import AuthRoute from "../AuthRoute/AuthRoute";
 import Chat from "../Chat/Chat";
@@ -13,6 +13,7 @@ import ProfileReviews from "../ProfileReviews/ProfileReviews";
 import PropertyDetail from "../PropertyDetail/PropertyDetail";
 import Register from "../Register/Register";
 import Search from "../Search/Search";
+import NotFound from "../NotFound/NotFound";
 
 const MainNavigation = ({ setDismount }) => {
   return (
@@ -80,6 +81,8 @@ const MainNavigation = ({ setDismount }) => {
         <Route path="/inmueble/error" element={<AddReviewAuth setDismount={setDismount} />} />
         <Route path="/registro" element={<Register setDismount={setDismount} />} />
         <Route path="/login" element={<Login setDismount={setDismount} />} />
+        <Route path="/404" element={<NotFound setDismount={setDismount}/> } />
+        <Route path="*" element={<Navigate to={"/404"}/> } />
       </Routes>
     </main>
   );

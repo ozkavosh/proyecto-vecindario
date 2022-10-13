@@ -78,6 +78,7 @@ const PropertyDetail = ({ setDismount }) => {
   useEffect(() => {
     if (pid) {
       const unsub = onSnapshot(doc(db, "properties", pid), async (document) => {
+        if(!document.exists()) return navigate("/404", { replace: true });
         setProperty(document.data());
 
         if(!owner.displayName){
@@ -107,7 +108,7 @@ const PropertyDetail = ({ setDismount }) => {
 
       return () => unsub();
     }
-  }, [pid, owner.displayName]);
+  }, [pid, owner.displayName, navigate]);
 
   useEffect(() => {
     if (currentUser && location.state?.newReviewClicked) {
