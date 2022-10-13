@@ -7,6 +7,7 @@ import { ReactComponent as ChatIcon } from "../../assets/svg/chat_circle_dots.sv
 import { ReactComponent as KeyIcon } from "../../assets/svg/key.svg";
 import { ReactComponent as MGlassIcon } from "../../assets/svg/magnifying_glass.svg";
 import { ReactComponent as PencilIcon } from "../../assets/svg/pencil_line.svg";
+import MostSearched from "../MostSearched/MostSearched";
 import "./Home.css";
 
 const Home = () => {
@@ -90,44 +91,7 @@ const Home = () => {
       </section>
       <section className="most-searched">
         <h2>Los más buscados</h2>
-        <Swiper
-          slidesPerView={3}
-          navigation={false}
-          spaceBetween={5}
-          modules={[Navigation]}
-          className="mySwiper"
-        >
-          <SwiperSlide>
-            <img
-              src="https://firebasestorage.googleapis.com/v0/b/proyectovecindario.appspot.com/o/foto.scroll1.png?alt=media&token=8e986891-e311-40f7-ac25-6c63b30355a1"
-              alt="carr1"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              src="https://firebasestorage.googleapis.com/v0/b/proyectovecindario.appspot.com/o/foto.scroll2.png?alt=media&token=36442c08-5087-4f36-b00b-2edd13712062"
-              alt="carr2"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              src="https://firebasestorage.googleapis.com/v0/b/proyectovecindario.appspot.com/o/foto.scroll3.png?alt=media&token=21adba81-bf40-4b63-b773-59ae1b917543"
-              alt="carr3"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              src="https://firebasestorage.googleapis.com/v0/b/proyectovecindario.appspot.com/o/foto.scroll4.png?alt=media&token=0719ef67-23c0-4dff-a381-7cf916db9da1"
-              alt="carr4"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              src="https://firebasestorage.googleapis.com/v0/b/proyectovecindario.appspot.com/o/foto.scroll5.png?alt=media&token=2bae3abd-e111-4d74-a798-15724881e76c"
-              alt="carr5"
-            />
-          </SwiperSlide>
-        </Swiper>
+        <MostSearched/>
       </section>
       <section className="join-owners">
         <div>
