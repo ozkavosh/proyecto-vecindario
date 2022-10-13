@@ -1,4 +1,5 @@
 import { FaSearch } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -11,19 +12,26 @@ import MostSearched from "../MostSearched/MostSearched";
 import "./Home.css";
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate("/buscador", { state: { queryFromHome: e.target.searchQuery.value?.toLowerCase() } })
+  }
+
   return (
     <section className="home">
       <section className="welcome container">
         <h1>
           ¡Bienvenidos a <strong>Vecindario</strong>!
         </h1>
-        <div className="search">
+        <form className="search" onSubmit={handleSubmit}>
           <div className="searchbar">
             <FaSearch />
-            <input type="text" placeholder="Explorar destino" />
+            <input name="searchQuery" type="text" placeholder="Explorar destino" required />
           </div>
-          <button>BUSCAR</button>
-        </div>
+          <button type="submit">BUSCAR</button>
+        </form>
         <p>
           Conocé los mejores sitios donde alojarte a partir de publicaciones y de reseñas de otros
           inquilinos

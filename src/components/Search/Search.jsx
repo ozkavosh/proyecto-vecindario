@@ -1,8 +1,10 @@
 import { collection, getDocs, limit, orderBy, query, where } from "firebase/firestore";
 import { debounce } from "lodash";
-import { useCallback, useEffect, useReducer, useState } from "react";
+import { useCallback, useEffect, useReducer, useRef, useState } from "react";
 import { FaRegBell, FaSearch } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
 import { db } from "../../firebase/config";
+import search from "../../reducers/search";
 import AppliedFilters from "../AppliedFilters/AppliedFilters";
 import PropertyListContainer from "../PropertyListContainer/PropertyListContainer";
 import SearchFilters from "../SearchFilters/SearchFilters";
@@ -10,21 +12,9 @@ import "./Search.css";
 
 const Search = ({ setDismount }) => {
   const [results, setResults] = useState([{}, {}]);
-  const [searchQuery, dispatch] = useReducer(
-    (state, action) => {
-      switch (action.type) {
-        case "setFilter":
-          return { ...state, filter: action.payload };
-        case "setOrder":
-          return { ...state, orderBy: action.payload };
-        case "setInput":
-          return { ...state, input: action.payload };
-        default:
-          return state;
-      }
-    },
-    { filter: null, orderBy: null, input: "" }
-  );
+  const [searchQuery, dispatch] = useReducer(search.reducer, search.initialState);
+  const location = useLocation();
+  const searchInputRef = useRef();
 
   useEffect(() => {
     setDismount((prev) => ({ ...prev, footer: true, header: false }));
@@ -41,10 +31,10 @@ const Search = ({ setDismount }) => {
       const request = await getDocs(
         searchQuery.orderBy
           ? query(
-              collection(db, "properties"),
-              orderBy(searchQuery.orderBy.field, searchQuery.orderBy.type),
-              limit(5)
-            )
+            collection(db, "properties"),
+            orderBy(searchQuery.orderBy.field, searchQuery.orderBy.type),
+            limit(5)
+          )
           : query(collection(db, "properties"), limit(5))
       );
       const responseArray = request.docs.map((d) => ({
@@ -107,6 +97,14 @@ const Search = ({ setDismount }) => {
   }, [searchQuery.input, searchQuery.orderBy, searchQuery.filter]);
 
   useEffect(() => {
+    if(location?.state?.queryFromHome){
+      searchInputRef.current.value = location.state.queryFromHome;
+      dispatch({ type: "setInput", payload: location.state.queryFromHome});
+      delete location.state.queryFromHome;
+    }
+  }, [location?.state])
+
+  useEffect(() => {
     if (searchQuery.input || searchQuery.filter) {
       searchWithQuery();
     } else {
@@ -123,9 +121,10 @@ const Search = ({ setDismount }) => {
             <input
               type="text"
               placeholder="Buscá tu lugar ideal"
-              onChange={handleChange}
               name="search"
               className="searchInput"
+              ref={searchInputRef}
+              onChange={handleChange}
             />
           </div>
           <FaRegBell className="searchNotification" />
