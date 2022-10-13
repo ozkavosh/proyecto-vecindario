@@ -97,32 +97,32 @@ const Menu = () => {
               <FaSignInAlt /> Regístrate / Inicia sesión
             </button>
           </Link>
-          <Link to="">
+          <Link to="/404">
             <button onClick={handleClick}>
               <FaRegListAlt /> ¿Cómo funciona?
             </button>
           </Link>
-          <Link to="">
+          <Link to="/404">
             <button onClick={handleClick}>
               <FaRegQuestionCircle /> Preguntas frecuentes
             </button>
           </Link>
-          <Link to="">
+          <Link to="/404">
             <button onClick={handleClick}>
               <FaHouseUser /> Soy propietario
             </button>
           </Link>
-          <Link to="">
+          <Link to="/404">
             <button onClick={handleClick}>
               <FaInfoCircle /> Ayuda
             </button>
           </Link>
-          <Link to="">
+          <Link to="/404">
             <button onClick={handleClick}>
               <FaUsers /> Contáctanos
             </button>
           </Link>
-          <Link to="">
+          <Link to="/404">
             <button onClick={handleClick}>
               <FaFileAlt /> Términos y Condiciones
             </button>

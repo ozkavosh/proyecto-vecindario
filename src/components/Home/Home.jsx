@@ -104,7 +104,7 @@ const Home = () => {
       <section className="join-owners">
         <div>
           <h2>¿Eres propietario?</h2>
-          <button>¡Empieza ahora!</button>
+          <button onClick={() => navigate("/404")}>¡Empieza ahora!</button>
           <p>
             Nosotros te ayudamos a darte a conocer publicando tu propiedad y obteniendo gran llegada
             a potenciales inquilinos.

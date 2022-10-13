@@ -51,12 +51,12 @@ const Profile = () => {
             <p>Notificaciones</p>
             <FaChevronRight />
           </Link>
-          <Link to="/perfil">
+          <Link to="/404">
             <BiLock />
             <p>Privacidad y datos</p>
             <FaChevronRight />
           </Link>
-          <Link to="/perfil">
+          <Link to="/404">
             <BiInfoCircle />
             <p>Ayuda</p>
             <FaChevronRight />

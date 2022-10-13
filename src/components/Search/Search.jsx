@@ -2,7 +2,7 @@ import { collection, getDocs, limit, orderBy, query, where } from "firebase/fire
 import { debounce } from "lodash";
 import { useCallback, useEffect, useReducer, useRef, useState } from "react";
 import { FaRegBell, FaSearch } from "react-icons/fa";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { db } from "../../firebase/config";
 import search from "../../reducers/search";
 import AppliedFilters from "../AppliedFilters/AppliedFilters";
@@ -13,6 +13,7 @@ import "./Search.css";
 const Search = ({ setDismount }) => {
   const [results, setResults] = useState([{}, {}]);
   const [searchQuery, dispatch] = useReducer(search.reducer, search.initialState);
+  const navigate = useNavigate();
   const location = useLocation();
   const searchInputRef = useRef();
 
@@ -127,7 +128,7 @@ const Search = ({ setDismount }) => {
               onChange={handleChange}
             />
           </div>
-          <FaRegBell className="searchNotification" />
+          <FaRegBell className="searchNotification" onClick={() => navigate("/perfil/notificaciones")} />
         </div>
 
         <SearchFilters dispatch={dispatch} />

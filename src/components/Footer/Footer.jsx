@@ -12,13 +12,13 @@ const Footer = () => {
             <Link to="/buscador">Buscador</Link>
           </li>
           <li>
-            <Link to="/">¿Cómo funciona?</Link>
+            <Link to="/404">¿Cómo funciona?</Link>
           </li>
           <li>
-            <Link to="/">Ayuda</Link>
+            <Link to="/404">Ayuda</Link>
           </li>
           <li>
-            <Link to="/">Preguntas frecuentes</Link>
+            <Link to="/404">Preguntas frecuentes</Link>
           </li>
         </ul>
         <ul>
@@ -42,13 +42,13 @@ const Footer = () => {
         <ul>
           <h4>Propietarios</h4>
           <li>
-            <Link to="/">Información</Link>
+            <Link to="/404">Información</Link>
           </li>
           <li>
-            <Link to="/">Contáctenos</Link>
+            <Link to="/404">Contáctenos</Link>
           </li>
           <li>
-            <Link to="/">Publique sus propiedades</Link>
+            <Link to="/404">Publique sus propiedades</Link>
           </li>
         </ul>
       </div>
